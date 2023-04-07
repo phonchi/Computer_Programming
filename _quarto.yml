@@ -4,7 +4,7 @@ project:
 
 book:
   page-navigation: true
-  title: "mybook"
+  title: "Computer Programming"
   author: "phonchi"
   date: "02/17/2023"
   chapters:
