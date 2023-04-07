@@ -16,6 +16,8 @@ book:
     - 05_Dictionaries_sets.ipynb
     - 06_Manipulating_string.ipynb
     - 07_Files.ipynb
+    - 08_09_OOP.ipynb
+    - 10_11_NumPy.ipynb
   search:
     location: navbar
     type: overlay
