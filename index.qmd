@@ -4,6 +4,7 @@ It aims for students who need a basic understanding of procedural programming an
 We will have hands-on exercises and quizzes to help you get familiar with each topic, and students will exercise logical thinking and programming skills for dealing with scientific problems.
 
 The book is based on several well-known books and resources, including:
-* [Automate the Boring Stuff with Python, 2nd Edition](https://automatetheboringstuff.com/#toc)
-* [Beyond the Basic Stuff with Python](https://inventwithpython.com/beyond/)
-* [Scipy Lecture Notes](https://scipy-lectures.org/)
+
+- [Automate the Boring Stuff with Python, 2nd Edition](https://automatetheboringstuff.com/#toc)
+- [Beyond the Basic Stuff with Python](https://inventwithpython.com/beyond/)
+- [Scipy Lecture Notes](https://scipy-lectures.org/)
