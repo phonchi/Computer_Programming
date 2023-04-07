@@ -1,0 +1,35 @@
+{
+  "index.qmd": {
+    "index.html": "7376e837"
+  },
+  "01_Python.ipynb": {
+    "01_Python.html": "0969c950"
+  },
+  "02_Flow_control.ipynb": {
+    "02_Flow_control.html": "1528f843"
+  },
+  "03_Function.ipynb": {
+    "03_Function.html": "901682b4"
+  },
+  "04_Lists_tuples.ipynb": {
+    "04_Lists_tuples.html": "164b0c46"
+  },
+  "05_Dictionaries_sets.ipynb": {
+    "05_Dictionaries_sets.html": "3914abd1"
+  },
+  "06_Manipulating_string.ipynb": {
+    "06_Manipulating_string.html": "ca9c4211"
+  },
+  "07_Files.ipynb": {
+    "07_Files.html": "4c10facc"
+  },
+  "05_Dictionaries.ipynb": {
+    "05_Dictionaries.html": "13849524"
+  },
+  "08_09_OOP.ipynb": {
+    "08_09_OOP.html": "efcd24bf"
+  },
+  "10_11_NumPy.qmd": {
+    "10_11_NumPy.html": "820f8c28"
+  }
+}

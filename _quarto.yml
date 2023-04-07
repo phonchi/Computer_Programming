@@ -1,0 +1,23 @@
+project:
+  type: book
+
+book:
+  page-navigation: true
+  title: "mybook"
+  author: "phonchi"
+  date: "02/17/2023"
+  chapters:
+    - index.qmd
+    - 01_Python.ipynb
+    - 02_Flow_control.ipynb
+    - 03_Function.ipynb
+    - 04_Lists_tuples.ipynb
+    - 05_Dictionaries_sets.ipynb
+    - 06_Manipulating_string.ipynb
+    - 07_Files.ipynb
+  search:
+    location: navbar
+    type: overlay
+format:
+  html:
+    theme: cosmo
