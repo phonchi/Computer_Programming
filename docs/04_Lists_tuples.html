@@ -78,11 +78,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -196,6 +196,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_Copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -255,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lists and Tuples</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lists and Tuples</span></h1>
 </div>
 
 
@@ -308,19 +343,13 @@ source: https://favtutor.com/blogs/list-vs-dictionary
 </div>
 <p>There are several ways to create a new <code>list</code>; the simplest is to enclose the elements in square brackets (“[” and ”]”). A <code>list</code> that contains no elements is called an empty <code>list</code>; you can create one with empty brackets.</p>
 <div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">type</span>([])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>list</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">type</span>([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>]), <span class="bu">type</span>([<span class="st">'calculus'</span>, <span class="st">'introduction to mathematics'</span>, <span class="st">'computer programming'</span>, <span class="st">'linear algebra'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>(list, list)</code></pre>
 </div>
@@ -330,12 +359,9 @@ source: https://favtutor.com/blogs/list-vs-dictionary
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="getting-individual-values-in-a-list-with-indexes"><span class="header-section-number">5.1.1</span> Getting Individual Values in a List with Indexes</h3>
 <p>You can reference a <code>list</code> item by writing the <code>list</code>’s name followed by the element’s <strong><em>index</em></strong> (that is, its position number) enclosed in square brackets (<code>[]</code>, known as the <strong><em>subscription operator</em></strong> or <strong><em>bracket operator</em></strong>). Remember that the indices start at 0:</p>
 <div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>subjects <span class="op">=</span> [<span class="st">'calculus'</span>, <span class="st">'introduction to mathematics'</span>, <span class="st">'computer programming'</span>, <span class="st">'linear algebra'</span>]</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="bu">print</span>(subjects[<span class="dv">0</span>])</span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="bu">print</span>(subjects[<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>calculus
 linear algebra</code></pre>
@@ -344,47 +370,32 @@ linear algebra</code></pre>
 <p><strong>Note that the first index is 0</strong>, the last index is one less than the size of the <code>list</code>; a <code>list</code> of four items has 3 as its last index.</p>
 <p>Python will give you an <code>IndexError</code> error message if you use an index that exceeds the number of values in your list value.</p>
 <div class="cell" data-execution_count="5">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">print</span>(subjects[<span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>IndexError: list index out of range</code></pre>
 </div>
 </div>
 <p>The elements of a <code>list</code> don’t have to be the same type. The following <code>list</code> contains a <code>string</code>, a <code>float</code>, an <code>integer</code>, and another <code>list</code>:</p>
 <div class="cell" data-execution_count="6">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>spam <span class="op">=</span> [<span class="st">'spam'</span>, <span class="fl">2.0</span>, <span class="dv">5</span>, [<span class="dv">10</span>, <span class="dv">20</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>The values in these lists of lists can be accessed using multiple indexes:</p>
 <div class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>spam[<span class="dv">3</span>][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>20</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="8">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>spam <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>]</span>
 <span id="cb12-2"><a href="#cb12-2"></a>spam[<span class="dv">3</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>[7, 9]</code></pre>
 </div>
 </div>
 <p>The first index dictates which items in the outer <code>list</code> to use, and the second indicates the value within the inner <code>list</code>. If you only use one index like <code>spam[3]</code>, the program will print the entire list value at that index.</p>
 <div class="cell" data-execution_count="9">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>spam[<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>7</code></pre>
 </div>
@@ -393,11 +404,8 @@ linear algebra</code></pre>
 <h4 data-number="5.1.1.1" class="anchored" data-anchor-id="negative-indexes"><span class="header-section-number">5.1.1.1</span> Negative Indexes</h4>
 <p>While indexes start at 0 and go up, you can also use negative integers for the index. The integer value -1 refers to the last index in a <code>list</code>, the value -2 refers to the second-to-last index in a <code>list</code>, and so on.</p>
 <div class="cell" data-execution_count="10">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="bu">print</span>(subjects[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># subjects = ['calculus', 'introduction to mathematics', 'computer programming', 'linear algebra']</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="bu">print</span>(subjects[<span class="op">-</span><span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>linear algebra
 computer programming</code></pre>
@@ -408,10 +416,7 @@ computer programming</code></pre>
 <h4 data-number="5.1.1.2" class="anchored" data-anchor-id="getting-a-lists-length-with-the-len-function"><span class="header-section-number">5.1.1.2</span> Getting a <code>List</code>’s Length with the <code>len()</code> Function</h4>
 <p>The <code>len()</code> function will return the number of values that are in a <code>list</code>, just like it can count the number of characters in a string.</p>
 <div class="cell" data-execution_count="11">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">len</span>(subjects)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>4</code></pre>
 </div>
@@ -426,12 +431,9 @@ computer programming</code></pre>
 </ul>
 <p>In a slice, the first integer is the index where the slice starts. The second integer is the index where the slice ends. A slice goes up to, but will not include, the value at the second index. A slice evaluates to a new <code>list</code>.</p>
 <div class="cell" data-execution_count="12">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>subjects <span class="op">=</span> [<span class="st">'calculus'</span>, <span class="st">'introduction to mathematics'</span>, <span class="st">'computer programming'</span>, <span class="st">'linear algebra'</span>]</span>
 <span id="cb20-2"><a href="#cb20-2"></a><span class="bu">print</span>(subjects[<span class="dv">0</span>:<span class="dv">3</span>])</span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="bu">print</span>(subjects[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>['calculus', 'introduction to mathematics', 'computer programming']
 ['introduction to mathematics', 'computer programming']</code></pre>
@@ -439,12 +441,9 @@ computer programming</code></pre>
 </div>
 <p>As a shortcut, you can leave out one or both indexes on either side of the colon in the slice. Leaving out the first index is the same as using 0 or the beginning of the <code>list</code>. Leaving out the second index is the same as using the length of the <code>list</code>, which will slice to the end of the <code>list</code>.</p>
 <div class="cell" data-execution_count="13">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="bu">print</span>(subjects[:<span class="dv">3</span>]) <span class="co"># same as subjects[0:3] </span></span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="bu">print</span>(subjects[<span class="dv">1</span>:]) <span class="co"># same as subjects[1:len(s)] </span></span>
 <span id="cb22-3"><a href="#cb22-3"></a><span class="bu">print</span>(subjects[:]) <span class="co"># same as s[0:len(s)]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>['calculus', 'introduction to mathematics', 'computer programming']
 ['introduction to mathematics', 'computer programming', 'linear algebra']
@@ -453,11 +452,8 @@ computer programming</code></pre>
 </div>
 <p>Just like <code>range()</code>, slicing has the optional third index that can be used to specify the step.</p>
 <div class="cell" data-execution_count="14">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="bu">print</span>(subjects[::<span class="dv">2</span>]) <span class="co"># Note the default step is 1</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="bu">print</span>(subjects[::<span class="op">-</span><span class="dv">1</span>]) <span class="co"># Reverse the order of the list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>['calculus', 'computer programming']
 ['linear algebra', 'computer programming', 'introduction to mathematics', 'calculus']</code></pre>
@@ -468,12 +464,9 @@ computer programming</code></pre>
 <h4 data-number="5.1.1.4" class="anchored" data-anchor-id="changing-values-in-a-list-with-indexes"><span class="header-section-number">5.1.1.4</span> Changing Values in a <code>List</code> with Indexes</h4>
 <p>Unlike <code>strings</code>, <code>lists</code> are <strong><em>mutable</em></strong> because you can reassign an item in a <code>list</code>. When the bracket operator appears on the left side of an assignment, it identifies the element of the <code>list</code> that will be assigned.</p>
 <div class="cell" data-execution_count="15">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>numbers <span class="op">=</span> [<span class="dv">17</span>, <span class="dv">123</span>, <span class="dv">42</span>, <span class="dv">7</span>]</span>
 <span id="cb26-2"><a href="#cb26-2"></a>numbers[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb26-3"><a href="#cb26-3"></a>numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>[17, 5, 42, 7]</code></pre>
 </div>
@@ -486,19 +479,13 @@ computer programming</code></pre>
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="list-concatenation-and-list-replication"><span class="header-section-number">5.1.2</span> <code>List</code> Concatenation and <code>List</code> Replication</h3>
 <p>Lists can be concatenated and replicated just like strings. The <code>+</code> operator combines two lists to create a new <code>list</code> and the <code>*</code> operator can be used with a <code>list</code> and an integer value to replicate the <code>list</code>.</p>
 <div class="cell" data-execution_count="16">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>] <span class="op">+</span> [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>[1, 2, 3, 'A', 'B', 'C']</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="17">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>[<span class="st">'X'</span>, <span class="st">'Y'</span>, <span class="st">'Z'</span>] <span class="op">*</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>['X', 'Y', 'Z', 'X', 'Y', 'Z', 'X', 'Y', 'Z']</code></pre>
 </div>
@@ -507,12 +494,9 @@ computer programming</code></pre>
 <h4 data-number="5.1.2.1" class="anchored" data-anchor-id="removing-values-from-lists-with-del-statements"><span class="header-section-number">5.1.2.1</span> Removing Values from Lists with <code>del</code> Statements</h4>
 <p>The <code>del</code> statement will delete values at an index in a <code>list</code>. All values in the <code>list</code> after the deleted value will be moved up one index.</p>
 <div class="cell" data-execution_count="18">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>t <span class="op">=</span> [<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>]</span>
 <span id="cb32-2"><a href="#cb32-2"></a><span class="kw">del</span> t[<span class="dv">1</span>] <span class="co"># using index</span></span>
 <span id="cb32-3"><a href="#cb32-3"></a><span class="bu">print</span>(t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>['a', 'c']</code></pre>
 </div>
@@ -523,11 +507,8 @@ computer programming</code></pre>
 <h3 data-number="5.1.3" class="anchored" data-anchor-id="list-traversal"><span class="header-section-number">5.1.3</span> <code>List</code> traversal</h3>
 <p>In Chapter 2, you have learned about using <code>for</code> loops to execute a block of code a certain number of times. Technically, a <code>for</code> loop repeats the code block once for each item in a sequence.</p>
 <div class="cell" data-execution_count="19">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
 <span id="cb34-2"><a href="#cb34-2"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0
 1
@@ -536,11 +517,8 @@ computer programming</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="20">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="bu">print</span>(<span class="bu">range</span>(<span class="dv">4</span>))</span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>range(0, 4)</code></pre>
 </div>
@@ -550,11 +528,8 @@ computer programming</code></pre>
 </div>
 <p>This is because the return value from <code>range(4)</code> is a sequence that Python considers similar to <code>[0, 1, 2, 3]</code>. The following program has the same output as the previous one:</p>
 <div class="cell" data-execution_count="21">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]:</span>
 <span id="cb39-2"><a href="#cb39-2"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0
 1
@@ -563,11 +538,8 @@ computer programming</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="22">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="cf">for</span> subject <span class="kw">in</span> subjects: <span class="co"># subjects = ['calculus', 'introduction to mathematics', 'computer programming', 'linear algebra']</span></span>
 <span id="cb41-2"><a href="#cb41-2"></a>  <span class="bu">print</span>(subject)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>calculus
 introduction to mathematics
@@ -578,14 +550,11 @@ linear algebra</code></pre>
 <p>This works well if you only need to read the elements of the <code>list</code>. But you need the indices that you want to write or update the elements. A common way to do that is to combine the functions <code>range()</code> and <code>len()</code>:</p>
 <p>A common <code>Python</code> technique is to use <code>range(len(someList))</code> with a <code>for</code> loop to iterate over the indexes of a list.</p>
 <div class="cell" data-execution_count="23">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(numbers)): <span class="co"># numbers = [17, 5, 42, 7]</span></span>
 <span id="cb43-2"><a href="#cb43-2"></a>  <span class="bu">print</span>(i, numbers[i])</span>
 <span id="cb43-3"><a href="#cb43-3"></a>  numbers[i] <span class="op">=</span> numbers[i]<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb43-4"><a href="#cb43-4"></a></span>
 <span id="cb43-5"><a href="#cb43-5"></a><span class="bu">print</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0 17
 1 5
@@ -599,11 +568,8 @@ linear algebra</code></pre>
 <h4 data-number="5.1.3.1" class="anchored" data-anchor-id="the-in-and-not-in-operators"><span class="header-section-number">5.1.3.1</span> The <code>in</code> and <code>not in</code> Operators</h4>
 <p>You can determine whether an object is or isn’t in a <code>list</code> with the <code>in</code> and <code>not in</code> operators. These expressions will evaluate to a <code>Boolean</code> value.</p>
 <div class="cell" data-execution_count="24">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="bu">print</span>(<span class="st">'howdy'</span> <span class="kw">in</span> [<span class="st">'hello'</span>, <span class="st">'hi'</span>, <span class="st">'howdy'</span>, <span class="st">'heyas'</span>])</span>
 <span id="cb45-2"><a href="#cb45-2"></a><span class="bu">print</span>(<span class="st">'English'</span> <span class="kw">not</span> <span class="kw">in</span> subjects)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>True
 True</code></pre>
@@ -614,8 +580,6 @@ True</code></pre>
 <h4 data-number="5.1.3.2" class="anchored" data-anchor-id="using-the-enumerate-function-with-lists"><span class="header-section-number">5.1.3.2</span> Using the <code>enumerate()</code> Function with Lists</h4>
 <p>Instead of using the <code>range(len(someList))</code> technique with a <code>for</code> loop to obtain the integer index of the items in the <code>list</code>, you can call the <code>enumerate()</code> function instead. On each iteration of the loop, <code>enumerate()</code> will return two values: <strong>the index of the item and the item itself.</strong></p>
 <div class="cell" data-execution_count="25">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>numbers <span class="op">=</span> [<span class="dv">17</span>, <span class="dv">5</span>, <span class="dv">42</span>, <span class="dv">7</span>]</span>
 <span id="cb47-2"><a href="#cb47-2"></a></span>
 <span id="cb47-3"><a href="#cb47-3"></a><span class="cf">for</span> i, number <span class="kw">in</span> <span class="bu">enumerate</span>(numbers): </span>
@@ -623,7 +587,6 @@ True</code></pre>
 <span id="cb47-5"><a href="#cb47-5"></a>  numbers[i] <span class="op">=</span> number<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb47-6"><a href="#cb47-6"></a></span>
 <span id="cb47-7"><a href="#cb47-7"></a><span class="bu">print</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>0 17
 1 5
@@ -637,14 +600,11 @@ True</code></pre>
 <h4 data-number="5.1.3.3" class="anchored" data-anchor-id="loop-in-multiple-lists-with-zip"><span class="header-section-number">5.1.3.3</span> Loop in Multiple <code>Lists</code> with <code>zip()</code></h4>
 <p>Built-in function <code>zip()</code> enables you to iterate over multiple sequences of data at the same time. The function receives as arguments any number of sequences and returns an iterator that produces <code>tuples</code> containing the elements at the same index in each.</p>
 <div class="cell" data-execution_count="26">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>names <span class="op">=</span> [<span class="st">'Bob'</span>, <span class="st">'Sue'</span>, <span class="st">'Amanda'</span>]</span>
 <span id="cb49-2"><a href="#cb49-2"></a>grade_point_averages <span class="op">=</span> [<span class="fl">3.5</span>, <span class="fl">4.0</span>, <span class="fl">3.75</span>] </span>
 <span id="cb49-3"><a href="#cb49-3"></a></span>
 <span id="cb49-4"><a href="#cb49-4"></a><span class="cf">for</span> name, gpa <span class="kw">in</span> <span class="bu">zip</span>(names, grade_point_averages):</span>
 <span id="cb49-5"><a href="#cb49-5"></a>    <span class="bu">print</span>(<span class="st">'Name='</span>, name, <span class="st">'GPA='</span>, gpa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Name= Bob GPA= 3.5
 Name= Sue GPA= 4.0
@@ -653,10 +613,7 @@ Name= Amanda GPA= 3.75</code></pre>
 </div>
 <p>The above snippet call <code>zip()</code> to produces the tuples <code>('Bob', 3.5)</code>, <code>('Sue', 4.0)</code> and <code>('Amanda', 3.75)</code> consisting of the elements at index 0, 1 and 2 of each <code>list</code>, respectively. Note that we unpack (which we will elaborate later on) each tuple into <code>name</code> and <code>gpa</code> and display them.</p>
 <div class="cell" data-execution_count="27">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="bu">list</span>(<span class="bu">zip</span>(names, grade_point_averages))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>[('Bob', 3.5), ('Sue', 4.0), ('Amanda', 3.75)]</code></pre>
 </div>
@@ -671,24 +628,18 @@ Name= Amanda GPA= 3.75</code></pre>
 <h4 data-number="5.1.4.1" class="anchored" data-anchor-id="adding-elements-to-lists-with-the-append-and-insert-methods"><span class="header-section-number">5.1.4.1</span> Adding elements to <code>Lists</code> with the <code>append()</code> and <code>insert()</code> Methods</h4>
 <p><code>append()</code> adds a new element to the end of a <code>list</code>:</p>
 <div class="cell" data-execution_count="28">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>t <span class="op">=</span> [<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>]</span>
 <span id="cb53-2"><a href="#cb53-2"></a>t.append(<span class="st">'d'</span>)</span>
 <span id="cb53-3"><a href="#cb53-3"></a>t <span class="co"># in-place operation!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>['a', 'b', 'c', 'd']</code></pre>
 </div>
 </div>
 <p>The previous <code>append()</code> method call adds the argument to the end of the <code>list</code>. The <code>insert()</code> method can insert an element at any index in the <code>list</code>. The first argument to <code>insert()</code> is the index for the new value, and the second argument is the new value to be inserted.</p>
 <div class="cell" data-execution_count="29">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>t <span class="op">=</span> [<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>]</span>
 <span id="cb55-2"><a href="#cb55-2"></a>t.insert(<span class="dv">1</span>,<span class="st">'e'</span>)</span>
 <span id="cb55-3"><a href="#cb55-3"></a>t <span class="co"># in-place operation!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>['a', 'e', 'b', 'c']</code></pre>
 </div>
@@ -698,11 +649,8 @@ Name= Amanda GPA= 3.75</code></pre>
 </blockquote>
 <p>Methods belong to a single data type. The <code>append()</code> and <code>insert()</code>methods are <code>list</code> methods and can be called only on <code>list</code> object, not on other objects such as <code>strings</code> or <code>integers</code>.</p>
 <div class="cell" data-execution_count="30">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>eggs <span class="op">=</span> <span class="st">'hello'</span></span>
 <span id="cb57-2"><a href="#cb57-2"></a>eggs.append(<span class="st">'world'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>AttributeError: 'str' object has no attribute 'append'</code></pre>
 </div>
@@ -712,17 +660,11 @@ Name= Amanda GPA= 3.75</code></pre>
 <h4 data-number="5.1.4.2" class="anchored" data-anchor-id="adding-all-the-elements-of-a-list-to-the-end-of-list-with-the-extend-methods"><span class="header-section-number">5.1.4.2</span> Adding all the elements of a <code>List</code> to the end of <code>List</code> with the <code>extend()</code> Methods</h4>
 <p>Use <code>list</code> method <code>extend()</code> to add all the elements of another sequence to the end of a list:</p>
 <div class="cell" data-execution_count="31">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>color_names <span class="op">=</span> [<span class="st">'orange'</span>, <span class="st">'yellow'</span>, <span class="st">'green'</span>]</span>
 <span id="cb59-2"><a href="#cb59-2"></a>color_names.extend([<span class="st">'indigo'</span>, <span class="st">'violet'</span>]) <span class="co"># equivalent to color_names += ['indigo', 'violet']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div class="cell" data-execution_count="32">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>color_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>['orange', 'yellow', 'green', 'indigo', 'violet']</code></pre>
 </div>
@@ -732,12 +674,9 @@ Name= Amanda GPA= 3.75</code></pre>
 <h4 data-number="5.1.4.3" class="anchored" data-anchor-id="removing-elements-from-lists-with-the-remove-method"><span class="header-section-number">5.1.4.3</span> Removing elements from <code>Lists</code> with the <code>remove()</code> Method</h4>
 <p>The <code>remove()</code> method will pass the object to be removed from the <code>list</code> when it is called:</p>
 <div class="cell" data-execution_count="33">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>spam <span class="op">=</span> [<span class="st">'cat'</span>, <span class="st">'bat'</span>, <span class="st">'rat'</span>, <span class="st">'elephant'</span>]</span>
 <span id="cb62-2"><a href="#cb62-2"></a>spam.remove(<span class="st">'bat'</span>)</span>
 <span id="cb62-3"><a href="#cb62-3"></a><span class="bu">print</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>['cat', 'rat', 'elephant']</code></pre>
 </div>
@@ -750,8 +689,6 @@ Name= Amanda GPA= 3.75</code></pre>
 <h4 data-number="5.1.4.4" class="anchored" data-anchor-id="sorting-the-elements-in-a-list-with-the-sort-method"><span class="header-section-number">5.1.4.4</span> Sorting the elements in a <code>List</code> with the <code>sort()</code> Method</h4>
 <p>Lists of numbers or lists of strings can be sorted with the <code>sort()</code> method:</p>
 <div class="cell" data-execution_count="34">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>spam <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">5</span>, <span class="fl">3.14</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">7</span>]</span>
 <span id="cb64-2"><a href="#cb64-2"></a>spam.sort() <span class="co"># The default behavior is sorting in ascending order</span></span>
 <span id="cb64-3"><a href="#cb64-3"></a><span class="bu">print</span>(spam)</span>
@@ -759,7 +696,6 @@ Name= Amanda GPA= 3.75</code></pre>
 <span id="cb64-5"><a href="#cb64-5"></a>spam <span class="op">=</span> [<span class="st">'ants'</span>, <span class="st">'cats'</span>, <span class="st">'dogs'</span>, <span class="st">'badgers'</span>, <span class="st">'Elephants'</span>]</span>
 <span id="cb64-6"><a href="#cb64-6"></a>spam.sort()</span>
 <span id="cb64-7"><a href="#cb64-7"></a><span class="bu">print</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[-7, 1, 2, 3.14, 5]
 ['Elephants', 'ants', 'badgers', 'cats', 'dogs']</code></pre>
@@ -768,11 +704,8 @@ Name= Amanda GPA= 3.75</code></pre>
 <p>Note that <code>sort()</code> uses “ASCII order” rather than alphabetical order for sorting strings. This means uppercase letters come before lowercase letters. Therefore, the lowercase a is sorted so that it comes after the uppercase Z.</p>
 <p>You can also pass <code>True</code> for the <code>reverse</code> keyword argument to have <code>sort()</code> sort the values in reverse order.</p>
 <div class="cell" data-execution_count="35">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>spam.sort(reverse<span class="op">=</span><span class="va">True</span>) <span class="co"># Sort in descending order</span></span>
 <span id="cb66-2"><a href="#cb66-2"></a><span class="bu">print</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>['dogs', 'cats', 'badgers', 'ants', 'Elephants']</code></pre>
 </div>
@@ -782,32 +715,23 @@ Name= Amanda GPA= 3.75</code></pre>
 <h4 data-number="5.1.4.5" class="anchored" data-anchor-id="searching-an-element-in-a-list-with-the-index-method"><span class="header-section-number">5.1.4.5</span> Searching an element in a <code>List</code> with the <code>index()</code> Method</h4>
 <p><code>List</code> objects have an <code>index()</code> method that accepts an argument, and if that argument exists in the list, the index of the argument is returned. If the argument isn’t in the <code>list</code>, then <code>Python</code> produces a <code>ValueError</code> error.</p>
 <div class="cell" data-execution_count="36">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>spam <span class="op">=</span> [<span class="st">'hello'</span>, <span class="st">'hi'</span>, <span class="st">'howdy'</span>, <span class="st">'heyas'</span>]</span>
 <span id="cb68-2"><a href="#cb68-2"></a>spam.index(<span class="st">'hi'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>1</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="37">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>spam <span class="op">=</span> [<span class="st">'hello'</span>, <span class="st">'hi'</span>, <span class="st">'howdy'</span>, <span class="st">'heyas'</span>]</span>
 <span id="cb70-2"><a href="#cb70-2"></a>spam.index(<span class="st">'world'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>ValueError: 'world' is not in list</code></pre>
 </div>
 </div>
 <p>When there are duplicates of the elements in the <code>list</code>, the index of its first appearance is returned.</p>
 <div class="cell" data-execution_count="38">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>spam <span class="op">=</span> [<span class="st">'Zophie'</span>, <span class="st">'Pooka'</span>, <span class="st">'Fat-tail'</span>, <span class="st">'Pooka'</span>]</span>
 <span id="cb72-2"><a href="#cb72-2"></a>spam.index(<span class="st">'Pooka'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>1</code></pre>
 </div>
@@ -818,22 +742,16 @@ Name= Amanda GPA= 3.75</code></pre>
 <h3 data-number="5.1.5" class="anchored" data-anchor-id="numerical-functions-for-list"><span class="header-section-number">5.1.5</span> Numerical functions for <code>list</code></h3>
 <p>There are a number of built-in functions that can be used on <code>lists</code> that allow you to quickly look through a <code>list</code> without writing your own loops:</p>
 <div class="cell" data-execution_count="39">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>nums <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">41</span>, <span class="dv">12</span>, <span class="dv">9</span>, <span class="dv">74</span>, <span class="dv">15</span>]</span>
 <span id="cb74-2"><a href="#cb74-2"></a><span class="bu">print</span>(<span class="bu">len</span>(nums))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>6</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="40">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a><span class="bu">print</span>(<span class="bu">max</span>(nums))</span>
 <span id="cb76-2"><a href="#cb76-2"></a><span class="bu">print</span>(<span class="bu">min</span>(nums))</span>
 <span id="cb76-3"><a href="#cb76-3"></a><span class="bu">print</span>(<span class="bu">sum</span>(nums))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>74
 3
@@ -846,24 +764,18 @@ Name= Amanda GPA= 3.75</code></pre>
 <h3 data-number="5.1.6" class="anchored" data-anchor-id="list-comprehensions"><span class="header-section-number">5.1.6</span> <code>List</code> Comprehensions</h3>
 <p>Consider how you might make a <code>list</code> of the first 10 square numbers (that is, the square of each integer from 1 through 10).</p>
 <div class="cell" data-execution_count="41">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>squares <span class="op">=</span> []</span>
 <span id="cb78-2"><a href="#cb78-2"></a><span class="cf">for</span> value <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">11</span>):</span>
 <span id="cb78-3"><a href="#cb78-3"></a>    squares.append(value<span class="op">**</span><span class="dv">2</span>)</span>
 <span id="cb78-4"><a href="#cb78-4"></a><span class="bu">print</span>(squares)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</code></pre>
 </div>
 </div>
 <p>But a <strong><em>list comprehension</em></strong> allows you to generate this same list in just one line of code. A list comprehension combines the <code>for</code> loop and the creation of new elements into one line, and automatically appends each new element!</p>
 <div class="cell" data-execution_count="42">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a>squares <span class="op">=</span> [value<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> value <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
 <span id="cb80-2"><a href="#cb80-2"></a><span class="bu">print</span>(squares)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]</code></pre>
 </div>
@@ -880,11 +792,8 @@ Name= Amanda GPA= 3.75</code></pre>
 </blockquote>
 <p>Another common operation is filtering elements to select only those that match a condition. This typically produces a <code>list</code> with fewer elements than the data being filtered. To do this in a <code>list</code> comprehension, use the <code>if</code> clause. The following includes in <code>list1</code> only the even values produced by the <code>for</code> clause:</p>
 <div class="cell" data-execution_count="43">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a>list1 <span class="op">=</span> [item <span class="cf">for</span> item <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>) <span class="cf">if</span> item <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
 <span id="cb82-2"><a href="#cb82-2"></a>list1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>[2, 4, 6, 8, 10]</code></pre>
 </div>
@@ -899,8 +808,6 @@ Name= Amanda GPA= 3.75</code></pre>
 source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 </div>
 <div class="cell" data-execution_count="44">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a><span class="op">%%</span>writefile <span class="dv">1</span><span class="er">A2B</span>.py</span>
 <span id="cb84-2"><a href="#cb84-2"></a></span>
 <span id="cb84-3"><a href="#cb84-3"></a><span class="im">import</span> random</span>
@@ -943,7 +850,6 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 <span id="cb84-40"><a href="#cb84-40"></a>    <span class="cf">if</span> result[<span class="dv">0</span>] <span class="op">==</span> <span class="dv">4</span>:</span>
 <span id="cb84-41"><a href="#cb84-41"></a>        <span class="bu">print</span>(<span class="st">"Congratulations, you guessed the number in"</span>, guesses, <span class="st">"guesses!"</span>)</span>
 <span id="cb84-42"><a href="#cb84-42"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Overwriting 1A2B.py</code></pre>
 </div>
@@ -953,10 +859,7 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 <h3 data-number="5.1.8" class="anchored" data-anchor-id="sequence-data-types"><span class="header-section-number">5.1.8</span> Sequence Data Types</h3>
 <p><code>Lists</code> aren’t the only data types that represent ordered sequences of values. For example, <code>strings</code> and <code>lists</code> are similar if you consider a string to be a “list” of single text characters. The <code>Python</code> sequence data types include <code>lists</code>, <code>strings</code>, range objects returned by <code>range()</code>, and <code>tuples</code>. Many of the things you can do with <code>lists</code> can also be done with <code>strings</code> and other values of sequence types: indexing; slicing; and using them with for loops, with <code>len()</code>, and with the <code>in</code> and <code>not in</code> operators.</p>
 <div class="cell" data-execution_count="46">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a><span class="co">'a'</span> <span class="kw">in</span> <span class="st">'apple'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>True</code></pre>
 </div>
@@ -966,11 +869,8 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 <h3 data-number="5.1.9" class="anchored" data-anchor-id="mutable-and-immutable-data-types"><span class="header-section-number">5.1.9</span> Mutable and Immutable Data Types</h3>
 <p>But <code>lists</code> and <code>strings</code> are different in an important way. A list object is a <strong><em>mutable</em></strong> data type: it can have elements added, removed, or changed. However, a string is <strong><em>immutable</em></strong>: it cannot be changed. Trying to reassign a single character in a string results in a <code>TypeError</code> error:</p>
 <div class="cell" data-execution_count="47">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a>name <span class="op">=</span> <span class="st">'Zophie a cat'</span></span>
 <span id="cb88-2"><a href="#cb88-2"></a>name[<span class="dv">7</span>] <span class="op">=</span> <span class="st">'t'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>TypeError: 'str' object does not support item assignment</code></pre>
 </div>
@@ -985,33 +885,24 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 </blockquote>
 <p>Although it is not necessary, it is common to enclose <code>tuples</code> in parentheses to help us quickly identify <code>tuples</code> when we look at <code>Python</code> code:</p>
 <div class="cell" data-execution_count="48">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a><span class="bu">type</span>(())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>tuple</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="49">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a>t <span class="op">=</span> (<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>, <span class="st">'e'</span>)</span>
 <span id="cb92-2"><a href="#cb92-2"></a><span class="bu">type</span>(t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>tuple</code></pre>
 </div>
 </div>
 <p>To create a <code>tuple</code> with a single element, you have to include the final comma or use the <code>tuple()</code> function:</p>
 <div class="cell" data-execution_count="50">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1"></a>t1 <span class="op">=</span> (<span class="st">'a'</span>,)</span>
 <span id="cb94-2"><a href="#cb94-2"></a><span class="bu">print</span>(<span class="bu">type</span>(t1))</span>
 <span id="cb94-3"><a href="#cb94-3"></a>t2 <span class="op">=</span> (<span class="st">'a'</span>)</span>
 <span id="cb94-4"><a href="#cb94-4"></a><span class="bu">print</span>(<span class="bu">type</span>(t2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'tuple'&gt;
 &lt;class 'str'&gt;</code></pre>
@@ -1019,22 +910,16 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 </div>
 <p>If the argument of <code>tuple()</code> is a sequence (<code>string</code>, <code>list</code>, or <code>tuple</code>), the result is a <code>tuple</code> with the elements of the sequence:</p>
 <div class="cell" data-execution_count="51">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1"></a>t <span class="op">=</span> <span class="bu">tuple</span>(<span class="st">'nsysu'</span>)</span>
 <span id="cb96-2"><a href="#cb96-2"></a>t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>('n', 's', 'y', 's', 'u')</code></pre>
 </div>
 </div>
 <p>Most <code>list</code> operators also work on <code>tuples</code>. The bracket operator indexes an element:</p>
 <div class="cell" data-execution_count="52">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1"></a><span class="bu">print</span>(t[<span class="dv">0</span>])</span>
 <span id="cb98-2"><a href="#cb98-2"></a><span class="bu">print</span>(t[<span class="dv">1</span>:<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>n
 ('s', 'y')</code></pre>
@@ -1042,10 +927,7 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 </div>
 <p>But if you try to modify one of the elements of the <code>tuple</code>, you get an error:</p>
 <div class="cell" data-execution_count="53">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a>t[<span class="dv">0</span>] <span class="op">=</span> <span class="st">'A'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>TypeError: 'tuple' object does not support item assignment</code></pre>
 </div>
@@ -1055,25 +937,17 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="unpacking-sequences"><span class="header-section-number">5.2.1</span> Unpacking Sequences</h3>
 <p>We have seen the multiple assignment trick in the previous chapter (which is actually unpacking the <code>tuple</code>). In fact, you can unpack any sequence’s elements by assigning the sequence to a comma-separated list of variables.</p>
 <div class="cell" data-execution_count="54">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1"></a>student_tuple <span class="op">=</span> (<span class="st">'Amanda'</span>, [<span class="dv">98</span>, <span class="dv">85</span>, <span class="dv">87</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div class="cell" data-execution_count="55">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1"></a>first_name, grades <span class="op">=</span> student_tuple</span>
 <span id="cb103-2"><a href="#cb103-2"></a><span class="bu">print</span>(first_name, grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Amanda [98, 85, 87]</code></pre>
 </div>
 </div>
 <p>Unpacking is widely used to return multiple values in a function:</p>
 <div class="cell" data-execution_count="56">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1"></a><span class="kw">def</span> total_ave(grade):</span>
 <span id="cb105-2"><a href="#cb105-2"></a>    total <span class="op">=</span> <span class="bu">sum</span>(grade)</span>
 <span id="cb105-3"><a href="#cb105-3"></a>    ave <span class="op">=</span> total<span class="op">/</span><span class="bu">len</span>(grade)</span>
@@ -1083,7 +957,6 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 <span id="cb105-7"><a href="#cb105-7"></a>total, ave <span class="op">=</span> total_ave(grades)</span>
 <span id="cb105-8"><a href="#cb105-8"></a></span>
 <span id="cb105-9"><a href="#cb105-9"></a><span class="bu">print</span>(total, ave)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>345 86.25</code></pre>
 </div>
@@ -1094,8 +967,6 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 <h2 data-number="5.3" class="anchored" data-anchor-id="references"><span class="header-section-number">5.3</span> References</h2>
 <p>Technically, in <code>Python</code>, variables store <strong><em>references</em></strong> to the computer memory locations where the values are stored.</p>
 <div class="cell" data-execution_count="57">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1"></a>spam <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb107-2"><a href="#cb107-2"></a>cheese <span class="op">=</span> spam</span>
 <span id="cb107-3"><a href="#cb107-3"></a><span class="bu">print</span>(<span class="bu">id</span>(cheese), <span class="bu">id</span>(spam))</span>
@@ -1103,7 +974,6 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 <span id="cb107-5"><a href="#cb107-5"></a><span class="bu">print</span>(<span class="bu">id</span>(cheese), <span class="bu">id</span>(spam))</span>
 <span id="cb107-6"><a href="#cb107-6"></a></span>
 <span id="cb107-7"><a href="#cb107-7"></a>spam, cheese</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>140731993439296 140731993439296
 140731993439296 140731993441152</code></pre>
@@ -1116,8 +986,6 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 <p>You can use <code>id()</code> function to verify this behavior. In CPython (the most widely used implementation of Python), the identifier returned by <code>id()</code> is actually the memory address of the object, represented as a Python integer. All values in Python have a unique identity (address) that can be obtained with the <code>id()</code> function.</p>
 <p>But <code>lists</code> don’t work this way, because <code>list</code> are mutable:</p>
 <div class="cell" data-execution_count="58">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1"></a>spam <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb110-2"><a href="#cb110-2"></a>cheese <span class="op">=</span> spam        <span class="co"># The reference is being copied, not the list.</span></span>
 <span id="cb110-3"><a href="#cb110-3"></a><span class="bu">print</span>(<span class="bu">id</span>(cheese), <span class="bu">id</span>(spam))</span>
@@ -1125,7 +993,6 @@ source: https://en.wikipedia.org/wiki/Bulls_and_Cows
 <span id="cb110-5"><a href="#cb110-5"></a><span class="bu">print</span>(<span class="bu">id</span>(cheese), <span class="bu">id</span>(spam))</span>
 <span id="cb110-6"><a href="#cb110-6"></a></span>
 <span id="cb110-7"><a href="#cb110-7"></a>spam, cheese</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>2790646437440 2790646437440
 2790646437440 2790646437440</code></pre>
@@ -1158,13 +1025,10 @@ source: https://automatetheboringstuff.com/2e/chapter4/
 <p>You may be wondering why the weird behavior with mutable <code>lists</code> in the previous section doesn’t happen with immutable values like <code>integers</code> or <code>strings</code>. Let us elaborate on this topics.</p>
 <p>Like <code>integer</code>, <code>'Hello'</code> is a <code>string</code> which is immutable and cannot be changed. If you “change” the <code>string</code> in a variable, a new <code>string</code> object is being made at a different place in memory, and the variable refers to this new <code>string</code>.</p>
 <div class="cell" data-execution_count="59">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb113"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1"></a>bacon <span class="op">=</span> <span class="st">'Hello'</span></span>
 <span id="cb113-2"><a href="#cb113-2"></a><span class="bu">print</span>(<span class="bu">id</span>(bacon))</span>
 <span id="cb113-3"><a href="#cb113-3"></a>bacon <span class="op">=</span> bacon <span class="op">+</span> <span class="st">'World'</span></span>
 <span id="cb113-4"><a href="#cb113-4"></a><span class="bu">print</span>(<span class="bu">id</span>(bacon))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>2790646417200
 2790646416176</code></pre>
@@ -1172,13 +1036,10 @@ source: https://automatetheboringstuff.com/2e/chapter4/
 </div>
 <p>However, <code>lists</code> can be modified because they are mutable objects. The <code>append()</code> method doesn’t create a new <code>list</code> object; it changes the existing <code>list</code> object. We call this <strong>“modifying the object in-place.”</strong></p>
 <div class="cell" data-execution_count="60">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1"></a>eggs <span class="op">=</span> [<span class="st">'Hello'</span>] <span class="co"># This creates a new list.</span></span>
 <span id="cb115-2"><a href="#cb115-2"></a><span class="bu">print</span>(<span class="bu">id</span>(eggs))</span>
 <span id="cb115-3"><a href="#cb115-3"></a>eggs.append(<span class="st">'World'</span>)  <span class="co"># append() modifies the list "in place".</span></span>
 <span id="cb115-4"><a href="#cb115-4"></a><span class="bu">print</span>(<span class="bu">id</span>(eggs))       <span class="co"># eggs still refers to the same list as before.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>2790646499648
 2790646499648</code></pre>
@@ -1192,15 +1053,12 @@ source: https://automatetheboringstuff.com/2e/chapter4/
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="passing-references"><span class="header-section-number">5.3.1</span> Passing References</h3>
 <p>References are particularly important for understanding how arguments get passed to functions. When a function is called, <strong>the values of the arguments are copied to the parameter variables</strong>. For <code>lists</code> (and <code>dictionaries</code>, which we will describe in the next chapter), this means a <strong>copy of the reference</strong> is used for the parameter.</p>
 <div class="cell" data-execution_count="61">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb117"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1"></a><span class="kw">def</span> eggs(someParameter):</span>
 <span id="cb117-2"><a href="#cb117-2"></a>    someParameter.append(<span class="st">'Hello'</span>)</span>
 <span id="cb117-3"><a href="#cb117-3"></a></span>
 <span id="cb117-4"><a href="#cb117-4"></a>spam <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb117-5"><a href="#cb117-5"></a>eggs(spam)</span>
 <span id="cb117-6"><a href="#cb117-6"></a><span class="bu">print</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1, 2, 3, 'Hello']</code></pre>
 </div>
@@ -1208,8 +1066,6 @@ source: https://automatetheboringstuff.com/2e/chapter4/
 <p>Notice that when <code>eggs()</code> is called, a return value is not used to assign a new value to <code>spam</code>. Instead, it modifies the list in place directly. Even though <code>spam</code> and <code>someParameter</code> contain separate references, they both refer to the same <code>list</code>. This is why the <code>append('Hello')</code> method call inside the function affects the <code>list</code> even after the function call has returned.</p>
 <p>For immutable types <code>string</code> and <code>integers</code>, we will create a new object in the function when we modify <code>someParameter</code>. Therefore, the original value will not be modified after the loop.</p>
 <div class="cell" data-execution_count="62">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb119"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1"></a><span class="kw">def</span> eggs(someParameter):</span>
 <span id="cb119-2"><a href="#cb119-2"></a>    <span class="bu">print</span>(<span class="bu">id</span>(someParameter))</span>
 <span id="cb119-3"><a href="#cb119-3"></a>    someParameter <span class="op">=</span> someParameter <span class="op">+</span> <span class="st">"world"</span> <span class="co"># This will create a new object and assign the new reference to someParameter</span></span>
@@ -1219,7 +1075,6 @@ source: https://automatetheboringstuff.com/2e/chapter4/
 <span id="cb119-7"><a href="#cb119-7"></a><span class="bu">print</span>(<span class="bu">id</span>(spam))</span>
 <span id="cb119-8"><a href="#cb119-8"></a>eggs(spam)</span>
 <span id="cb119-9"><a href="#cb119-9"></a><span class="bu">print</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>2790636340272
 2790636340272
@@ -1232,8 +1087,6 @@ hello</code></pre>
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="the-copy-modules-copy-and-deepcopy-functions"><span class="header-section-number">5.3.2</span> The <code>copy</code> Module’s <code>copy()</code> and <code>deepcopy()</code> Functions</h3>
 <p><code>Python</code> provides a module named <code>copy</code> that provides both the <code>copy()</code> and <code>deepcopy()</code> functions. <code>copy()</code>, can be used to make a duplicate copy of a mutable value like a list or dictionary, not just a copy of a reference.</p>
 <div class="cell" data-execution_count="63">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1"></a><span class="im">import</span> copy</span>
 <span id="cb121-2"><a href="#cb121-2"></a></span>
 <span id="cb121-3"><a href="#cb121-3"></a>spam <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>]</span>
@@ -1243,7 +1096,6 @@ hello</code></pre>
 <span id="cb121-7"><a href="#cb121-7"></a>cheese[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb121-8"><a href="#cb121-8"></a></span>
 <span id="cb121-9"><a href="#cb121-9"></a>spam, cheese</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>2790645442048
 2790645869632</code></pre>
@@ -1269,8 +1121,6 @@ source: https://automatetheboringstuff.com/2e/chapter4/
 <img src="https://media.discordapp.net/attachments/989268324884049960/1082974339126800424/phonchi_The_game_is_played_with_a_standard_deck_of_52_cards_whi_1833b828-f978-4a8d-adb7-a99ccee491be.png?width=630&amp;height=630">
 </center>
 <div class="cell">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb124"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1"></a><span class="im">import</span> random</span>
 <span id="cb124-2"><a href="#cb124-2"></a></span>
 <span id="cb124-3"><a href="#cb124-3"></a><span class="co"># Write a function create_deck that creates a list of tuples representing a standard deck of 52 cards. </span></span>
@@ -1316,7 +1166,6 @@ source: https://automatetheboringstuff.com/2e/chapter4/
 <span id="cb124-43"><a href="#cb124-43"></a>    <span class="bu">print</span>(<span class="st">"Player 2 wins!"</span>)</span>
 <span id="cb124-44"><a href="#cb124-44"></a><span class="cf">else</span>:</span>
 <span id="cb124-45"><a href="#cb124-45"></a>    <span class="bu">print</span>(<span class="st">"It's a tie!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p><code>Lists</code> are useful data types since they allow you to write code that works on a modifiable number of values in a single variable. Later on, you will see programs using <code>lists</code> to do things that would be difficult or impossible to do without them.</p>
 <p><code>Lists</code> are a sequence data type that is mutable, meaning that their contents can change. <code>Tuples</code> and <code>strings</code>, though also sequence data types, are immutable and cannot be changed. A variable that contains a <code>tuple</code> or <code>string</code> value can be overwritten with a new <code>tuple</code> or <code>string</code> value, but this is not the same thing as modifying the existing value in place — like, say, the <code>append()</code> or <code>remove()</code> methods do on <code>lists</code>. Because <code>tuples</code> are immutable, they don’t provide methods like <code>sort()</code> and <code>reverse()</code>, which modify existing <code>lists</code>. However <code>Python</code> provides the built-in functions <code>sorted()</code> and <code>reversed()</code>, which take any sequence as a parameter and return a new sequence with the same elements in a different order.</p>

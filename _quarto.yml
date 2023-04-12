@@ -18,9 +18,14 @@ book:
     - 07_Files.ipynb
     - 08_09_OOP.ipynb
     - 10_11_NumPy.ipynb
+  appendices:
+    - 00_Copilot.ipynb
+    - 04_Algorithms_sol.ipynb
+    - 05_Data_Structure_sol.ipynb
+    - 06_Abstract_data_types_sol.ipynb
   search:
-    location: navbar
-    type: overlay
+    location: sidebar
 format:
   html:
     theme: cosmo
+    cover-image: cover.jpg

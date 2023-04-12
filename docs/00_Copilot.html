@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.306">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="phonchi">
+<meta name="dcterms.date" content="2023-04-21">
+
+<title>Computer Programming - Appendix A — Increase productivity and learning with Github Copilot in Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./04_Algorithms_sol.html" rel="next">
+<link href="./10_11_NumPy.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./00_Copilot.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Computer Programming</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Book</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Flow_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Flow Control</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Lists_tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lists and Tuples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Dictionaries_sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Other collections - Dictionaries and Sets</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Manipulating_string.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Manipulating Strings</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Files and Exceptions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_09_OOP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Object Oriented Programming and Classes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_11_NumPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_Copilot.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#get-started-with-github-copilot-in-python" id="toc-get-started-with-github-copilot-in-python" class="nav-link active" data-scroll-target="#get-started-with-github-copilot-in-python"><span class="header-section-number">A.1</span> Get Started With GitHub Copilot in Python</a>
+  <ul class="collapse">
+  <li><a href="#trial-or-get-your-free-access-to-github-copilot" id="toc-trial-or-get-your-free-access-to-github-copilot" class="nav-link" data-scroll-target="#trial-or-get-your-free-access-to-github-copilot"><span class="header-section-number">A.1.1</span> Trial or get your free access to GitHub Copilot</a></li>
+  <li><a href="#install-a-visual-studio-code-extension" id="toc-install-a-visual-studio-code-extension" class="nav-link" data-scroll-target="#install-a-visual-studio-code-extension"><span class="header-section-number">A.1.2</span> Install a Visual Studio Code Extension</a></li>
+  <li><a href="#keyboard-shortcut" id="toc-keyboard-shortcut" class="nav-link" data-scroll-target="#keyboard-shortcut"><span class="header-section-number">A.1.3</span> Keyboard shortcut</a></li>
+  <li><a href="#hand-over-the-reins-to-github-copilot" id="toc-hand-over-the-reins-to-github-copilot" class="nav-link" data-scroll-target="#hand-over-the-reins-to-github-copilot"><span class="header-section-number">A.1.4</span> Hand Over the Reins to GitHub Copilot</a></li>
+  </ul></li>
+  <li><a href="#synthesize-python-code-from-natural-language" id="toc-synthesize-python-code-from-natural-language" class="nav-link" data-scroll-target="#synthesize-python-code-from-natural-language"><span class="header-section-number">A.2</span> Synthesize Python Code From Natural Language</a>
+  <ul class="collapse">
+  <li><a href="#use-a-python-comment-to-describe-the-problem" id="toc-use-a-python-comment-to-describe-the-problem" class="nav-link" data-scroll-target="#use-a-python-comment-to-describe-the-problem"><span class="header-section-number">A.2.1</span> Use a Python Comment to Describe the Problem</a></li>
+  <li><a href="#add-more-comments-to-increase-the-problem-complexity" id="toc-add-more-comments-to-increase-the-problem-complexity" class="nav-link" data-scroll-target="#add-more-comments-to-increase-the-problem-complexity"><span class="header-section-number">A.2.2</span> Add More Comments to Increase the Problem Complexity</a></li>
+  <li><a href="#receive-even-more-intelligent-code-completion-suggestions" id="toc-receive-even-more-intelligent-code-completion-suggestions" class="nav-link" data-scroll-target="#receive-even-more-intelligent-code-completion-suggestions"><span class="header-section-number">A.2.3</span> Receive Even More Intelligent Code Completion Suggestions</a></li>
+  <li><a href="#ditch-stack-overflow-for-instant-context-aware-solutions" id="toc-ditch-stack-overflow-for-instant-context-aware-solutions" class="nav-link" data-scroll-target="#ditch-stack-overflow-for-instant-context-aware-solutions"><span class="header-section-number">A.2.4</span> Ditch Stack Overflow for Instant, Context-Aware Solutions</a></li>
+  <li><a href="#always-have-the-api-documentation-at-your-fingertips" id="toc-always-have-the-api-documentation-at-your-fingertips" class="nav-link" data-scroll-target="#always-have-the-api-documentation-at-your-fingertips"><span class="header-section-number">A.2.5</span> Always Have the API Documentation at Your Fingertips</a></li>
+  <li><a href="#prompt-engineer" id="toc-prompt-engineer" class="nav-link" data-scroll-target="#prompt-engineer"><span class="header-section-number">A.2.6</span> Prompt-engineer</a></li>
+  </ul></li>
+  <li><a href="#copilot-labs" id="toc-copilot-labs" class="nav-link" data-scroll-target="#copilot-labs"><span class="header-section-number">A.3</span> Copilot Labs</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Appendix A — Increase productivity and learning with Github Copilot in Python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>phonchi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 21, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+
+<table align="left">
+<tbody><tr><td>
+<a href="https://colab.research.google.com/github/phonchi/nsysu-math106A/blob/master/static_files/presentations/00_Copilot.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</td>
+<td>
+<a target="_blank" href="https://kaggle.com/kernels/welcome?src=https://github.com/phonchi/nsysu-math106A/blob/master/static_files/presentations/00_Copilot.ipynb"><img src="https://kaggle.com/static/images/open-in-kaggle.svg"></a>
+</td>
+
+</tr></tbody></table>
+<p><br></p>
+<section id="get-started-with-github-copilot-in-python" class="level2" data-number="A.1">
+<h2 data-number="A.1" class="anchored" data-anchor-id="get-started-with-github-copilot-in-python"><span class="header-section-number">A.1</span> Get Started With GitHub Copilot in Python</h2>
+<p>GitHub Copilot, an exciting new innovation, offers a virtual AI-powered assistant integrated into your code editor, creating significant buzz upon its public release. This tool provides exceptional support for languages such as Python.</p>
+<p><a href="https://github.com/features/copilot">GitHub Copilot</a> is the first commercial product based on the <a href="https://openai.com/blog/openai-codex">OpenAI Codex</a> system, capable of converting natural language into code across more than a dozen programming languages. OpenAI Codex comes from the GPT-3 language learning model. It was taught using both regular text and a vast number of code examples found on GitHub, which has hundreds of millions of public code projects.</p>
+<section id="trial-or-get-your-free-access-to-github-copilot" class="level3" data-number="A.1.1">
+<h3 data-number="A.1.1" class="anchored" data-anchor-id="trial-or-get-your-free-access-to-github-copilot"><span class="header-section-number">A.1.1</span> Trial or get your free access to GitHub Copilot</h3>
+<p>You can enjoy a sixty-day trial period without paying anything, but only after providing your billing information (Be sure to cancel the unpaid subscription plan before it expires to avoid unwanted charges!). Students and open-source maintainers may get a free GitHub Copilot subscription. GitHub will verify your status once a year based on proof of academic enrollment, such as a picture of your school ID or an email address in the <code>.edu</code> domain. For detailed instructions on setting up follow the steps in the our notes.</p>
+</section>
+<section id="install-a-visual-studio-code-extension" class="level3" data-number="A.1.2">
+<h3 data-number="A.1.2" class="anchored" data-anchor-id="install-a-visual-studio-code-extension"><span class="header-section-number">A.1.2</span> Install a Visual Studio Code Extension</h3>
+<p>Because Microsoft owns GitHub, it’s no surprise that their Visual Studio Code editor was the first tool to receive GitHub Copilot support. There are a few ways to install extensions in Visual Studio Code, but the quickest is that you can find the Extensions icon in the Activity Bar located on the left-hand side of the window and try searching for the “<a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot">GitHub Copilot</a>” and “<a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-labs">Github Copilot Labs</a>” extension on the Visual Studio Marketplace.</p>
+<p>After the installation is complete, Visual Studio Code will ask you to sign in to GitHub to give it access to your GitHub profile, which your new extension requires. Visual Studio Code needs to know who you are to verify your GitHub Copilot subscription status. However, granting access to your GitHub profile will also allow the editor to read your private repositories. If you change your mind, then you can revoke this authorization at any time by going to your GitHub profile settings and finding GitHub for VS Code in the <a href="https://github.com/settings/applications">Authorized OAuth Apps</a>.</p>
+</section>
+<section id="keyboard-shortcut" class="level3" data-number="A.1.3">
+<h3 data-number="A.1.3" class="anchored" data-anchor-id="keyboard-shortcut"><span class="header-section-number">A.1.3</span> Keyboard shortcut</h3>
+<p>To make working with GitHub Copilot in Visual Studio Code even more productive, here are the most common keyboard shortcuts worth remembering:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Action</th>
+<th>Windows / Linux</th>
+<th>macOS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Trigger inline suggestions</td>
+<td>Alt+\</td>
+<td>Option+\</td>
+</tr>
+<tr class="even">
+<td>See the next suggestion</td>
+<td>Alt+]</td>
+<td>Option+]</td>
+</tr>
+<tr class="odd">
+<td>See the previous suggestion</td>
+<td>Alt+[</td>
+<td>Option+[</td>
+</tr>
+<tr class="even">
+<td>Accept a suggestion</td>
+<td>Tab</td>
+<td>Tab</td>
+</tr>
+<tr class="odd">
+<td>Dismiss an inline suggestion</td>
+<td>Esc</td>
+<td>Esc</td>
+</tr>
+<tr class="even">
+<td>Show all suggestions in a new tab</td>
+<td>Ctrl+Enter</td>
+<td>Ctrl+Enter</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p>You can change the keyboard shortcut following the instruction from <a href="https://realpython.com/advanced-visual-studio-code-python/#keyboard-shortcuts">here</a></p>
+</blockquote>
+<p>Sometimes GitHub Copilot suggestions may get in your way. If that’s the case, then you can disable them globally or for a particular programming language by clicking on the extension’s icon in the bottom right corner of the editor’s window:</p>
+<center>
+<img src="https://files.realpython.com/media/vscode-copilot-icon.eebd6dbe7408.png" width="50%" height="50%">
+</center>
+<div data-align="center">
+source: https://realpython.com/github-copilot-python/#install-a-visual-studio-code-extension
+</div>
+</section>
+<section id="hand-over-the-reins-to-github-copilot" class="level3" data-number="A.1.4">
+<h3 data-number="A.1.4" class="anchored" data-anchor-id="hand-over-the-reins-to-github-copilot"><span class="header-section-number">A.1.4</span> Hand Over the Reins to GitHub Copilot</h3>
+<p>Now it’s time to make sure GitHub Copilot is working as expected in either Visual Studio Code. To check if GitHub Copilot is working as expected start writing a sample function signature, such as <code>add(a, b)</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> hello:</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As soon as you type the colon (<code>:</code>) at the end of the first line to introduce a new code block, GitHub Copilot fills in the suggested function body for you. Until you either accept it by hitting <code>Tab</code> or reject it with <code>Esc</code>, it’ll show up in gray font. The suggested code calls the <code>print()</code> function to display the Hello World text on the screen in this case. While that wasn’t spectacular, it confirms that GitHub Copilot is indeed working correctly!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> add(a, b):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Sure enough, GitHub Copilot gives a very sensible suggestion, which returns the sum of <code>a</code> and <code>b</code>. Notice the difference between returning a value from the function and printing the result on the screen. Your clever virtual assistant can infer the intent from the function’s name and arguments.</p>
+</section>
+</section>
+<section id="synthesize-python-code-from-natural-language" class="level2" data-number="A.2">
+<h2 data-number="A.2" class="anchored" data-anchor-id="synthesize-python-code-from-natural-language"><span class="header-section-number">A.2</span> Synthesize Python Code From Natural Language</h2>
+<p>Because GitHub Copilot was trained on natural language as well as curated samples of different programming languages. Therefore, it’s perfectly possible to explain an abstract problem to GitHub Copilot using plain English or another natural language and expect it to generate the corresponding code in the desired programming language.</p>
+<blockquote class="blockquote">
+<p>The underlying machine learning model is also capable of doing the opposite — that is, explaining a piece of code in a natural language or even translating one programming language into another.</p>
+</blockquote>
+<section id="use-a-python-comment-to-describe-the-problem" class="level3" data-number="A.2.1">
+<h3 data-number="A.2.1" class="anchored" data-anchor-id="use-a-python-comment-to-describe-the-problem"><span class="header-section-number">A.2.1</span> Use a Python Comment to Describe the Problem</h3>
+<p>Comments can sometimes be helpful in explaining why a certain piece of code looks the way it does. You typically write comments for your future self or your teammates working on the same codebase. When you add GitHub Copilot into the mix, then it becomes yet another target audience who can read your code comments. Consider the following single-line comment in <code>Python</code>, which describes the classic Hello, World! program:</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Print "Hello, World!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>After typing that comment into your code editor, you’ll notice that GitHub Copilot doesn’t automatically pick it up</strong>. When you choose to communicate with it through comments, you must open the GitHub Copilot side panel or tab to see the suggestions (<code>ALT+ENTER</code>). Alternatively, you may start typing a bit of code to have it auto-completed. Notice that GitHub Copilot understands that you wish to treat the quoted fragment <code>"Hello, world!"</code> of your comment as literal text rather than an instruction!</p>
+<p>Apparently, that was too easy for GitHub Copilot. How about raising the bar by requesting a more specific output? For example, you may want to print Hello, World! backward in Chinese. The best one that you’ll ever get for this particular comment is this:</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Print "Hello, World!" in Chinese in reverse order</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="bu">print</span>(<span class="st">'世界，你好！'</span>[::<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>！好你，界世</code></pre>
+</div>
+</div>
+<p>Now, tha’’s impressive! GitHub Copilot nails it by generating not only correct but also Pythonic code that experienced Pythonistas would write themselves. The suggestions will get even more interesting when you include more comments.</p>
+</section>
+<section id="add-more-comments-to-increase-the-problem-complexity" class="level3" data-number="A.2.2">
+<h3 data-number="A.2.2" class="anchored" data-anchor-id="add-more-comments-to-increase-the-problem-complexity"><span class="header-section-number">A.2.2</span> Add More Comments to Increase the Problem Complexity</h3>
+<p>Using a single-line comment to describe a problem is fine, but you can only pack so much content in it. Fortunately, it’s possible to combine multiple consecutive comments into a logical and cohesive story that GitHub Copilot will treat as a whole. You can use multiline comments to achieve this:</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">"""</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">Write a program that does the following:</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">1.  Create a dictionary called `grades` that maps subject names to lists of grades for each student. Assume that each student has the same number of grades for each subject.</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">2.  Create a dictionary called `subject_averages` that maps subject names to their average grades across all students.</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">3.  Create a dictionary called `student_totals` that maps student names to their total grades across all subjects.</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">4.  Create a variable called `top_student` that contains the name of the student with the highest total grade.</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">5.  Print out the top-performing student's name and total grade, as well as the average grade for each subject.</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">"""</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a>grades <span class="op">=</span> {</span>
+<span id="cb6-11"><a href="#cb6-11"></a>    <span class="st">'Math'</span>: [[<span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">87</span>, <span class="dv">94</span>], [<span class="dv">95</span>, <span class="dv">88</span>, <span class="dv">91</span>, <span class="dv">89</span>, <span class="dv">92</span>], [<span class="dv">87</span>, <span class="dv">83</span>, <span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">89</span>]],</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="st">'Science'</span>: [[<span class="dv">82</span>, <span class="dv">88</span>, <span class="dv">89</span>, <span class="dv">91</span>, <span class="dv">85</span>], [<span class="dv">90</span>, <span class="dv">86</span>, <span class="dv">88</span>, <span class="dv">87</span>, <span class="dv">92</span>], [<span class="dv">85</span>, <span class="dv">83</span>, <span class="dv">87</span>, <span class="dv">84</span>, <span class="dv">89</span>]],</span>
+<span id="cb6-13"><a href="#cb6-13"></a>    <span class="st">'English'</span>: [[<span class="dv">88</span>, <span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">86</span>, <span class="dv">90</span>], [<span class="dv">91</span>, <span class="dv">87</span>, <span class="dv">89</span>, <span class="dv">92</span>, <span class="dv">85</span>], [<span class="dv">83</span>, <span class="dv">86</span>, <span class="dv">88</span>, <span class="dv">87</span>, <span class="dv">90</span>]],</span>
+<span id="cb6-14"><a href="#cb6-14"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Student 2 has the highest total grade of 1342
+The average grade for Math is 89.13333333333334
+The average grade for Science is 87.06666666666666
+The average grade for English is 87.93333333333334</code></pre>
+</div>
+</div>
+<p>Isn’t that amazing? You gave GitHub Copilot a natural language description of a task, and it got exactly the right solution for you.</p>
+<blockquote class="blockquote">
+<p>Keep in mind that the suggestions you’ll might get different results from those presented here. Sometimes it takes trial and error before getting the desired result, so try tweaking your comments a little bit if you’re not getting satisfactory results immediately.</p>
+</blockquote>
+<p>You can edit the code generated by GitHub Copilot just like your own code. Sometimes, you may not like its formatting, the naming conventions that it applied, or a specific fragment of the logic that you’d rather rewrite. On other occasions, seeing a suggestion may inspire you to come up with a more clever alternative.</p>
+</section>
+<section id="receive-even-more-intelligent-code-completion-suggestions" class="level3" data-number="A.2.3">
+<h3 data-number="A.2.3" class="anchored" data-anchor-id="receive-even-more-intelligent-code-completion-suggestions"><span class="header-section-number">A.2.3</span> Receive Even More Intelligent Code Completion Suggestions</h3>
+<p>You can think of GitHub Copilot as an intelligent code completion mechanism on steroids that understands the context of your project at a deep level, providing the most appropriate suggestions for you. When you work with GitHub Copilot long enough, it may sometimes give you the creepy feeling that it can read your mind. Say that you want to find the roots of the second-degree polynomial, also known as the quadratic function, with three coefficients: <code>a</code>, <code>b</code>, and <code>c</code>:</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> find_roots(a, b, c):</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="co">"""</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co">    Write a function that takes in the coefficients of a quadratic equation and returns the roots of the equation.</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">    """</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>    discriminant <span class="op">=</span> b<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>a<span class="op">*</span>c</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="cf">if</span> discriminant <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb8-7"><a href="#cb8-7"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="cf">elif</span> discriminant <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb8-9"><a href="#cb8-9"></a>        <span class="cf">return</span> <span class="op">-</span>b <span class="op">/</span> (<span class="dv">2</span><span class="op">*</span>a)</span>
+<span id="cb8-10"><a href="#cb8-10"></a>    <span class="cf">else</span>:</span>
+<span id="cb8-11"><a href="#cb8-11"></a>        <span class="cf">return</span> (<span class="op">-</span>b <span class="op">+</span> discriminant<span class="op">**</span><span class="fl">0.5</span>) <span class="op">/</span> (<span class="dv">2</span><span class="op">*</span>a), (<span class="op">-</span>b <span class="op">-</span> discriminant<span class="op">**</span><span class="fl">0.5</span>) <span class="op">/</span> (<span class="dv">2</span><span class="op">*</span>a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>find_roots(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)  <span class="co"># Function f(x) = x^2 + 2x + 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>-1.0</code></pre>
+</div>
+</div>
+<section id="provide-context-to-get-better-suggestions" class="level4" data-number="A.2.3.1">
+<h4 data-number="A.2.3.1" class="anchored" data-anchor-id="provide-context-to-get-better-suggestions"><span class="header-section-number">A.2.3.1</span> Provide Context to Get Better Suggestions</h4>
+<p>The fundamental theorem of algebra states that a degree 𝑛 polynomial with complex coefficients has exactly <code>n</code> complex roots. In other words, a quadratic function, which is a second-degree polynomial, always has exactly two complex roots even when there are none in the real domain. How can you request that GitHub Copilot change the implementation so that you’ll get the complex roots instead of the real ones? You need to add constraints to the problem by giving GitHub Copilot some context to draw from. <strong>For example, you may import a module that you wish to be used or write a <code>Python</code> docstring that describes the expected result in natural language:</strong></p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> cmath <span class="co"># For complex numbers</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="kw">def</span> find_roots(a, b, c):</span>
+<span id="cb11-4"><a href="#cb11-4"></a>    <span class="co">"""Return a tuple of complex numbers."""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>find_roots(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>)  <span class="co"># Function f(x) = x^2 + 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>(1j, -1j)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="ditch-stack-overflow-for-instant-context-aware-solutions" class="level3" data-number="A.2.4">
+<h3 data-number="A.2.4" class="anchored" data-anchor-id="ditch-stack-overflow-for-instant-context-aware-solutions"><span class="header-section-number">A.2.4</span> Ditch Stack Overflow for Instant, Context-Aware Solutions</h3>
+<p>GitHub Copilot can reduce your dependence on daily tasks. It can instantly deliver tailor-made code snippets that fit the context of your project like a glove, unlike even the best answer you’d find online. Moreover, it doesn’t force you to leave the code editor, so you can stay in the zone and accelerate your progress. Read on to get a taste of having the collective knowledge of the Python community at your fingertips.</p>
+<p>Python has a relatively expressive syntax, which allows you to write concise and readable code. Nevertheless, occasional <strong><em>boilerplate code</em></strong> is unavoidable, even in your favorite programming language. Sometimes, there’s no way around writing a piece of code that looks long and verbose yet seemingly doesn’t do a lot of useful work.</p>
+<p>For example, fetching data from a URL address, serializing it to JSON, and saving the result to a file involves a lot of boring details, which don’t contribute much value. Wouldn’t it be cool if you could focus on what matters to you the most—that is, sorting out a solution to a higher-level problem while letting GitHub Copilot map the individual steps to fragments of code? Well, it turns out that you can! As before, start by writing a descriptive function signature, and leave the rest to GitHub Copilot:</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw">def</span> save_json(url, filename):</span>
+<span id="cb14-2"><a href="#cb14-2"></a>    <span class="co">"""</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co">    Write a function that takes in a URL and a filename, and saves the JSON response from the URL to the filename.</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co">    """</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>    <span class="im">import</span> requests</span>
+<span id="cb14-6"><a href="#cb14-6"></a>    <span class="im">import</span> json</span>
+<span id="cb14-7"><a href="#cb14-7"></a>    response <span class="op">=</span> requests.get(url)</span>
+<span id="cb14-8"><a href="#cb14-8"></a>    <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'w'</span>) <span class="im">as</span> f:</span>
+<span id="cb14-9"><a href="#cb14-9"></a>        json.dump(response.json(), f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>save_json(<span class="st">"https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/pokedex.json"</span>, <span class="st">"pokedex.json"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="always-have-the-api-documentation-at-your-fingertips" class="level3" data-number="A.2.5">
+<h3 data-number="A.2.5" class="anchored" data-anchor-id="always-have-the-api-documentation-at-your-fingertips"><span class="header-section-number">A.2.5</span> Always Have the API Documentation at Your Fingertips</h3>
+<p>Say you wanted to write a small Python function to process the word file. In the traditional approach, you’d start by making a web search for word API. Then, you’d probably get overwhelmed by their guides, quick starts, and reference documentation. Fortunately, you have GitHub Copilot, which has been trained to use well-known APIs, so you can give it a minimal hint about which API to call:</p>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># install library that process word file for python</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="op">!</span>pip install python<span class="op">-</span>docx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Defaulting to user installation because normal site-packages is not writeable
+Collecting python-docx
+  Downloading python-docx-0.8.11.tar.gz (5.6 MB)
+     ---------------------------------------- 5.6/5.6 MB 25.3 MB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: lxml&gt;=2.3.2 in c:\programdata\anaconda3\lib\site-packages (from python-docx) (4.9.1)
+Building wheels for collected packages: python-docx
+  Building wheel for python-docx (setup.py): started
+  Building wheel for python-docx (setup.py): finished with status 'done'
+  Created wheel for python-docx: filename=python_docx-0.8.11-py3-none-any.whl size=184489 sha256=9989f8c38802a0fbc53905ed3c08f3091c5722db4935f7c9e6f1b70726f89bd4
+  Stored in directory: c:\users\adm\appdata\local\pip\cache\wheels\83\8b\7c\09ae60c42c7ba4ed2dddaf2b8b9186cb105255856d6ed3dba5
+Successfully built python-docx
+Installing collected packages: python-docx
+Successfully installed python-docx-0.8.11</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Getting the Full Text from a demo.docx File</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document Title
+A plain paragraph with some bold and some italic
+Heading, level 1
+Intense quote
+first item in unordered list
+first item in ordered list
+
+</code></pre>
+</div>
+</div>
+<p>Exploring new libraries in Python with GitHub Copilot is an enjoyable experience. Perhaps you’re revisiting a framework for which your knowledge has become a little rusty, and you’re struggling to remember where to begin. But even when you’re quite familiar with a given tool, GitHub Copilot can sometimes surprise you by suggesting more efficient solutions or parts of its API that you had no idea about.</p>
+<p>The name copilot was a clever choice by GitHub to describe this product. It avoids misleading people into thinking it could take control and replace you as the programmer. You have to remember that the code produced by GitHub Copilot isn’t always ideal. In fact, it can sometimes be suboptimal or insecure, and it might follow bad programming practices.</p>
+<blockquote class="blockquote">
+<p>It’s less of a problem when the code contains syntactical errors or if it’s completely nonsensical, because that’s easy to spot. However, the code that looks plausible at first glance can still be incorrect and contain logical errors. Therefore, you should never trust GitHub Copilot without carefully reviewing and testing the code it generates!</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>It may make us lazy and discourage them from thinking independently. Like with every powerful tool, you can use GitHub Copilot for the right or wrong purposes.</p>
+</blockquote>
+<p>GitHub Copilot is a revolutionary programming aid that can increase your speed and productivity as a software engineer. It saves you time by generating boilerplate code and sparing you from diving into documentation. Because it understands the context of your project, the instant suggestions that you get are tailor-made and usually work the way you intended.</p>
+</section>
+<section id="prompt-engineer" class="level3" data-number="A.2.6">
+<h3 data-number="A.2.6" class="anchored" data-anchor-id="prompt-engineer"><span class="header-section-number">A.2.6</span> Prompt-engineer</h3>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Create a list of the first 10 prime numbers</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a>x <span class="op">=</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Create a list of the first 10 prime numbers using a list comprehension</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a>x <span class="op">=</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="copilot-labs" class="level2" data-number="A.3">
+<h2 data-number="A.3" class="anchored" data-anchor-id="copilot-labs"><span class="header-section-number">A.3</span> Copilot Labs</h2>
+<p>https://dev.to/github/why-use-github-copilot-and-copilot-labs-practical-use-cases-for-the-ai-pair-programmer-4hf4</p>
+<p>https://github.com/blackgirlbytes/rock-paper-scissors-copilot/</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> isLeapYear(year):</span>
+<span id="cb23-2"><a href="#cb23-2"></a>    <span class="co"># Years divisible by 400 are leap years:</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>    <span class="cf">if</span> year <span class="op">%</span> <span class="dv">400</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb23-4"><a href="#cb23-4"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a>    <span class="co"># Otherwise, years divisible by 100 are not leap years:</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a>    <span class="cf">elif</span> year <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb23-7"><a href="#cb23-7"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a>    <span class="co"># Otherwise, years divisible by 4 are leap years:</span></span>
+<span id="cb23-9"><a href="#cb23-9"></a>    <span class="cf">elif</span> year <span class="op">%</span> <span class="dv">4</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb23-10"><a href="#cb23-10"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb23-11"><a href="#cb23-11"></a>    <span class="co"># Otherwise, every other year is not a leap year:</span></span>
+<span id="cb23-12"><a href="#cb23-12"></a>    <span class="cf">else</span>:</span>
+<span id="cb23-13"><a href="#cb23-13"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb23-14"><a href="#cb23-14"></a></span>
+<span id="cb23-15"><a href="#cb23-15"></a><span class="kw">def</span> upcoming_leap_year(current_year):</span>
+<span id="cb23-16"><a href="#cb23-16"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb23-17"><a href="#cb23-17"></a>        <span class="cf">if</span> isLeapYear(current_year):</span>
+<span id="cb23-18"><a href="#cb23-18"></a>            <span class="cf">return</span> current_year</span>
+<span id="cb23-19"><a href="#cb23-19"></a>        current_year <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb23-20"><a href="#cb23-20"></a></span>
+<span id="cb23-21"><a href="#cb23-21"></a><span class="cf">assert</span> upcoming_leap_year(<span class="dv">2023</span>) <span class="op">==</span> <span class="dv">2024</span></span>
+<span id="cb23-22"><a href="#cb23-22"></a><span class="cf">assert</span> upcoming_leap_year(<span class="dv">1999</span>) <span class="op">==</span> <span class="dv">2000</span></span>
+<span id="cb23-23"><a href="#cb23-23"></a><span class="cf">assert</span> upcoming_leap_year(<span class="dv">2099</span>) <span class="op">==</span> <span class="dv">2104</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./10_11_NumPy.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./04_Algorithms_sol.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -78,11 +78,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -194,6 +194,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_Copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -204,35 +239,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introductions" id="toc-introductions" class="nav-link active" data-scroll-target="#introductions"><span class="header-section-number">4.1</span> Introductions</a>
+  <li><a href="#introductions" id="toc-introductions" class="nav-link active" data-scroll-target="#introductions"><span class="header-section-number">4.1</span> Introductions</a></li>
+  <li><a href="#def-statements-with-parameters" id="toc-def-statements-with-parameters" class="nav-link" data-scroll-target="#def-statements-with-parameters"><span class="header-section-number">4.2</span> <code>def</code> Statements with Parameters</a>
   <ul>
-  <li><a href="#def-statements-with-parameters" id="toc-def-statements-with-parameters" class="nav-link" data-scroll-target="#def-statements-with-parameters"><span class="header-section-number">4.1.1</span> <code>def</code> Statements with Parameters</a>
-  <ul class="collapse">
-  <li><a href="#positional-arguments" id="toc-positional-arguments" class="nav-link" data-scroll-target="#positional-arguments"><span class="header-section-number">4.1.1.1</span> Positional Arguments</a></li>
-  <li><a href="#return-values-and-return-statements" id="toc-return-values-and-return-statements" class="nav-link" data-scroll-target="#return-values-and-return-statements"><span class="header-section-number">4.1.1.2</span> Return Values and return Statements</a></li>
-  <li><a href="#the-none-value" id="toc-the-none-value" class="nav-link" data-scroll-target="#the-none-value"><span class="header-section-number">4.1.1.3</span> The <code>None</code> Value</a></li>
-  <li><a href="#keyword-arguments" id="toc-keyword-arguments" class="nav-link" data-scroll-target="#keyword-arguments"><span class="header-section-number">4.1.1.4</span> Keyword Arguments</a></li>
-  <li><a href="#default-parameter-values" id="toc-default-parameter-values" class="nav-link" data-scroll-target="#default-parameter-values"><span class="header-section-number">4.1.1.5</span> Default parameter values</a></li>
+  <li><a href="#positional-arguments" id="toc-positional-arguments" class="nav-link" data-scroll-target="#positional-arguments"><span class="header-section-number">4.2.1</span> Positional Arguments</a></li>
+  <li><a href="#return-values-and-return-statements" id="toc-return-values-and-return-statements" class="nav-link" data-scroll-target="#return-values-and-return-statements"><span class="header-section-number">4.2.2</span> Return Values and return Statements</a></li>
+  <li><a href="#the-none-value" id="toc-the-none-value" class="nav-link" data-scroll-target="#the-none-value"><span class="header-section-number">4.2.3</span> The <code>None</code> Value</a></li>
+  <li><a href="#keyword-arguments" id="toc-keyword-arguments" class="nav-link" data-scroll-target="#keyword-arguments"><span class="header-section-number">4.2.4</span> Keyword Arguments</a></li>
+  <li><a href="#default-parameter-values" id="toc-default-parameter-values" class="nav-link" data-scroll-target="#default-parameter-values"><span class="header-section-number">4.2.5</span> Default parameter values</a></li>
   </ul></li>
-  <li><a href="#advance-usage" id="toc-advance-usage" class="nav-link" data-scroll-target="#advance-usage"><span class="header-section-number">4.1.2</span> Advance usage</a>
-  <ul class="collapse">
-  <li><a href="#passing-an-arbitrary-number-of-arguments" id="toc-passing-an-arbitrary-number-of-arguments" class="nav-link" data-scroll-target="#passing-an-arbitrary-number-of-arguments"><span class="header-section-number">4.1.2.1</span> Passing an Arbitrary Number of Arguments</a></li>
-  <li><a href="#using-arbitrary-keyword-arguments" id="toc-using-arbitrary-keyword-arguments" class="nav-link" data-scroll-target="#using-arbitrary-keyword-arguments"><span class="header-section-number">4.1.2.2</span> Using Arbitrary Keyword Arguments</a></li>
+  <li><a href="#advance-usage" id="toc-advance-usage" class="nav-link" data-scroll-target="#advance-usage"><span class="header-section-number">4.3</span> Advance usage</a>
+  <ul>
+  <li><a href="#passing-an-arbitrary-number-of-arguments" id="toc-passing-an-arbitrary-number-of-arguments" class="nav-link" data-scroll-target="#passing-an-arbitrary-number-of-arguments"><span class="header-section-number">4.3.1</span> Passing an Arbitrary Number of Arguments</a></li>
+  <li><a href="#using-arbitrary-keyword-arguments" id="toc-using-arbitrary-keyword-arguments" class="nav-link" data-scroll-target="#using-arbitrary-keyword-arguments"><span class="header-section-number">4.3.2</span> Using Arbitrary Keyword Arguments</a></li>
   </ul></li>
-  <li><a href="#local-and-global-scope" id="toc-local-and-global-scope" class="nav-link" data-scroll-target="#local-and-global-scope"><span class="header-section-number">4.1.4</span> Local and Global Scope</a>
-  <ul class="collapse">
-  <li><a href="#local-variables-cannot-be-used-in-the-global-scope" id="toc-local-variables-cannot-be-used-in-the-global-scope" class="nav-link" data-scroll-target="#local-variables-cannot-be-used-in-the-global-scope"><span class="header-section-number">4.1.4.1</span> Local Variables Cannot Be Used in the Global Scope</a></li>
-  <li><a href="#local-scopes-cannot-use-variables-in-other-local-scopes" id="toc-local-scopes-cannot-use-variables-in-other-local-scopes" class="nav-link" data-scroll-target="#local-scopes-cannot-use-variables-in-other-local-scopes"><span class="header-section-number">4.1.4.2</span> Local Scopes Cannot Use Variables in Other Local Scopes</a></li>
-  <li><a href="#global-variables-can-be-read-from-a-local-scope" id="toc-global-variables-can-be-read-from-a-local-scope" class="nav-link" data-scroll-target="#global-variables-can-be-read-from-a-local-scope"><span class="header-section-number">4.1.4.3</span> Global Variables Can Be Read from a Local Scope</a></li>
+  <li><a href="#local-and-global-scope" id="toc-local-and-global-scope" class="nav-link" data-scroll-target="#local-and-global-scope"><span class="header-section-number">4.4</span> Local and Global Scope</a>
+  <ul>
+  <li><a href="#local-variables-cannot-be-used-in-the-global-scope" id="toc-local-variables-cannot-be-used-in-the-global-scope" class="nav-link" data-scroll-target="#local-variables-cannot-be-used-in-the-global-scope"><span class="header-section-number">4.4.1</span> Local Variables Cannot Be Used in the Global Scope</a></li>
+  <li><a href="#local-scopes-cannot-use-variables-in-other-local-scopes" id="toc-local-scopes-cannot-use-variables-in-other-local-scopes" class="nav-link" data-scroll-target="#local-scopes-cannot-use-variables-in-other-local-scopes"><span class="header-section-number">4.4.2</span> Local Scopes Cannot Use Variables in Other Local Scopes</a></li>
+  <li><a href="#global-variables-can-be-read-from-a-local-scope" id="toc-global-variables-can-be-read-from-a-local-scope" class="nav-link" data-scroll-target="#global-variables-can-be-read-from-a-local-scope"><span class="header-section-number">4.4.3</span> Global Variables Can Be Read from a Local Scope</a></li>
   </ul></li>
-  <li><a href="#storing-your-functions-in-modules" id="toc-storing-your-functions-in-modules" class="nav-link" data-scroll-target="#storing-your-functions-in-modules"><span class="header-section-number">4.1.5</span> Storing Your Functions in Modules</a>
-  <ul class="collapse">
-  <li><a href="#importing-a-module" id="toc-importing-a-module" class="nav-link" data-scroll-target="#importing-a-module"><span class="header-section-number">4.1.5.1</span> Importing a module</a></li>
-  <li><a href="#importing-specific-functions-using-from" id="toc-importing-specific-functions-using-from" class="nav-link" data-scroll-target="#importing-specific-functions-using-from"><span class="header-section-number">4.1.5.2</span> Importing Specific Functions using <code>from</code></a></li>
-  <li><a href="#importing-all-functions-in-a-module" id="toc-importing-all-functions-in-a-module" class="nav-link" data-scroll-target="#importing-all-functions-in-a-module"><span class="header-section-number">4.1.5.3</span> Importing All Functions in a Module</a></li>
-  <li><a href="#using-as-to-give-a-function-an-alias" id="toc-using-as-to-give-a-function-an-alias" class="nav-link" data-scroll-target="#using-as-to-give-a-function-an-alias"><span class="header-section-number">4.1.5.4</span> Using <code>as</code> to Give a Function an Alias</a></li>
-  <li><a href="#using-as-to-give-a-module-an-alias" id="toc-using-as-to-give-a-module-an-alias" class="nav-link" data-scroll-target="#using-as-to-give-a-module-an-alias"><span class="header-section-number">4.1.5.5</span> Using <code>as</code> to Give a Module an Alias</a></li>
-  </ul></li>
+  <li><a href="#storing-your-functions-in-modules" id="toc-storing-your-functions-in-modules" class="nav-link" data-scroll-target="#storing-your-functions-in-modules"><span class="header-section-number">4.5</span> Storing Your Functions in Modules</a>
+  <ul>
+  <li><a href="#importing-a-module" id="toc-importing-a-module" class="nav-link" data-scroll-target="#importing-a-module"><span class="header-section-number">4.5.1</span> Importing a module</a></li>
+  <li><a href="#importing-specific-functions-using-from" id="toc-importing-specific-functions-using-from" class="nav-link" data-scroll-target="#importing-specific-functions-using-from"><span class="header-section-number">4.5.2</span> Importing Specific Functions using <code>from</code></a></li>
+  <li><a href="#importing-all-functions-in-a-module" id="toc-importing-all-functions-in-a-module" class="nav-link" data-scroll-target="#importing-all-functions-in-a-module"><span class="header-section-number">4.5.3</span> Importing All Functions in a Module</a></li>
+  <li><a href="#using-as-to-give-a-function-an-alias" id="toc-using-as-to-give-a-function-an-alias" class="nav-link" data-scroll-target="#using-as-to-give-a-function-an-alias"><span class="header-section-number">4.5.4</span> Using <code>as</code> to Give a Function an Alias</a></li>
+  <li><a href="#using-as-to-give-a-module-an-alias" id="toc-using-as-to-give-a-module-an-alias" class="nav-link" data-scroll-target="#using-as-to-give-a-module-an-alias"><span class="header-section-number">4.5.5</span> Using <code>as</code> to Give a Module an Alias</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -242,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></h1>
 </div>
 
 
@@ -290,18 +323,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>A function is a block of organized code that is used to perform a task. They provide better modularity and reusability.</p>
 </blockquote>
-<section id="def-statements-with-parameters" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="def-statements-with-parameters"><span class="header-section-number">4.1.1</span> <code>def</code> Statements with Parameters</h3>
+</section>
+<section id="def-statements-with-parameters" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="def-statements-with-parameters"><span class="header-section-number">4.2</span> <code>def</code> Statements with Parameters</h2>
 <p>When you call the <code>print()</code> or <code>len()</code> function, you pass them values, called <strong><em>arguments</em></strong>, by typing them between the parentheses. You can also define your own functions that accept arguments.</p>
 <div class="cell" data-execution_count="5">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> hello(name):</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="bu">print</span>(<span class="st">'Hello,'</span>, name)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a>hello(<span class="st">'Alice'</span>)</span>
 <span id="cb1-5"><a href="#cb1-5"></a>hello(<span class="st">'Bob'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello, Alice
 Hello, Bob</code></pre>
@@ -310,26 +341,21 @@ Hello, Bob</code></pre>
 <p>The <code>def</code> statement defines the <code>hello()</code> function. Any indented lines that follow <code>def hello():</code> make up the function’s body. The <code>hello('Alice')</code> line <strong>calls</strong> the now-created function. This function call is also known as <strong>passing</strong> the string value ‘Alice’ to the function.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="03_Function_files/figure-html/7983f04f-1-image.png" class="img-fluid figure-img"></p>
+<p><img src="03_Function_files/figure-html/8010db76-1-image.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
 </figure>
 </div>
 <p>You can view the execution of this program at <a href="https://autbor.com/hellofunc2/">https://autbor.com/hellofunc2/</a>. The definition of the <code>hello()</code> function in this program has a <strong><em>parameter</em></strong> called <code>name</code>. When a function is called with arguments, the arguments are stored in the parameters. The first time the <code>hello()</code> function is called, it is passed the argument ‘Alice’. The program execution enters the function, and the parameter name is automatically set to ‘Alice’, which is what gets printed by the <code>print()</code> statement. One thing to note about parameters is that the value stored in a parameter is forgotten when the function returns. For example, if you added <code>print(name)</code> after <code>hello('Bob')</code> in the previous program, the program would give you a <code>NameError</code> because there is no variable named <code>name</code>.</p>
 <div class="cell" data-execution_count="6">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">print</span>(name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'name' is not defined</code></pre>
 </div>
 </div>
-<section id="positional-arguments" class="level4" data-number="4.1.1.1">
-<h4 data-number="4.1.1.1" class="anchored" data-anchor-id="positional-arguments"><span class="header-section-number">4.1.1.1</span> Positional Arguments</h4>
+<section id="positional-arguments" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="positional-arguments"><span class="header-section-number">4.2.1</span> Positional Arguments</h3>
 <p>When you call a function, Python must match each argument in the function call with a parameter in the function definition. The simplest way to do this is based on the order of the arguments provided. Values matched up this way are called <strong><em>positional arguments</em></strong>.</p>
 <div class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> describe_pet(animal_type, pet_name):</span>
 <span id="cb5-2"><a href="#cb5-2"></a>    <span class="co">"""</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co">    Display information about a pet.</span></span>
@@ -339,7 +365,6 @@ Hello, Bob</code></pre>
 <span id="cb5-7"><a href="#cb5-7"></a>    <span class="bu">print</span>(<span class="st">"My"</span>, animal_type <span class="op">+</span> <span class="st">"'s name is"</span>, pet_name.title() <span class="op">+</span> <span class="st">"."</span>)</span>
 <span id="cb5-8"><a href="#cb5-8"></a></span>
 <span id="cb5-9"><a href="#cb5-9"></a>describe_pet(<span class="st">'hamster'</span>, <span class="st">'harry'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 I have a hamster .
@@ -349,10 +374,7 @@ My hamster's name is Harry.</code></pre>
 <p>When we call <code>describe_pet()</code>, we need to provide an <code>animal_type</code> and a <code>name</code>, <strong>in that order</strong>. For example, in the function call, the argument ‘hamster’ is assigned to the parameter <code>animal_type</code> and the argument ‘harry’ is assigned to the parameter <code>pet_name</code>. In the function body, these two parameters are used to display information about the pet being described.</p>
 <p>Note that the text on the second line is a comment called a <strong><em>docstring (multi-line comments introduced in Chapter 1)</em></strong>, which describes what the function does. When Python generates documentation for the functions in your programs, it looks for a string immediately after the function’s definition. These strings are usually enclosed in triple quotes, which lets you write multiple lines. If you use the <code>help()</code> function, it will also be printed out as well as the function name and parameters.</p>
 <div class="cell" data-execution_count="8">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">help</span>(describe_pet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Help on function describe_pet in module __main__:
 
@@ -363,10 +385,7 @@ describe_pet(animal_type, pet_name)
 </div>
 </div>
 <div class="cell" data-execution_count="9">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">help</span>(<span class="bu">print</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Help on built-in function print in module builtins:
 
@@ -386,17 +405,14 @@ print(...)
 <p>Note that if there is more than one argument in <code>print()</code>, the default separation value is a white space. But you can change this behavior by specifying the <code>sep</code> keyword.</p>
 </blockquote>
 <div class="cell" data-execution_count="11">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="bu">print</span>(<span class="st">"8"</span>, <span class="st">"9"</span>, sep<span class="op">=</span><span class="st">"*"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>8*9</code></pre>
 </div>
 </div>
 </section>
-<section id="return-values-and-return-statements" class="level4" data-number="4.1.1.2">
-<h4 data-number="4.1.1.2" class="anchored" data-anchor-id="return-values-and-return-statements"><span class="header-section-number">4.1.1.2</span> Return Values and return Statements</h4>
+<section id="return-values-and-return-statements" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="return-values-and-return-statements"><span class="header-section-number">4.2.2</span> Return Values and return Statements</h3>
 <p>When you call the <code>len()</code> function and pass it an argument such as ‘Hello’, the function call evaluates to the integer value. The value that a function call evaluates to is called the <strong><em>return value</em></strong> of the function.</p>
 <p>When creating a function using the <code>def</code> statement, you can specify what the return value should be with a <code>return</code> statement. A <code>return</code> statement consists of the following:</p>
 <ul>
@@ -405,8 +421,6 @@ print(...)
 </ul>
 <p>When an expression is used with a <code>return</code> statement, the return value is what this expression evaluates to. For example, the following program defines a function that returns a different string depending on the number passed as an argument.</p>
 <div class="cell" data-execution_count="12">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">import</span> random</span>
 <span id="cb13-2"><a href="#cb13-2"></a></span>
 <span id="cb13-3"><a href="#cb13-3"></a><span class="kw">def</span> getAnswer(answerNumber):</span>
@@ -432,7 +446,6 @@ print(...)
 <span id="cb13-23"><a href="#cb13-23"></a>r <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">9</span>)</span>
 <span id="cb13-24"><a href="#cb13-24"></a>fortune <span class="op">=</span> getAnswer(r)</span>
 <span id="cb13-25"><a href="#cb13-25"></a><span class="bu">print</span>(fortune)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Yes</code></pre>
 </div>
@@ -440,16 +453,13 @@ print(...)
 <p>You can view the execution of this program at <a href="https://autbor.com">https://autbor.com/magic8ball/</a>. When this program starts, Python first imports the <code>random</code> module. Then the <code>getAnswer()</code> function is defined. Because the function is being defined (and not called), the execution skips over the code in it. Next, the <code>random.randint()</code> function is called with two arguments: 1 and 9. It evaluates to a random integer between 1 and 9 (including 1 and 9 themselves), and this value is stored in a variable named <code>r</code>.</p>
 <p>The <code>getAnswer()</code> function is called with <code>r</code> as the argument. The program execution moves to the top of the <code>getAnswer()</code> function, and the value <code>r</code> is stored in a parameter named <code>answerNumber</code>. Then, depending on the value in <code>answerNumber</code>, the function returns one of many possible string values. The program execution returns to the line at the bottom of the program that was originally called <code>getAnswer()</code>. The returned string is assigned to a variable named <code>fortune</code>, which then gets passed to a <code>print()</code> call and is printed to the screen. The functions that return values are sometimes called <strong><em>fruitful functions</em></strong>.</p>
 </section>
-<section id="the-none-value" class="level4" data-number="4.1.1.3">
-<h4 data-number="4.1.1.3" class="anchored" data-anchor-id="the-none-value"><span class="header-section-number">4.1.1.3</span> The <code>None</code> Value</h4>
+<section id="the-none-value" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="the-none-value"><span class="header-section-number">4.2.3</span> The <code>None</code> Value</h3>
 <p>In Python, there is a value called <code>None</code>, which represents the absence of a value. The <code>None</code> value is the only value of the <code>NoneType</code> data type. This can be helpful when you need to store something that won’t be confused for a real value in a variable. One place where <code>None</code> is used is as the return value of <code>print()</code>. The <code>print()</code> function displays text on the screen, but it doesn’t need to return anything. But since all function calls need to evaluate to a return value, <code>print()</code> returns <code>None</code>. A function does not return a value is called a <strong><em>void function</em></strong></p>
 <div class="cell" data-execution_count="20">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>spam <span class="op">=</span> <span class="bu">print</span>(<span class="st">'Hello!'</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="bu">print</span>(spam)</span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="bu">type</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello!
 None</code></pre>
@@ -462,14 +472,11 @@ None</code></pre>
 <p>Behind the scenes, Python adds return <code>None</code> in the end of any function definition with no <code>return</code> statement. Also, if you use a <code>return</code> statement without a value (that is, just the <code>return</code> keyword by itself), then <code>None</code> is returned.</p>
 </blockquote>
 </section>
-<section id="keyword-arguments" class="level4" data-number="4.1.1.4">
-<h4 data-number="4.1.1.4" class="anchored" data-anchor-id="keyword-arguments"><span class="header-section-number">4.1.1.4</span> Keyword Arguments</h4>
+<section id="keyword-arguments" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="keyword-arguments"><span class="header-section-number">4.2.4</span> Keyword Arguments</h3>
 <p>A <strong><em>keyword argument</em></strong> is a name-value pair you pass to a function. You directly associate the name and the value within the argument, so when you pass the argument to the function, there’s no confusion. Keyword arguments free you from having to worry about correctly ordering your arguments in the function call, and they clarify the role of each value in the function call.</p>
 <div class="cell" data-execution_count="21">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>describe_pet(animal_type<span class="op">=</span><span class="st">'hamster'</span>, pet_name<span class="op">=</span><span class="st">'harry'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 I have a hamster .
@@ -478,12 +485,10 @@ My hamster's name is Harry.</code></pre>
 </div>
 <p>The function <code>describe_pet()</code> hasn’t changed. But when we call the function, we explicitly tell Python which parameter each argument should be matched with. When Python reads the function call, it knows to assign the argument ‘hamster’ to the parameter <code>animal_type</code> and the argument ‘harry’ to <code>pet_name</code>. The output correctly shows that we have a hamster named Harry.</p>
 </section>
-<section id="default-parameter-values" class="level4" data-number="4.1.1.5">
-<h4 data-number="4.1.1.5" class="anchored" data-anchor-id="default-parameter-values"><span class="header-section-number">4.1.1.5</span> Default parameter values</h4>
+<section id="default-parameter-values" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="default-parameter-values"><span class="header-section-number">4.2.5</span> Default parameter values</h3>
 <p>When writing a function, you can define a default value for each parameter. If an argument for a parameter is provided in the function call, Python uses the argument value. If not, it uses the parameter’s default value. For example, if you notice that most of the calls to <code>describe_pet()</code> are being used to describe dogs, you can set the default value of <code>animal_type</code> to ‘dog’:</p>
 <div class="cell" data-execution_count="22">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">def</span> describe_pet(pet_name, animal_type<span class="op">=</span><span class="st">'dog'</span>):</span>
 <span id="cb20-2"><a href="#cb20-2"></a>    <span class="co">"""</span></span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="co">    Display information about a pet.</span></span>
@@ -493,7 +498,6 @@ My hamster's name is Harry.</code></pre>
 <span id="cb20-7"><a href="#cb20-7"></a>    <span class="bu">print</span>(<span class="st">"My"</span> <span class="op">+</span> animal_type <span class="op">+</span><span class="st">"'s name is "</span> <span class="op">+</span> pet_name.title() <span class="op">+</span> <span class="st">"."</span>)</span>
 <span id="cb20-8"><a href="#cb20-8"></a>    </span>
 <span id="cb20-9"><a href="#cb20-9"></a>describe_pet(<span class="st">'willie'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 I have a dog.
@@ -505,8 +509,6 @@ Mydog's name is Willie.</code></pre>
 <p>When you use default values, any parameter with a default value needs to be listed after all the parameters that don’t have default values. This allows Python to continue interpreting positional arguments correctly. Otherwise error occurs.</p>
 </blockquote>
 <div class="cell" data-execution_count="23">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">def</span> describe_pet(animal_type<span class="op">=</span><span class="st">'dog'</span>, pet_name):</span>
 <span id="cb22-2"><a href="#cb22-2"></a>    <span class="co">"""</span></span>
 <span id="cb22-3"><a href="#cb22-3"></a><span class="co">    Display information about a pet.</span></span>
@@ -516,21 +518,18 @@ Mydog's name is Willie.</code></pre>
 <span id="cb22-7"><a href="#cb22-7"></a>    <span class="bu">print</span>(<span class="st">"My"</span> <span class="op">+</span> animal_type <span class="op">+</span><span class="st">"'s name is "</span> <span class="op">+</span> pet_name.title() <span class="op">+</span> <span class="st">"."</span>)</span>
 <span id="cb22-8"><a href="#cb22-8"></a>    </span>
 <span id="cb22-9"><a href="#cb22-9"></a>describe_pet(<span class="st">'willie'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>SyntaxError: non-default argument follows default argument (Temp/ipykernel_24512/574269134.py, line 1)</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="advance-usage" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="advance-usage"><span class="header-section-number">4.1.2</span> Advance usage</h3>
-<section id="passing-an-arbitrary-number-of-arguments" class="level4" data-number="4.1.2.1">
-<h4 data-number="4.1.2.1" class="anchored" data-anchor-id="passing-an-arbitrary-number-of-arguments"><span class="header-section-number">4.1.2.1</span> Passing an Arbitrary Number of Arguments</h4>
+<section id="advance-usage" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="advance-usage"><span class="header-section-number">4.3</span> Advance usage</h2>
+<section id="passing-an-arbitrary-number-of-arguments" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="passing-an-arbitrary-number-of-arguments"><span class="header-section-number">4.3.1</span> Passing an Arbitrary Number of Arguments</h3>
 <p>Sometimes you won’t know how many arguments a function needs to accept ahead of time. Fortunately, Python allows a function to collect arbitrary arguments from the calling statement. For example, consider a function that builds a pizza. It needs to accept a number of toppings, but you can’t know ahead of time how many toppings a person will want. The function in the following example has one parameter, <code>*toppings</code>, but this parameter collects as many arguments as the calling line provides:</p>
 <div class="cell" data-execution_count="27">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">def</span> make_pizza(size, <span class="op">*</span>toppings):</span>
 <span id="cb24-2"><a href="#cb24-2"></a>    <span class="co">"""Print the list of toppings that have been requested."""</span></span>
 <span id="cb24-3"><a href="#cb24-3"></a>    <span class="bu">print</span>(<span class="st">"The size of the pizza is"</span>, size, <span class="st">"inch with the following toppings:"</span>)</span>
@@ -538,7 +537,6 @@ Mydog's name is Willie.</code></pre>
 <span id="cb24-5"><a href="#cb24-5"></a></span>
 <span id="cb24-6"><a href="#cb24-6"></a>make_pizza(<span class="dv">6</span>, <span class="st">'pepperoni'</span>)</span>
 <span id="cb24-7"><a href="#cb24-7"></a>make_pizza(<span class="dv">8</span>, <span class="st">'mushrooms'</span>, <span class="st">'green peppers'</span>, <span class="st">'extra cheese'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>The size of the pizza is 6 inch with the following toppings:
 ('pepperoni',)
@@ -551,12 +549,10 @@ The size of the pizza is 8 inch with the following toppings:
 <p>You’ll often see the generic parameter name <code>*args</code>, which collects arbitrary positional arguments like this. The <code>*arg</code> must be the rightmost parameter (except for parameter with default value and the <code>**kwargs</code>).</p>
 </blockquote>
 </section>
-<section id="using-arbitrary-keyword-arguments" class="level4" data-number="4.1.2.2">
-<h4 data-number="4.1.2.2" class="anchored"><span class="header-section-number">4.1.2.2</span> Using Arbitrary Keyword Arguments</h4>
+<section id="using-arbitrary-keyword-arguments" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="using-arbitrary-keyword-arguments"><span class="header-section-number">4.3.2</span> Using Arbitrary Keyword Arguments</h3>
 <p>Sometimes you’ll want to accept an arbitrary number of arguments, but you won’t know ahead of time what kind of information will be passed to the function. In this case, you can write functions that accept as many key-value pairs as the calling statement provides. One example involves building user profiles: you know you’ll get information about a user, but you’re not sure what kind of information you’ll receive. The function <code>build_profile()</code> in the following example always takes in a first and last name, but it accepts an arbitrary number of keyword arguments as well:</p>
 <div class="cell" data-execution_count="32">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">def</span> build_profile(first, last, <span class="op">**</span>user_info):</span>
 <span id="cb26-2"><a href="#cb26-2"></a>    <span class="co">"""Build a dictionary containing everything we know about a user."""</span></span>
 <span id="cb26-3"><a href="#cb26-3"></a>    user_info[<span class="st">'first_name'</span>] <span class="op">=</span> first</span>
@@ -567,7 +563,6 @@ The size of the pizza is 8 inch with the following toppings:
 <span id="cb26-8"><a href="#cb26-8"></a>                             location<span class="op">=</span><span class="st">'princeton'</span>,</span>
 <span id="cb26-9"><a href="#cb26-9"></a>                             field<span class="op">=</span><span class="st">'physics'</span>)</span>
 <span id="cb26-10"><a href="#cb26-10"></a><span class="bu">print</span>(user_profile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'location': 'princeton', 'field': 'physics', 'first_name': 'albert', 'last_name': 'einstein'}</code></pre>
 </div>
@@ -578,7 +573,7 @@ The size of the pizza is 8 inch with the following toppings:
 <p>You’ll often see the parameter name <code>**kwargs</code> used to collect nonspecific keyword arguments. The <code>**kwargs</code> must be the rightmost paramter.</p>
 </blockquote>
 <blockquote class="blockquote">
-<h3 id="exercise-1-please-write-a-function-implementing-the-guess-the-number-game.-the-function-accepts-two-arguments-for-the-maximum-number-of-tries-and-the-maximum-number.-the-function-returns-a-boolean-value-indicating-whether-the-player-guessed-the-number-correctly-or-not.-if-the-player-doesnt-guess-the-number-correctly-after-the-maximum-number-of-tries-the-function-returns-false-otherwise-it-should-return-true.-you-can-set-the-default-value-of-the-max-number-to-an-arbitrary-number." data-number="4.1.3" class="anchored" data-anchor-id="using-arbitrary-keyword-arguments"><span class="header-section-number">4.1.3</span> Exercise 1: Please write a function implementing the “guess the number” game. The function accepts two arguments for the maximum number of tries and the maximum number. The function returns a boolean value indicating whether the player guessed the number correctly or not. If the player doesn’t guess the number correctly after the maximum number of tries, the function returns False; otherwise, it should return True. You can set the default value of the max number to an arbitrary number.</h3>
+<h3 id="exercise-1-please-write-a-function-implementing-the-guess-the-number-game.-the-function-accepts-two-arguments-for-the-maximum-number-of-tries-and-the-maximum-number.-the-function-returns-a-boolean-value-indicating-whether-the-player-guessed-the-number-correctly-or-not.-if-the-player-doesnt-guess-the-number-correctly-after-the-maximum-number-of-tries-the-function-returns-false-otherwise-it-should-return-true.-you-can-set-the-default-value-of-the-max-number-to-an-arbitrary-number." data-number="4.3.3" class="anchored"><span class="header-section-number">4.3.3</span> Exercise 1: Please write a function implementing the “guess the number” game. The function accepts two arguments for the maximum number of tries and the maximum number. The function returns a boolean value indicating whether the player guessed the number correctly or not. If the player doesn’t guess the number correctly after the maximum number of tries, the function returns False; otherwise, it should return True. You can set the default value of the max number to an arbitrary number.</h3>
 </blockquote>
 <center>
 <img src="https://media.discordapp.net/attachments/989268324884049960/1080339545062641786/phonchi_draw_the_cartoon_the_depicts_a_python_and_the_guess_the_71048d5c-3d44-47a3-b398-7500e18db839.png?width=630&amp;height=630">
@@ -587,8 +582,6 @@ The size of the pizza is 8 inch with the following toppings:
 <p>Currently, there exists a delay for the <code>input()</code> function in vscode. Therefore, it is recommended to play the game using the script!</p>
 </blockquote>
 <div class="cell">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="op">%%</span>writefile guess_number.py</span>
 <span id="cb28-2"><a href="#cb28-2"></a></span>
 <span id="cb28-3"><a href="#cb28-3"></a><span class="im">import</span> random</span>
@@ -628,38 +621,32 @@ The size of the pizza is 8 inch with the following toppings:
 <span id="cb28-37"><a href="#cb28-37"></a>    <span class="bu">print</span>(<span class="st">"You won!"</span>)</span>
 <span id="cb28-38"><a href="#cb28-38"></a><span class="cf">else</span>:</span>
 <span id="cb28-39"><a href="#cb28-39"></a>    <span class="bu">print</span>(<span class="st">"You lost!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 </section>
-<section id="local-and-global-scope" class="level3" data-number="4.1.4">
-<h3 data-number="4.1.4" class="anchored" data-anchor-id="local-and-global-scope"><span class="header-section-number">4.1.4</span> Local and Global Scope</h3>
+<section id="local-and-global-scope" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="local-and-global-scope"><span class="header-section-number">4.4</span> Local and Global Scope</h2>
 <p>Parameters and variables assigned in a called function are said to exist in that function’s <strong><em>local scope</em></strong>. Variables assigned outside all functions are said to exist in the <strong><em>global scope</em></strong>. A variable in a local scope is called a <strong><em>local variable</em></strong>, while a variable in the global scope is called a <strong><em>global variable</em></strong>. A variable must be one or the other; it cannot be both local and global.</p>
 <p>Think of a scope as a container for variables. When a scope is destroyed, all the values stored in the scope’s variables are forgotten. <strong>There is only one global scope, and it is created when your program begins. A local scope is created whenever a function is called. Any variables assigned in the function exist within the function’s local scope. When the function returns, the local scope is destroyed, and these variables are forgotten.</strong> The next time you call the function, the local variables will not remember the values stored in them from the last time it was called.</p>
-<section id="local-variables-cannot-be-used-in-the-global-scope" class="level4" data-number="4.1.4.1">
-<h4 data-number="4.1.4.1" class="anchored" data-anchor-id="local-variables-cannot-be-used-in-the-global-scope"><span class="header-section-number">4.1.4.1</span> Local Variables Cannot Be Used in the Global Scope</h4>
+<section id="local-variables-cannot-be-used-in-the-global-scope" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="local-variables-cannot-be-used-in-the-global-scope"><span class="header-section-number">4.4.1</span> Local Variables Cannot Be Used in the Global Scope</h3>
 <p>Consider this program, which will cause an error when you run it:</p>
 <div class="cell" data-execution_count="34">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw">def</span> spam():</span>
 <span id="cb29-2"><a href="#cb29-2"></a>    eggs <span class="op">=</span> <span class="dv">31337</span></span>
 <span id="cb29-3"><a href="#cb29-3"></a></span>
 <span id="cb29-4"><a href="#cb29-4"></a>spam()</span>
 <span id="cb29-5"><a href="#cb29-5"></a><span class="bu">print</span>(eggs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'eggs' is not defined</code></pre>
 </div>
 </div>
 <p>The error happens because the <code>eggs</code> variable exists only in the local scope created when <code>spam()</code> is called. Once the program execution returns from spam, that local scope is destroyed, and there is no longer a variable named eggs.</p>
 </section>
-<section id="local-scopes-cannot-use-variables-in-other-local-scopes" class="level4" data-number="4.1.4.2">
-<h4 data-number="4.1.4.2" class="anchored" data-anchor-id="local-scopes-cannot-use-variables-in-other-local-scopes"><span class="header-section-number">4.1.4.2</span> Local Scopes Cannot Use Variables in Other Local Scopes</h4>
+<section id="local-scopes-cannot-use-variables-in-other-local-scopes" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="local-scopes-cannot-use-variables-in-other-local-scopes"><span class="header-section-number">4.4.2</span> Local Scopes Cannot Use Variables in Other Local Scopes</h3>
 <p>A new local scope is created whenever a function is called, including when a function is called from another function. Consider this program:</p>
 <div class="cell" data-execution_count="38">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">def</span> spam():</span>
 <span id="cb31-2"><a href="#cb31-2"></a>    eggs <span class="op">=</span> <span class="dv">99</span></span>
 <span id="cb31-3"><a href="#cb31-3"></a>    bacon()</span>
@@ -670,25 +657,21 @@ The size of the pizza is 8 inch with the following toppings:
 <span id="cb31-8"><a href="#cb31-8"></a>    eggs <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb31-9"><a href="#cb31-9"></a></span>
 <span id="cb31-10"><a href="#cb31-10"></a>spam()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>99</code></pre>
 </div>
 </div>
 <p>You can view the execution of this program at <a href="https://autbor.com">https://autbor.com/otherlocalscopes/</a>. When the program starts, the <code>spam()</code> function is called, and a local scope is created. The local variable eggs is set to 99. Then the <code>bacon()</code> function is called, and a second local scope is created. Multiple local scopes can exist at the same time. In this new local scope, the local variable <code>ham</code> is set to 101, and a local variable <code>eggs</code> — which is different from the one in <code>spam()</code>’s local scope—is also created and set to 0. When <code>bacon()</code> returns, the local scope for that call is destroyed, including its <code>eggs</code> variable. The program execution continues in the <code>spam()</code> function to print the value of eggs. Since the local scope for the call to <code>spam()</code> still exists, the only <code>eggs</code> variable is the <code>spam()</code> function’s <code>eggs</code> variable, which was set to 99.</p>
 </section>
-<section id="global-variables-can-be-read-from-a-local-scope" class="level4" data-number="4.1.4.3">
-<h4 data-number="4.1.4.3" class="anchored" data-anchor-id="global-variables-can-be-read-from-a-local-scope"><span class="header-section-number">4.1.4.3</span> Global Variables Can Be Read from a Local Scope</h4>
+<section id="global-variables-can-be-read-from-a-local-scope" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="global-variables-can-be-read-from-a-local-scope"><span class="header-section-number">4.4.3</span> Global Variables Can Be Read from a Local Scope</h3>
 <div class="cell" data-execution_count="36">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="kw">def</span> spam():</span>
 <span id="cb33-2"><a href="#cb33-2"></a>    <span class="bu">print</span>(eggs)</span>
 <span id="cb33-3"><a href="#cb33-3"></a>    </span>
 <span id="cb33-4"><a href="#cb33-4"></a>eggs <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb33-5"><a href="#cb33-5"></a>spam()</span>
 <span id="cb33-6"><a href="#cb33-6"></a><span class="bu">print</span>(eggs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>42
 42</code></pre>
@@ -696,8 +679,6 @@ The size of the pizza is 8 inch with the following toppings:
 </div>
 <p>You can view the execution of this program at <a href="https://autbor.com">https://autbor.com/readglobal/</a>. Since there is no parameter named eggs or any code that assigns <code>eggs</code> a value in the <code>spam()</code> function, when <code>eggs</code> is used in <code>spam()</code>, Python considers it a reference to the global variable <code>eggs</code>. This is why 42 is printed when the previous program is run.</p>
 <div class="cell" data-execution_count="44">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="kw">def</span> spam():</span>
 <span id="cb35-2"><a href="#cb35-2"></a>    eggs <span class="op">=</span> <span class="st">'spam local'</span></span>
 <span id="cb35-3"><a href="#cb35-3"></a>    <span class="bu">print</span>(eggs)    <span class="co"># prints 'spam local'</span></span>
@@ -711,7 +692,6 @@ The size of the pizza is 8 inch with the following toppings:
 <span id="cb35-11"><a href="#cb35-11"></a>eggs <span class="op">=</span> <span class="st">'global'</span></span>
 <span id="cb35-12"><a href="#cb35-12"></a>bacon()</span>
 <span id="cb35-13"><a href="#cb35-13"></a><span class="bu">print</span>(eggs)        <span class="co"># prints 'global'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>bacon local
 spam local
@@ -723,8 +703,6 @@ global</code></pre>
 <p>If you want to modify the global variable, use the <code>global</code> keywords.</p>
 </blockquote>
 <div class="cell" data-execution_count="45">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">def</span> spam():</span>
 <span id="cb37-2"><a href="#cb37-2"></a>    <span class="kw">global</span> eggs    <span class="co"># If you want to modify the global eggs use global keyword</span></span>
 <span id="cb37-3"><a href="#cb37-3"></a>    eggs <span class="op">=</span> <span class="st">'spam local'</span> </span>
@@ -733,7 +711,6 @@ global</code></pre>
 <span id="cb37-6"><a href="#cb37-6"></a>eggs <span class="op">=</span> <span class="st">'global'</span></span>
 <span id="cb37-7"><a href="#cb37-7"></a>spam()</span>
 <span id="cb37-8"><a href="#cb37-8"></a><span class="bu">print</span>(eggs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>spam local
 spam local</code></pre>
@@ -742,43 +719,34 @@ spam local</code></pre>
 <p>You can visulaize the execution <a href="https://pythontutor.com/visualize.html#code=def%20spam%28%29%3A%0A%20%20%20%20global%20eggs%20%20%20%20%23%20If%20you%20want%20to%20modify%20the%20global%20eggs%20use%20global%20keyword%0A%20%20%20%20eggs%20%3D%20'spam%20local'%20%0A%20%20%20%20print%28eggs%29%20%20%20%20%23%20prints%20'spam%20local'%0A%0Aeggs%20%3D%20'global'%0Aspam%28%29%0Aprint%28eggs%29&amp;cumulative=false&amp;curInstr=8&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">here</a>.</p>
 </section>
 </section>
-<section id="storing-your-functions-in-modules" class="level3" data-number="4.1.5">
-<h3 data-number="4.1.5" class="anchored" data-anchor-id="storing-your-functions-in-modules"><span class="header-section-number">4.1.5</span> Storing Your Functions in Modules</h3>
+<section id="storing-your-functions-in-modules" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="storing-your-functions-in-modules"><span class="header-section-number">4.5</span> Storing Your Functions in Modules</h2>
 <p>One advantage of functions is the way they separate blocks of code from your main program. When you use descriptive names for your functions, your programs become much easier to follow. You can go a step further by storing your functions in a separate file called a <strong><em>module</em></strong> and then importing that module into your main program. An <code>import</code> statement tells Python to make the code in a module available in the currently running program file.</p>
 <blockquote class="blockquote">
 <p>Storing your functions in a separate file allows you to hide the details of your program’s code and focus on its higher-level logic. It also allows you to reuse functions in many different programs. When you store your functions in separate files, you can share those files with other programmers without having to share your entire program. Knowing how to import functions also allows you to use libraries of functions that other programmers have written.</p>
 </blockquote>
-<section id="importing-a-module" class="level4" data-number="4.1.5.1">
-<h4 data-number="4.1.5.1" class="anchored" data-anchor-id="importing-a-module"><span class="header-section-number">4.1.5.1</span> Importing a module</h4>
+<section id="importing-a-module" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="importing-a-module"><span class="header-section-number">4.5.1</span> Importing a module</h3>
 <p>To start importing functions, we first need to create a module. <strong>A module is a file ending in <code>.py</code> that contains the code you want to import into your program</strong>. Let’s make a module that contains the function <code>make_pizza()</code>.</p>
 <div class="cell" data-execution_count="1">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="op">%</span>load_ext autoreload</span>
 <span id="cb39-2"><a href="#cb39-2"></a><span class="op">%</span>autoreload <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="op">%%</span>writefile pizza.py</span>
 <span id="cb40-2"><a href="#cb40-2"></a><span class="kw">def</span> make_pizza(size, <span class="op">*</span>toppings):</span>
 <span id="cb40-3"><a href="#cb40-3"></a>    <span class="co">"""Summarize the pizza we are about to make."""</span></span>
 <span id="cb40-4"><a href="#cb40-4"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Making a "</span><span class="op">+</span> <span class="bu">str</span>(size) <span class="op">+</span> <span class="st">"-inch pizza with the following toppings:"</span>)</span>
 <span id="cb40-5"><a href="#cb40-5"></a>    <span class="bu">print</span>(toppings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Overwriting pizza.py</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="im">import</span> pizza</span>
 <span id="cb42-2"><a href="#cb42-2"></a></span>
 <span id="cb42-3"><a href="#cb42-3"></a>pizza.make_pizza(<span class="dv">16</span>, <span class="st">'pepperoni'</span>)</span>
 <span id="cb42-4"><a href="#cb42-4"></a>pizza.make_pizza(<span class="dv">12</span>, <span class="st">'mushrooms'</span>, <span class="st">'green peppers'</span>, <span class="st">'extra cheese'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Making a 16-inch pizza with the following toppings:
@@ -790,17 +758,14 @@ Making a 12-inch pizza with the following toppings:
 </div>
 <p>When Python reads this file, the line import pizza tells Python to open the file <code>pizza.py</code> and copy all the functions from it into this program. You don’t actually see code being copied between files because Python copies the code behind the scenes, just before the program runs. To call a function from an imported module, enter the name of the module you imported, pizza, followed by the name of the function, <code>make_pizza()</code>, separated by a dot.</p>
 </section>
-<section id="importing-specific-functions-using-from" class="level4" data-number="4.1.5.2">
-<h4 data-number="4.1.5.2" class="anchored" data-anchor-id="importing-specific-functions-using-from"><span class="header-section-number">4.1.5.2</span> Importing Specific Functions using <code>from</code></h4>
+<section id="importing-specific-functions-using-from" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="importing-specific-functions-using-from"><span class="header-section-number">4.5.2</span> Importing Specific Functions using <code>from</code></h3>
 <p>You can also import a specific function from a module.</p>
 <div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="im">from</span> pizza <span class="im">import</span> make_pizza</span>
 <span id="cb44-2"><a href="#cb44-2"></a></span>
 <span id="cb44-3"><a href="#cb44-3"></a>make_pizza(<span class="dv">16</span>, <span class="st">'pepperoni'</span>)</span>
 <span id="cb44-4"><a href="#cb44-4"></a>make_pizza(<span class="dv">12</span>, <span class="st">'mushrooms'</span>, <span class="st">'green peppers'</span>, <span class="st">'extra cheese'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Making a 16-inch pizza with the following toppings:
@@ -812,17 +777,14 @@ Making a 12-inch pizza with the following toppings:
 </div>
 <p>With this syntax, you don’t need to use the dot notation when you call a function.</p>
 </section>
-<section id="importing-all-functions-in-a-module" class="level4" data-number="4.1.5.3">
-<h4 data-number="4.1.5.3" class="anchored" data-anchor-id="importing-all-functions-in-a-module"><span class="header-section-number">4.1.5.3</span> Importing All Functions in a Module</h4>
+<section id="importing-all-functions-in-a-module" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="importing-all-functions-in-a-module"><span class="header-section-number">4.5.3</span> Importing All Functions in a Module</h3>
 <p>You can tell Python to import every function in a module by using the asterisk (*) operator:</p>
 <div class="cell" data-execution_count="5">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="im">from</span> pizza <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb46-2"><a href="#cb46-2"></a></span>
 <span id="cb46-3"><a href="#cb46-3"></a>make_pizza(<span class="dv">16</span>, <span class="st">'pepperoni'</span>)</span>
 <span id="cb46-4"><a href="#cb46-4"></a>make_pizza(<span class="dv">12</span>, <span class="st">'mushrooms'</span>, <span class="st">'green peppers'</span>, <span class="st">'extra cheese'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Making a 16-inch pizza with the following toppings:
@@ -837,17 +799,14 @@ Making a 12-inch pizza with the following toppings:
 <p>However, it’s best not to use this approach when you’re working with larger modules that you didn’t write: if the module has a function name that matches an existing name in your project, you can get unexpected results!</p>
 </blockquote>
 </section>
-<section id="using-as-to-give-a-function-an-alias" class="level4" data-number="4.1.5.4">
-<h4 data-number="4.1.5.4" class="anchored" data-anchor-id="using-as-to-give-a-function-an-alias"><span class="header-section-number">4.1.5.4</span> Using <code>as</code> to Give a Function an Alias</h4>
+<section id="using-as-to-give-a-function-an-alias" class="level3" data-number="4.5.4">
+<h3 data-number="4.5.4" class="anchored" data-anchor-id="using-as-to-give-a-function-an-alias"><span class="header-section-number">4.5.4</span> Using <code>as</code> to Give a Function an Alias</h3>
 <p>If the name of a function you’re importing might conflict with an existing name in your program, or if the function name is long, you can use a short, unique alias — an alternate name similar to a nickname for the function.</p>
 <div class="cell" data-execution_count="6">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="im">from</span> pizza <span class="im">import</span> make_pizza <span class="im">as</span> mp</span>
 <span id="cb48-2"><a href="#cb48-2"></a></span>
 <span id="cb48-3"><a href="#cb48-3"></a>mp(<span class="dv">16</span>, <span class="st">'pepperoni'</span>)</span>
 <span id="cb48-4"><a href="#cb48-4"></a>mp(<span class="dv">12</span>, <span class="st">'mushrooms'</span>, <span class="st">'green peppers'</span>, <span class="st">'extra cheese'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Making a 16-inch pizza with the following toppings:
@@ -858,17 +817,14 @@ Making a 12-inch pizza with the following toppings:
 </div>
 </div>
 </section>
-<section id="using-as-to-give-a-module-an-alias" class="level4" data-number="4.1.5.5">
-<h4 data-number="4.1.5.5" class="anchored"><span class="header-section-number">4.1.5.5</span> Using <code>as</code> to Give a Module an Alias</h4>
+<section id="using-as-to-give-a-module-an-alias" class="level3" data-number="4.5.5">
+<h3 data-number="4.5.5" class="anchored" data-anchor-id="using-as-to-give-a-module-an-alias"><span class="header-section-number">4.5.5</span> Using <code>as</code> to Give a Module an Alias</h3>
 <p>You can also provide an alias for a module name. Giving a module a short alias, like p for pizza, allows you to call the module’s functions more quickly.</p>
 <div class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="im">import</span> pizza <span class="im">as</span> p</span>
 <span id="cb50-2"><a href="#cb50-2"></a></span>
 <span id="cb50-3"><a href="#cb50-3"></a>p.make_pizza(<span class="dv">16</span>, <span class="st">'pepperoni'</span>)</span>
 <span id="cb50-4"><a href="#cb50-4"></a>p.make_pizza(<span class="dv">12</span>, <span class="st">'mushrooms'</span>, <span class="st">'green peppers'</span>, <span class="st">'extra cheese'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Making a 16-inch pizza with the following toppings:
@@ -879,14 +835,12 @@ Making a 12-inch pizza with the following toppings:
 </div>
 </div>
 <blockquote class="blockquote">
-<h3 id="exercise-2-in-this-word-game-the-player-is-in-a-land-full-of-dragons.-some-dragons-are-friendly-and-share-their-treasure.-other-dragons-are-hungry-and-eat-anyone-who-enters-their-cave.-the-player-approaches-two-caves-one-with-a-friendly-dragon-and-the-other-with-a-hungry-dragon-but-doesnt-know-which-dragon-is-in-which-cave.-the-player-must-choose-between-the-two.-please-completet-the-design-of-game-by-calling-the-function-from-the-provided-game-module." data-number="4.1.6" class="anchored" data-anchor-id="using-as-to-give-a-module-an-alias"><span class="header-section-number">4.1.6</span> Exercise 2: In this word game, the player is in a land full of dragons. Some dragons are friendly and share their treasure. Other dragons are hungry and eat anyone who enters their cave. The player approaches two caves, one with a friendly dragon and the other with a hungry dragon, but doesn’t know which dragon is in which cave. The player must choose between the two. Please completet the design of game by calling the function from the provided <code>game</code> module.</h3>
+<h3 id="exercise-2-in-this-word-game-the-player-is-in-a-land-full-of-dragons.-some-dragons-are-friendly-and-share-their-treasure.-other-dragons-are-hungry-and-eat-anyone-who-enters-their-cave.-the-player-approaches-two-caves-one-with-a-friendly-dragon-and-the-other-with-a-hungry-dragon-but-doesnt-know-which-dragon-is-in-which-cave.-the-player-must-choose-between-the-two.-please-completet-the-design-of-game-by-calling-the-function-from-the-provided-game-module." data-number="4.5.6" class="anchored"><span class="header-section-number">4.5.6</span> Exercise 2: In this word game, the player is in a land full of dragons. Some dragons are friendly and share their treasure. Other dragons are hungry and eat anyone who enters their cave. The player approaches two caves, one with a friendly dragon and the other with a hungry dragon, but doesn’t know which dragon is in which cave. The player must choose between the two. Please completet the design of game by calling the function from the provided <code>game</code> module.</h3>
 </blockquote>
 <center>
 <img src="https://cdn.discordapp.com/attachments/989268324884049960/1080334432004755536/phonchi_You_are_in_a_land_full_of_dragons._In_front_of_you_you__39c4daff-b24b-4dc4-bdfb-637f9e3ddcee.png">
 </center>
 <div class="cell">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="op">%%</span>writefile word_game.py</span>
 <span id="cb52-2"><a href="#cb52-2"></a><span class="im">import</span> random</span>
 <span id="cb52-3"><a href="#cb52-3"></a><span class="im">import</span> time</span>
@@ -904,13 +858,11 @@ Making a 12-inch pizza with the following toppings:
 <span id="cb52-15"><a href="#cb52-15"></a></span>
 <span id="cb52-16"><a href="#cb52-16"></a>    <span class="bu">print</span>(<span class="st">'Do you want to play again? (yes or no)'</span>)</span>
 <span id="cb52-17"><a href="#cb52-17"></a>    playAgain <span class="op">=</span> <span class="bu">input</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Functions are the primary way to categorize your code into logical groups. Since the variables in functions exist in their local scopes, the code in one function cannot directly affect the values of variables in other functions. This limits what code could be changing the values of your variables, which can be helpful when debugging your code.</p>
 <p>Functions are a great tool to help you organize your code. You can think of them as black boxes: they have input in the form of parameters and outputs in the form of return values, and the code in them doesn’t affect variables in other functions.</p>
 
 
-</section>
 </section>
 </section>
 

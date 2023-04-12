@@ -78,11 +78,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -194,6 +194,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_Copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -225,7 +260,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#handling-the-zerodivisionerror-exception" id="toc-handling-the-zerodivisionerror-exception" class="nav-link" data-scroll-target="#handling-the-zerodivisionerror-exception"><span class="header-section-number">8.3.1</span> Handling the <code>ZeroDivisionError</code> Exception</a></li>
   <li><a href="#using-exceptions-to-prevent-crashes" id="toc-using-exceptions-to-prevent-crashes" class="nav-link" data-scroll-target="#using-exceptions-to-prevent-crashes"><span class="header-section-number">8.3.2</span> Using Exceptions to Prevent Crashes</a></li>
   <li><a href="#handling-the-filenotfounderror-exception" id="toc-handling-the-filenotfounderror-exception" class="nav-link" data-scroll-target="#handling-the-filenotfounderror-exception"><span class="header-section-number">8.3.3</span> Handling the <code>FileNotFoundError</code> Exception</a></li>
-  <li><a href="#exercise-1-assuming-we-are-designing-a-word-game-called-the-mysterious-island-and-we-need-to-load-the-statistics-of-the-player-and-enemies-each-time-the-game-begins.-try-to-complete-the-following-functions-load_data-and-save_data-so-that-you-can-load-the-json-file-if-it-does-not-exist-using-the-exception-handling-techniques-you-just-learned." id="toc-exercise-1-assuming-we-are-designing-a-word-game-called-the-mysterious-island-and-we-need-to-load-the-statistics-of-the-player-and-enemies-each-time-the-game-begins.-try-to-complete-the-following-functions-load_data-and-save_data-so-that-you-can-load-the-json-file-if-it-does-not-exist-using-the-exception-handling-techniques-you-just-learned." class="nav-link" data-scroll-target="#exercise-1-assuming-we-are-designing-a-word-game-called-the-mysterious-island-and-we-need-to-load-the-statistics-of-the-player-and-enemies-each-time-the-game-begins.-try-to-complete-the-following-functions-load_data-and-save_data-so-that-you-can-load-the-json-file-if-it-does-not-exist-using-the-exception-handling-techniques-you-just-learned."><span class="header-section-number">8.3.4</span> Exercise 1: Assuming we are designing a word game called “The Mysterious Island” and we need to load the statistics of the player and enemies each time the game begins. Try to complete the following functions <code>load_data()</code> and <code>save_data()</code> so that you can load the JSON file if it does not exist using the exception handling techniques you just learned.</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -235,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Files and Exceptions</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Files and Exceptions</span></h1>
 </div>
 
 
@@ -281,22 +315,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="8.1.1" class="anchored" data-anchor-id="reading-the-contents-of-a-file"><span class="header-section-number">8.1.1</span> Reading the Contents of a File</h3>
 <p>To begin, we need a file with a few lines of text in it. Let’s start with a file that contains <code>pi</code> to 30 decimal places:</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1668686223113,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="6fac1a14-1607-409b-c6f1-0b05188f6e2c">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%%</span>writefile pi_digits.txt</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fl">3.1415926535</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>  <span class="dv">8979323846</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a>  <span class="dv">2643383279</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Here’s a program that opens this file, reads it, and prints the contents of the file to the screen:</p>
 <div class="cell" data-execution_count="1">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>file_object <span class="op">=</span> <span class="bu">open</span>(<span class="st">'pi_digits.txt'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="bu">print</span>(file_object.read())</span>
 <span id="cb2-3"><a href="#cb2-3"></a>file_object.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.1415926535
   8979323846
@@ -306,13 +334,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>To do any work with a file, even just printing its contents, you first need to open the file to access it. The <code>open()</code> function needs one argument: the name of the file you want to open. Python looks for this file in the directory where the program that’s currently being executed is stored. The <code>open()</code> function returns an object representing the file. Here, <code>open('pi_digits.txt')</code> returns an object representing <code>pi_digits.txt</code>. Python assigns this object to <code>file_object</code>, which we’ll work with later in the program.</p>
 <div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># A recommended way:</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'pi_digits.txt'</span>) <span class="im">as</span> file_object: <span class="co">#  file_object = open('pi_digits.txt')</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>    contents <span class="op">=</span> file_object.read()          <span class="co">#  We do not have to call file_object.close()</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="bu">print</span>(contents.strip())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.1415926535
   8979323846
@@ -334,30 +359,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Windows systems use a backslash (<code>\</code>) instead of a forward slash (<code>/</code>) when displaying file paths, but you can still use forward slashes in your code.</p>
 </blockquote>
 <div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="op">!</span>mkdir text_files</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="op">%%</span>writefile text_files<span class="op">/</span>pi_digits2.txt</span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="fl">3.1415926535</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>  <span class="dv">8979323846</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a>  <span class="dv">2643383279</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Writing text_files/pi_digits2.txt</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="8">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'text_files/pi_digits2.txt'</span>) <span class="im">as</span> file_object:</span>
 <span id="cb10-2"><a href="#cb10-2"></a>    contents <span class="op">=</span> file_object.read()</span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="bu">print</span>(contents.strip())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.1415926535
   8979323846
@@ -372,13 +388,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="8.1.3" class="anchored" data-anchor-id="reading-line-by-line"><span class="header-section-number">8.1.3</span> Reading Line by Line</h3>
 <p>When you’re reading a file, you’ll often want to examine each line of the file. You might be looking for certain information in the file, or you might want to modify the text in the file in some way. You can use a <code>for</code> loop on the file object to examine each line from a file one at a time:</p>
 <div class="cell" data-execution_count="10">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>filename <span class="op">=</span> <span class="st">'pi_digits.txt'</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="cf">with</span> <span class="bu">open</span>(filename) <span class="im">as</span> file_object: <span class="co"># file_object is also iterable!</span></span>
 <span id="cb13-3"><a href="#cb13-3"></a>    <span class="cf">for</span> line <span class="kw">in</span> file_object:</span>
 <span id="cb13-4"><a href="#cb13-4"></a>        <span class="bu">print</span>(line.strip())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.1415926535
 8979323846
@@ -391,8 +404,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="8.1.4" class="anchored" data-anchor-id="making-a-list-of-lines-from-a-file"><span class="header-section-number">8.1.4</span> Making a List of Lines from a File</h3>
 <p>When you use <code>with</code>, <strong>the file object returned by <code>open()</code> is only available inside the with block that contains it</strong>. If you want to retain access to a file’s contents outside the <code>with</code> block, you can store the file’s lines in a <code>list</code> inside the block and then work with that <code>list</code>!</p>
 <div class="cell" data-execution_count="11">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>filename <span class="op">=</span> <span class="st">'pi_digits.txt'</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="cf">with</span> <span class="bu">open</span>(filename) <span class="im">as</span> file_object:</span>
 <span id="cb15-3"><a href="#cb15-3"></a>    lines <span class="op">=</span> file_object.readlines()</span>
@@ -404,7 +415,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-9"><a href="#cb15-9"></a>    </span>
 <span id="cb15-10"><a href="#cb15-10"></a><span class="bu">print</span>(pi_string)</span>
 <span id="cb15-11"><a href="#cb15-11"></a><span class="bu">print</span>(<span class="bu">len</span>(pi_string)) <span class="co"># The string is 32 characters long because it also includes the leading 3 and a decimal point</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>['3.1415926535\n', '  8979323846\n', '  2643383279\n']
 3.141592653589793238462643383279
@@ -423,13 +433,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="8.1.5.1" class="anchored" data-anchor-id="writing-to-an-empty-file"><span class="header-section-number">8.1.5.1</span> Writing to an Empty File</h4>
 <p>To write text to a file, you need to call <code>open()</code> with a second argument telling Python that you want to write to the file</p>
 <div class="cell" data-execution_count="8">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>filename <span class="op">=</span> <span class="st">'programming.txt'</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a></span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'w'</span>) <span class="im">as</span> file_object:</span>
 <span id="cb17-4"><a href="#cb17-4"></a>    file_object.write(<span class="st">"We love programming!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>The call to <code>open()</code> in this example has two arguments. The first argument is still the name of the file we want to open. The second argument, ‘w’, tells Python that we want to open the file in write mode. You can open a file in read mode (‘r’), write mode (‘w’), append mode (‘a’), or a mode that allows you to read and write to the file ( ‘r+’). If you omit the mode argument, Python opens the file in read-only mode by default. Here, we use the <code>write()</code> method on the file object to write a string to the file.</p>
 <blockquote class="blockquote">
@@ -439,19 +446,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>open()</code> function automatically creates the file you’re writing to if it doesn’t already exist. However, be careful opening a file in write mode (‘w’) because if the file does exist, Python will erase the contents of the file before returning the file object.</p>
 </blockquote>
 <div class="cell" data-execution_count="7">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'w'</span>) <span class="im">as</span> file_object:</span>
 <span id="cb18-2"><a href="#cb18-2"></a>    <span class="bu">print</span>(<span class="st">"12"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>12</code></pre>
 </div>
 </div>
 <p>While reading through a file, the system maintains a <strong><em>file-position pointer</em></strong>(index) representing the location of the next character to read. Therefore, the following code snippet will allow you to append it to the end of the file.</p>
 <div class="cell" data-execution_count="9">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>year <span class="op">=</span> <span class="dv">2023</span></span>
 <span id="cb20-2"><a href="#cb20-2"></a></span>
 <span id="cb20-3"><a href="#cb20-3"></a><span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'r+'</span>) <span class="im">as</span> file_object:</span>
@@ -459,7 +461,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-5"><a href="#cb20-5"></a>    <span class="bu">print</span>(file_object.tell())</span>
 <span id="cb20-6"><a href="#cb20-6"></a>    <span class="bu">print</span>(<span class="bu">len</span>(<span class="st">"We love programming!"</span>))</span>
 <span id="cb20-7"><a href="#cb20-7"></a>    file_object.write(<span class="bu">str</span>(year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>20
 20</code></pre>
@@ -472,14 +473,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="8.1.6" class="anchored" data-anchor-id="appending-to-a-file"><span class="header-section-number">8.1.6</span> Appending to a File</h3>
 <p>If you want to add content to a file instead of writing over existing content, you can also open the file in append mode. When you open a file in append mode, Python doesn’t erase the contents of the file before returning the file object. Any lines you write to the file will be added at the end of the file. If the file doesn’t exist yet, Python will create an empty file for you.</p>
 <div class="cell" data-execution_count="10">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>filename <span class="op">=</span> <span class="st">'programming.txt'</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a></span>
 <span id="cb22-3"><a href="#cb22-3"></a><span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'a'</span>) <span class="im">as</span> file_object:</span>
 <span id="cb22-4"><a href="#cb22-4"></a>    file_object.write(<span class="st">"</span><span class="ch">\n</span><span class="st">We also love finding meaning in large datasets.</span><span class="ch">\n</span><span class="st">"</span>)</span>
 <span id="cb22-5"><a href="#cb22-5"></a>    file_object.write(<span class="st">"We love creating apps that can run in a browser.</span><span class="ch">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>The <code>write()</code> function doesn’t add any newlines to the text you write. So we need to add newline characters if we would like to. There is also a <code>writelines()</code> function that can write list of strings into files.</p>
 </section>
@@ -492,8 +490,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="8.2.0.1" class="anchored" data-anchor-id="using-json.dump-and-json.load"><span class="header-section-number">8.2.0.1</span> Using <code>json.dump()</code> and <code>json.load()</code></h4>
 <p>The <code>json.dump()</code> function takes two arguments: a piece of data to store and a file object it can use to store the data.</p>
 <div class="cell" data-execution_count="11">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="im">import</span> json</span>
 <span id="cb23-2"><a href="#cb23-2"></a></span>
 <span id="cb23-3"><a href="#cb23-3"></a>numbers <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>]</span>
@@ -501,18 +497,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-5"><a href="#cb23-5"></a></span>
 <span id="cb23-6"><a href="#cb23-6"></a><span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'w'</span>) <span class="im">as</span> f:</span>
 <span id="cb23-7"><a href="#cb23-7"></a>    json.dump(numbers, f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Now we’ll write a program that uses <code>json.load()</code> to read the list back into memory</p>
 <div class="cell" data-execution_count="12">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>filename <span class="op">=</span> <span class="st">'numbers.json'</span></span>
 <span id="cb24-2"><a href="#cb24-2"></a><span class="cf">with</span> <span class="bu">open</span>(filename) <span class="im">as</span> f:</span>
 <span id="cb24-3"><a href="#cb24-3"></a>    numbers <span class="op">=</span> json.load(f)</span>
 <span id="cb24-4"><a href="#cb24-4"></a>    </span>
 <span id="cb24-5"><a href="#cb24-5"></a><span class="bu">print</span>(numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[2, 3, 5, 7, 11, 13]</code></pre>
 </div>
@@ -526,10 +518,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="handling-the-zerodivisionerror-exception" class="level3" data-number="8.3.1">
 <h3 data-number="8.3.1" class="anchored" data-anchor-id="handling-the-zerodivisionerror-exception"><span class="header-section-number">8.3.1</span> Handling the <code>ZeroDivisionError</code> Exception</h3>
 <div class="cell" data-execution_count="13">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="bu">print</span>(<span class="dv">5</span><span class="op">/</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>ZeroDivisionError: division by zero</code></pre>
 </div>
@@ -537,26 +526,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The error reported at the first line in the traceback, <code>ZeroDivisionError</code>, is an exception object. Python creates this kind of object in response to a situation where it can’t do what we ask. When this happens, Python stops the program and tells us the kind of exception that was raised. We can use this information to modify our program.</p>
 <p>When we think an error may occur, you can write a <code>try-except</code> block to handle the exception that might be raised. We tell Python to try running some code and tell it what to do if the code results in a particular kind of exception.</p>
 <div class="cell" data-execution_count="14">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="cf">try</span>:</span>
 <span id="cb28-2"><a href="#cb28-2"></a>    <span class="bu">print</span>(<span class="dv">5</span><span class="op">/</span><span class="dv">0</span>)</span>
 <span id="cb28-3"><a href="#cb28-3"></a><span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
 <span id="cb28-4"><a href="#cb28-4"></a>    <span class="bu">print</span>(<span class="st">"You can't divide by zero!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>You can't divide by zero!</code></pre>
 </div>
 </div>
 <p>We put <code>print(5/0)</code>, the line that caused the error, inside a <code>try</code> block. If the code in a <code>try</code> block works, Python skips over the <code>except</code> block. If the code in the <code>try</code> block causes an error, Python looks for an <code>except</code> block whose error matches the one that was raised and ran the code in that block. In this example, the user sees a friendly error message instead of a traceback.</p>
 <div class="cell" data-execution_count="15">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="cf">try</span>:</span>
 <span id="cb30-2"><a href="#cb30-2"></a>    <span class="bu">print</span>(<span class="dv">5</span><span class="op">/</span><span class="dv">0</span>)</span>
 <span id="cb30-3"><a href="#cb30-3"></a><span class="cf">except</span>:</span>
 <span id="cb30-4"><a href="#cb30-4"></a>    <span class="bu">print</span>(<span class="st">"Exceptions occur!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Exceptions occur!</code></pre>
 </div>
@@ -567,8 +550,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="8.3.2" class="anchored" data-anchor-id="using-exceptions-to-prevent-crashes"><span class="header-section-number">8.3.2</span> Using Exceptions to Prevent Crashes</h3>
 <p>Handling errors correctly is especially important when the program has more work to do after the error occurs. Let’s create a simple calculator that does only division:</p>
 <div class="cell" data-execution_count="16">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="op">%%</span>writefile division_calculator.py</span>
 <span id="cb32-2"><a href="#cb32-2"></a><span class="bu">print</span>(<span class="st">"Give me two numbers, and I'll divide them."</span>)</span>
 <span id="cb32-3"><a href="#cb32-3"></a><span class="bu">print</span>(<span class="st">"Enter 'q' to quit."</span>)</span>
@@ -589,7 +570,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-18"><a href="#cb32-18"></a>    <span class="cf">finally</span>: <span class="co"># Always executed</span></span>
 <span id="cb32-19"><a href="#cb32-19"></a>        <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Give me two numbers, and I'll divide them."</span>)</span>
 <span id="cb32-20"><a href="#cb32-20"></a>        <span class="bu">print</span>(<span class="st">"Enter 'q' to quit."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Overwriting division_calculator.py</code></pre>
 </div>
@@ -601,40 +581,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="8.3.3" class="anchored" data-anchor-id="handling-the-filenotfounderror-exception"><span class="header-section-number">8.3.3</span> Handling the <code>FileNotFoundError</code> Exception</h3>
 <p>One common issue when working with files is handling missing files. The file you’re looking for might be in a different location, the filename may be misspelled, or the file may not exist at all</p>
 <div class="cell" data-execution_count="20">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>filename <span class="op">=</span> <span class="st">'alice.txt'</span></span>
 <span id="cb34-2"><a href="#cb34-2"></a><span class="cf">with</span> <span class="bu">open</span>(filename) <span class="im">as</span> f: <span class="co"># Note it is in read mode</span></span>
 <span id="cb34-3"><a href="#cb34-3"></a>    contents <span class="op">=</span> f.read()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>FileNotFoundError: [Errno 2] No such file or directory: 'alice.txt'</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="21">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>filename <span class="op">=</span> <span class="st">'alice.txt'</span></span>
 <span id="cb36-2"><a href="#cb36-2"></a><span class="cf">try</span>:</span>
 <span id="cb36-3"><a href="#cb36-3"></a>    <span class="cf">with</span> <span class="bu">open</span>(filename) <span class="im">as</span> f:</span>
 <span id="cb36-4"><a href="#cb36-4"></a>        contents <span class="op">=</span> f.read()</span>
 <span id="cb36-5"><a href="#cb36-5"></a><span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
 <span id="cb36-6"><a href="#cb36-6"></a>    <span class="bu">print</span>(<span class="ss">f"Sorry, the file </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss"> does not exist."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sorry, the file alice.txt does not exist.</code></pre>
 </div>
 </div>
 <p>In this example, the code in the <code>try</code> block produces a <code>FileNotFoundError</code>, so Python looks for an <code>except</code> block that matches that error. Python then runs the code in that block, and the result is a friendly error message instead of a traceback.</p>
-</section>
-<section id="exercise-1-assuming-we-are-designing-a-word-game-called-the-mysterious-island-and-we-need-to-load-the-statistics-of-the-player-and-enemies-each-time-the-game-begins.-try-to-complete-the-following-functions-load_data-and-save_data-so-that-you-can-load-the-json-file-if-it-does-not-exist-using-the-exception-handling-techniques-you-just-learned." class="level3" data-number="8.3.4">
-<h3 data-number="8.3.4" class="anchored" data-anchor-id="exercise-1-assuming-we-are-designing-a-word-game-called-the-mysterious-island-and-we-need-to-load-the-statistics-of-the-player-and-enemies-each-time-the-game-begins.-try-to-complete-the-following-functions-load_data-and-save_data-so-that-you-can-load-the-json-file-if-it-does-not-exist-using-the-exception-handling-techniques-you-just-learned."><span class="header-section-number">8.3.4</span> Exercise 1: Assuming we are designing a word game called “The Mysterious Island” and we need to load the statistics of the player and enemies each time the game begins. Try to complete the following functions <code>load_data()</code> and <code>save_data()</code> so that you can load the JSON file if it does not exist using the exception handling techniques you just learned.</h3>
+<blockquote class="blockquote">
+<h3 id="exercise-1-assuming-we-are-designing-a-word-game-called-the-mysterious-island-and-we-need-to-load-the-statistics-of-the-player-and-enemies-each-time-the-game-begins.-try-to-complete-the-following-functions-load_data-and-save_data-so-that-you-can-load-the-json-file-if-it-does-not-exist-using-the-exception-handling-techniques-you-just-learned." data-number="8.3.4" class="anchored"><span class="header-section-number">8.3.4</span> Exercise 1: Assuming we are designing a word game called “The Mysterious Island” and we need to load the statistics of the player and enemies each time the game begins. Try to complete the following functions <code>load_data()</code> and <code>save_data()</code> so that you can load the JSON file if it does not exist using the exception handling techniques you just learned.</h3>
+</blockquote>
 <center>
 <img src="https://cdn.leonardo.ai/users/f26a2ba8-8273-45e9-8db9-958f83058486/generations/905d6875-67b0-4960-8ff9-bb18e1fda05a/Leonardo_Creative_As_you_venture_deeper_into_the_dark_damp_cav_1.jpg">
 </center>
 <div class="cell" data-execution_count="22">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="im">import</span> random</span>
 <span id="cb38-2"><a href="#cb38-2"></a><span class="im">import</span> time</span>
 <span id="cb38-3"><a href="#cb38-3"></a></span>
@@ -723,7 +695,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb38-86"><a href="#cb38-86"></a></span>
 <span id="cb38-87"><a href="#cb38-87"></a><span class="cf">if</span> flag <span class="op">!=</span> <span class="va">False</span>: </span>
 <span id="cb38-88"><a href="#cb38-88"></a>    <span class="bu">print</span>(<span class="st">"Congratulations!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>You encounter a Slime with 10 HP!
 You deal 7 damage to the Slime!

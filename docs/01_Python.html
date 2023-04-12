@@ -78,11 +78,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -196,6 +196,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_Copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -229,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Basics</span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li></ul></div></div>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Basics</span></h1>
 </div>
 
 
@@ -275,10 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="hello-python"><span class="header-section-number">2.1.1</span> Hello, Python</h3>
 <p>A <strong><em>command</em></strong>, often called a <strong><em>statement</em></strong>, instructs the interpreter to do something. The first program described in many programming Language introductions is “Hello, World”. This simple program outputs a nominal greeting, demonstrating how a particular language produces a result, and also how a language represents text.</p>
 <div class="cell" data-execution_count="2">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">print</span>(<span class="st">'Hello, World!'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello, World!</code></pre>
 </div>
@@ -289,11 +321,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Programming languages carry out their instructions very precisely. If a user makes subtle changes to the message between the starting and finishing quotation marks within the print statement, the resultant printed text will change accordingly. Notice that it is possible for statements to span more than one line using <code>\</code> .</p>
 <div class="cell" data-execution_count="3">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">print</span>(<span class="st">'Hello,</span><span class="ch">\</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="st"> World'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello, World</code></pre>
 </div>
@@ -302,11 +331,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In Jupyter Notebook, the <code>print</code> function can even be omitted if the statement you want to print is the last statement in the code.</p>
 </blockquote>
 <div class="cell" data-execution_count="4">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">'hi python'</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">'Hello, World!'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>'Hello, World!'</code></pre>
 </div>
@@ -315,10 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="2.1.1.1" class="anchored"><span class="header-section-number">2.1.1.1</span> Using string methods like a word processor</h4>
 <p>One of the simplest tasks you can do with strings is to change the case of the words in a string.</p>
 <div class="cell" data-execution_count="42">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="bu">print</span>(<span class="st">'hi python'</span>.title())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>'Hi Python'</code></pre>
 </div>
@@ -326,12 +349,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this example, we have the lowercase string ‘hi python’. The <strong><em>method</em></strong> <code>title()</code> appears after the string in the <code>print()</code> call. A method is an action that Python can perform on a piece of data. The dot&nbsp;(<code>.</code>) after the string tells Python to make the <code>title()</code> method act on the string. Every method is followed by a set of parentheses that can accept arguments just like a function.</p>
 <p>There are also other useful methods for string</p>
 <div class="cell" data-execution_count="45">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">print</span>(<span class="st">'hi python'</span>.upper())   <span class="co"># change a string to all uppercase </span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="bu">print</span>(<span class="st">'Hello World'</span>.lower()) <span class="co"># change a string to all lowercase </span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="bu">print</span>(<span class="st">' hi python '</span>.strip()) <span class="co"># remove extra whitespace on the right and left sides of a string</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>HI PYTHON
 hello world
@@ -356,15 +376,12 @@ hi python</code></pre>
 <section id="using-operand-like-a-calculator" class="level4" data-number="2.1.3.1">
 <h4 data-number="2.1.3.1" class="anchored" data-anchor-id="using-operand-like-a-calculator"><span class="header-section-number">2.1.3.1</span> Using operand like a calculator</h4>
 <div class="cell" data-outputid="f9997145-e865-491b-9ebb-0337593552ed" data-execution_count="24">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Integer</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">+</span><span class="dv">4</span>)       <span class="co"># Prints “7”, which is 3 plus 4.</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="bu">print</span>(<span class="dv">5</span><span class="op">-</span><span class="dv">6</span>)       <span class="co"># Prints “-1”, which is 5 minus 6</span></span>
 <span id="cb11-4"><a href="#cb11-4"></a><span class="bu">print</span>(<span class="dv">7</span><span class="op">*</span><span class="dv">8</span>)       <span class="co"># Prints “56”, which is 7 times 8</span></span>
 <span id="cb11-5"><a href="#cb11-5"></a><span class="bu">print</span>(<span class="dv">45</span><span class="op">/</span><span class="dv">4</span>)      <span class="co"># Prints “11.25”, which is 45 divided by 4, / is float(true) division</span></span>
 <span id="cb11-6"><a href="#cb11-6"></a><span class="bu">print</span>(<span class="dv">2</span><span class="op">**</span><span class="dv">10</span>)     <span class="co"># Prints “1024”, which is 2 to the 10th power</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>7
 -1
@@ -378,11 +395,8 @@ hi python</code></pre>
 </blockquote>
 <p>When an operation such as forty-five divided by four produces a non-integer result, such as <code>11.25</code>, Python implicitly switches to a floating-point representation. When purely integer answers are desired, a different set of operators can be used.</p>
 <div class="cell" data-outputid="4a5d1413-2412-4c25-f1d0-cc7d0f381040" data-execution_count="7">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="bu">print</span>(<span class="dv">45</span><span class="op">//</span><span class="dv">4</span>)     <span class="co"># Prints “11”, which is 45 integer divided by 4, // is floor(integer) division</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="bu">print</span>(<span class="dv">45</span><span class="op">%</span><span class="dv">4</span>)      <span class="co"># Prints “1”, because 4 * 11 + 1 = 45</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>11
 1</code></pre>
@@ -391,12 +405,9 @@ hi python</code></pre>
 <p>The double slash signifies the integer floor division operator, while the percentage symbol signifies the modulus, or remainder operator. Taken together, we can read these calculations as, “Four goes into forty-five eleven times, with a remainder of one.”</p>
 <p>String values also can be combined and manipulated in some intuitive ways.</p>
 <div class="cell" data-outputid="9fa62dd5-f940-4731-c19f-84a78969dba1" data-execution_count="8">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>s <span class="op">=</span> <span class="st">'hello'</span> <span class="op">+</span> <span class="st">'world'</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a>t <span class="op">=</span> s <span class="op">*</span> <span class="dv">4</span></span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="bu">print</span>(t)    <span class="co"># Prints “helloworldhelloworldhelloworldhelloworld”</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>helloworldhelloworldhelloworldhelloworld</code></pre>
 </div>
@@ -415,20 +426,14 @@ hi python</code></pre>
 source: https://runestone.academy/ns/books/published/cpp4python/AtomicData/AtomicData.html
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:7,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1664458500650,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="603af22e-ff7e-4c48-a862-681998a34535" data-execution_count="1">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>varName <span class="op">=</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>A variable is initialized (or created) the first time a value is stored in it. After that, you can use it in statements with other variables and values. When a variable is assigned a new value, the old value is forgotten. This is called <strong>overwriting</strong> the variable.</p>
 <div class="cell" data-execution_count="9">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>spam <span class="op">=</span> <span class="st">'Hello'</span>   <span class="co"># 'Hello' is a string object</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="bu">print</span>(spam)      <span class="co"># spam is a variable, it is just a reference or tag</span></span>
 <span id="cb18-3"><a href="#cb18-3"></a>spam <span class="op">=</span> <span class="st">'Goodbye'</span> <span class="co"># 'Goodbye' is another string object</span></span>
 <span id="cb18-4"><a href="#cb18-4"></a><span class="bu">print</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello
 Goodbye</code></pre>
@@ -478,10 +483,7 @@ Goodbye</code></pre>
 </table>
 <p>Python variable names are <strong><em>case-sensitive</em></strong>, meaning that capitalization matters. A variable named <code>size</code> is treated as distinct from variables named <code>Size</code> or <code>SIZE</code>. A small number of <strong><em>keywords</em></strong>, names that are reserved for special meaning in Python, cannot be used as variable names. You can view this list by accessing the built-in Python help system.</p>
 <div class="cell" data-outputid="3d8abdf3-4ed6-4b82-e7ab-3d1b0e5f74cc" data-execution_count="10">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="bu">help</span>(<span class="st">'keywords'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Here is a list of the Python keywords.  Enter any keyword to get more help.
@@ -500,8 +502,6 @@ break               for                 not
 </div>
 <p>Variables can be used to store all of the types of data values that Python is able to represent.</p>
 <div class="cell" data-execution_count="21">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>my_string <span class="op">=</span> <span class="st">'characters'</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a>my_Boolean <span class="op">=</span> <span class="va">True</span> <span class="co"># True/False</span></span>
 <span id="cb22-3"><a href="#cb22-3"></a>my_integer <span class="op">=</span> <span class="dv">5</span></span>
@@ -515,17 +515,13 @@ break               for                 not
 <span id="cb22-11"><a href="#cb22-11"></a><span class="co">### Multiple Assignment!</span></span>
 <span id="cb22-12"><a href="#cb22-12"></a><span class="co"># You can also assign values to more than one variable using just a single line of code!</span></span>
 <span id="cb22-13"><a href="#cb22-13"></a>my_string, my_Boolean, my_integer, my_floating_point, my_complex <span class="op">=</span> <span class="st">'characters'</span>,  <span class="va">True</span>, <span class="dv">5</span>, <span class="fl">26.2</span>, <span class="dv">2</span><span class="op">+</span><span class="ot">1j</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <div class="cell" data-outputid="3ce285db-a3f7-4713-dec3-40f509dd37f2" data-execution_count="18">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="bu">print</span>(<span class="dv">10</span>)</span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="bu">print</span>(<span class="fl">3.14</span>)</span>
 <span id="cb23-3"><a href="#cb23-3"></a><span class="bu">print</span>(<span class="fl">2e10</span>)   <span class="co"># scientific notation</span></span>
 <span id="cb23-4"><a href="#cb23-4"></a><span class="bu">print</span>(<span class="dv">12_000</span>) <span class="co"># you can group digits using underscores to make large numbers more readable</span></span>
 <span id="cb23-5"><a href="#cb23-5"></a><span class="bu">print</span>(<span class="dv">3</span><span class="op">+</span><span class="ot">2j</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>10
 3.14
@@ -539,56 +535,38 @@ break               for                 not
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="data-types"><span class="header-section-number">2.2.1</span> Data types</h3>
 <p>In Python variables and constants have a <strong><em>type</em></strong>. We can ask Python what type something is by using the <code>type()</code> function</p>
 <div class="cell" data-outputid="d765d2c3-0598-414c-ab64-c38f50dc4971" data-execution_count="19">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="bu">type</span>(<span class="st">'Hello, World!'</span>), <span class="bu">type</span>(<span class="va">False</span>), <span class="bu">type</span>(<span class="dv">4</span>), <span class="bu">type</span>(<span class="fl">3.2</span>), <span class="bu">type</span>(<span class="dv">3</span><span class="op">+</span><span class="ot">5j</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>(str, bool, int, float, complex)</code></pre>
 </div>
 </div>
 <div class="cell" data-outputid="5c46112f-3793-4e27-be0e-4c6a0c54ce9a" data-execution_count="22">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">type</span>(my_string),  <span class="bu">type</span>(my_Boolean), <span class="bu">type</span>(my_integer), <span class="bu">type</span>(my_floating_point), <span class="bu">type</span>(my_complex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>(str, bool, int, float, complex)</code></pre>
 </div>
 </div>
 <p>You can convert object of one type to another using <strong><em>cast</em></strong> by <code>str()</code>, <code>float()</code>, <code>int()</code>, etc.</p>
 <div class="cell" data-outputid="6771cb57-3d2a-46a8-fad3-09b08050ce16" data-execution_count="23">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="bu">float</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>3.0</code></pre>
 </div>
 </div>
 <div class="cell" data-outputid="a456489e-7e17-47d8-c937-c0f94fe96b0c" data-execution_count="24">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="bu">int</span>(<span class="fl">3.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>3</code></pre>
 </div>
 </div>
 <div class="cell" data-outputid="3d339ffa-2183-4a65-ec6c-e106a24a67e5" data-execution_count="25">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="bu">int</span>(<span class="st">'3'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>3</code></pre>
 </div>
 </div>
 <div class="cell" data-outputid="f18cd1f3-840b-4a0b-e54b-6e78d657f369" data-execution_count="26">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a><span class="bu">str</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>'3'</code></pre>
 </div>
@@ -596,22 +574,16 @@ break               for                 not
 <p>Python <code>ord()</code> and <code>chr()</code> are built-in functions. They are used to convert a character to an int and vice versa. Python <code>ord()</code> and <code>chr()</code> functions are exactly opposite of each other.</p>
 <p>Python <code>ord()</code> function takes string argument of a single Unicode character and return its integer Unicode code point value. Let’s look at some examples of using <code>ord()</code> function.</p>
 <div class="cell" data-outputid="d6a7072b-e6c5-4518-ef9b-ca1b9f4b928f" data-execution_count="38">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>x <span class="op">=</span> <span class="bu">ord</span>(<span class="st">'A'</span>)</span>
 <span id="cb37-2"><a href="#cb37-2"></a><span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>65</code></pre>
 </div>
 </div>
 <p>Python <code>chr()</code> function takes integer argument and return the string representing a character at that code point.</p>
 <div class="cell" data-outputid="a28e8d8a-e22b-4ac9-9ec3-b010d07cb327" data-execution_count="39">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>y <span class="op">=</span> <span class="bu">chr</span>(<span class="dv">65</span>)</span>
 <span id="cb39-2"><a href="#cb39-2"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>A</code></pre>
 </div>
@@ -624,20 +596,14 @@ break               for                 not
 <li>Explicit Conversion - manual type conversion</li>
 </ul>
 <div class="cell" data-execution_count="27">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="dv">5</span> <span class="op">+</span> <span class="fl">4.2</span> <span class="co"># Implicit conversion</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>9.2</code></pre>
 </div>
 </div>
 <p>In Python, <code>complex &gt; float &gt; int &gt; bool</code></p>
 <div class="cell" data-execution_count="28">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="bu">int</span>(<span class="fl">4.7</span>) <span class="op">+</span> <span class="dv">3</span> <span class="co"># Explicit conversion</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>7</code></pre>
 </div>
@@ -649,30 +615,21 @@ break               for                 not
 <p>Programming languages are not very forgiving for beginners, and a great deal of time learning to write software can be spent trying to find bugs, or errors in the code. Locating such bugs and correcting them is thus known as <strong><em>debugging</em></strong>. There are three major classes of bug that we create in software: <strong><em>syntax errors</em></strong> (mistakes in the symbols that have been typed), <strong><em>semantic errors</em></strong> (mistakes in the meaning of the program), and <strong><em>runtime errors</em></strong> (mistakes that occur when the program is executed.)</p>
 <p>Syntax errors are the most common for novices, and include simple errors such as forgetting one of the quote marks at the beginning or ending of a text string, failing to close open parentheses, or misspelling the function name <code>print()</code>. The Python interpreter will generally try to point these errors out when it encounters them, displaying an offending line number and a description of the problem. With some practice, a beginner can quickly learn to recognize and interpret common error cases. As examples:</p>
 <div class="cell" data-outputid="3f6442f2-c7d3-40de-afa4-4cbaac2d32db" data-execution_count="31">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="bu">print</span>(<span class="dv">5</span> <span class="op">+</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>SyntaxError: invalid syntax (Temp/ipykernel_24072/2298961889.py, line 1)</code></pre>
 </div>
 </div>
 <p>This expression is missing a value between the addition operator and the closing parenthesis.</p>
 <div class="cell" data-outputid="25500ee2-cee1-4673-ca70-d6323fa01eda" data-execution_count="32">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="bu">print</span>(mystring)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'mystring' is not defined</code></pre>
 </div>
 </div>
 <p>In this case it found a name error and reports that the variable being printed has not been defined. Python can’t identify the variable name provided.</p>
 <div class="cell" data-outputid="c1fe6275-21cd-40de-a622-ae247eda1861" data-execution_count="33">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>pront(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>NameError: name 'pront' is not defined</code></pre>
 </div>
@@ -681,10 +638,7 @@ break               for                 not
 <p>Semantic errors are flaws in the algorithm, or flaws in the way the algorithm is expressed in a language. Examples might include using the wrong variable name in a calculation, or getting the order of arithmetic operations wrong in a complex expression. Python follows the standard rules for operator precedence, so in an expression like <code>total_pay = 40 + extra_hours * pay_rate</code>, the multiplication will be performed before the addition, incorrectly calculating the total pay. (Unless your pay rate happens to be $1/hour.) <strong>Use parenthesis to properly specify the order of operations in complex expressions</strong>, thereby avoiding both semantic errors and code that may be harder to understand (e.g., <code>total_pay = (40 + extra_hours) * pay_rate</code>).</p>
 <p>Finally, runtime errors at this level might include unintentionally dividing by zero or using a variable before you have defined it. Python reads statements from top to bottom, and it must see an assignment statement to a variable before that variable is used in an expression.</p>
 <div class="cell" data-execution_count="34">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="dv">5</span><span class="op">/</span><span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-error">
 <pre><code>ZeroDivisionError: division by zero</code></pre>
 </div>
@@ -695,8 +649,6 @@ break               for                 not
 <h2 data-number="2.3" class="anchored" data-anchor-id="the-first-program"><span class="header-section-number">2.3</span> The first program</h2>
 <p>While the interactive shell is good for running Python instructions one at a time, sometimes you have to use a <strong><em>script</em></strong>, to write entire Python programs. In this case, you’ll type the instructions into the file editor.</p>
 <div class="cell" data-execution_count="35">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a><span class="op">%%</span>writefile hello.py</span>
 <span id="cb53-2"><a href="#cb53-2"></a><span class="co">"""</span></span>
 <span id="cb53-3"><a href="#cb53-3"></a><span class="co">This program says hello and asks for your name.</span></span>
@@ -709,17 +661,13 @@ break               for                 not
 <span id="cb53-10"><a href="#cb53-10"></a><span class="bu">print</span>(<span class="st">'The length of your name is:</span><span class="ch">\n</span><span class="st">'</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">len</span>(myName)))</span>
 <span id="cb53-11"><a href="#cb53-11"></a>myAge <span class="op">=</span> <span class="bu">input</span>(<span class="st">'What is your age? '</span>) <span class="co"># ask for their age</span></span>
 <span id="cb53-12"><a href="#cb53-12"></a><span class="bu">print</span>(<span class="st">'You will be '</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">int</span>(myAge) <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="st">' in a year.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Writing hello.py</code></pre>
 </div>
 </div>
 <p>Once you’ve entered your source code, the ipython <strong>magic</strong> <code>%%writefile</code> will save it so that you won’t have to retype it each time you start. You can then use another magic <code>%run</code> to execute the python script.</p>
 <div class="cell" data-execution_count="36">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="op">%</span>run hello.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello, world!
 It is good to meet you, phonchi
@@ -743,8 +691,6 @@ You will be 33 in a year.</code></pre>
 </blockquote>
 <p>Hint: Use floor division (<code>//</code>) and remainder (<code>%</code>) to isolate the digits.</p>
 <div class="cell" data-execution_count="39">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Your answer here</span></span>
 <span id="cb57-2"><a href="#cb57-2"></a><span class="co"># x=42339</span></span>
 <span id="cb57-3"><a href="#cb57-3"></a><span class="co"># Get the user's input from their keyboard and convert it to integer:</span></span>
@@ -757,7 +703,6 @@ You will be 33 in a year.</code></pre>
 <span id="cb57-10"><a href="#cb57-10"></a></span>
 <span id="cb57-11"><a href="#cb57-11"></a><span class="co"># Print out the results</span></span>
 <span id="cb57-12"><a href="#cb57-12"></a>____(digits0,<span class="st">'   '</span>,digits1,<span class="st">'   '</span>,digits2,<span class="st">'   '</span>,digits3,<span class="st">'   '</span>,digits4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>4     2     3     3     9</code></pre>
 </div>
@@ -767,10 +712,7 @@ You will be 33 in a year.</code></pre>
 <section id="the-zen-of-python" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="the-zen-of-python"><span class="header-section-number">2.4</span> The zen of Python</h2>
 <div class="cell" data-execution_count="40">
-<details>
-<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a><span class="im">import</span> this</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>The Zen of Python, by Tim Peters
 

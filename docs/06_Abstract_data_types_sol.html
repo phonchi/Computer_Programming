@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.306">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="phonchi">
+<meta name="dcterms.date" content="2023-04-12">
+
+<title>Computer Programming - Appendix D — Abstract Data Types</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05_Data_Structure_sol.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./06_Abstract_data_types_sol.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Computer Programming</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Book</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Flow_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Flow Control</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Lists_tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lists and Tuples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Dictionaries_sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Other collections - Dictionaries and Sets</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Manipulating_string.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Manipulating Strings</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Files and Exceptions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_09_OOP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Object Oriented Programming and Classes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_11_NumPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_Copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><span class="header-section-number">D.1</span> Background</a>
+  <ul>
+  <li><a href="#simple-adts" id="toc-simple-adts" class="nav-link" data-scroll-target="#simple-adts"><span class="header-section-number">D.1.1</span> Simple ADTs</a></li>
+  <li><a href="#complex-adts" id="toc-complex-adts" class="nav-link" data-scroll-target="#complex-adts"><span class="header-section-number">D.1.2</span> Complex ADTs</a></li>
+  <li><a href="#model-for-an-abstract-data-type" id="toc-model-for-an-abstract-data-type" class="nav-link" data-scroll-target="#model-for-an-abstract-data-type"><span class="header-section-number">D.1.3</span> Model for an abstract data type</a></li>
+  </ul></li>
+  <li><a href="#stacks" id="toc-stacks" class="nav-link" data-scroll-target="#stacks"><span class="header-section-number">D.2</span> Stacks</a>
+  <ul>
+  <li><a href="#operations-on-stacks" id="toc-operations-on-stacks" class="nav-link" data-scroll-target="#operations-on-stacks"><span class="header-section-number">D.2.1</span> Operations on stacks</a>
+  <ul class="collapse">
+  <li><a href="#the-stack-operation" id="toc-the-stack-operation" class="nav-link" data-scroll-target="#the-stack-operation"><span class="header-section-number">D.2.1.1</span> The stack operation</a></li>
+  <li><a href="#the-push-operation" id="toc-the-push-operation" class="nav-link" data-scroll-target="#the-push-operation"><span class="header-section-number">D.2.1.2</span> The push operation</a></li>
+  <li><a href="#the-pop-operation" id="toc-the-pop-operation" class="nav-link" data-scroll-target="#the-pop-operation"><span class="header-section-number">D.2.1.3</span> The pop operation</a></li>
+  <li><a href="#the-empty-operation" id="toc-the-empty-operation" class="nav-link" data-scroll-target="#the-empty-operation"><span class="header-section-number">D.2.1.4</span> The empty operation</a></li>
+  </ul></li>
+  <li><a href="#stack-adt" id="toc-stack-adt" class="nav-link" data-scroll-target="#stack-adt"><span class="header-section-number">D.2.2</span> Stack ADT</a></li>
+  <li><a href="#stack-applications" id="toc-stack-applications" class="nav-link" data-scroll-target="#stack-applications"><span class="header-section-number">D.2.3</span> Stack applications</a>
+  <ul class="collapse">
+  <li><a href="#reversing-data-items" id="toc-reversing-data-items" class="nav-link" data-scroll-target="#reversing-data-items"><span class="header-section-number">D.2.3.1</span> Reversing data items</a></li>
+  <li><a href="#pairing-data-items" id="toc-pairing-data-items" class="nav-link" data-scroll-target="#pairing-data-items"><span class="header-section-number">D.2.3.3</span> Pairing data items</a></li>
+  </ul></li>
+  <li><a href="#stack-implementation" id="toc-stack-implementation" class="nav-link" data-scroll-target="#stack-implementation"><span class="header-section-number">D.2.4</span> Stack implementation</a></li>
+  </ul></li>
+  <li><a href="#queues" id="toc-queues" class="nav-link" data-scroll-target="#queues"><span class="header-section-number">D.3</span> Queues</a>
+  <ul>
+  <li><a href="#operations-on-queues" id="toc-operations-on-queues" class="nav-link" data-scroll-target="#operations-on-queues"><span class="header-section-number">D.3.1</span> Operations on queues</a>
+  <ul class="collapse">
+  <li><a href="#the-queue-operation" id="toc-the-queue-operation" class="nav-link" data-scroll-target="#the-queue-operation"><span class="header-section-number">D.3.1.1</span> The queue operation</a></li>
+  <li><a href="#the-enqueue-operation" id="toc-the-enqueue-operation" class="nav-link" data-scroll-target="#the-enqueue-operation"><span class="header-section-number">D.3.1.2</span> The enqueue operation</a></li>
+  <li><a href="#the-dequeue-operation" id="toc-the-dequeue-operation" class="nav-link" data-scroll-target="#the-dequeue-operation"><span class="header-section-number">D.3.1.3</span> The dequeue operation</a></li>
+  <li><a href="#the-empty-operation-1" id="toc-the-empty-operation-1" class="nav-link" data-scroll-target="#the-empty-operation-1"><span class="header-section-number">D.3.1.4</span> The empty operation</a></li>
+  </ul></li>
+  <li><a href="#queue-adt" id="toc-queue-adt" class="nav-link" data-scroll-target="#queue-adt"><span class="header-section-number">D.3.2</span> Queue ADT</a></li>
+  <li><a href="#queue-applications" id="toc-queue-applications" class="nav-link" data-scroll-target="#queue-applications"><span class="header-section-number">D.3.3</span> Queue applications</a></li>
+  <li><a href="#queue-implementation" id="toc-queue-implementation" class="nav-link" data-scroll-target="#queue-implementation"><span class="header-section-number">D.3.4</span> Queue implementation</a></li>
+  </ul></li>
+  <li><a href="#general-linear-lists" id="toc-general-linear-lists" class="nav-link" data-scroll-target="#general-linear-lists"><span class="header-section-number">D.4</span> General linear lists</a></li>
+  <li><a href="#trees" id="toc-trees" class="nav-link" data-scroll-target="#trees"><span class="header-section-number">D.5</span> Trees</a>
+  <ul>
+  <li><a href="#binary-trees" id="toc-binary-trees" class="nav-link" data-scroll-target="#binary-trees"><span class="header-section-number">D.5.1</span> Binary trees</a>
+  <ul class="collapse">
+  <li><a href="#recursive-definition-of-binary-trees" id="toc-recursive-definition-of-binary-trees" class="nav-link" data-scroll-target="#recursive-definition-of-binary-trees"><span class="header-section-number">D.5.1.1</span> Recursive definition of binary trees</a></li>
+  </ul></li>
+  <li><a href="#operations-on-binary-trees" id="toc-operations-on-binary-trees" class="nav-link" data-scroll-target="#operations-on-binary-trees"><span class="header-section-number">D.5.2</span> Operations on binary trees</a>
+  <ul class="collapse">
+  <li><a href="#binary-tree-traversals" id="toc-binary-tree-traversals" class="nav-link" data-scroll-target="#binary-tree-traversals"><span class="header-section-number">D.5.2.1</span> Binary tree traversals</a></li>
+  <li><a href="#binary-tree-applications" id="toc-binary-tree-applications" class="nav-link" data-scroll-target="#binary-tree-applications"><span class="header-section-number">D.5.2.4</span> Binary tree applications</a></li>
+  </ul></li>
+  <li><a href="#binary-search-trees" id="toc-binary-search-trees" class="nav-link" data-scroll-target="#binary-search-trees"><span class="header-section-number">D.5.3</span> Binary search trees</a></li>
+  </ul></li>
+  <li><a href="#graphs" id="toc-graphs" class="nav-link" data-scroll-target="#graphs"><span class="header-section-number">D.6</span> Graphs</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Appendix D — Abstract Data Types</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>phonchi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 12, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+
+<table align="left">
+<tbody><tr><td>
+<a href="https://colab.research.google.com/github/phonchi/nsysu-math105A/blob/master/static_files/presentations/04_Algorithms.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</td>
+<td>
+<a target="_blank" href="https://kaggle.com/kernels/welcome?src=https://github.com/phonchi/nsysu-math105A/blob/master/static_files/presentations/04_Algorithms.ipynb"><img src="https://kaggle.com/static/images/open-in-kaggle.svg"></a>
+</td>
+
+</tr></tbody></table>
+<p><br></p>
+<section id="background" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="background"><span class="header-section-number">D.1</span> Background</h2>
+<p>Problem solving with a computer means processing data. To process data, we need to define the data type and the operation to be performed on the data. For example, to find the sum of a list of numbers, we should select the type for the number (integer or real) and define the operation (addition). The definition of the data type and the definition of the operation to be applied to the data is part of the idea behind an <strong>abstract data type (ADT)</strong>—to hide how the operation is performed on the data.</p>
+<blockquote class="blockquote">
+<p>In other word, the user of an ADT needs only to know that a set of operations are available for the data type, but does not need to know how they are applied.</p>
+</blockquote>
+<section id="simple-adts" class="level3" data-number="D.1.1">
+<h3 data-number="D.1.1" class="anchored" data-anchor-id="simple-adts"><span class="header-section-number">D.1.1</span> Simple ADTs</h3>
+<p>Many programming languages already define some simple ADTs as integral parts of the language. For example, the Python language defines a simple ADT called an <a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex">integer</a>. The type of this ADT is integer with predefined ranges. Python also defines several operations that can be applied on this data type (addition, subtraction, multiplication, division, and so on). Python&nbsp; explicitly defines these operations on integers and what we expect as the results. A&nbsp; programmer who writes a Python program to add two integers should know about the integer ADT and the operations that can be applied to it.</p>
+<p>The programmer, however, does not need to know how these operations are actually implemented. For example, the programmer uses the expression <code>z = x + y</code> and expects the value of <code>x</code> (an integer) to be added to the value of <code>y</code> (an integer) and the result to be named <code>z</code> (an integer). The programmer does not need to know how the addition is performed. We learned in previous chapters that the way this addition is done by a computer is to store the two integers in two memory locations in two’s complement format, to load them into the CPU register, to add them in binary, and to store the result back to another memory location. The programmer, however, does not need to know this. An integer in Python is a simple abstract data type with predefined operations. How the operations are performed is not a concern for the programmer.</p>
+</section>
+<section id="complex-adts" class="level3" data-number="D.1.2">
+<h3 data-number="D.1.2" class="anchored" data-anchor-id="complex-adts"><span class="header-section-number">D.1.2</span> Complex ADTs</h3>
+<p>Although several simple ADTs, such as integer, float, character and so on, have been implemented and are available for use in most languages, many useful complex ADTs are not. As we will see in this chapter, we need a stack ADT, a queue ADT, and so on. To be efficient, these ADTs should be created and stored in the library of the computer to be used. The user of a stack, for example, should only need to know what operations are available for the stack, not how these operations are performed.</p>
+<p>Therefore, with an ADT, users are not concerned with how the task is done, but rather with what it can do. In other words, the ADT consists of a set of definitions that allow programmers to use the operation while their implementation is hidden. <strong>This generalization of operations with unspecified implementations is known as abstraction.</strong> We abstract the essence of the process and leave the implementation details hidden.</p>
+<blockquote class="blockquote">
+<p>The concept of abstraction means: 1. We know what a data type can do. 2. How it is done is hidden.</p>
+</blockquote>
+<p>Let us now define an ADT. An abstract data type is a data type packaged with the operations that are meaningful for the data type. We then encapsulate the data and the operations on the data and hide them from the user.</p>
+<blockquote class="blockquote">
+<p>Abstract Data Type 1. Definition of data 2. Definition of operations 3. Encapsulation of data and operation</p>
+</blockquote>
+</section>
+<section id="model-for-an-abstract-data-type" class="level3" data-number="D.1.3">
+<h3 data-number="D.1.3" class="anchored" data-anchor-id="model-for-an-abstract-data-type"><span class="header-section-number">D.1.3</span> Model for an abstract data type</h3>
+<p>The ADT model is shown in the Figure below. The colored area with an irregular outline represents the ADT. Inside the ADT are two different parts of the model: data structure and operations (public and private). The application program can only access the public operations through the interface. An interface is a list of public operations and data to be passed to or returned from those operations. The private operations are for internal use by the ADT. The data structures, such as arrays and linked lists, are inside the ADT and are used by the public and private operations.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1k0fP0andX45WYqW2oQGH5Tc8OaNjQWX1" width="70%" height="70%">
+</center>
+<p>Although the public operations and the interface should be independent of the implementation, the private operations are dependent on the data structures chosen during the implementation of the ADT. We will elaborate on this issue when we discuss some of the ADTs.</p>
+</section>
+</section>
+<section id="stacks" class="level2" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="stacks"><span class="header-section-number">D.2</span> Stacks</h2>
+<p>A stack is a restricted linear list in which all additions and deletions are made at one end, the top. If we insert a series of data into a stack and then remove it, the order of the data is reversed. Data input as 5, 10, 15, 20, for example, would be removed as 20, 15, 10, and 5. This reversing attribute is why stacks are known as a <strong>last in, first out (LIFO)</strong> data structure.</p>
+<p>We use many different types of stacks in our daily lives. We often talk of a stack of coins or a stack of books. Any situation in which we can only add or remove an object at the top is a stack. If we want to remove an object other than the one at the top, we must first remove all objects above it. Figure below shows three representations of stacks.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1k6_Kw4DN0Vhj18VN4uji4gyXGCB8-SIh" width="70%" height="70%">
+</center>
+<section id="operations-on-stacks" class="level3" data-number="D.2.1">
+<h3 data-number="D.2.1" class="anchored" data-anchor-id="operations-on-stacks"><span class="header-section-number">D.2.1</span> Operations on stacks</h3>
+<section id="the-stack-operation" class="level4" data-number="D.2.1.1">
+<h4 data-number="D.2.1.1" class="anchored" data-anchor-id="the-stack-operation"><span class="header-section-number">D.2.1.1</span> The stack operation</h4>
+<p>The stack operation creates an empty stack. Python’s built-in list type <a href="https://docs.python.org/3/tutorial/datastructures.html#using-lists-as-stacks">makes a decent stack data structure</a> as it supports <code>push</code> and <code>pop</code> operations. Python’s lists are implemented as dynamic arrays internally, which means they occasionally need to resize the storage space for elements stored in them when elements are added or removed. The list over-allocates its backing storage so that not every push or pop requires resizing. <strong>For optimum performance, stacks based on Python lists should grow towards higher indexes and shrink towards lower ones.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>stack <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-push-operation" class="level4" data-number="D.2.1.2">
+<h4 data-number="D.2.1.2" class="anchored" data-anchor-id="the-push-operation"><span class="header-section-number">D.2.1.2</span> The push operation</h4>
+<p>The push operation inserts an item at the top of the stack. This operation returns the new stack with dataItem inserted at the top. Figure below shows the pictorial representation of this operation.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1kEowYCXUITSFUem2gpvY9Gih_UFWOqpG" width="70%" height="70%">
+</center>
+<p>In Python we use <code>append</code> method as the push operation to put it into the stack (higher index).</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669713649897,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="53a7a2ec-e1f1-4e80-a506-f1ca3acf56c0">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>stack.append(<span class="dv">20</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>stack.append(<span class="dv">78</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>stack.append(<span class="dv">30</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="bu">print</span>(stack)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[20, 78, 30]</code></pre>
+</div>
+</div>
+</section>
+<section id="the-pop-operation" class="level4" data-number="D.2.1.3">
+<h4 data-number="D.2.1.3" class="anchored" data-anchor-id="the-pop-operation"><span class="header-section-number">D.2.1.3</span> The pop operation</h4>
+<p>The pop operation deletes the item at the top of the stack. The following shows the pictorial representation of this operation.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1kIIIetPbjwkwmTLcNDR2LKFfscWMKG3O" width="70%" height="70%">
+</center>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669713855432,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="1544be60-649a-47f3-9dbf-d02397d490d3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>Poped <span class="op">=</span> stack.pop()</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="bu">print</span>(Poped)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>30</code></pre>
+</div>
+</div>
+<p>The deleted item can be used by the application program or can be just discarded. After&nbsp;the pop operation, the item that was under the top element before the deletion becomes the top element.</p>
+</section>
+<section id="the-empty-operation" class="level4" data-number="D.2.1.4">
+<h4 data-number="D.2.1.4" class="anchored" data-anchor-id="the-empty-operation"><span class="header-section-number">D.2.1.4</span> The empty operation</h4>
+<p>The empty operation checks the status of the stack.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> empty(lis):</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="cf">if</span> <span class="bu">len</span>(lis) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="cf">else</span>:</span>
+<span id="cb6-5"><a href="#cb6-5"></a>    <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669714076340,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="a9759cfe-dcc7-4f35-a516-9f44526b43fc">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>empty(stack)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>False</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669714087605,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="d3abd319-de69-4039-e09a-311c833bc927">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>stack.pop()</span>
+<span id="cb9-2"><a href="#cb9-2"></a>stack.pop()</span>
+<span id="cb9-3"><a href="#cb9-3"></a>empty(stack)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="stack-adt" class="level3" data-number="D.2.2">
+<h3 data-number="D.2.2" class="anchored" data-anchor-id="stack-adt"><span class="header-section-number">D.2.2</span> Stack ADT</h3>
+<p>We define a stack as an ADT as shown below:</p>
+<center>
+<img src="https://drive.google.com/uc?id=1kMJPb_uvqefjWEejGn_xnUFehPR3wrIU" width="70%" height="70%">
+</center>
+</section>
+<section id="stack-applications" class="level3" data-number="D.2.3">
+<h3 data-number="D.2.3" class="anchored" data-anchor-id="stack-applications"><span class="header-section-number">D.2.3</span> Stack applications</h3>
+<section id="reversing-data-items" class="level4" data-number="D.2.3.1">
+<h4 data-number="D.2.3.1" class="anchored" data-anchor-id="reversing-data-items"><span class="header-section-number">D.2.3.1</span> Reversing data items</h4>
+<p>Reversing data items requires that a given set of data items be reordered so that the first and last items are exchanged, with all of the positions between the first and last being relatively exchanged also. For example, the list <code>(2, 4, 7, 1, 6, 8)</code> becomes <code>(8, 6, 1, 7, 4, 2)</code>.</p>
+<blockquote class="blockquote">
+<h4 id="example-1-in-chapter-2-we-gave-a-simple-uml-diagram-to-convert-an-integer-from-decimal-to-any-base.-although-the-algorithm-is-very-simple-if-we-print-the-digits-of-the-converted-integer-as-they-are-created-we-will-get-the-digits-in-reverse-order.-the-print-instruction-in-any-computer-language-prints-characters-from-left-to-right-but-the-algorithm-creates-the-digits-from-right-to-left.-we-can-use-the-reversing-characteristic-of-a-stack-lifo-structure-to-solve-the-problem." data-number="D.2.3.2" class="anchored"><span class="header-section-number">D.2.3.2</span> Example 1: In Chapter 2 we gave a simple UML diagram to convert an integer from decimal to any base. Although the algorithm is very simple, if we print the digits of the converted integer as they are created, we will get the digits in reverse order. The print instruction in any computer language prints characters from left to right, but the algorithm creates the digits from right to left. We can use the reversing characteristic of a stack (LIFO structure) to solve the problem.</h4>
+</blockquote>
+<center>
+<img src="https://drive.google.com/uc?id=1sjz87GJMOQ_cxnsWIDTrZVPyr1r_BZaq" width="70%" height="70%">
+</center>
+<center>
+<img src="https://drive.google.com/uc?id=1kS62TyCHHbjfSIBgqXVCO8ZaS7vytPxJ" width="70%" height="70%">
+</center>
+<center>
+<img src="https://drive.google.com/uc?id=1kXltrAe6FdWXmku5a_njKPJlpDs-xdgK" width="70%" height="70%">
+</center>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> DecimalToBinary(number):</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="co">"""</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">    Parameters</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co">    ----------</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">    number: int</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co">        The integer to be converted </span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="co">    Returns</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="co">    -------</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co">    print the binary equivalent</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="co">  """</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a>  <span class="cf">if</span> number <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb11-12"><a href="#cb11-12"></a>    <span class="bu">print</span>(<span class="st">"0b0"</span>)</span>
+<span id="cb11-13"><a href="#cb11-13"></a>    <span class="cf">return</span> </span>
+<span id="cb11-14"><a href="#cb11-14"></a>  S <span class="op">=</span> []</span>
+<span id="cb11-15"><a href="#cb11-15"></a>  <span class="cf">while</span> number <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb11-16"><a href="#cb11-16"></a>    remainder <span class="op">=</span> number <span class="op">%</span> <span class="dv">2</span></span>
+<span id="cb11-17"><a href="#cb11-17"></a>    S.append(remainder)</span>
+<span id="cb11-18"><a href="#cb11-18"></a>    number <span class="op">=</span> number <span class="op">//</span><span class="dv">2</span></span>
+<span id="cb11-19"><a href="#cb11-19"></a>  </span>
+<span id="cb11-20"><a href="#cb11-20"></a>  <span class="bu">print</span>(<span class="st">"0b"</span>,end <span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb11-21"><a href="#cb11-21"></a>  <span class="cf">while</span> <span class="bu">len</span>(S)<span class="op">!=</span><span class="dv">0</span>:</span>
+<span id="cb11-22"><a href="#cb11-22"></a>    x <span class="op">=</span> S.pop()</span>
+<span id="cb11-23"><a href="#cb11-23"></a>    <span class="bu">print</span>(x,end <span class="op">=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669715914452,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="13eb8930-eba9-4086-cb4c-e74335a78eb3">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>DecimalToBinary(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0b0</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669715914452,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="7b4c0c80-2399-4762-cf83-532ed899257b">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>DecimalToBinary(<span class="dv">35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0b100011</code></pre>
+</div>
+</div>
+<p>We create an empty stack first. Then we use a while loop to create the bits, but instead of printing them, we push them into the stack. When all bits are created, we exit the loop. Now we use another loop to pop the bits from the stack and print them. Note that the bits are printed in the reverse order to that in which they have been created.</p>
+</section>
+<section id="pairing-data-items" class="level4" data-number="D.2.3.3">
+<h4 data-number="D.2.3.3" class="anchored" data-anchor-id="pairing-data-items"><span class="header-section-number">D.2.3.3</span> Pairing data items</h4>
+<p>We often need to pair some characters in an expression. For example, when we write a mathematical expression in a computer language, we often need to use parentheses to change the precedence of operators.</p>
+<p><code>3*((3+2)-5)</code></p>
+<p>When we type an expression with a lot of parentheses, we often forget to pair the parentheses. One of the duties of a compiler is to do the checking for us. The compiler uses a stack to check that all opening parentheses are paired with a closing parentheses.</p>
+<blockquote class="blockquote">
+<h4 id="exercise-1-algorithm-12.2-shows-how-we-can-check-if-every-opening-parenthesis-is-paired-with-a-closing-parenthesis." data-number="D.2.3.4" class="anchored"><span class="header-section-number">D.2.3.4</span> Exercise 1: Algorithm 12.2 shows how we can check if every opening parenthesis is paired with a closing parenthesis.</h4>
+</blockquote>
+<center>
+<img src="https://drive.google.com/uc?id=1kbnDiDU2sxdXaNv8rAF_KBencqo4puEA" width="70%" height="70%">
+</center>
+<center>
+<img src="https://drive.google.com/uc?id=1kfHG7kfn1GQ_LqNDaN3tVTK3ddkqqSPO" width="70%" height="70%">
+</center>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">def</span> CheckingParentheses(expression):</span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="co">"""</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="co">    Parameters</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="co">    ----------</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="co">    expression: str</span></span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="co">        The expression to be checked</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a><span class="co">    Returns</span></span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="co">    -------</span></span>
+<span id="cb16-9"><a href="#cb16-9"></a><span class="co">    Error messages if unpaired parentheses are found</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a><span class="co">  """</span></span>
+<span id="cb16-11"><a href="#cb16-11"></a></span>
+<span id="cb16-12"><a href="#cb16-12"></a>  S <span class="op">=</span> []</span>
+<span id="cb16-13"><a href="#cb16-13"></a>  <span class="cf">for</span> char <span class="kw">in</span> expression:</span>
+<span id="cb16-14"><a href="#cb16-14"></a>    <span class="cf">if</span> char <span class="op">==</span> <span class="st">'('</span>:</span>
+<span id="cb16-15"><a href="#cb16-15"></a>      S.append(char)</span>
+<span id="cb16-16"><a href="#cb16-16"></a>    <span class="cf">else</span>:</span>
+<span id="cb16-17"><a href="#cb16-17"></a>      <span class="cf">if</span> char <span class="op">==</span> <span class="st">')'</span>:</span>
+<span id="cb16-18"><a href="#cb16-18"></a>        <span class="cf">if</span> <span class="bu">len</span>(S) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb16-19"><a href="#cb16-19"></a>          <span class="bu">print</span>(<span class="st">"a closing parenthes is not matched"</span>)</span>
+<span id="cb16-20"><a href="#cb16-20"></a>        <span class="cf">else</span>:</span>
+<span id="cb16-21"><a href="#cb16-21"></a>          S.pop()</span>
+<span id="cb16-22"><a href="#cb16-22"></a></span>
+<span id="cb16-23"><a href="#cb16-23"></a>  <span class="cf">if</span> <span class="bu">len</span>(S)<span class="op">!=</span><span class="dv">0</span>:</span>
+<span id="cb16-24"><a href="#cb16-24"></a>    <span class="bu">print</span>(<span class="st">"unmatched opening parenthesis"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>CheckingParentheses(<span class="st">"3*((3+2)-5)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669716466479,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="f110f7e1-6b35-4c5e-dc42-6d02f8e93e38">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>CheckingParentheses(<span class="st">"3*(3+2)-5)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a closing parenthes is not matched</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669716467835,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="4c36b2e5-9e29-4e6b-ffac-f7673a077a71">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>CheckingParentheses(<span class="st">"3*(3+(2-5)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>unmatched opening parenthesis</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="stack-implementation" class="level3" data-number="D.2.4">
+<h3 data-number="D.2.4" class="anchored" data-anchor-id="stack-implementation"><span class="header-section-number">D.2.4</span> Stack implementation</h3>
+<p>In this section we describe the general ideas behind the implementation of a stack ADT. At the ADT level, we use the stack and its four operations (<code>stack</code>, <code>push</code>, <code>pop</code>, and <code>empty</code>): at the implementation level, we need to choose a data structure to implement it. Stack ADT can be implemented using either an array or a linked list.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1krBsUVOzzIs87nZDUqYhB993nBtnkzj9" width="70%" height="70%">
+</center>
+<p>We can write four algorithms in pseudocode for the four operations we defined for stack in each implementation. We showed algorithms to handle arrays and linked lists in Chapter 11: these algorithms can be modified to create the four algorithms we need for stacks: <code>stack</code>, <code>push</code>, <code>pop</code>, and <code>empty</code>. <strong>These algorithms are even easier than those presented in Chapter 11, because the insertion and deletion is done only at the top of stack. </strong></p>
+<blockquote class="blockquote">
+<h4 id="example-2-the-linked-list-implementation-is-as-above-we-have-an-extra-record-that-has-the-name-of-the-stack.-this-record-also-has-two-fields-a-counter-which-at-each-moment-shows-the-number-of-data-items-in-the-stack.-another-field-is-a-pointer-that-points-to-the-top-element." data-number="D.2.4.1" class="anchored"><span class="header-section-number">D.2.4.1</span> Example 2: The linked list implementation is as above, we have an extra record that has the name of the stack. This record also has two fields: a counter, which at each moment shows the number of data items in the stack. Another field is a pointer that points to the top element.</h4>
+</blockquote>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235645398,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="151">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">class</span> Node:</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data):</span>
+<span id="cb22-3"><a href="#cb22-3"></a>    <span class="va">self</span>.data <span class="op">=</span> data</span>
+<span id="cb22-4"><a href="#cb22-4"></a>    <span class="va">self</span>.link <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb22-6"><a href="#cb22-6"></a>    <span class="cf">return</span> <span class="bu">str</span>(<span class="va">self</span>.data)</span>
+<span id="cb22-7"><a href="#cb22-7"></a></span>
+<span id="cb22-8"><a href="#cb22-8"></a><span class="kw">class</span> LinkedList:</span>
+<span id="cb22-9"><a href="#cb22-9"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nodes<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb22-10"><a href="#cb22-10"></a>    <span class="va">self</span>.head <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb22-11"><a href="#cb22-11"></a>    <span class="cf">if</span> nodes:</span>
+<span id="cb22-12"><a href="#cb22-12"></a>      node <span class="op">=</span> Node(data<span class="op">=</span>nodes.pop(<span class="dv">0</span>)) <span class="co">#pop will pop out the first entry of the list</span></span>
+<span id="cb22-13"><a href="#cb22-13"></a>      <span class="va">self</span>.head <span class="op">=</span> node</span>
+<span id="cb22-14"><a href="#cb22-14"></a>      <span class="cf">for</span> elem <span class="kw">in</span> nodes:</span>
+<span id="cb22-15"><a href="#cb22-15"></a>        node.link <span class="op">=</span> Node(data<span class="op">=</span>elem)</span>
+<span id="cb22-16"><a href="#cb22-16"></a>        node <span class="op">=</span> node.link</span>
+<span id="cb22-17"><a href="#cb22-17"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>): <span class="co">#This is to beautify printing, don't worry about this</span></span>
+<span id="cb22-18"><a href="#cb22-18"></a>    node <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb22-19"><a href="#cb22-19"></a>    nodes <span class="op">=</span> []</span>
+<span id="cb22-20"><a href="#cb22-20"></a>    <span class="cf">while</span> node <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb22-21"><a href="#cb22-21"></a>      nodes.append(<span class="bu">str</span>(node.data))</span>
+<span id="cb22-22"><a href="#cb22-22"></a>      node <span class="op">=</span> node.link</span>
+<span id="cb22-23"><a href="#cb22-23"></a>    nodes.append(<span class="st">"None"</span>)</span>
+<span id="cb22-24"><a href="#cb22-24"></a>    <span class="cf">return</span> <span class="st">" -&gt; "</span>.join(nodes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235645674,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="152">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>L <span class="op">=</span> LinkedList(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235645674,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="153">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Create an empty stack</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="kw">def</span> stack():</span>
+<span id="cb24-3"><a href="#cb24-3"></a>  S<span class="op">=</span>{<span class="st">"count"</span>:<span class="dv">0</span>, <span class="st">"top"</span>:<span class="va">None</span>}</span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="cf">return</span> S</span>
+<span id="cb24-5"><a href="#cb24-5"></a></span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="kw">def</span> push(S,L,x):</span>
+<span id="cb24-7"><a href="#cb24-7"></a>  new <span class="op">=</span> Node(x)</span>
+<span id="cb24-8"><a href="#cb24-8"></a>  <span class="cf">if</span> S[<span class="st">"top"</span>] <span class="op">==</span> <span class="va">None</span>:</span>
+<span id="cb24-9"><a href="#cb24-9"></a>    L.head <span class="op">=</span> new</span>
+<span id="cb24-10"><a href="#cb24-10"></a>    S[<span class="st">"top"</span>] <span class="op">=</span> L.head</span>
+<span id="cb24-11"><a href="#cb24-11"></a>  <span class="cf">else</span>:</span>
+<span id="cb24-12"><a href="#cb24-12"></a>    new.link <span class="op">=</span> L.head</span>
+<span id="cb24-13"><a href="#cb24-13"></a>    L.head <span class="op">=</span> new</span>
+<span id="cb24-14"><a href="#cb24-14"></a>    S[<span class="st">"top"</span>] <span class="op">=</span> L.head</span>
+<span id="cb24-15"><a href="#cb24-15"></a>  S[<span class="st">"count"</span>] <span class="op">=</span> S[<span class="st">"count"</span>]<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb24-16"><a href="#cb24-16"></a></span>
+<span id="cb24-17"><a href="#cb24-17"></a></span>
+<span id="cb24-18"><a href="#cb24-18"></a><span class="kw">def</span> pop(S,L):</span>
+<span id="cb24-19"><a href="#cb24-19"></a>  <span class="cf">if</span> S[<span class="st">"count"</span>] <span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb24-20"><a href="#cb24-20"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb24-21"><a href="#cb24-21"></a>  x <span class="op">=</span> L.head</span>
+<span id="cb24-22"><a href="#cb24-22"></a>  L.head <span class="op">=</span> L.head.link</span>
+<span id="cb24-23"><a href="#cb24-23"></a>  S[<span class="st">"top"</span>] <span class="op">=</span> L.head</span>
+<span id="cb24-24"><a href="#cb24-24"></a>  S[<span class="st">"count"</span>] <span class="op">=</span> S[<span class="st">"count"</span>]<span class="op">-</span><span class="dv">1</span>  </span>
+<span id="cb24-25"><a href="#cb24-25"></a>  <span class="cf">return</span> x</span>
+<span id="cb24-26"><a href="#cb24-26"></a></span>
+<span id="cb24-27"><a href="#cb24-27"></a><span class="kw">def</span> empty(S):</span>
+<span id="cb24-28"><a href="#cb24-28"></a>  <span class="cf">if</span> S[<span class="st">"count"</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb24-29"><a href="#cb24-29"></a>    <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb24-30"><a href="#cb24-30"></a>  <span class="cf">else</span>:</span>
+<span id="cb24-31"><a href="#cb24-31"></a>    <span class="cf">return</span> <span class="va">False</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235646130,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="ab1db805-0fff-4ba5-8efc-8f15a61c6177" data-execution_count="154">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>S <span class="op">=</span> stack()</span>
+<span id="cb25-2"><a href="#cb25-2"></a>push(S,L,<span class="dv">20</span>)</span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="bu">print</span>(S,L)</span>
+<span id="cb25-4"><a href="#cb25-4"></a>push(S,L,<span class="dv">78</span>)</span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="bu">print</span>(S,L)</span>
+<span id="cb25-6"><a href="#cb25-6"></a>push(S,L,<span class="dv">30</span>)</span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="bu">print</span>(S,L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'count': 1, 'top': 20} 20 -&gt; None
+{'count': 2, 'top': 78} 78 -&gt; 20 -&gt; None
+{'count': 3, 'top': 30} 30 -&gt; 78 -&gt; 20 -&gt; None</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235647147,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="6f10b1be-2e95-4fae-cd86-5464627200e0" data-execution_count="155">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="bu">print</span>(pop(S,L))</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="bu">print</span>(S,L)</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="bu">print</span>(pop(S,L))</span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="bu">print</span>(S,L)</span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="bu">print</span>(pop(S,L))</span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="bu">print</span>(S,L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>30
+{'count': 2, 'top': 78} 78 -&gt; 20 -&gt; None
+78
+{'count': 1, 'top': 20} 20 -&gt; None
+20
+{'count': 0, 'top': None} None</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235647479,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="87ba3982-c1ac-40ba-dbe4-e33e1a84dfcb" data-execution_count="156">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>push(S,L,<span class="dv">20</span>)</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="bu">print</span>(S,L)</span>
+<span id="cb29-3"><a href="#cb29-3"></a>push(S,L,<span class="dv">78</span>)</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="bu">print</span>(S,L)</span>
+<span id="cb29-5"><a href="#cb29-5"></a>push(S,L,<span class="dv">30</span>)</span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="bu">print</span>(S,L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'count': 1, 'top': 20} 20 -&gt; None
+{'count': 2, 'top': 78} 78 -&gt; 20 -&gt; None
+{'count': 3, 'top': 30} 30 -&gt; 78 -&gt; 20 -&gt; None</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235648646,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="0ca75c9f-56ac-4734-9ee2-30845247e098" data-execution_count="157">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="bu">print</span>(pop(S,L))</span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="bu">print</span>(S,L)</span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="bu">print</span>(pop(S,L))</span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="bu">print</span>(S,L)</span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="bu">print</span>(pop(S,L))</span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="bu">print</span>(S,L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>30
+{'count': 2, 'top': 78} 78 -&gt; 20 -&gt; None
+78
+{'count': 1, 'top': 20} 20 -&gt; None
+20
+{'count': 0, 'top': None} None</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<h4 id="example-3-in-the-array-implementation-we-have-a-record-that-has-two-fields.-the-first-field-can-be-used-to-store-information-about-the-array-we-have-used-it-as-the-count-field-which-at-each-moment-shows-the-number-of-data-items-in-the-stack.-the-second-field-is-an-integer-that-holds-the-index-of-the-top-element.-note-that-the-array-is-shown-upside-down-to-match-the-linked-list-implementation." data-number="D.2.4.2" class="anchored"><span class="header-section-number">D.2.4.2</span> Example 3: In the array implementation, we have a record that has two fields. The first field can be used to store information about the array: we have used it as the count field, which at each moment shows the number of data items in the stack. The second field is an integer that holds the index of the top element. Note that the array is shown upside down to match the linked list implementation.</h4>
+</blockquote>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:276,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235670373,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="158">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb33-2"><a href="#cb33-2"></a>n <span class="op">=</span> <span class="dv">10</span> <span class="co"># number of elements allocated to the array</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>A <span class="op">=</span> np.zeros(n, dtype<span class="op">=</span>np.int8)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235671748,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="159">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># Create an empty stack</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="kw">def</span> stack():</span>
+<span id="cb34-3"><a href="#cb34-3"></a>  S<span class="op">=</span>{<span class="st">"count"</span>:<span class="dv">0</span>, <span class="st">"top"</span>:<span class="op">-</span><span class="dv">1</span>}</span>
+<span id="cb34-4"><a href="#cb34-4"></a>  <span class="cf">return</span> S</span>
+<span id="cb34-5"><a href="#cb34-5"></a></span>
+<span id="cb34-6"><a href="#cb34-6"></a><span class="kw">def</span> push(S,A,x):</span>
+<span id="cb34-7"><a href="#cb34-7"></a>  S[<span class="st">"top"</span>] <span class="op">=</span> S[<span class="st">"top"</span>]<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb34-8"><a href="#cb34-8"></a>  S[<span class="st">"count"</span>] <span class="op">=</span> S[<span class="st">"count"</span>]<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb34-9"><a href="#cb34-9"></a>  A[S[<span class="st">"top"</span>]] <span class="op">=</span> x</span>
+<span id="cb34-10"><a href="#cb34-10"></a></span>
+<span id="cb34-11"><a href="#cb34-11"></a><span class="kw">def</span> pop(S,A):</span>
+<span id="cb34-12"><a href="#cb34-12"></a>  <span class="cf">if</span> S[<span class="st">"count"</span>] <span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb34-13"><a href="#cb34-13"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb34-14"><a href="#cb34-14"></a>  x <span class="op">=</span> A[S[<span class="st">"top"</span>]]</span>
+<span id="cb34-15"><a href="#cb34-15"></a>  A[S[<span class="st">"top"</span>]] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb34-16"><a href="#cb34-16"></a>  S[<span class="st">"top"</span>] <span class="op">=</span> S[<span class="st">"top"</span>]<span class="op">-</span><span class="dv">1</span></span>
+<span id="cb34-17"><a href="#cb34-17"></a>  S[<span class="st">"count"</span>] <span class="op">=</span> S[<span class="st">"count"</span>]<span class="op">-</span><span class="dv">1</span>  </span>
+<span id="cb34-18"><a href="#cb34-18"></a>  <span class="cf">return</span> x</span>
+<span id="cb34-19"><a href="#cb34-19"></a></span>
+<span id="cb34-20"><a href="#cb34-20"></a><span class="kw">def</span> empty(S):</span>
+<span id="cb34-21"><a href="#cb34-21"></a>  <span class="cf">if</span> S[<span class="st">"count"</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb34-22"><a href="#cb34-22"></a>    <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb34-23"><a href="#cb34-23"></a>  <span class="cf">else</span>:</span>
+<span id="cb34-24"><a href="#cb34-24"></a>    <span class="cf">return</span> <span class="va">False</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235672010,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="fd961b66-2db9-4136-92fa-ae496cf55bfd" data-execution_count="160">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>S <span class="op">=</span> stack()</span>
+<span id="cb35-2"><a href="#cb35-2"></a>push(S,A,<span class="dv">20</span>)</span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="bu">print</span>(S,A)</span>
+<span id="cb35-4"><a href="#cb35-4"></a>push(S,A,<span class="dv">78</span>)</span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="bu">print</span>(S,A)</span>
+<span id="cb35-6"><a href="#cb35-6"></a>push(S,A,<span class="dv">30</span>)</span>
+<span id="cb35-7"><a href="#cb35-7"></a><span class="bu">print</span>(S,A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'count': 1, 'top': 0} [20  0  0  0  0  0  0  0  0  0]
+{'count': 2, 'top': 1} [20 78  0  0  0  0  0  0  0  0]
+{'count': 3, 'top': 2} [20 78 30  0  0  0  0  0  0  0]</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235672257,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="19e2e653-b759-4d08-e053-17d373d743c8" data-execution_count="161">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="bu">print</span>(pop(S,A))</span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="bu">print</span>(S,A)</span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="bu">print</span>(pop(S,A))</span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="bu">print</span>(S,A)</span>
+<span id="cb37-5"><a href="#cb37-5"></a><span class="bu">print</span>(pop(S,A))</span>
+<span id="cb37-6"><a href="#cb37-6"></a><span class="bu">print</span>(S,A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>30
+{'count': 2, 'top': 1} [20 78  0  0  0  0  0  0  0  0]
+78
+{'count': 1, 'top': 0} [20  0  0  0  0  0  0  0  0  0]
+20
+{'count': 0, 'top': -1} [0 0 0 0 0 0 0 0 0 0]</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235672937,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="a19cf757-746e-4568-8b6e-1768f75c671f" data-execution_count="162">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>push(S,A,<span class="dv">20</span>)</span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="bu">print</span>(S,A)</span>
+<span id="cb39-3"><a href="#cb39-3"></a>push(S,A,<span class="dv">78</span>)</span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="bu">print</span>(S,A)</span>
+<span id="cb39-5"><a href="#cb39-5"></a>push(S,A,<span class="dv">30</span>)</span>
+<span id="cb39-6"><a href="#cb39-6"></a><span class="bu">print</span>(S,A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'count': 1, 'top': 0} [20  0  0  0  0  0  0  0  0  0]
+{'count': 2, 'top': 1} [20 78  0  0  0  0  0  0  0  0]
+{'count': 3, 'top': 2} [20 78 30  0  0  0  0  0  0  0]</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235674386,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="b5ba29b2-151b-4956-8b5c-612d8a6e457a" data-execution_count="163">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="bu">print</span>(pop(S,A))</span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="bu">print</span>(S,A)</span>
+<span id="cb41-3"><a href="#cb41-3"></a><span class="bu">print</span>(pop(S,A))</span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="bu">print</span>(S,A)</span>
+<span id="cb41-5"><a href="#cb41-5"></a><span class="bu">print</span>(pop(S,A))</span>
+<span id="cb41-6"><a href="#cb41-6"></a><span class="bu">print</span>(S,A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>30
+{'count': 2, 'top': 1} [20 78  0  0  0  0  0  0  0  0]
+78
+{'count': 1, 'top': 0} [20  0  0  0  0  0  0  0  0  0]
+20
+{'count': 0, 'top': -1} [0 0 0 0 0 0 0 0 0 0]</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="queues" class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="queues"><span class="header-section-number">D.3</span> Queues</h2>
+<p>A queue is a linear list in which data can only be inserted at one end, called the rear, and deleted from the other end, called the front. These restrictions ensure that the data are processed through the queue in the order in which it is received. In other words, a queue is a <strong>first in, first out (FIFO)</strong> structure.</p>
+<p>Queues are familiar from everyday life. A line of people waiting for the bus at a bus station is a queue, a list of calls put on hold to be answered by a telephone operator is a queue, and a list of waiting jobs to be processed by a computer is a queue.</p>
+<p>Figure 12.8 shows two representations of queues, one a queue of people and the other a computer queue. Both people and data enter the queue at the rear and progress through the queue until they arrive at the front. Once they are at the front of the queue, they leave the queue and are served.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1l6cPE0ZhlpKQccKCGy9LoGiKZ_6czm7_" width="70%" height="70%">
+</center>
+<section id="operations-on-queues" class="level3" data-number="D.3.1">
+<h3 data-number="D.3.1" class="anchored" data-anchor-id="operations-on-queues"><span class="header-section-number">D.3.1</span> Operations on queues</h3>
+<section id="the-queue-operation" class="level4" data-number="D.3.1.1">
+<h4 data-number="D.3.1.1" class="anchored" data-anchor-id="the-queue-operation"><span class="header-section-number">D.3.1.1</span> The queue operation</h4>
+<p>The queue operation creates an empty queue. A queue is a collection of objects that supports fast FIFO semantics for inserts and deletes. The insert and delete operations are sometimes called <code>enqueue</code> and <code>dequeue</code>. Unlike lists or arrays, queues typically don’t allow for random access to the objects they contain. It’s possible to use a regular <code>list</code> as a queue, but this is not ideal from a performance perspective. Lists are quite slow for this purpose because inserting or deleting an element at the beginning requires shifting all the other elements by one!</p>
+<p>The <code>collections.deque</code> implementation is a great default choice if you’re looking for a queue data structure in Python’s standard library.</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670228464721,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
+<span id="cb43-2"><a href="#cb43-2"></a></span>
+<span id="cb43-3"><a href="#cb43-3"></a>queue <span class="op">=</span> deque()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-enqueue-operation" class="level4" data-number="D.3.1.2">
+<h4 data-number="D.3.1.2" class="anchored" data-anchor-id="the-enqueue-operation"><span class="header-section-number">D.3.1.2</span> The enqueue operation</h4>
+<p>The enqueue operation inserts an item at the rear of the queue. After the enqueue operation, the new item becomes the last item in the queue. This operation returns the new queue with new data inserted at the rear. Figure below shows the pictorial representation of this operation.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1lF2kpIwyYNZc6iz2SzthlaFdU6kJ-MMq" width="70%" height="70%">
+</center>
+<p>In Python, you can use the <code>append</code> operation for enqueue.</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669808906405,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="4370d3e4-f212-4e82-ecab-b4405f218e66">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>queue.append(<span class="dv">20</span>)</span>
+<span id="cb44-2"><a href="#cb44-2"></a>queue.append(<span class="dv">78</span>)</span>
+<span id="cb44-3"><a href="#cb44-3"></a>queue.append(<span class="dv">30</span>)</span>
+<span id="cb44-4"><a href="#cb44-4"></a>queue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>deque([20, 78, 30])</code></pre>
+</div>
+</div>
+</section>
+<section id="the-dequeue-operation" class="level4" data-number="D.3.1.3">
+<h4 data-number="D.3.1.3" class="anchored" data-anchor-id="the-dequeue-operation"><span class="header-section-number">D.3.1.3</span> The dequeue operation</h4>
+<p>The dequeue operation deletes the item at the front of the queue. The deleted item can be used by the application program or can be just discarded. After the dequeue operation, the item that followed the front element becomes the front element. This operation returns the new queue with one less element. Figure below shows the pictorial representation of this operation.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1lL-Hm_ux2vJBCwI170pxWWx4h10wE_XL" width="70%" height="70%">
+</center>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:844,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669808907248,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="e68e13fc-e824-4200-d625-d65a4ffc9c37">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>front <span class="op">=</span> queue.popleft()</span>
+<span id="cb46-2"><a href="#cb46-2"></a>front</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>20</code></pre>
+</div>
+</div>
+<p>In python, you can use the <code>popleft</code> operation for dequeue.</p>
+</section>
+<section id="the-empty-operation-1" class="level4" data-number="D.3.1.4">
+<h4 data-number="D.3.1.4" class="anchored" data-anchor-id="the-empty-operation-1"><span class="header-section-number">D.3.1.4</span> The empty operation</h4>
+<p>The empty operation checks the status of the queue.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="kw">def</span> empty(q):</span>
+<span id="cb48-2"><a href="#cb48-2"></a>  <span class="cf">if</span> <span class="bu">len</span>(q) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb48-3"><a href="#cb48-3"></a>    <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb48-4"><a href="#cb48-4"></a>  <span class="cf">else</span>:</span>
+<span id="cb48-5"><a href="#cb48-5"></a>    <span class="cf">return</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669808911784,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="fcc6022b-4a32-472c-be76-e1addf5882a0">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>empty(queue)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>False</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669808922836,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="299d4484-6199-4b5a-beaa-3e83e1beca77">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>queue.popleft()</span>
+<span id="cb51-2"><a href="#cb51-2"></a>queue.popleft()</span>
+<span id="cb51-3"><a href="#cb51-3"></a>empty(queue)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="queue-adt" class="level3" data-number="D.3.2">
+<h3 data-number="D.3.2" class="anchored" data-anchor-id="queue-adt"><span class="header-section-number">D.3.2</span> Queue ADT</h3>
+<p>We define a stack as an ADT as shown below:</p>
+<center>
+<img src="https://drive.google.com/uc?id=1lNZLMzCv7tbEWUbgda1nATyITwGvWLka" width="70%" height="70%">
+</center>
+</section>
+<section id="queue-applications" class="level3" data-number="D.3.3">
+<h3 data-number="D.3.3" class="anchored" data-anchor-id="queue-applications"><span class="header-section-number">D.3.3</span> Queue applications</h3>
+<p>Queues are one of the most common of all data processing structures. They are found in virtually every operating system and network and in countless other areas. For example, queues are used in online business applications such as processing customer requests, jobs, and orders. In a computer system, a queue is needed to process jobs and for system services such as print spools.</p>
+<blockquote class="blockquote">
+<h4 id="example-4-queues-can-be-used-to-organize-databases-by-some-characteristic-of-the-data.-for-example-imagine-we-have-a-list-of-sorted-data-stored-in-the-computer-belonging-to-two-categories-less-than-1000-and-greater-than-1000.-we-can-use-two-queues-to-separate-the-categories-and-at-the-same-time-maintain-the-order-of-data-in-their-own-category.-algorithm-12.3-shows-the-pseudocode-for-this-operation." data-number="D.3.3.1" class="anchored"><span class="header-section-number">D.3.3.1</span> Example 4: Queues can be used to organize databases by some characteristic of the data. For example, imagine we have a list of sorted data stored in the computer belonging to two categories: less than 1000, and greater than 1000. We can use two queues to separate the categories and at the same time maintain the order of data in their own category. Algorithm 12.3 shows the pseudocode for this operation.</h4>
+</blockquote>
+<center>
+<img src="https://drive.google.com/uc?id=1lP-HJou4TVWbQlcDNvr1wtnp9Lzn4vIr" width="70%" height="70%">
+</center>
+<center>
+<img src="https://drive.google.com/uc?id=1lSXCBGNi_Canwva8touWkKuTjF2WcNXM" width="70%" height="70%">
+</center>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670228874526,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a><span class="kw">def</span> Categorizer(ilist):</span>
+<span id="cb53-2"><a href="#cb53-2"></a>  <span class="co">"""</span></span>
+<span id="cb53-3"><a href="#cb53-3"></a><span class="co">    Parameters</span></span>
+<span id="cb53-4"><a href="#cb53-4"></a><span class="co">    ----------</span></span>
+<span id="cb53-5"><a href="#cb53-5"></a><span class="co">    ilist1: list</span></span>
+<span id="cb53-6"><a href="#cb53-6"></a><span class="co">        Input sorted list</span></span>
+<span id="cb53-7"><a href="#cb53-7"></a><span class="co">    Returns</span></span>
+<span id="cb53-8"><a href="#cb53-8"></a><span class="co">    -------</span></span>
+<span id="cb53-9"><a href="#cb53-9"></a><span class="co">    Categorize data into two categories and create two separate queues and print them out</span></span>
+<span id="cb53-10"><a href="#cb53-10"></a><span class="co">  """</span></span>
+<span id="cb53-11"><a href="#cb53-11"></a></span>
+<span id="cb53-12"><a href="#cb53-12"></a>  Q1 <span class="op">=</span> deque()</span>
+<span id="cb53-13"><a href="#cb53-13"></a>  Q2 <span class="op">=</span> deque()</span>
+<span id="cb53-14"><a href="#cb53-14"></a>  <span class="cf">for</span> data <span class="kw">in</span> ilist:</span>
+<span id="cb53-15"><a href="#cb53-15"></a>    <span class="cf">if</span> data <span class="op">&lt;</span> <span class="dv">1000</span>:</span>
+<span id="cb53-16"><a href="#cb53-16"></a>      Q1.append(data)</span>
+<span id="cb53-17"><a href="#cb53-17"></a>    <span class="cf">if</span> data <span class="op">&gt;=</span><span class="dv">1000</span>:</span>
+<span id="cb53-18"><a href="#cb53-18"></a>      Q2.append(data)</span>
+<span id="cb53-19"><a href="#cb53-19"></a>  </span>
+<span id="cb53-20"><a href="#cb53-20"></a>  <span class="bu">print</span>(<span class="st">"Q1:"</span>)</span>
+<span id="cb53-21"><a href="#cb53-21"></a>  <span class="cf">while</span> <span class="bu">len</span>(Q1)<span class="op">!=</span><span class="dv">0</span>:</span>
+<span id="cb53-22"><a href="#cb53-22"></a>    x <span class="op">=</span> Q1.popleft()</span>
+<span id="cb53-23"><a href="#cb53-23"></a>    <span class="bu">print</span>(x, end<span class="op">=</span><span class="st">' '</span>)</span>
+<span id="cb53-24"><a href="#cb53-24"></a></span>
+<span id="cb53-25"><a href="#cb53-25"></a>  <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Q2:"</span>)</span>
+<span id="cb53-26"><a href="#cb53-26"></a>  <span class="cf">while</span> <span class="bu">len</span>(Q2)<span class="op">!=</span><span class="dv">0</span>:</span>
+<span id="cb53-27"><a href="#cb53-27"></a>    x <span class="op">=</span> Q2.popleft()</span>
+<span id="cb53-28"><a href="#cb53-28"></a>    <span class="bu">print</span>(x, end<span class="op">=</span><span class="st">' '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:441,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670228876310,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="f533211e-e754-49a8-9550-d15c090c729c" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>Categorizer([<span class="dv">150</span>, <span class="dv">350</span>, <span class="dv">500</span>, <span class="dv">700</span>, <span class="dv">1000</span>, <span class="dv">1200</span>, <span class="dv">1550</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Q1:
+150 350 500 700 
+Q2:
+1000 1200 1550 </code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670228911664,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="d706b2fe-21ac-473e-f077-2af232f7456e" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>Categorizer([<span class="dv">50</span>, <span class="dv">250</span>, <span class="dv">900</span>, <span class="dv">999</span>, <span class="dv">1001</span>, <span class="dv">1900</span>, <span class="dv">2550</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Q1:
+50 250 900 999 
+Q2:
+1001 1900 2550 </code></pre>
+</div>
+</div>
+<p>Another common application of a queue is to adjust and create a balance between a fast producer of data and a slow consumer of data. For example, assume that a CPU is connected to a printer. The speed of a printer is not comparable with the speed of a CPU. If the CPU waits for the printer to print some data created by the CPU, the CPU would be idle for a long time. The solution is a queue. The CPU creates as many chunks of data as the queue can hold and sends them to the queue. The CPU is now free to do other jobs. The chunks are dequeued slowly and printed by the printer. The queue used for this purpose is normally referred to as a <em>spool queue</em>.</p>
+</section>
+<section id="queue-implementation" class="level3" data-number="D.3.4">
+<h3 data-number="D.3.4" class="anchored" data-anchor-id="queue-implementation"><span class="header-section-number">D.3.4</span> Queue implementation</h3>
+<p>At the ADT level, we use the queue and its four operations (<code>queue</code>, <code>enqueue</code>, <code>dequeue</code>, and <code>empty</code>): at the implementation level, we need to choose a data structure to implement it. A queue ADT can be implemented using either an array or a linked list.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1lYiULtrPBcmWgPHIPKAUiscy9UovYXAr" width="70%" height="70%">
+</center>
+<p>We can write four algorithms in pseudocode for the four operations we defined for queues in each implementation. We described algorithms to handle arrays and linked lists in Chapter 11: we can modify those algorithms to create the four algorithms we need for queues: queue, enqueue, dequeue, and empty. These algorithms are easier than those presented in Chapter 11, <strong>because insertion is done only at the end of the queue and deletion is done only at the front of the queue.</strong></p>
+<blockquote class="blockquote">
+<h4 id="exercise-2-in-the-array-implementation-we-have-a-record-with-three-fields.-the-first-field-can-be-used-to-store-information-about-the-queue-we-have-used-this-as-a-count-field-that-shows-the-current-number-of-data-items-in-the-queue.-the-second-field-is-an-integer-that-holds-the-index-of-the-front-element.-the-third-field-is-also-an-integer-which-holds-the-index-of-the-rear-element." data-number="D.3.4.1" class="anchored"><span class="header-section-number">D.3.4.1</span> Exercise 2: In the array implementation we have a record with three fields. The first field can be used to store information about the queue: we have used this as a count field that shows the current number of data items in the queue. The second field is an integer that holds the index of the front element. The third field is also an integer, which holds the index of the rear element.</h4>
+</blockquote>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:264,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235705343,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="164">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb58-2"><a href="#cb58-2"></a>n <span class="op">=</span> <span class="dv">10</span> <span class="co"># number of elements allocated to the array</span></span>
+<span id="cb58-3"><a href="#cb58-3"></a>A <span class="op">=</span> np.zeros(n, dtype<span class="op">=</span>np.int8)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235705613,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="165">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># Create an empty queue</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a><span class="kw">def</span> queue():</span>
+<span id="cb59-3"><a href="#cb59-3"></a>  Q<span class="op">=</span>{<span class="st">"count"</span>:<span class="dv">0</span>, <span class="st">"rear"</span>:<span class="op">-</span><span class="dv">1</span>, <span class="st">"front"</span>:<span class="op">-</span><span class="dv">1</span>}</span>
+<span id="cb59-4"><a href="#cb59-4"></a>  <span class="cf">return</span> Q</span>
+<span id="cb59-5"><a href="#cb59-5"></a></span>
+<span id="cb59-6"><a href="#cb59-6"></a><span class="kw">def</span> enqueue(Q,A,x):</span>
+<span id="cb59-7"><a href="#cb59-7"></a>  <span class="cf">if</span> Q[<span class="st">"front"</span>]<span class="op">==-</span><span class="dv">1</span>:</span>
+<span id="cb59-8"><a href="#cb59-8"></a>    Q[<span class="st">"front"</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb59-9"><a href="#cb59-9"></a>  Q[<span class="st">"rear"</span>] <span class="op">=</span> Q[<span class="st">"rear"</span>]<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb59-10"><a href="#cb59-10"></a>  Q[<span class="st">"count"</span>] <span class="op">=</span> Q[<span class="st">"count"</span>]<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb59-11"><a href="#cb59-11"></a>  A[Q[<span class="st">"rear"</span>]] <span class="op">=</span> x</span>
+<span id="cb59-12"><a href="#cb59-12"></a></span>
+<span id="cb59-13"><a href="#cb59-13"></a><span class="kw">def</span> dequeue(Q,A):</span>
+<span id="cb59-14"><a href="#cb59-14"></a>  <span class="cf">if</span> Q[<span class="st">"count"</span>] <span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb59-15"><a href="#cb59-15"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb59-16"><a href="#cb59-16"></a>  x <span class="op">=</span> A[Q[<span class="st">"front"</span>]]</span>
+<span id="cb59-17"><a href="#cb59-17"></a>  A[Q[<span class="st">"front"</span>]] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb59-18"><a href="#cb59-18"></a>  Q[<span class="st">"front"</span>] <span class="op">=</span> Q[<span class="st">"front"</span>]<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb59-19"><a href="#cb59-19"></a>  Q[<span class="st">"count"</span>] <span class="op">=</span> Q[<span class="st">"count"</span>]<span class="op">-</span><span class="dv">1</span>  </span>
+<span id="cb59-20"><a href="#cb59-20"></a>  <span class="cf">return</span> x</span>
+<span id="cb59-21"><a href="#cb59-21"></a></span>
+<span id="cb59-22"><a href="#cb59-22"></a><span class="kw">def</span> empty(S):</span>
+<span id="cb59-23"><a href="#cb59-23"></a>  <span class="cf">if</span> Q[<span class="st">"count"</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb59-24"><a href="#cb59-24"></a>    <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb59-25"><a href="#cb59-25"></a>  <span class="cf">else</span>:</span>
+<span id="cb59-26"><a href="#cb59-26"></a>    <span class="cf">return</span> <span class="va">False</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235705613,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="dbf305fc-0d31-4137-98a4-1093a6032106" data-execution_count="166">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>Q <span class="op">=</span> queue()</span>
+<span id="cb60-2"><a href="#cb60-2"></a>enqueue(Q,A,<span class="dv">20</span>)</span>
+<span id="cb60-3"><a href="#cb60-3"></a><span class="bu">print</span>(Q,A)</span>
+<span id="cb60-4"><a href="#cb60-4"></a>enqueue(Q,A,<span class="dv">78</span>)</span>
+<span id="cb60-5"><a href="#cb60-5"></a><span class="bu">print</span>(Q,A)</span>
+<span id="cb60-6"><a href="#cb60-6"></a>enqueue(Q,A,<span class="dv">30</span>)</span>
+<span id="cb60-7"><a href="#cb60-7"></a><span class="bu">print</span>(Q,A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'count': 1, 'rear': 0, 'front': 0} [20  0  0  0  0  0  0  0  0  0]
+{'count': 2, 'rear': 1, 'front': 0} [20 78  0  0  0  0  0  0  0  0]
+{'count': 3, 'rear': 2, 'front': 0} [20 78 30  0  0  0  0  0  0  0]</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235706526,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="c65d62c3-b994-4d7a-ae85-a7f5eb3ec926" data-execution_count="167">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a><span class="bu">print</span>(dequeue(Q,A))</span>
+<span id="cb62-2"><a href="#cb62-2"></a><span class="bu">print</span>(Q,A)</span>
+<span id="cb62-3"><a href="#cb62-3"></a><span class="bu">print</span>(dequeue(Q,A))</span>
+<span id="cb62-4"><a href="#cb62-4"></a><span class="bu">print</span>(Q,A)</span>
+<span id="cb62-5"><a href="#cb62-5"></a><span class="bu">print</span>(dequeue(Q,A))</span>
+<span id="cb62-6"><a href="#cb62-6"></a><span class="bu">print</span>(Q,A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>20
+{'count': 2, 'rear': 2, 'front': 1} [ 0 78 30  0  0  0  0  0  0  0]
+78
+{'count': 1, 'rear': 2, 'front': 2} [ 0  0 30  0  0  0  0  0  0  0]
+30
+{'count': 0, 'rear': 2, 'front': 3} [0 0 0 0 0 0 0 0 0 0]</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235708331,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="2a5ad3a5-8262-4503-a737-1d0db45fa320" data-execution_count="168">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>enqueue(Q,A,<span class="dv">20</span>)</span>
+<span id="cb64-2"><a href="#cb64-2"></a><span class="bu">print</span>(Q,A)</span>
+<span id="cb64-3"><a href="#cb64-3"></a>enqueue(Q,A,<span class="dv">78</span>)</span>
+<span id="cb64-4"><a href="#cb64-4"></a><span class="bu">print</span>(Q,A)</span>
+<span id="cb64-5"><a href="#cb64-5"></a>enqueue(Q,A,<span class="dv">30</span>)</span>
+<span id="cb64-6"><a href="#cb64-6"></a><span class="bu">print</span>(Q,A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'count': 1, 'rear': 3, 'front': 3} [ 0  0  0 20  0  0  0  0  0  0]
+{'count': 2, 'rear': 4, 'front': 3} [ 0  0  0 20 78  0  0  0  0  0]
+{'count': 3, 'rear': 5, 'front': 3} [ 0  0  0 20 78 30  0  0  0  0]</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235708331,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="6c8aaaf6-159a-47f7-83c2-9b1f5897dba4" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a><span class="bu">print</span>(dequeue(Q,A))</span>
+<span id="cb66-2"><a href="#cb66-2"></a><span class="bu">print</span>(Q,A)</span>
+<span id="cb66-3"><a href="#cb66-3"></a><span class="bu">print</span>(dequeue(Q,A))</span>
+<span id="cb66-4"><a href="#cb66-4"></a><span class="bu">print</span>(Q,A)</span>
+<span id="cb66-5"><a href="#cb66-5"></a><span class="bu">print</span>(dequeue(Q,A))</span>
+<span id="cb66-6"><a href="#cb66-6"></a><span class="bu">print</span>(Q,A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>20
+{'count': 2, 'rear': 5, 'front': 4} [ 0  0  0  0 78 30  0  0  0  0]
+78
+{'count': 1, 'rear': 5, 'front': 5} [ 0  0  0  0  0 30  0  0  0  0]
+30
+{'count': 0, 'rear': 5, 'front': 6} [0 0 0 0 0 0 0 0 0 0]</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<h4 id="exercise-3-the-linked-list-implementation-is-similar-we-have-an-extra-record-that-has-the-name-of-the-queue.-this-node-also-has-three-fields-a-count-a-pointer-that-points-to-the-front-element-and-a-pointer-that-points-to-the-rear-element." data-number="D.3.4.2" class="anchored"><span class="header-section-number">D.3.4.2</span> Exercise 3: The linked list implementation is similar: we have an extra record that has the name of the queue. This node also has three fields: a count, a pointer that points to the front element, and a pointer that points to the rear element.</h4>
+</blockquote>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:903,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235873312,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="177">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a><span class="kw">class</span> Node:</span>
+<span id="cb68-2"><a href="#cb68-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data):</span>
+<span id="cb68-3"><a href="#cb68-3"></a>    <span class="va">self</span>.data <span class="op">=</span> data</span>
+<span id="cb68-4"><a href="#cb68-4"></a>    <span class="va">self</span>.link <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb68-5"><a href="#cb68-5"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb68-6"><a href="#cb68-6"></a>    <span class="cf">return</span> <span class="bu">str</span>(<span class="va">self</span>.data)</span>
+<span id="cb68-7"><a href="#cb68-7"></a></span>
+<span id="cb68-8"><a href="#cb68-8"></a><span class="kw">class</span> LinkedList:</span>
+<span id="cb68-9"><a href="#cb68-9"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, nodes<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb68-10"><a href="#cb68-10"></a>    <span class="va">self</span>.head <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb68-11"><a href="#cb68-11"></a>    <span class="cf">if</span> nodes:</span>
+<span id="cb68-12"><a href="#cb68-12"></a>      node <span class="op">=</span> Node(data<span class="op">=</span>nodes.pop(<span class="dv">0</span>)) <span class="co">#pop will pop out the first entry of the list</span></span>
+<span id="cb68-13"><a href="#cb68-13"></a>      <span class="va">self</span>.head <span class="op">=</span> node</span>
+<span id="cb68-14"><a href="#cb68-14"></a>      <span class="cf">for</span> elem <span class="kw">in</span> nodes:</span>
+<span id="cb68-15"><a href="#cb68-15"></a>        node.link <span class="op">=</span> Node(data<span class="op">=</span>elem)</span>
+<span id="cb68-16"><a href="#cb68-16"></a>        node <span class="op">=</span> node.link</span>
+<span id="cb68-17"><a href="#cb68-17"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>): <span class="co">#This is to beautify printing, don't worry about this</span></span>
+<span id="cb68-18"><a href="#cb68-18"></a>    node <span class="op">=</span> <span class="va">self</span>.head</span>
+<span id="cb68-19"><a href="#cb68-19"></a>    nodes <span class="op">=</span> []</span>
+<span id="cb68-20"><a href="#cb68-20"></a>    <span class="cf">while</span> node <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb68-21"><a href="#cb68-21"></a>      nodes.append(<span class="bu">str</span>(node.data))</span>
+<span id="cb68-22"><a href="#cb68-22"></a>      node <span class="op">=</span> node.link</span>
+<span id="cb68-23"><a href="#cb68-23"></a>    nodes.append(<span class="st">"None"</span>)</span>
+<span id="cb68-24"><a href="#cb68-24"></a>    <span class="cf">return</span> <span class="st">" -&gt; "</span>.join(nodes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235873622,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="178">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>L <span class="op">=</span> LinkedList(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235873622,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="179">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># Create an empty queue</span></span>
+<span id="cb70-2"><a href="#cb70-2"></a><span class="kw">def</span> queue():</span>
+<span id="cb70-3"><a href="#cb70-3"></a>  Q<span class="op">=</span>{<span class="st">"count"</span>:<span class="dv">0</span>, <span class="st">"front"</span>:<span class="va">None</span>, <span class="st">"rear"</span>:<span class="va">None</span>}</span>
+<span id="cb70-4"><a href="#cb70-4"></a>  <span class="cf">return</span> Q</span>
+<span id="cb70-5"><a href="#cb70-5"></a></span>
+<span id="cb70-6"><a href="#cb70-6"></a><span class="kw">def</span> enqueue(Q,L,x):</span>
+<span id="cb70-7"><a href="#cb70-7"></a>  new <span class="op">=</span> Node(x)</span>
+<span id="cb70-8"><a href="#cb70-8"></a>  <span class="cf">if</span> Q[<span class="st">"count"</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb70-9"><a href="#cb70-9"></a>    L.head <span class="op">=</span> new</span>
+<span id="cb70-10"><a href="#cb70-10"></a>    Q[<span class="st">"front"</span>] <span class="op">=</span> L.head</span>
+<span id="cb70-11"><a href="#cb70-11"></a>    Q[<span class="st">"rear"</span>] <span class="op">=</span> L.head</span>
+<span id="cb70-12"><a href="#cb70-12"></a>  <span class="cf">else</span>:</span>
+<span id="cb70-13"><a href="#cb70-13"></a>    Q[<span class="st">"rear"</span>].link <span class="op">=</span> new</span>
+<span id="cb70-14"><a href="#cb70-14"></a>    Q[<span class="st">"rear"</span>] <span class="op">=</span> Q[<span class="st">"rear"</span>].link</span>
+<span id="cb70-15"><a href="#cb70-15"></a>  Q[<span class="st">"count"</span>] <span class="op">=</span> Q[<span class="st">"count"</span>]<span class="op">+</span><span class="dv">1</span></span>
+<span id="cb70-16"><a href="#cb70-16"></a></span>
+<span id="cb70-17"><a href="#cb70-17"></a></span>
+<span id="cb70-18"><a href="#cb70-18"></a><span class="kw">def</span> dequeue(Q,L):</span>
+<span id="cb70-19"><a href="#cb70-19"></a>  <span class="cf">if</span> Q[<span class="st">"count"</span>] <span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb70-20"><a href="#cb70-20"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb70-21"><a href="#cb70-21"></a>  x <span class="op">=</span> Q[<span class="st">"front"</span>]</span>
+<span id="cb70-22"><a href="#cb70-22"></a>  <span class="cf">if</span> Q[<span class="st">"count"</span>] <span class="op">==</span><span class="dv">1</span>:</span>
+<span id="cb70-23"><a href="#cb70-23"></a>    Q[<span class="st">"front"</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb70-24"><a href="#cb70-24"></a>    Q[<span class="st">"rear"</span>] <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb70-25"><a href="#cb70-25"></a>  <span class="cf">else</span>:</span>
+<span id="cb70-26"><a href="#cb70-26"></a>    Q[<span class="st">"front"</span>] <span class="op">=</span> Q[<span class="st">"front"</span>].link</span>
+<span id="cb70-27"><a href="#cb70-27"></a>  L.head <span class="op">=</span> Q[<span class="st">"front"</span>]</span>
+<span id="cb70-28"><a href="#cb70-28"></a>  Q[<span class="st">"count"</span>] <span class="op">=</span> Q[<span class="st">"count"</span>] <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb70-29"><a href="#cb70-29"></a>  <span class="cf">return</span> x</span>
+<span id="cb70-30"><a href="#cb70-30"></a></span>
+<span id="cb70-31"><a href="#cb70-31"></a><span class="kw">def</span> empty(Q):</span>
+<span id="cb70-32"><a href="#cb70-32"></a>  <span class="cf">if</span> Q[<span class="st">"count"</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb70-33"><a href="#cb70-33"></a>    <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb70-34"><a href="#cb70-34"></a>  <span class="cf">else</span>:</span>
+<span id="cb70-35"><a href="#cb70-35"></a>    <span class="cf">return</span> <span class="va">False</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235874011,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="c00689a9-d0d6-46a2-8578-9454fca3ee5c" data-execution_count="180">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>Q <span class="op">=</span> queue()</span>
+<span id="cb71-2"><a href="#cb71-2"></a>enqueue(Q,L,<span class="dv">20</span>)</span>
+<span id="cb71-3"><a href="#cb71-3"></a><span class="bu">print</span>(Q,L)</span>
+<span id="cb71-4"><a href="#cb71-4"></a>enqueue(Q,L,<span class="dv">78</span>)</span>
+<span id="cb71-5"><a href="#cb71-5"></a><span class="bu">print</span>(Q,L)</span>
+<span id="cb71-6"><a href="#cb71-6"></a>enqueue(Q,L,<span class="dv">30</span>)</span>
+<span id="cb71-7"><a href="#cb71-7"></a><span class="bu">print</span>(Q,L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'count': 1, 'front': 20, 'rear': 20} 20 -&gt; None
+{'count': 2, 'front': 20, 'rear': 78} 20 -&gt; 78 -&gt; None
+{'count': 3, 'front': 20, 'rear': 30} 20 -&gt; 78 -&gt; 30 -&gt; None</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235874279,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="173cf7eb-790a-478b-c941-890fd212dc9a" data-execution_count="181">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a><span class="bu">print</span>(dequeue(Q,L))</span>
+<span id="cb73-2"><a href="#cb73-2"></a><span class="bu">print</span>(Q,L)</span>
+<span id="cb73-3"><a href="#cb73-3"></a><span class="bu">print</span>(dequeue(Q,L))</span>
+<span id="cb73-4"><a href="#cb73-4"></a><span class="bu">print</span>(Q,L)</span>
+<span id="cb73-5"><a href="#cb73-5"></a><span class="bu">print</span>(dequeue(Q,L))</span>
+<span id="cb73-6"><a href="#cb73-6"></a><span class="bu">print</span>(Q,L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>20
+{'count': 2, 'front': 78, 'rear': 30} 78 -&gt; 30 -&gt; None
+78
+{'count': 1, 'front': 30, 'rear': 30} 30 -&gt; None
+30
+{'count': 0, 'front': None, 'rear': None} None</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235874598,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="0e9e7e13-79ba-4279-901e-c90940a9c123" data-execution_count="182">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>enqueue(Q,L,<span class="dv">20</span>)</span>
+<span id="cb75-2"><a href="#cb75-2"></a><span class="bu">print</span>(Q,L)</span>
+<span id="cb75-3"><a href="#cb75-3"></a>enqueue(Q,L,<span class="dv">78</span>)</span>
+<span id="cb75-4"><a href="#cb75-4"></a><span class="bu">print</span>(Q,L)</span>
+<span id="cb75-5"><a href="#cb75-5"></a>enqueue(Q,L,<span class="dv">30</span>)</span>
+<span id="cb75-6"><a href="#cb75-6"></a><span class="bu">print</span>(Q,L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'count': 1, 'front': 20, 'rear': 20} 20 -&gt; None
+{'count': 2, 'front': 20, 'rear': 78} 20 -&gt; 78 -&gt; None
+{'count': 3, 'front': 20, 'rear': 30} 20 -&gt; 78 -&gt; 30 -&gt; None</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235875945,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="80875931-b419-46f7-bd4a-c4321544a217" data-execution_count="183">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a><span class="bu">print</span>(dequeue(Q,L))</span>
+<span id="cb77-2"><a href="#cb77-2"></a><span class="bu">print</span>(Q,L)</span>
+<span id="cb77-3"><a href="#cb77-3"></a><span class="bu">print</span>(dequeue(Q,L))</span>
+<span id="cb77-4"><a href="#cb77-4"></a><span class="bu">print</span>(Q,L)</span>
+<span id="cb77-5"><a href="#cb77-5"></a><span class="bu">print</span>(dequeue(Q,L))</span>
+<span id="cb77-6"><a href="#cb77-6"></a><span class="bu">print</span>(Q,L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>20
+{'count': 2, 'front': 78, 'rear': 30} 78 -&gt; 30 -&gt; None
+78
+{'count': 1, 'front': 30, 'rear': 30} 30 -&gt; None
+30
+{'count': 0, 'front': None, 'rear': None} None</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="general-linear-lists" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="general-linear-lists"><span class="header-section-number">D.4</span> General linear lists</h2>
+<p>This topic is beyond our scope.</p>
+</section>
+<section id="trees" class="level2" data-number="D.5">
+<h2 data-number="D.5" class="anchored" data-anchor-id="trees"><span class="header-section-number">D.5</span> Trees</h2>
+<p>A tree consists of a finite set of elements, called <strong>nodes (or vertices)</strong>, and a finite set of directed lines, called <strong>arcs</strong>, that connect pairs of the nodes. If the tree is not empty, one of the nodes, called the <strong>root</strong>, has no incoming arcs. The other nodes in a tree can be reached from the root by following a unique <strong>path</strong>, which is a sequence of consecutive arcs. Tree structures are normally drawn upside down with the root at the top as shown below:</p>
+<center>
+<img src="https://drive.google.com/uc?id=1m81Lvvo6-b2MaObajcJ0v2E4c8sUvq3I" width="70%" height="70%">
+</center>
+<p>We can divide the vertices in a tree into three categories: the root, <strong>leaves</strong>, and the <strong>internal nodes</strong>. The following showsthe number of outgoing and incoming arcs allowed for each type of node.</p>
+<center>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Type of node</th>
+<th>Incoming arc</th>
+<th>Outgoing arc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>root</td>
+<td>0</td>
+<td>0 or more</td>
+</tr>
+<tr class="even">
+<td>leaf</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>internal</td>
+<td>1</td>
+<td>1 or more</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>A node that is directly accessible (through a single arc) from a given node is called the <strong>child</strong>: the node from which the child is directly accessible is called a <strong>parent</strong>. Nodes with a common parent are called <strong>siblings</strong>. Descendents of a node are all nodes that can be reached by that node, and a node from which all descendents can be reached is called an <strong>ancestor</strong>. Each node in a tree may have a <strong>subtree</strong>.</p>
+<p>The subtree of each node includes one of its children and all descendents of that child. Figure below shows all subtrees for the tree in Figure above</p>
+<center>
+<img src="https://drive.google.com/uc?id=1mOxbQzaGCWHPrp3RKFzIShe33OjLovn4" width="70%" height="70%">
+</center>
+<p>Although trees have many applications in computer science, such as index files, their study is beyond the scope of this book. We introduce trees as a prelude to discussing one special type of tree, <em>binary trees</em>.</p>
+<section id="binary-trees" class="level3" data-number="D.5.1">
+<h3 data-number="D.5.1" class="anchored" data-anchor-id="binary-trees"><span class="header-section-number">D.5.1</span> Binary trees</h3>
+<p>A binary tree is a tree in which no node can have more than two subtrees. In other words, a node can have zero, one, or two subtrees. These subtrees are designated as the left subtree and the right subtree. Figure below shows a binary tree with its two subtrees. Note that each subtree is itself a binary tree.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1mXbHZpnzAtrGDnFki0MA_vmArHAmy0bW" width="70%" height="70%">
+</center>
+<section id="recursive-definition-of-binary-trees" class="level4" data-number="D.5.1.1">
+<h4 data-number="D.5.1.1" class="anchored" data-anchor-id="recursive-definition-of-binary-trees"><span class="header-section-number">D.5.1.1</span> Recursive definition of binary trees</h4>
+<p>In Chapter 8 we introduced the recursive definition of an algorithm. We can also define a structure or an ADT recursively. The following gives the recursive definition of a binary tree. Note that, based on this definition, a binary tree can have a root, but each subtree can also have a root.</p>
+<blockquote class="blockquote">
+<p>A binary tree is either empty or consists of a node, root, with two subtrees, in which each subtree is also a binary tree.</p>
+</blockquote>
+<p>Figure below shows eight trees, the first of which is an empty binary tree (sometimes called a <em>null</em> binary tree).</p>
+<center>
+<img src="https://drive.google.com/uc?id=1mbAeheSY6dnI1lbXgosSRA0aDEvK7cH-" width="70%" height="70%">
+</center>
+</section>
+</section>
+<section id="operations-on-binary-trees" class="level3" data-number="D.5.2">
+<h3 data-number="D.5.2" class="anchored" data-anchor-id="operations-on-binary-trees"><span class="header-section-number">D.5.2</span> Operations on binary trees</h3>
+<p>The six most common operations defined for a binary tree are <code>tree</code> (creates an empty tree) <code>insert</code>, <code>delete</code>, <code>retrieve</code>, <code>empty</code> and <code>traversal</code>. The first five are complex and beyond the scope of this book. We discuss <strong>binary tree traversal in this section</strong>.</p>
+<section id="binary-tree-traversals" class="level4" data-number="D.5.2.1">
+<h4 data-number="D.5.2.1" class="anchored" data-anchor-id="binary-tree-traversals"><span class="header-section-number">D.5.2.1</span> Binary tree traversals</h4>
+<p>A binary tree traversal requires that each node of the tree be processed once and only once in a predetermined sequence. The two general approaches to the traversal sequence are <em>depth-first</em> and <em>breadth-first</em> traversal.</p>
+<section id="depth-first-traversals" class="level5" data-number="D.5.2.1.1">
+<h5 data-number="D.5.2.1.1" class="anchored"><span class="header-section-number">D.5.2.1.1</span> Depth-first traversals</h5>
+<p>Given that a binary tree consists of a root, a left subtree, and a right subtree, we can define six different <strong>depth-first traversal</strong> sequences. Computer scientists have assigned standard names to three of these sequences in the literature: the other three are unnamed but are easily derived. The standard traversals are shown in Figure below.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1mbavvEhALquLqui5LgqS_PsTCd1PdDs2" width="70%" height="70%">
+</center>
+<ul>
+<li><p><strong>Preorder traversal</strong>. In preorder traversal the root node is processed first, followed by the left subtree and then the right subtree. The prefix <em>pre</em> indicates that the root node is processed <em>before</em> the subtrees.</p></li>
+<li><p><strong>Inorder traversal</strong>. In inorder traversal the left subtree is processed first, then the root node, and finally the right subtree. The prefix <em>in</em> indicates that the root node is processed <em>between</em> the subtrees.</p></li>
+<li><p><strong>Postorder traversal</strong>. In postorder traversal the root node is processed after the left and right subtrees have been processed. The prefix <em>post</em> indicates that the root is processed <em>after</em> the subtrees.</p></li>
+</ul>
+<blockquote class="blockquote">
+<h4 id="example-5-figure-below-shows-how-we-visit-each-node-in-a-tree-using-preorder-traversal.-the-figure-also-shows-the-walking-order.-in-preorder-traversal-we-visit-a-node-when-we-pass-from-its-left-side.-the-nodes-are-visited-in-this-order-a-b-c-d-e-f." data-number="D.5.2.2" class="anchored" data-anchor-id="depth-first-traversals"><span class="header-section-number">D.5.2.2</span> Example 5: Figure below shows how we visit each node in a tree using preorder traversal. The figure also shows the <strong>walking order</strong>. In preorder traversal we visit a node when we pass from its left side. The nodes are visited in this order: A, B, C, D, E, F.</h4>
+</blockquote>
+<center>
+<img src="https://drive.google.com/uc?id=1mbmEtMGp8Wv6V9ghe8SJeQqS6ocQZA0g" width="70%" height="70%">
+</center>
+</section>
+<section id="breadth-first-traversals" class="level5" data-number="D.5.2.2.1">
+<h5 data-number="D.5.2.2.1" class="anchored"><span class="header-section-number">D.5.2.2.1</span> Breadth-first traversals</h5>
+<p>In <strong>breadth-first traversal</strong> of a binary tree we process all the children of a node before proceeding with the next generation. As with depth-first traversals, we can trace the traversal with a walk.</p>
+<blockquote class="blockquote">
+<h4 id="example-6-figure-below-shows-how-we-visit-each-node-in-a-tree-using-breadth-first-traversal.-the-figure-also-shows-the-walking-order.-the-traversal-order-is-a-b-e-c-d-f." data-number="D.5.2.3" class="anchored" data-anchor-id="breadth-first-traversals"><span class="header-section-number">D.5.2.3</span> Example 6: Figure below shows how we visit each node in a tree using breadth-first traversal. The figure also shows the walking order. The traversal order is A, B, E, C, D, F.</h4>
+</blockquote>
+<center>
+<img src="https://drive.google.com/uc?id=1mdey7G3HZKXfI55Ee4hoAWjWI4yn0Zia" width="70%" height="70%">
+</center>
+</section>
+</section>
+<section id="binary-tree-applications" class="level4" data-number="D.5.2.4">
+<h4 data-number="D.5.2.4" class="anchored" data-anchor-id="binary-tree-applications"><span class="header-section-number">D.5.2.4</span> Binary tree applications</h4>
+<section id="expression-trees" class="level5" data-number="D.5.2.4.1">
+<h5 data-number="D.5.2.4.1" class="anchored" data-anchor-id="expression-trees"><span class="header-section-number">D.5.2.4.1</span> Expression trees</h5>
+<p>An arithmetic expression can be represented in three different formats: <strong>infix</strong>, <strong>postfix</strong>, and <strong>prefix</strong>. In an infix notation, the operator comes between the two operands. In postfix notation, the operator comes after its two operands, and in prefix notation it comes before the two operands. These formats are shown below for the addition of two operands A and B.</p>
+<ul>
+<li>Prefix: <code>+ A B</code></li>
+<li>Infix: <code>A + B</code></li>
+<li>Postfix: <code>A B +</code></li>
+</ul>
+<p>Although we use infix notation in our algorithms and in programming languages, <strong>the compiler often changes them to postfix notation before evaluating them</strong>. One way to do this conversion is to create an expression tree. In an expression tree, the root and the internal nodes are operators and the leaves are the operands. The three standard traversals (preorder, inorder, and postorder) then represent the three different expression formats: infix , postfix , and prefix. The inorder traversal produces the infix expression, the postorder traversal produces the postfix expression, and the preorder traversal produces the prefix expression. Figure below shows an expression and its expression tree. <strong>Note that only the infix notation needs parentheses</strong>.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1meBO7ZiXZlMRH4xVqMjF8y7r4lr6W5nV" width="70%" height="70%">
+</center>
+</section>
+</section>
+</section>
+<section id="binary-search-trees" class="level3" data-number="D.5.3">
+<h3 data-number="D.5.3" class="anchored" data-anchor-id="binary-search-trees"><span class="header-section-number">D.5.3</span> Binary search trees</h3>
+<p>A binary search tree (BST) is a binary tree with one extra property: the key value of each node is greater than the key values of all nodes in each left subtree and smaller than the value of all nodes in each right subtree. Figure below shows the idea.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1muxZk-gFUhu2gHP_j6ypzaINQX9Yhv7P">
+</center>
+<blockquote class="blockquote">
+<h4 id="example-7-figure-below-shows-some-binary-trees-that-are-bsts-and-some-that-are-not.-note-that-a-tree-is-a-bst-if-all-its-subtrees-are-bsts-and-the-whole-tree-is-also-a-bst." data-number="D.5.3.1" class="anchored"><span class="header-section-number">D.5.3.1</span> Example 7: Figure below shows some binary trees that are BSTs and some that are not. Note that a tree is a BST if all its subtrees are BSTs and the whole tree is also a BST.</h4>
+</blockquote>
+<center>
+<img src="https://drive.google.com/uc?id=1n1uOGoilQLvho18gqgWBbS76q7w2rHRs" width="70%" height="70%">
+</center>
+<section id="bst-implementation" class="level5" data-number="D.5.3.1.1">
+<h5 data-number="D.5.3.1.1" class="anchored"><span class="header-section-number">D.5.3.1.1</span> BST implementation</h5>
+<p>BSTs can be implemented using either arrays or linked lists. However, linked list structures are more common and more efficient. A linear implementation uses nodes with two pointers, left and right. The left pointer points to the left subtree and the right pointer points to the right subtree. If the left subtree is empty, the left pointer is null: if the right subtree is empty, the right pointer is null. Figure below shows a BST in which the data field of each node is a record.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1nOlUITuPxS3Dk7sstME5bfsE0ggKxW4S" width="70%" height="70%">
+</center>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:412,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243477962,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a><span class="kw">class</span> tree:</span>
+<span id="cb79-2"><a href="#cb79-2"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb79-3"><a href="#cb79-3"></a>    <span class="va">self</span>.data<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb79-4"><a href="#cb79-4"></a>    <span class="va">self</span>.left<span class="op">=</span><span class="va">None</span></span>
+<span id="cb79-5"><a href="#cb79-5"></a>    <span class="va">self</span>.right<span class="op">=</span><span class="va">None</span></span>
+<span id="cb79-6"><a href="#cb79-6"></a>  <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb79-7"><a href="#cb79-7"></a>    lines, <span class="op">*</span>_ <span class="op">=</span> <span class="va">self</span>._display_aux()</span>
+<span id="cb79-8"><a href="#cb79-8"></a>    <span class="cf">return</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>.join(lines)</span>
+<span id="cb79-9"><a href="#cb79-9"></a>  <span class="kw">def</span> _display_aux(<span class="va">self</span>):</span>
+<span id="cb79-10"><a href="#cb79-10"></a>    <span class="co"># https://stackoverflow.com/questions/34012886/print-binary-tree-level-by-level-in-python</span></span>
+<span id="cb79-11"><a href="#cb79-11"></a>    <span class="co">"""Returns list of strings, width, height, and horizontal coordinate of the root."""</span></span>
+<span id="cb79-12"><a href="#cb79-12"></a>    <span class="co"># No child.</span></span>
+<span id="cb79-13"><a href="#cb79-13"></a>    <span class="cf">if</span> <span class="va">self</span>.right <span class="kw">is</span> <span class="va">None</span> <span class="kw">and</span> <span class="va">self</span>.left <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb79-14"><a href="#cb79-14"></a>      line <span class="op">=</span> <span class="st">'</span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> <span class="va">self</span>.data</span>
+<span id="cb79-15"><a href="#cb79-15"></a>      width <span class="op">=</span> <span class="bu">len</span>(line)</span>
+<span id="cb79-16"><a href="#cb79-16"></a>      height <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb79-17"><a href="#cb79-17"></a>      middle <span class="op">=</span> width <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb79-18"><a href="#cb79-18"></a>      <span class="cf">return</span> [line], width, height, middle</span>
+<span id="cb79-19"><a href="#cb79-19"></a></span>
+<span id="cb79-20"><a href="#cb79-20"></a>    <span class="co"># Only left child.</span></span>
+<span id="cb79-21"><a href="#cb79-21"></a>    <span class="cf">if</span> <span class="va">self</span>.right <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb79-22"><a href="#cb79-22"></a>      lines, n, p, x <span class="op">=</span> <span class="va">self</span>.left._display_aux()</span>
+<span id="cb79-23"><a href="#cb79-23"></a>      s <span class="op">=</span> <span class="st">'</span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> <span class="va">self</span>.data</span>
+<span id="cb79-24"><a href="#cb79-24"></a>      u <span class="op">=</span> <span class="bu">len</span>(s)</span>
+<span id="cb79-25"><a href="#cb79-25"></a>      first_line <span class="op">=</span> (x <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> <span class="st">' '</span> <span class="op">+</span> (n <span class="op">-</span> x <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> <span class="st">'_'</span> <span class="op">+</span> s</span>
+<span id="cb79-26"><a href="#cb79-26"></a>      second_line <span class="op">=</span> x <span class="op">*</span> <span class="st">' '</span> <span class="op">+</span> <span class="st">'/'</span> <span class="op">+</span> (n <span class="op">-</span> x <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> u) <span class="op">*</span> <span class="st">' '</span></span>
+<span id="cb79-27"><a href="#cb79-27"></a>      shifted_lines <span class="op">=</span> [line <span class="op">+</span> u <span class="op">*</span> <span class="st">' '</span> <span class="cf">for</span> line <span class="kw">in</span> lines]</span>
+<span id="cb79-28"><a href="#cb79-28"></a>      <span class="cf">return</span> [first_line, second_line] <span class="op">+</span> shifted_lines, n <span class="op">+</span> u, p <span class="op">+</span> <span class="dv">2</span>, n <span class="op">+</span> u <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb79-29"><a href="#cb79-29"></a></span>
+<span id="cb79-30"><a href="#cb79-30"></a>    <span class="co"># Only right child.</span></span>
+<span id="cb79-31"><a href="#cb79-31"></a>    <span class="cf">if</span> <span class="va">self</span>.left <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb79-32"><a href="#cb79-32"></a>      lines, n, p, x <span class="op">=</span> <span class="va">self</span>.right._display_aux()</span>
+<span id="cb79-33"><a href="#cb79-33"></a>      s <span class="op">=</span> <span class="st">'</span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> <span class="va">self</span>.data</span>
+<span id="cb79-34"><a href="#cb79-34"></a>      u <span class="op">=</span> <span class="bu">len</span>(s)</span>
+<span id="cb79-35"><a href="#cb79-35"></a>      first_line <span class="op">=</span> s <span class="op">+</span> x <span class="op">*</span> <span class="st">'_'</span> <span class="op">+</span> (n <span class="op">-</span> x) <span class="op">*</span> <span class="st">' '</span></span>
+<span id="cb79-36"><a href="#cb79-36"></a>      second_line <span class="op">=</span> (u <span class="op">+</span> x) <span class="op">*</span> <span class="st">' '</span> <span class="op">+</span> <span class="st">'</span><span class="ch">\\</span><span class="st">'</span> <span class="op">+</span> (n <span class="op">-</span> x <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> <span class="st">' '</span></span>
+<span id="cb79-37"><a href="#cb79-37"></a>      shifted_lines <span class="op">=</span> [u <span class="op">*</span> <span class="st">' '</span> <span class="op">+</span> line <span class="cf">for</span> line <span class="kw">in</span> lines]</span>
+<span id="cb79-38"><a href="#cb79-38"></a>      <span class="cf">return</span> [first_line, second_line] <span class="op">+</span> shifted_lines, n <span class="op">+</span> u, p <span class="op">+</span> <span class="dv">2</span>, u <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb79-39"><a href="#cb79-39"></a></span>
+<span id="cb79-40"><a href="#cb79-40"></a>    <span class="co"># Two children.</span></span>
+<span id="cb79-41"><a href="#cb79-41"></a>    left, n, p, x <span class="op">=</span> <span class="va">self</span>.left._display_aux()</span>
+<span id="cb79-42"><a href="#cb79-42"></a>    right, m, q, y <span class="op">=</span> <span class="va">self</span>.right._display_aux()</span>
+<span id="cb79-43"><a href="#cb79-43"></a>    s <span class="op">=</span> <span class="st">'</span><span class="sc">%s</span><span class="st">'</span> <span class="op">%</span> <span class="va">self</span>.data</span>
+<span id="cb79-44"><a href="#cb79-44"></a>    u <span class="op">=</span> <span class="bu">len</span>(s)</span>
+<span id="cb79-45"><a href="#cb79-45"></a>    first_line <span class="op">=</span> (x <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> <span class="st">' '</span> <span class="op">+</span> (n <span class="op">-</span> x <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> <span class="st">'_'</span> <span class="op">+</span> s <span class="op">+</span> y <span class="op">*</span> <span class="st">'_'</span> <span class="op">+</span> (m <span class="op">-</span> y) <span class="op">*</span> <span class="st">' '</span></span>
+<span id="cb79-46"><a href="#cb79-46"></a>    second_line <span class="op">=</span> x <span class="op">*</span> <span class="st">' '</span> <span class="op">+</span> <span class="st">'/'</span> <span class="op">+</span> (n <span class="op">-</span> x <span class="op">-</span> <span class="dv">1</span> <span class="op">+</span> u <span class="op">+</span> y) <span class="op">*</span> <span class="st">' '</span> <span class="op">+</span> <span class="st">'</span><span class="ch">\\</span><span class="st">'</span> <span class="op">+</span> (m <span class="op">-</span> y <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> <span class="st">' '</span></span>
+<span id="cb79-47"><a href="#cb79-47"></a>    <span class="cf">if</span> p <span class="op">&lt;</span> q:</span>
+<span id="cb79-48"><a href="#cb79-48"></a>      left <span class="op">+=</span> [n <span class="op">*</span> <span class="st">' '</span>] <span class="op">*</span> (q <span class="op">-</span> p)</span>
+<span id="cb79-49"><a href="#cb79-49"></a>    <span class="cf">elif</span> q <span class="op">&lt;</span> p:</span>
+<span id="cb79-50"><a href="#cb79-50"></a>      right <span class="op">+=</span> [m <span class="op">*</span> <span class="st">' '</span>] <span class="op">*</span> (p <span class="op">-</span> q)</span>
+<span id="cb79-51"><a href="#cb79-51"></a>    zipped_lines <span class="op">=</span> <span class="bu">zip</span>(left, right)</span>
+<span id="cb79-52"><a href="#cb79-52"></a>    lines <span class="op">=</span> [first_line, second_line] <span class="op">+</span> [a <span class="op">+</span> u <span class="op">*</span> <span class="st">' '</span> <span class="op">+</span> b <span class="cf">for</span> a, b <span class="kw">in</span> zipped_lines]</span>
+<span id="cb79-53"><a href="#cb79-53"></a>    <span class="cf">return</span> lines, n <span class="op">+</span> m <span class="op">+</span> u, <span class="bu">max</span>(p, q) <span class="op">+</span> <span class="dv">2</span>, n <span class="op">+</span> u <span class="op">//</span> <span class="dv">2</span>    </span>
+<span id="cb79-54"><a href="#cb79-54"></a></span>
+<span id="cb79-55"><a href="#cb79-55"></a><span class="kw">def</span> create_tree(root,val):  <span class="co"># create a binary tree</span></span>
+<span id="cb79-56"><a href="#cb79-56"></a>  newnode<span class="op">=</span>tree()</span>
+<span id="cb79-57"><a href="#cb79-57"></a>  newnode.data<span class="op">=</span>val</span>
+<span id="cb79-58"><a href="#cb79-58"></a>  newnode.left<span class="op">=</span><span class="va">None</span></span>
+<span id="cb79-59"><a href="#cb79-59"></a>  newnode.right<span class="op">=</span><span class="va">None</span></span>
+<span id="cb79-60"><a href="#cb79-60"></a>  <span class="cf">if</span> root<span class="op">==</span><span class="va">None</span>:</span>
+<span id="cb79-61"><a href="#cb79-61"></a>    root<span class="op">=</span>newnode</span>
+<span id="cb79-62"><a href="#cb79-62"></a>    <span class="cf">return</span> root</span>
+<span id="cb79-63"><a href="#cb79-63"></a>  <span class="cf">else</span>:</span>
+<span id="cb79-64"><a href="#cb79-64"></a>    current<span class="op">=</span>root</span>
+<span id="cb79-65"><a href="#cb79-65"></a>    <span class="cf">while</span> current<span class="op">!=</span><span class="va">None</span>:</span>
+<span id="cb79-66"><a href="#cb79-66"></a>      backup<span class="op">=</span>current</span>
+<span id="cb79-67"><a href="#cb79-67"></a>      <span class="cf">if</span> current.data <span class="op">&gt;</span> val:</span>
+<span id="cb79-68"><a href="#cb79-68"></a>        current<span class="op">=</span>current.left</span>
+<span id="cb79-69"><a href="#cb79-69"></a>      <span class="cf">else</span>:</span>
+<span id="cb79-70"><a href="#cb79-70"></a>        current<span class="op">=</span>current.right</span>
+<span id="cb79-71"><a href="#cb79-71"></a>    <span class="cf">if</span> backup.data <span class="op">&gt;</span>val:</span>
+<span id="cb79-72"><a href="#cb79-72"></a>      backup.left<span class="op">=</span>newnode</span>
+<span id="cb79-73"><a href="#cb79-73"></a>    <span class="cf">else</span>:</span>
+<span id="cb79-74"><a href="#cb79-74"></a>      backup.right<span class="op">=</span>newnode</span>
+<span id="cb79-75"><a href="#cb79-75"></a>  <span class="cf">return</span> root</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243478365,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1"></a><span class="kw">def</span> inorder(ptr):   <span class="co"># Inorder</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a>  <span class="cf">if</span> ptr<span class="op">!=</span><span class="va">None</span>:</span>
+<span id="cb80-3"><a href="#cb80-3"></a>    inorder(ptr.left)</span>
+<span id="cb80-4"><a href="#cb80-4"></a>    <span class="bu">print</span>(ptr.data, end<span class="op">=</span><span class="st">' '</span>)</span>
+<span id="cb80-5"><a href="#cb80-5"></a>    inorder(ptr.right)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243492602,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>data<span class="op">=</span>[<span class="dv">17</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">14</span>,<span class="dv">19</span>]</span>
+<span id="cb81-2"><a href="#cb81-2"></a>ptr<span class="op">=</span><span class="va">None</span></span>
+<span id="cb81-3"><a href="#cb81-3"></a>root<span class="op">=</span><span class="va">None</span></span>
+<span id="cb81-4"><a href="#cb81-4"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data)):</span>
+<span id="cb81-5"><a href="#cb81-5"></a>  ptr<span class="op">=</span>create_tree(ptr,data[i])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243496262,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="f9e29ff7-d76a-44bd-b72b-99ce94f0bcab" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a>ptr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>  __17_ 
+ /     \
+ 6_   19
+/  \    
+3 14    </code></pre>
+</div>
+</div>
+<p>A very interesting property of a BST is that <strong>if we apply the inorder traversal of a binary tree, the elements that are visited are sorted in ascending order.</strong> For example, the three BSTs in Figure above, when traversed in the order gives the list <code>(3, 6, 17)</code>, <code>(17, 19)</code>, and <code>(3, 6, 14, 17, 19)</code>.</p>
+<blockquote class="blockquote">
+<p>An inorder traversal of a BST creates a list that is sorted in ascending order.</p>
+</blockquote>
+<blockquote class="blockquote">
+<h4 id="example-8-the-code-below-is-the-inorder-traversal-of-a-binary-search-tree." data-number="D.5.3.2" class="anchored" data-anchor-id="bst-implementation"><span class="header-section-number">D.5.3.2</span> Example 8: The code below is the inorder traversal of a binary search tree.</h4>
+</blockquote>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:536,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243513023,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="295d5d2b-0247-472c-ab24-29bc8876968a" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a><span class="bu">print</span>(<span class="st">'======================================================='</span>)</span>
+<span id="cb84-2"><a href="#cb84-2"></a><span class="bu">print</span>(<span class="st">'Inorder：'</span>)</span>
+<span id="cb84-3"><a href="#cb84-3"></a>inorder(ptr) </span>
+<span id="cb84-4"><a href="#cb84-4"></a><span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>=======================================================
+Inorder：
+3 6 14 17 19 </code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<h4 id="exercise-4-try-to-write-the-postorder-and-preorder-traversal-of-the-above-tree." data-number="D.5.3.3" class="anchored"><span class="header-section-number">D.5.3.3</span> Exercise 4: Try to write the postorder and preorder traversal of the above tree.</h4>
+</blockquote>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:456,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243517600,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a><span class="kw">def</span> postorder(ptr):  <span class="co"># Postorder</span></span>
+<span id="cb86-2"><a href="#cb86-2"></a>  <span class="cf">if</span> ptr<span class="op">!=</span><span class="va">None</span>:</span>
+<span id="cb86-3"><a href="#cb86-3"></a>    postorder(ptr.left)</span>
+<span id="cb86-4"><a href="#cb86-4"></a>    postorder(ptr.right)</span>
+<span id="cb86-5"><a href="#cb86-5"></a>    <span class="bu">print</span>(ptr.data, end<span class="op">=</span><span class="st">' '</span>)</span>
+<span id="cb86-6"><a href="#cb86-6"></a></span>
+<span id="cb86-7"><a href="#cb86-7"></a><span class="kw">def</span> preorder(ptr):   <span class="co"># Preorder</span></span>
+<span id="cb86-8"><a href="#cb86-8"></a>  <span class="cf">if</span> ptr<span class="op">!=</span><span class="va">None</span>:</span>
+<span id="cb86-9"><a href="#cb86-9"></a>    <span class="bu">print</span>(ptr.data, end<span class="op">=</span> <span class="st">' '</span>)</span>
+<span id="cb86-10"><a href="#cb86-10"></a>    preorder(ptr.left)</span>
+<span id="cb86-11"><a href="#cb86-11"></a>    preorder(ptr.right)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243518376,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="28f04d7f-51f4-4177-a312-0128b5e45f64" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a><span class="bu">print</span>(<span class="st">'======================================================='</span>)</span>
+<span id="cb87-2"><a href="#cb87-2"></a><span class="bu">print</span>(<span class="st">'Postorder：'</span>)</span>
+<span id="cb87-3"><a href="#cb87-3"></a>postorder(ptr)</span>
+<span id="cb87-4"><a href="#cb87-4"></a><span class="bu">print</span>()</span>
+<span id="cb87-5"><a href="#cb87-5"></a><span class="bu">print</span>(<span class="st">'======================================================='</span>)</span>
+<span id="cb87-6"><a href="#cb87-6"></a><span class="bu">print</span>(<span class="st">'Preorder：'</span>)</span>
+<span id="cb87-7"><a href="#cb87-7"></a>preorder(ptr)</span>
+<span id="cb87-8"><a href="#cb87-8"></a><span class="bu">print</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>=======================================================
+Postorder：
+3 14 6 19 17 
+=======================================================
+Preorder：
+17 6 3 14 19 </code></pre>
+</div>
+</div>
+</section>
+<section id="binary-search-tree-adts" class="level5" data-number="D.5.3.3.1">
+<h5 data-number="D.5.3.3.1" class="anchored"><span class="header-section-number">D.5.3.3.1</span> Binary search tree ADTs</h5>
+<p>https://visualgo.net/en/bst</p>
+<p>The ADT for a binary search tree is similar to the one we defined for a general linear list with the same operation. As a matter of fact, we see more BST lists than general linear lists today. The reason is that searching a BST is more efficient that searching a linear list: a general linear list uses sequential searching, but BSTs use a version of binary search.</p>
+<p>Another feature that makes a BST interesting is that we can use a version of the binary search we used in Chapter 8 for a binary search tree. Figure below shows the UML for a BST search.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1nObw6EaZcGCDsgYyCAnsaT8K-maDw0yo" width="70%" height="70%">
+</center>
+<blockquote class="blockquote">
+<h4 id="exercise-5-search-the-above-tree." data-number="D.5.3.4" class="anchored" data-anchor-id="binary-search-tree-adts"><span class="header-section-number">D.5.3.4</span> Exercise 5: Search the above tree.</h4>
+</blockquote>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:397,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243555819,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a><span class="kw">def</span> search(ptr,val):    </span>
+<span id="cb89-2"><a href="#cb89-2"></a>  i<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb89-3"><a href="#cb89-3"></a>  <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb89-4"><a href="#cb89-4"></a>    <span class="cf">if</span> ptr<span class="op">==</span><span class="va">None</span>:    </span>
+<span id="cb89-5"><a href="#cb89-5"></a>      <span class="cf">return</span> <span class="st">"Not Found"</span></span>
+<span id="cb89-6"><a href="#cb89-6"></a>    <span class="cf">if</span> ptr.data<span class="op">==</span>val:      </span>
+<span id="cb89-7"><a href="#cb89-7"></a>      <span class="bu">print</span>(<span class="st">'Total search number </span><span class="sc">%d</span><span class="st">'</span><span class="op">%</span>i)</span>
+<span id="cb89-8"><a href="#cb89-8"></a>      <span class="cf">return</span> <span class="st">"Found"</span></span>
+<span id="cb89-9"><a href="#cb89-9"></a>    <span class="cf">elif</span> ptr.data <span class="op">&gt;</span> val: </span>
+<span id="cb89-10"><a href="#cb89-10"></a>      ptr<span class="op">=</span>ptr.left</span>
+<span id="cb89-11"><a href="#cb89-11"></a>    <span class="cf">else</span>:</span>
+<span id="cb89-12"><a href="#cb89-12"></a>      ptr<span class="op">=</span>ptr.right</span>
+<span id="cb89-13"><a href="#cb89-13"></a>    i<span class="op">+=</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:591,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243557422,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="5ad8535e-85df-4cf8-f915-a75938300423" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a>search(ptr, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>'Not Found'</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243566320,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="08cb960a-9774-4ebe-c7ec-5a3e7184e183" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a>search(ptr, <span class="dv">14</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total search number 3</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>'Found'</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="graphs" class="level2" data-number="D.6">
+<h2 data-number="D.6" class="anchored" data-anchor-id="graphs"><span class="header-section-number">D.6</span> Graphs</h2>
+<p>A graph is an ADT made of a set of nodes, called <strong>vertices</strong>, and set of lines connecting the vertices, called <strong>edges</strong> or <strong>arcs</strong>. Whereas a tree defines a hierarchical structure in which a node can have only one single parent, each node in a graph can have one or more parents. Graphs may be either <em>directed</em> or <em>undirected</em>. In a <strong>directed graph</strong>, or digraph, each edge, which connects two vertices, has a direction (shown in the figure by an arrowhead) from one vertex to the other. In an <strong>undirected graph</strong>, there is no direction. Figure below shows an example of both a directed graph (a) and an undirected graph (b).</p>
+<center>
+<img src="https://drive.google.com/uc?id=1nPcHjaXOvLw0ENnLkrgmarO6z3-QzUAq" width="70%" height="70%">
+</center>
+<p>The vertices in a graph can represent objects or concepts and the edges or arcs can represent a relationship between those objects or concepts. If a graph is directed, the relations are one-way: if a graph is undirected, the relation is two-way.</p>
+<p>For instance, a map of cities and the roads connecting the cities can be represented in a computer using an undirected graph. The cities are vertices and the undirected edges are the roads that connect them. If we want to show the distances between the cities, we can use weighted graphs, in which each edge has a weight that represent the distance between two cities connected by that edge. Another application of graphs is in computer networks (Chapter 6). The vertices can represent the nodes or hubs; the edges can represent the route. Each edge can have a weight that defines the cost of reaching from one hub to the adjacent hub. A router can use graph algorithms to find the shortest path between itself and the final destination of a packet.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05_Data_Structure_sol.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

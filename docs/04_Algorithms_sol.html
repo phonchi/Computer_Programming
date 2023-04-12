@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.306">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="phonchi">
+<meta name="dcterms.date" content="2023-04-12">
+
+<title>Computer Programming - Appendix B — Algorithms</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./05_Data_Structure_sol.html" rel="next">
+<link href="./00_Copilot.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./04_Algorithms_sol.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Computer Programming</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Book</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Flow_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Flow Control</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Lists_tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lists and Tuples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Dictionaries_sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Other collections - Dictionaries and Sets</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Manipulating_string.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Manipulating Strings</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Files and Exceptions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_09_OOP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Object Oriented Programming and Classes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_11_NumPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_Copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-taste-of-algorithm" id="toc-a-taste-of-algorithm" class="nav-link active" data-scroll-target="#a-taste-of-algorithm"><span class="header-section-number">B.1</span> A taste of algorithm</a></li>
+  <li><a href="#algorithm-representations" id="toc-algorithm-representations" class="nav-link" data-scroll-target="#algorithm-representations"><span class="header-section-number">B.2</span> Algorithm representations</a>
+  <ul>
+  <li><a href="#example-1-write-an-algorithm-that-finds-the-sum-of-two-integers." id="toc-example-1-write-an-algorithm-that-finds-the-sum-of-two-integers." class="nav-link" data-scroll-target="#example-1-write-an-algorithm-that-finds-the-sum-of-two-integers."><span class="header-section-number">B.2.1</span> Example 1: Write an algorithm that finds the sum of two integers.</a></li>
+  <li><a href="#example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade." id="toc-example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade." class="nav-link" data-scroll-target="#example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade."><span class="header-section-number">B.2.2</span> Example 2: Write an algorithm to change a numeric grade to a pass/no pass grade.</a></li>
+  <li><a href="#example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers." id="toc-example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers." class="nav-link" data-scroll-target="#example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers."><span class="header-section-number">B.2.3</span> Example 3: Write an algorithm to find the largest of a set of integers. We do not know the number of integers.</a></li>
+  </ul></li>
+  <li><a href="#a-more-formal-definition" id="toc-a-more-formal-definition" class="nav-link" data-scroll-target="#a-more-formal-definition"><span class="header-section-number">B.3</span> A more formal definition</a></li>
+  <li><a href="#basic-algorithms" id="toc-basic-algorithms" class="nav-link" data-scroll-target="#basic-algorithms"><span class="header-section-number">B.4</span> Basic algorithms</a>
+  <ul>
+  <li><a href="#summation" id="toc-summation" class="nav-link" data-scroll-target="#summation"><span class="header-section-number">B.4.0.1</span> Summation</a></li>
+  <li><a href="#product" id="toc-product" class="nav-link" data-scroll-target="#product"><span class="header-section-number">B.4.0.2</span> Product</a></li>
+  <li><a href="#smallest-and-largest" id="toc-smallest-and-largest" class="nav-link" data-scroll-target="#smallest-and-largest"><span class="header-section-number">B.4.0.3</span> Smallest and largest</a></li>
+  </ul></li>
+  <li><a href="#sorting" id="toc-sorting" class="nav-link" data-scroll-target="#sorting"><span class="header-section-number">B.5</span> Sorting</a>
+  <ul>
+  <li><a href="#selection-sorts" id="toc-selection-sorts" class="nav-link" data-scroll-target="#selection-sorts"><span class="header-section-number">B.5.1</span> Selection sorts</a></li>
+  <li><a href="#bubble-sort" id="toc-bubble-sort" class="nav-link" data-scroll-target="#bubble-sort"><span class="header-section-number">B.5.3</span> Bubble sort</a></li>
+  <li><a href="#insertion-sort" id="toc-insertion-sort" class="nav-link" data-scroll-target="#insertion-sort"><span class="header-section-number">B.5.5</span> Insertion sort</a></li>
+  </ul></li>
+  <li><a href="#searching" id="toc-searching" class="nav-link" data-scroll-target="#searching"><span class="header-section-number">B.6</span> Searching</a>
+  <ul>
+  <li><a href="#sequential-search" id="toc-sequential-search" class="nav-link" data-scroll-target="#sequential-search"><span class="header-section-number">B.6.1</span> Sequential search</a></li>
+  <li><a href="#binary-search" id="toc-binary-search" class="nav-link" data-scroll-target="#binary-search"><span class="header-section-number">B.6.3</span> Binary search</a></li>
+  </ul></li>
+  <li><a href="#recursion" id="toc-recursion" class="nav-link" data-scroll-target="#recursion"><span class="header-section-number">B.7</span> Recursion</a>
+  <ul>
+  <li><a href="#iterative" id="toc-iterative" class="nav-link" data-scroll-target="#iterative"><span class="header-section-number">B.7.1</span> Iterative</a></li>
+  <li><a href="#recursive" id="toc-recursive" class="nav-link" data-scroll-target="#recursive"><span class="header-section-number">B.7.2</span> Recursive</a></li>
+  <li><a href="#example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively" id="toc-example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively" class="nav-link" data-scroll-target="#example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively"><span class="header-section-number">B.7.3</span> Example 4: Let us write an algorithm to solve the factorial problem iteratively!</a></li>
+  <li><a href="#exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion" id="toc-exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion" class="nav-link" data-scroll-target="#exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion"><span class="header-section-number">B.7.4</span> Exercise 7: Try to write an algorithm to solve the factorial problem using recursion!</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Appendix B — Algorithms</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>phonchi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 12, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+
+<table align="left">
+<tbody><tr><td>
+<a href="https://colab.research.google.com/github/phonchi/nsysu-math105A/blob/master/static_files/presentations/04_Algorithms.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</td>
+<td>
+<a target="_blank" href="https://kaggle.com/kernels/welcome?src=https://github.com/phonchi/nsysu-math105A/blob/master/static_files/presentations/04_Algorithms.ipynb"><img src="https://kaggle.com/static/images/open-in-kaggle.svg"></a>
+</td>
+
+</tr></tbody></table>
+<p><br></p>
+<section id="a-taste-of-algorithm" class="level2" data-number="B.1">
+<h2 data-number="B.1" class="anchored" data-anchor-id="a-taste-of-algorithm"><span class="header-section-number">B.1</span> A taste of algorithm</h2>
+<p>An informal definition of an algorithm is:</p>
+<blockquote class="blockquote">
+<p>Algorithm: a step-by-step method for solving a problem or doing a task.</p>
+</blockquote>
+<p>In this definition, an algorithm is independent of the computer system. More specifically, we should also note that the algorithm accepts input data and creates output data</p>
+<center>
+<img src="https://drive.google.com/uc?id=1DWtbC577FqEWBnJQoOsvMUgkMN2244op" width="70%" height="70%">
+</center>
+<p>Let us elaborate on this simple definition with an example. We want to develop an algorithm for <strong>finding the largest integer among a list of positive integers.</strong> It is obvious that finding the largest integer among many integers is a task that cannot be done in one step. The algorithm needs to test each integer one by one.</p>
+<p>To solve this problem, we need an intuitive approach. First use a small number of integers (for example, five), then extend the solution to any number of integers. Assume that the algorithm handles the integers one by one. It looks at the first integer without knowing the values of the remaining integers. After it handles the first one, it looks at the second integer, and so on.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1DYe-2z-WAu2nx2AUnaLES4lVbCsY1l2w" width="70%" height="70%">
+</center>
+<p>The above figure does not show what should be done in each step. We can modify the figure to show more details.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1Dchd1GVDCs65bzvfJ1cD4c7OkwqlgWIA" width="70%" height="70%">
+</center>
+<p>There are two problems for the above figure to become an algorithm that can be programmed. First, the <strong>action</strong> in the first step is different than those for the other steps. Second, the wording is not the same in steps 2 to 5. The reason that the first step is different than the other steps is because Largest is not initialized! If we initialize Largest to <span class="math inline">\(-∞\)</span>, then the first step can be the same as the other steps!</p>
+<center>
+<img src="https://drive.google.com/uc?id=1DfVef2wlqx1LXVSnuYE33VDqblYzIscg" width="70%" height="70%">
+</center>
+<p>Is it possible to generalize the algorithm? We want to find the largest of n positive integers, where n can be 1000, 1000000, or more. We can tell the computer to repeat the steps n times!</p>
+<center>
+<img src="https://drive.google.com/uc?id=1Dl_idV-0frUzA05ftmmk3EDmACnfZLts" width="70%" height="70%">
+</center>
+</section>
+<section id="algorithm-representations" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="algorithm-representations"><span class="header-section-number">B.2</span> Algorithm representations</h2>
+<p>Computer scientists have defined three constructs for a structured program or algorithm. The idea is that a program must be made of a combination of only these three constructs: <strong>sequence, decision, and repetition</strong>.</p>
+<blockquote class="blockquote">
+<p>It has been proven there is no need for any other constructs!</p>
+</blockquote>
+<center>
+<img src="https://drive.google.com/uc?id=1YPq_lih-6AxaIsZ_uVzsjX0_vXPra8Vt" width="70%" height="70%">
+</center>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1668594846466,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="03c4d713-8d05-4971-cd39-95013e6332c9">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="op">=</span> <span class="dv">150</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="cf">if</span> x<span class="op">%</span><span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="bu">print</span>(<span class="st">'x is even'</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="cf">else</span>:</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="bu">print</span>(<span class="st">'x is odd'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x is even</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1668594847616,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="466c5bee-b715-49aa-d02d-00b21a26ce52">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>n <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="cf">while</span> (n <span class="op">&lt;</span> <span class="dv">10</span>):</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="bu">print</span>(n)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  n <span class="op">=</span> n <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre>
+</div>
+</div>
+<section id="example-1-write-an-algorithm-that-finds-the-sum-of-two-integers." class="level3" data-number="B.2.1">
+<h3 data-number="B.2.1" class="anchored" data-anchor-id="example-1-write-an-algorithm-that-finds-the-sum-of-two-integers."><span class="header-section-number">B.2.1</span> Example 1: Write an algorithm that finds the sum of two integers.</h3>
+<p>This is a simple problem that can be solved using only the sequence construct. Note also that we name the algorithm, define the input to the algorithm and, at the end, we use a return instruction to return the sum</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> SumOfTwo(first, second):</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="co">"""</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">    Parameters</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">    ----------</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">    first: int</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">        The first integer</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">    second: int</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">        The second integer</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">    Returns</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">    -------</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">    sum : int</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">        The sum of two integers</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">  """</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>  <span class="co"># Your code here</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a>  <span class="bu">sum</span> <span class="op">=</span> first <span class="op">+</span> second</span>
+<span id="cb5-16"><a href="#cb5-16"></a>  <span class="cf">return</span> <span class="bu">sum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">assert</span>(SumOfTwo(<span class="dv">3</span>,<span class="dv">5</span>)<span class="op">==</span><span class="dv">8</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="cf">assert</span>(SumOfTwo(<span class="op">-</span><span class="dv">7</span>,<span class="op">-</span><span class="dv">3</span>)<span class="op">==-</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade." class="level3" data-number="B.2.2">
+<h3 data-number="B.2.2" class="anchored" data-anchor-id="example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade."><span class="header-section-number">B.2.2</span> Example 2: Write an algorithm to change a numeric grade to a pass/no pass grade.</h3>
+<p>This problem cannot be solved with only the sequence construct. We also need the decision construct. The computer is given an integer between 0 and 100. It returns ‘pass’ if the integer is greater than or equal to 70, and returns ‘no pass’ if the integer is less than 60.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">def</span> Pass_NoPass(score):</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="co">"""</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">    Parameters</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">    ----------</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">    score: int</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">        The score to be changed to grade</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">    Returns</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">    -------</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">    grade : str</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">        The grade</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">  """</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>  <span class="co"># Your code here</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>  <span class="cf">if</span> score <span class="op">&gt;=</span> <span class="dv">60</span>:</span>
+<span id="cb7-14"><a href="#cb7-14"></a>    grade <span class="op">=</span> <span class="st">"pass"</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a>  <span class="cf">else</span>:</span>
+<span id="cb7-16"><a href="#cb7-16"></a>    grade <span class="op">=</span> <span class="st">"nopass"</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a>  <span class="cf">return</span> grade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">assert</span>(Pass_NoPass(<span class="dv">90</span>)<span class="op">==</span><span class="st">"pass"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="cf">assert</span>(Pass_NoPass(<span class="dv">55</span>)<span class="op">==</span><span class="st">"nopass"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers." class="level3" data-number="B.2.3">
+<h3 data-number="B.2.3" class="anchored" data-anchor-id="example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers."><span class="header-section-number">B.2.3</span> Example 3: Write an algorithm to find the largest of a set of integers. We do not know the number of integers.</h3>
+<p>We use the concept before to write an algorithm for this problem</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> math</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="kw">def</span> FindLargest(ilist):</span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="co">"""</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">    Parameters</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">    ----------</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">    ilist: list</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">        The input list that contains integers</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">    Returns</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co">    -------</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co">    largest : int</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co">        The largest integer</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="co">  """</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a>  <span class="co"># Your code here</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>  largest <span class="op">=</span> <span class="op">-</span> math.inf</span>
+<span id="cb9-16"><a href="#cb9-16"></a>  <span class="cf">for</span> current <span class="kw">in</span> ilist:</span>
+<span id="cb9-17"><a href="#cb9-17"></a>    <span class="cf">if</span> current <span class="op">&gt;</span> largest:</span>
+<span id="cb9-18"><a href="#cb9-18"></a>      largest <span class="op">=</span> current</span>
+<span id="cb9-19"><a href="#cb9-19"></a>    <span class="cf">else</span>:</span>
+<span id="cb9-20"><a href="#cb9-20"></a>      <span class="cf">pass</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a>  <span class="cf">return</span> largest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="cf">assert</span>(FindLargest([])<span class="op">==-</span>math.inf)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="cf">assert</span>(FindLargest([<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>])<span class="op">==</span><span class="dv">10</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="cf">assert</span>(FindLargest([<span class="op">-</span><span class="dv">7</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">18</span>])<span class="op">==</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<h3 id="exercise-1-write-an-algorithm-to-find-the-smallest-of-the-first-5-integers-in-a-set-of-integers." data-number="B.2.4" class="anchored"><span class="header-section-number">B.2.4</span> Exercise 1: Write an algorithm to find the smallest of the first 5 integers in a set of integers.</h3>
+</blockquote>
+<p>Here we need a counter to count the number of integers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">def</span> FindSmallest(ilist):</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="co">"""</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">    Parameters</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co">    ----------</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">    ilist: list</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co">        The input list that contains integers</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="co">    Returns</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="co">    -------</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co">    largest : int</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="co">        The smallest integer of the first 5 integers in the list</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="co">  """</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a>  <span class="co"># Your code here</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a>  smallest <span class="op">=</span> math.inf</span>
+<span id="cb11-14"><a href="#cb11-14"></a>  <span class="cf">if</span> <span class="bu">len</span>(ilist) <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb11-15"><a href="#cb11-15"></a>    counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-16"><a href="#cb11-16"></a>    <span class="cf">while</span>(counter<span class="op">&lt;</span><span class="dv">5</span>):</span>
+<span id="cb11-17"><a href="#cb11-17"></a>      <span class="cf">if</span> ilist[counter] <span class="op">&lt;</span> smallest:</span>
+<span id="cb11-18"><a href="#cb11-18"></a>        smallest <span class="op">=</span> ilist[counter]</span>
+<span id="cb11-19"><a href="#cb11-19"></a>      counter <span class="op">=</span> counter <span class="op">+</span><span class="dv">1</span></span>
+<span id="cb11-20"><a href="#cb11-20"></a>  <span class="cf">return</span> smallest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">assert</span>(FindSmallest([])<span class="op">==</span> math.inf)</span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="cf">assert</span>(FindSmallest([<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">6</span>])<span class="op">==</span><span class="dv">3</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="cf">assert</span>(FindSmallest([<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">6</span>,<span class="dv">1</span>])<span class="op">==</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="a-more-formal-definition" class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="a-more-formal-definition"><span class="header-section-number">B.3</span> A more formal definition</h2>
+<p>Now that we have discussed the concept of an algorithm and shown its representation, here is a more formal definition.</p>
+<blockquote class="blockquote">
+<p>Algorithm: An ordered set of unambiguous steps that produces a result and terminates in a finite time.</p>
+</blockquote>
+<ol type="1">
+<li><strong>Well-Defined</strong>: An algorithm must be a well-defined, ordered set of instructions.</li>
+<li><strong>Unambiguous steps</strong>: Each step in an algorithm must be clearly and unambiguously defined. If one step is to add two integers, we must define both ‘integers’ as well as the ‘add’ operation</li>
+<li><strong>Produce a result</strong>: An algorithm must produce a result, otherwise it is useless. The result can be data returned to the calling algorithm, or some other effect (for example, printing).</li>
+<li><strong>Terminate in a finite time</strong>: An algorithm must terminate (halt). If it does not (that is, it has an infinite loop), we have not created an algorithm.</li>
+</ol>
+</section>
+<section id="basic-algorithms" class="level2" data-number="B.4">
+<h2 data-number="B.4" class="anchored" data-anchor-id="basic-algorithms"><span class="header-section-number">B.4</span> Basic algorithms</h2>
+<p>Several algorithms are used in computer science so prevalently that they are considered ‘basic’.</p>
+<section id="summation" class="level4" data-number="B.4.0.1">
+<h4 data-number="B.4.0.1" class="anchored" data-anchor-id="summation"><span class="header-section-number">B.4.0.1</span> Summation</h4>
+<p>One commonly used algorithm in computer science is summation. The solution is simple: we use the add operator in a loop</p>
+<center>
+<img src="https://drive.google.com/uc?id=1YYKm7EVT4a9SL5A_TYeJe789k4uPOGck" width="70%" height="70%">
+</center>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">def</span> summation(numbers):</span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="co">"""</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">    Parameters</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co">    ----------</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co">    numbers: list</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co">        The input list.</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="co">    Returns</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="co">    -------</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="co">    sum : int</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="co">        The summation of the input list, if the input is empty please return None</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="co">  """</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>  <span class="co"># Your code here</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a>  <span class="co"># Special case: If the numbers list is empty, return None:</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>  <span class="cf">if</span> <span class="bu">len</span>(numbers) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb13-15"><a href="#cb13-15"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb13-16"><a href="#cb13-16"></a></span>
+<span id="cb13-17"><a href="#cb13-17"></a>  <span class="co"># Start the total at 0:</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a>  <span class="bu">sum</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-19"><a href="#cb13-19"></a></span>
+<span id="cb13-20"><a href="#cb13-20"></a>  <span class="co"># Loop over each number in numbers:</span></span>
+<span id="cb13-21"><a href="#cb13-21"></a>  <span class="cf">for</span> current <span class="kw">in</span> numbers:</span>
+<span id="cb13-22"><a href="#cb13-22"></a>    <span class="co"># Add the number to the total:</span></span>
+<span id="cb13-23"><a href="#cb13-23"></a>    <span class="bu">sum</span> <span class="op">+=</span> current</span>
+<span id="cb13-24"><a href="#cb13-24"></a></span>
+<span id="cb13-25"><a href="#cb13-25"></a>  <span class="cf">return</span> <span class="bu">sum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">assert</span> summation([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="op">==</span> <span class="bu">sum</span>([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="cf">assert</span> summation([<span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">37</span>]) <span class="op">==</span> <span class="bu">sum</span>([<span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">37</span>])</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="cf">assert</span> summation([]) <span class="op">==</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="product" class="level4" data-number="B.4.0.2">
+<h4 data-number="B.4.0.2" class="anchored" data-anchor-id="product"><span class="header-section-number">B.4.0.2</span> Product</h4>
+<p>Another common algorithm is finding the product of a list of integers.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1YWbuAl2GdBvwi6KGAqkh6SEtG5xOAtSp" width="70%" height="70%">
+</center>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">def</span> product(numbers):</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="co">"""</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co">    Parameters</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co">    ----------</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co">    numbers: list</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co">        The input list.</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co">    Returns</span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="co">    -------</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co">    product : int</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co">        The product of the input list, if the input is empty please return None</span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co">  """</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a>  <span class="co"># Special case: If the numbers list is empty, return None:</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a>  <span class="cf">if</span> <span class="bu">len</span>(numbers) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb15-14"><a href="#cb15-14"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb15-15"><a href="#cb15-15"></a></span>
+<span id="cb15-16"><a href="#cb15-16"></a>  <span class="co"># Your code here</span></span>
+<span id="cb15-17"><a href="#cb15-17"></a>  product <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-18"><a href="#cb15-18"></a></span>
+<span id="cb15-19"><a href="#cb15-19"></a>  <span class="co"># Loop over each number in numbers:</span></span>
+<span id="cb15-20"><a href="#cb15-20"></a>  <span class="cf">for</span> current <span class="kw">in</span> numbers:</span>
+<span id="cb15-21"><a href="#cb15-21"></a>    <span class="co"># Multiply the number to the total:</span></span>
+<span id="cb15-22"><a href="#cb15-22"></a>    product <span class="op">*=</span> current</span>
+<span id="cb15-23"><a href="#cb15-23"></a></span>
+<span id="cb15-24"><a href="#cb15-24"></a>  <span class="cf">return</span> product</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># For Python 3.8 or later</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="cf">assert</span> product([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="op">==</span> math.prod([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="cf">assert</span> product([<span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">37</span>]) <span class="op">==</span> math.prod([<span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">37</span>])</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="cf">assert</span> product([]) <span class="op">==</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># For Python 3.7 or earlier</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="cf">assert</span> product([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]) <span class="op">==</span> np.prod([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="cf">assert</span> product([<span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">37</span>]) <span class="op">==</span> np.prod([<span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">37</span>])</span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="cf">assert</span> product([]) <span class="op">==</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="smallest-and-largest" class="level4" data-number="B.4.0.3">
+<h4 data-number="B.4.0.3" class="anchored" data-anchor-id="smallest-and-largest"><span class="header-section-number">B.4.0.3</span> Smallest and largest</h4>
+<center>
+<img src="https://drive.google.com/uc?id=1YaZHXYHQyCnhaWenLKSAbZItAyChF5FO" width="70%" height="70%">
+</center>
+</section>
+</section>
+<section id="sorting" class="level2" data-number="B.5">
+<h2 data-number="B.5" class="anchored" data-anchor-id="sorting"><span class="header-section-number">B.5</span> Sorting</h2>
+<p>One of the most common applications in computer science is sorting, which is the process by which data is arranged according to its values. People are surrounded by data. If the data was not ordered, it would take hours and hours to find a single piece of information. Imagine the difficulty of finding someone’s telephone number in a telephone book that is not ordered!</p>
+<section id="selection-sorts" class="level3" data-number="B.5.1">
+<h3 data-number="B.5.1" class="anchored" data-anchor-id="selection-sorts"><span class="header-section-number">B.5.1</span> Selection sorts</h3>
+<p>In a selection sort, the list to be sorted is divided into two sublists — sorted and unsorted— which are separated by an imaginary wall. We find the smallest element from the unsorted sublist and swap it with the element at the beginning of the unsorted sublist. After each selection and swap, the imaginary wall between the two sublists moves one element ahead, increasing the number of sorted elements and decreasing the number of unsorted ones. Each time we move one element from the unsorted sublist to the sorted sublist, we have completed a sort pass.</p>
+<p>A list of <code>n</code> elements requires <code>n  − 1</code> passes to completely rearrange the data.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1YshWCq5OEZGigKXQ0NuKaD2bGDfljf4F" width="70%" height="70%">
+</center>
+<p>The visualization is as follows:</p>
+<center>
+<img src="https://drive.google.com/uc?id=1YtENLBCBoa1sLSlz39ob_a7hw_ydjMz7" width="70%" height="70%">
+</center>
+<p>The figure shows how the wall between the sorted and unsorted sublists moves in each pass. As we study the figure, we will see that the list is sorted after five passes, which is one less than the number of elements in the list. <strong>Thus, if we use a loop to control the sorting, the loop will have one less iteration than the number of elements to be sorted.</strong></p>
+<center>
+<img src="https://miro.medium.com/max/720/1*RL412lOunuVkzkRFQqQ9EA.gif" width="70%" height="70%">
+</center>
+<div data-align="center">
+source: https://github.com/hustcc/JS-Sorting-Algorithm
+</div>
+<p>Refer to <a href="https://visualgo.net/en/sorting">https://visualgo.net/en/sorting</a> for more visualization of sorting algorithms.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1fWCD_RPafpt0hJIaU0OfW2Thsx1GNDXn" width="70%" height="70%">
+</center>
+<p>The algorithm uses two loops, one inside the other. The outer loop is iterated for each pass:&nbsp;the inner loop finds the smallest element in the unsorted list.</p>
+<blockquote class="blockquote">
+<h3 id="exercise-2-write-a-selection-sort-for-list-of-intergers-that-sorts-the-integer-from-smallest-to-largest" data-number="B.5.2" class="anchored"><span class="header-section-number">B.5.2</span> Exercise 2: Write a selection sort for list of intergers that sorts the integer from smallest to largest</h3>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">def</span> selection_sort(arr):</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="co">"""</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co">    Parameters</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="co">    ----------</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="co">    arr: list</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="co">        The unsorted input list that contains integers</span></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="co">    Returns</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="co">    -------</span></span>
+<span id="cb18-9"><a href="#cb18-9"></a><span class="co">    arr : list</span></span>
+<span id="cb18-10"><a href="#cb18-10"></a><span class="co">        The sorted list</span></span>
+<span id="cb18-11"><a href="#cb18-11"></a><span class="co">  """</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a>  n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
+<span id="cb18-13"><a href="#cb18-13"></a>  <span class="co">## Move the wall one element to the right</span></span>
+<span id="cb18-14"><a href="#cb18-14"></a>  <span class="cf">for</span> wall <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb18-15"><a href="#cb18-15"></a>    <span class="co">## Place the wall at the leftmost of the list</span></span>
+<span id="cb18-16"><a href="#cb18-16"></a>    min_index <span class="op">=</span> wall</span>
+<span id="cb18-17"><a href="#cb18-17"></a>    <span class="co">## Find smallest element in the unsorted list</span></span>
+<span id="cb18-18"><a href="#cb18-18"></a>    <span class="cf">for</span> cur <span class="kw">in</span> <span class="bu">range</span>(min_index<span class="op">+</span><span class="dv">1</span>,n):</span>
+<span id="cb18-19"><a href="#cb18-19"></a>      <span class="cf">if</span> arr[cur] <span class="op">&lt;</span> arr[min_index]:</span>
+<span id="cb18-20"><a href="#cb18-20"></a>        min_index <span class="op">=</span> cur</span>
+<span id="cb18-21"><a href="#cb18-21"></a>    <span class="co">## Swap smallest element with first element in the unsorted list</span></span>
+<span id="cb18-22"><a href="#cb18-22"></a>    arr[wall], arr[min_index] <span class="op">=</span> arr[min_index], arr[wall]</span>
+<span id="cb18-23"><a href="#cb18-23"></a>  <span class="cf">return</span> arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="cf">assert</span>(selection_sort([<span class="dv">89</span>,<span class="dv">78</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">21</span>,<span class="dv">17</span>,<span class="dv">12</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">1</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">89</span>,<span class="dv">78</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">21</span>,<span class="dv">17</span>,<span class="dv">12</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">1</span>]))</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="cf">assert</span>(selection_sort([<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>]))</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="cf">assert</span>(selection_sort([<span class="dv">78</span>,<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">8</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">27</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">78</span>,<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">8</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">27</span>]))</span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="cf">assert</span>(selection_sort([<span class="dv">5</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="bubble-sort" class="level3" data-number="B.5.3">
+<h3 data-number="B.5.3" class="anchored" data-anchor-id="bubble-sort"><span class="header-section-number">B.5.3</span> Bubble sort</h3>
+<p>In the bubble sort method, the list to be sorted is also divided into two sublists—sorted and unsorted. The smallest element is bubbled up from the unsorted sublist and moved to the sorted sublist. After the smallest element has been moved to the sorted list, the wall moves one element ahead, increasing the number of sorted elements and decreasing the number of unsorted ones.</p>
+<p>Each time an element moves from the unsorted sublist to the sorted sublist, one sort pass is completed. Given a list of <code>n</code> elements, bubble sort requires up to <code>n − 1</code> passes to sort the data.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1Z64QcMMgKJ4sxUVCcioWhqbdF1WhtqRk" width="70%" height="70%">
+</center>
+<p>The following shows how the wall moves one element in each pass. Looking at the first pass, we start with 56 and compare it to 32. Since 56 is not less than 32, it is not moved, and we step down one element. No exchanges take place until we compare 45 to 8. Since 8 is less than 45, the two elements are exchanged, and we step down one element. Because 8 was moved down, it is now compared to 78, and these two elements are exchanged. Finally, 8 is compared to 23 and exchanged. This series of exchanges places 8 in the first location, and the wall is moved up one position. <strong>The algorithm gets its name from the way in which numbers — in this example, 8 — appear to move to the start, or top, of the list in the same way that bubbles rise through water.</strong></p>
+<center>
+<img src="https://drive.google.com/uc?id=1Z8H7bsZksTUKFNrJbjay_FwAfmSBs-oB" width="70%" height="70%">
+</center>
+<center>
+<img src="https://miro.medium.com/max/720/1*t9IWpbKSzzpUErvH-7Vqng.gif" width="70%" height="70%">
+</center>
+<div data-align="center">
+source: https://github.com/hustcc/JS-Sorting-Algorithm
+</div>
+<center>
+<img src="https://drive.google.com/uc?id=1fV4l4EbEMmNR0WmA6-nMFPLBlRvTFX0k" width="70%" height="70%">
+</center>
+<blockquote class="blockquote">
+<h3 id="exercise-3-write-a-bubble-sort-for-list-of-intergers-that-sorts-the-integer-from-smallest-to-largest" data-number="B.5.4" class="anchored"><span class="header-section-number">B.5.4</span> Exercise 3: Write a bubble sort for list of intergers that sorts the integer from smallest to largest</h3>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">def</span> bubble_sort(arr):</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="co">"""</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="co">    Parameters</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="co">    ----------</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="co">    arr: list</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="co">        The unsorted input list that contains integers</span></span>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="co">    Returns</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="co">    -------</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="co">    arr : list</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a><span class="co">        The sorted list</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a><span class="co">  """</span></span>
+<span id="cb20-12"><a href="#cb20-12"></a>  n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
+<span id="cb20-13"><a href="#cb20-13"></a>  <span class="co">## Move the wall one element to the right</span></span>
+<span id="cb20-14"><a href="#cb20-14"></a>  <span class="cf">for</span> wall <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb20-15"><a href="#cb20-15"></a>    <span class="co">#swapped = False</span></span>
+<span id="cb20-16"><a href="#cb20-16"></a>    <span class="co">## bubble each element up to the left</span></span>
+<span id="cb20-17"><a href="#cb20-17"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">-</span><span class="dv">1</span>, wall, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb20-18"><a href="#cb20-18"></a>      <span class="cf">if</span> arr[j] <span class="op">&lt;</span> arr[j<span class="op">-</span><span class="dv">1</span>]:</span>
+<span id="cb20-19"><a href="#cb20-19"></a>        arr[j], arr[j<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> arr[j<span class="op">-</span><span class="dv">1</span>], arr[j]</span>
+<span id="cb20-20"><a href="#cb20-20"></a>        <span class="co">#swapped = True</span></span>
+<span id="cb20-21"><a href="#cb20-21"></a>  <span class="cf">return</span> arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="cf">assert</span>(bubble_sort([<span class="dv">89</span>,<span class="dv">78</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">21</span>,<span class="dv">17</span>,<span class="dv">12</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">1</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">89</span>,<span class="dv">78</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">21</span>,<span class="dv">17</span>,<span class="dv">12</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">1</span>]))</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="cf">assert</span>(bubble_sort([<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>]))</span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="cf">assert</span>(bubble_sort([<span class="dv">78</span>,<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">8</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">27</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">78</span>,<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">8</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">27</span>]))</span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="cf">assert</span>(bubble_sort([<span class="dv">5</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="insertion-sort" class="level3" data-number="B.5.5">
+<h3 data-number="B.5.5" class="anchored" data-anchor-id="insertion-sort"><span class="header-section-number">B.5.5</span> Insertion sort</h3>
+<p>The insertion sort algorithm is one of the most common sorting techniques, and it is often used by card players. Each card a player picks up is inserted into the proper place in their hand of cards to maintain a particular sequence. (Card sorting is an example of a sort that uses two criteria for sorting: suit and rank.)</p>
+<p>In an insertion sort, as in the other two sorting algorithms discussed above, the list is divided into two parts—sorted and unsorted. In each pass, the first element of the unsorted sublist is transferred to the sorted sublist and inserted at the appropriate place. Note that a list of <code>n</code> elements will take <code>n − 1</code> passes to sort the data.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1Z8xKftv7FVoZyxTYZVTdJvPRg2Thj7xD" width="70%" height="70%">
+</center>
+<center>
+<img src="https://drive.google.com/uc?id=1ZERpE6osU95eXNcE4IHYVgEqb81962l5" width="70%" height="70%">
+</center>
+<p>As you can perceive from the above figure, the wall moves with each pass as an element is removed from the unsorted sublist and inserted into the sorted sublist.</p>
+<center>
+<img src="https://miro.medium.com/max/720/1*voHBUfONiSP-Ht4xrFMKxA.gif" width="70%" height="70%">
+</center>
+<div data-align="center">
+source: https://github.com/hustcc/JS-Sorting-Algorithm
+</div>
+<p>The design of insertion sort follows the same pattern seen in both selection sort and bubble sort. The outer loop is iterated for each pass, and the inner loop finds the position of insertion.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1f_YKy-zTCZPGbdoCZcvugIjSyWdoYPGF" width="70%" height="70%">
+</center>
+<blockquote class="blockquote">
+<h3 id="exercise-4-write-a-insertion-sort-for-list-of-intergers-that-sorts-the-integer-from-smallest-to-largest" data-number="B.5.6" class="anchored"><span class="header-section-number">B.5.6</span> Exercise 4: Write a insertion sort for list of intergers that sorts the integer from smallest to largest</h3>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">def</span> insertion_sort(arr):</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="co">"""</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="co">    Parameters</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="co">    ----------</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="co">    arr: list</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="co">        The unsorted input list that contains integers</span></span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="co">    Returns</span></span>
+<span id="cb22-8"><a href="#cb22-8"></a><span class="co">    -------</span></span>
+<span id="cb22-9"><a href="#cb22-9"></a><span class="co">    arr : list</span></span>
+<span id="cb22-10"><a href="#cb22-10"></a><span class="co">        The sorted list</span></span>
+<span id="cb22-11"><a href="#cb22-11"></a><span class="co">  """</span></span>
+<span id="cb22-12"><a href="#cb22-12"></a>  n <span class="op">=</span> <span class="bu">len</span>(arr)</span>
+<span id="cb22-13"><a href="#cb22-13"></a>  <span class="co">## Move the wall one element to the right</span></span>
+<span id="cb22-14"><a href="#cb22-14"></a>  <span class="cf">for</span> wall <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n):</span>
+<span id="cb22-15"><a href="#cb22-15"></a>    temp <span class="op">=</span> arr[wall]</span>
+<span id="cb22-16"><a href="#cb22-16"></a>    cur <span class="op">=</span>  wall <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb22-17"><a href="#cb22-17"></a>    <span class="cf">while</span> arr[cur] <span class="op">&gt;</span> temp <span class="kw">and</span> cur <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb22-18"><a href="#cb22-18"></a>      arr[cur<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> arr[cur]</span>
+<span id="cb22-19"><a href="#cb22-19"></a>      cur <span class="op">=</span> cur <span class="op">-</span><span class="dv">1</span> </span>
+<span id="cb22-20"><a href="#cb22-20"></a>    arr[cur<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> temp</span>
+<span id="cb22-21"><a href="#cb22-21"></a>  <span class="cf">return</span> arr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="cf">assert</span>(insertion_sort([<span class="dv">89</span>,<span class="dv">78</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">21</span>,<span class="dv">17</span>,<span class="dv">12</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">1</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">89</span>,<span class="dv">78</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">21</span>,<span class="dv">17</span>,<span class="dv">12</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">1</span>]))</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="cf">assert</span>(insertion_sort([<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">9</span>]))</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="cf">assert</span>(insertion_sort([<span class="dv">78</span>,<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">8</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">27</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">78</span>,<span class="dv">12</span>,<span class="dv">15</span>,<span class="dv">8</span>,<span class="dv">61</span>,<span class="dv">53</span>,<span class="dv">23</span>,<span class="dv">27</span>]))</span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="cf">assert</span>(insertion_sort([<span class="dv">5</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The three sorting algorithms discussed here are the least efficient sorting algorithms, and should not be used if the list to be sorted has more than a few hundred elements. There are however several reasons for discussing these sorting algorithms in an introductory book:</p>
+<ol type="1">
+<li>They are the simplest algorithms to understand and analyze.</li>
+<li>They are the foundation of more efficient algorithms such as quicksort, heap sort, Shell sort, bucket sort, merge sort, radix sort, and so on.</li>
+</ol>
+<p>Most such advanced sorting algorithms are discussed in books on data structures. You may ask why there are so many sorting algorithms. The reason lies in the type of data that needs to be sorted. One algorithm may be more efficient for a list that is partially sorted, whereas another algorithm may be more efficient for a list that is completely unsorted.</p>
+<p>See https://www.sortvisualizer.com/ for more details</p>
+</section>
+</section>
+<section id="searching" class="level2" data-number="B.6">
+<h2 data-number="B.6" class="anchored" data-anchor-id="searching"><span class="header-section-number">B.6</span> Searching</h2>
+<p>Another common algorithm in computer science is searching, which is the process of finding the location of a target among a list of objects. In the case of a list, searching means that given a value, we want to find the location of the first element in the list that contains that value. There are two basic searches for lists: sequential search and binary search. Sequential search can be used to locate an item in any list, <strong>whereas binary search requires the list first to be sorted.</strong></p>
+<section id="sequential-search" class="level3" data-number="B.6.1">
+<h3 data-number="B.6.1" class="anchored" data-anchor-id="sequential-search"><span class="header-section-number">B.6.1</span> Sequential search</h3>
+<p>Sequential search is used if the list to be searched is not ordered. Generally, we use this technique only for small lists, or lists that are not searched often. In other cases, the best approach is to first sort the list and then search it using the binary search discussed later.</p>
+<p>In a sequential search, we start searching for the target from the beginning of the list. We continue until we either find the target or reach the end of the list. The following figure traces the steps to find the value 62. The search algorithm needs to be designed so that the search stops when we find the target or when we reach the end of the list.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1ZEcvYvzWqZe-rMhihGvYv2VYbXx-C5In" width="70%" height="70%">
+</center>
+<blockquote class="blockquote">
+<h3 id="exercise-5-write-a-sequential-search-for-a-list-of-intergers-that-return-the-index-of-the-target-value.-note-that-we-should-return-none-if-the-target-does-not-in-the-list" data-number="B.6.2" class="anchored"><span class="header-section-number">B.6.2</span> Exercise 5: Write a sequential search for a list of intergers that return the index of the target value. Note that we should return <code>None</code> if the target does not in the list!</h3>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">def</span> sequential_search(arr, target):</span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="co">"""</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="co">    Parameters</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="co">    ----------</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="co">    arr: list</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="co">        The unsorted input list that contains integers</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="co">    target: int</span></span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="co">        The target we are trying to search</span></span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="co">    Returns</span></span>
+<span id="cb24-10"><a href="#cb24-10"></a><span class="co">    -------</span></span>
+<span id="cb24-11"><a href="#cb24-11"></a><span class="co">    location : int</span></span>
+<span id="cb24-12"><a href="#cb24-12"></a><span class="co">        The location or index of the target. Return None if it does not contain the target </span></span>
+<span id="cb24-13"><a href="#cb24-13"></a><span class="co">  """</span></span>
+<span id="cb24-14"><a href="#cb24-14"></a>  location <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb24-15"><a href="#cb24-15"></a>  <span class="cf">while</span> location <span class="op">&lt;</span> <span class="bu">len</span>(arr) <span class="kw">and</span> arr[location] <span class="op">!=</span> target:</span>
+<span id="cb24-16"><a href="#cb24-16"></a>    location <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb24-17"><a href="#cb24-17"></a></span>
+<span id="cb24-18"><a href="#cb24-18"></a>  <span class="cf">if</span> location <span class="op">==</span> <span class="bu">len</span>(arr):</span>
+<span id="cb24-19"><a href="#cb24-19"></a>    <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb24-20"><a href="#cb24-20"></a>  <span class="cf">return</span> location</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="cf">assert</span>(sequential_search([<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">15</span>], <span class="dv">0</span>)<span class="op">==</span>[<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">15</span>].index(<span class="dv">0</span>))</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="cf">assert</span>(sequential_search([<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>], <span class="dv">15</span>)<span class="op">==</span>[<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>].index(<span class="dv">15</span>))</span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="cf">assert</span>(sequential_search([<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>], <span class="dv">7</span>)<span class="op">==</span>[<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>].index(<span class="dv">7</span>))</span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="cf">assert</span>(sequential_search([<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>], <span class="dv">6</span>)<span class="op">==</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="binary-search" class="level3" data-number="B.6.3">
+<h3 data-number="B.6.3" class="anchored" data-anchor-id="binary-search"><span class="header-section-number">B.6.3</span> Binary search</h3>
+<p>The sequential search algorithm is very slow. If we have a list of a million elements, we must do a million comparisons in the worst case. If the list is not sorted, this is the only solution. If the list is sorted, however, we can use a more efficient algorithm called binary search. Generally speaking, programmers use a binary search when a list is large.</p>
+<p>A binary search starts by testing the data in the element at the middle of the list. This determines whether the target is in the first half or the second half of the list. If it is in the first half, there is no need to further check the second half. If it is in the second half, there is no need to further check the first half. <strong>In other words, we eliminate half the list from further consideration.</strong></p>
+<p>We repeat this process until we either find the target or satisfy ourselves that it is not in the list. The following figure shows how to find the target, 22, in a list of 12 numbers using three references: <code>first</code>, <code>mid</code>, and <code>last</code>.</p>
+<ol type="1">
+<li><p>At the beginning, <code>first</code> shows 1 and <code>last</code> shows 12. Let <code>mid</code> show the middle position, (1 + 12)/ 2, or 6 if truncated to an integer. Now compare the target (22) with data at position 6 (21). The target is greater than this value, so we ignore the first half of the list.</p></li>
+<li><p>Move <code>first</code> after <code>mid</code>, to position 7. Let <code>mid</code> show the middle of the second half, (7&nbsp;&nbsp;+&nbsp;&nbsp;12) / 2, or 9. Now compare the target (22) with data at position 9 (62). The&nbsp;target is smaller than this value, so we ignore the integers from this value (62) to the end.</p></li>
+<li><p>Move <code>last</code> before <code>mid</code> to position 8. Recalculate mid again, (8 + 7) / 2, or 7. Compare the target (22) with the value at this position (22). We have found the target and can quit.</p></li>
+</ol>
+<center>
+<img src="https://drive.google.com/uc?id=1ZN2hJNZt3qvDVnw-q7KiD2BfaCPP1Ilx" width="70%" height="70%">
+</center>
+<p>The algorithm for binary search needs to be designed to find the target or to stop if the target is not in the list. It can be shown that if the target is not found in the list, the value of last becomes smaller than the value of first, an abnormal condition that helps us to know when to come out of the loop.</p>
+<blockquote class="blockquote">
+<h3 id="exercise-6-write-a-binary-search-for-a-sorted-list-of-intergers-that-return-the-index-of-the-target-value.-note-that-we-should-return-none-if-the-target-does-not-in-the-list" data-number="B.6.4" class="anchored"><span class="header-section-number">B.6.4</span> Exercise 6: Write a binary search for a sorted list of intergers that return the index of the target value. Note that we should return <code>None</code> if the target does not in the list!</h3>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">def</span> binary_search(arr, target):</span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="co">"""</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="co">    Parameters</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="co">    ----------</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="co">    arr: list</span></span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="co">        The sorted input list that contains integers</span></span>
+<span id="cb26-7"><a href="#cb26-7"></a><span class="co">    target: int</span></span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="co">        The target we are trying to search</span></span>
+<span id="cb26-9"><a href="#cb26-9"></a><span class="co">    Returns</span></span>
+<span id="cb26-10"><a href="#cb26-10"></a><span class="co">    -------</span></span>
+<span id="cb26-11"><a href="#cb26-11"></a><span class="co">    location : int</span></span>
+<span id="cb26-12"><a href="#cb26-12"></a><span class="co">        The location or index of the target. Return None if it does not contain the target </span></span>
+<span id="cb26-13"><a href="#cb26-13"></a><span class="co">  """</span></span>
+<span id="cb26-14"><a href="#cb26-14"></a>  first, last <span class="op">=</span> <span class="dv">0</span>, <span class="bu">len</span>(arr) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb26-15"><a href="#cb26-15"></a>  <span class="cf">while</span> first <span class="op">&lt;=</span> last:</span>
+<span id="cb26-16"><a href="#cb26-16"></a>    mid <span class="op">=</span> (first <span class="op">+</span> last) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb26-17"><a href="#cb26-17"></a>    val <span class="op">=</span> arr[mid]</span>
+<span id="cb26-18"><a href="#cb26-18"></a>    <span class="cf">if</span> val <span class="op">==</span> target:</span>
+<span id="cb26-19"><a href="#cb26-19"></a>      <span class="cf">return</span> mid</span>
+<span id="cb26-20"><a href="#cb26-20"></a>    <span class="cf">if</span> val <span class="op">&lt;</span> target:</span>
+<span id="cb26-21"><a href="#cb26-21"></a>      first <span class="op">=</span> mid <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb26-22"><a href="#cb26-22"></a>    <span class="cf">else</span>:</span>
+<span id="cb26-23"><a href="#cb26-23"></a>      last <span class="op">=</span> mid <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb26-24"><a href="#cb26-24"></a>  <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="cf">assert</span>(binary_search(<span class="bu">sorted</span>([<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">15</span>]), <span class="dv">0</span>)<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">15</span>]).index(<span class="dv">0</span>))</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="cf">assert</span>(binary_search(<span class="bu">sorted</span>([<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>]), <span class="dv">15</span>)<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>]).index(<span class="dv">15</span>))</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="cf">assert</span>(binary_search(<span class="bu">sorted</span>([<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>]), <span class="dv">7</span>)<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>]).index(<span class="dv">7</span>))</span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="cf">assert</span>(binary_search(<span class="bu">sorted</span>([<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>]), <span class="dv">6</span>)<span class="op">==</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="recursion" class="level2" data-number="B.7">
+<h2 data-number="B.7" class="anchored" data-anchor-id="recursion"><span class="header-section-number">B.7</span> Recursion</h2>
+<p>In general, there are two approaches to writing algorithms for solving a problem. One uses iteration, the other uses recursion. Recursion is a process in which an algorithm calls itself.</p>
+<section id="iterative" class="level3" data-number="B.7.1">
+<h3 data-number="B.7.1" class="anchored" data-anchor-id="iterative"><span class="header-section-number">B.7.1</span> Iterative</h3>
+<p>To study a simple example, consider the calculation of a factorial. The factorial of a integer is the product of the integral values from 1 to the integer. The definition is iterative as shown below. An algorithm is iterative whenever the definition does not involve the algorithm itself.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1ZaVbKQZ4tTAnZFkFzxaXUY97B2lH76S4" width="70%" height="70%">
+</center>
+</section>
+<section id="recursive" class="level3" data-number="B.7.2">
+<h3 data-number="B.7.2" class="anchored" data-anchor-id="recursive"><span class="header-section-number">B.7.2</span> Recursive</h3>
+<p>An algorithm is defined recursively whenever the algorithm appears within the definition itself. For example, the factorial function can be defined recursively as shown below.</p>
+<center>
+<img src="https://drive.google.com/uc?id=1Zg-K2O6NpYMviLWVlQv7mr0mcGxDSBBK" width="70%" height="70%">
+</center>
+<p>The decomposition of factorial (3), using recursion, is shown below. If we study the figure carefully, we will note that the recursive solution for a problem involves a two-way journey. First we decompose the problem from top to bottom, and then we solve it from bottom to top.</p>
+<p>Although the recursive calculation looks more difficult when using paper and pencil, it is often a much easier and more elegant solution when using computers. Additionally, it offers a conceptual simplicity to the creator and the reader!</p>
+<center>
+<img src="https://drive.google.com/uc?id=1ZgZHfQggwZErmgo-MAYqmLdsEKsB_QLL" width="70%" height="70%">
+</center>
+</section>
+<section id="example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively" class="level3" data-number="B.7.3">
+<h3 data-number="B.7.3" class="anchored" data-anchor-id="example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively"><span class="header-section-number">B.7.3</span> Example 4: Let us write an algorithm to solve the factorial problem iteratively!</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">def</span> Factorial(n):</span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="co">"""</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a><span class="co">    Parameters</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a><span class="co">    ----------</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a><span class="co">    n: int</span></span>
+<span id="cb28-6"><a href="#cb28-6"></a><span class="co">        The target factorial which is a nonnegative integer</span></span>
+<span id="cb28-7"><a href="#cb28-7"></a><span class="co">    Returns</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a><span class="co">    -------</span></span>
+<span id="cb28-9"><a href="#cb28-9"></a><span class="co">    results : int</span></span>
+<span id="cb28-10"><a href="#cb28-10"></a><span class="co">        The result number </span></span>
+<span id="cb28-11"><a href="#cb28-11"></a><span class="co">  """</span></span>
+<span id="cb28-12"><a href="#cb28-12"></a>  results <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb28-13"><a href="#cb28-13"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,n<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb28-14"><a href="#cb28-14"></a>    results <span class="op">*=</span>i</span>
+<span id="cb28-15"><a href="#cb28-15"></a>  <span class="cf">return</span> results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="cf">assert</span>(Factorial(<span class="dv">5</span>)<span class="op">==</span>math.factorial(<span class="dv">5</span>))</span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="cf">assert</span>(Factorial(<span class="dv">10</span>)<span class="op">==</span>math.factorial(<span class="dv">10</span>))</span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="cf">assert</span>(Factorial(<span class="dv">1</span>)<span class="op">==</span>math.factorial(<span class="dv">1</span>))</span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="cf">assert</span>(Factorial(<span class="dv">0</span>)<span class="op">==</span>math.factorial(<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion" class="level3" data-number="B.7.4">
+<h3 data-number="B.7.4" class="anchored" data-anchor-id="exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion"><span class="header-section-number">B.7.4</span> Exercise 7: Try to write an algorithm to solve the factorial problem using recursion!</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">def</span> Factorial_r(n):</span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="co">"""</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a><span class="co">    Parameters</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a><span class="co">    ----------</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a><span class="co">    n: int</span></span>
+<span id="cb30-6"><a href="#cb30-6"></a><span class="co">        The target factorial which is a positive integer</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a><span class="co">    Returns</span></span>
+<span id="cb30-8"><a href="#cb30-8"></a><span class="co">    -------</span></span>
+<span id="cb30-9"><a href="#cb30-9"></a><span class="co">    results : int</span></span>
+<span id="cb30-10"><a href="#cb30-10"></a><span class="co">        The result number </span></span>
+<span id="cb30-11"><a href="#cb30-11"></a><span class="co">  """</span></span>
+<span id="cb30-12"><a href="#cb30-12"></a>  <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb30-13"><a href="#cb30-13"></a>    <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb30-14"><a href="#cb30-14"></a>  <span class="cf">else</span>:</span>
+<span id="cb30-15"><a href="#cb30-15"></a>    <span class="cf">return</span> n<span class="op">*</span>Factorial_r(n<span class="op">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="cf">assert</span>(Factorial_r(<span class="dv">5</span>)<span class="op">==</span>math.factorial(<span class="dv">5</span>))</span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="cf">assert</span>(Factorial_r(<span class="dv">10</span>)<span class="op">==</span>math.factorial(<span class="dv">10</span>))</span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="cf">assert</span>(Factorial_r(<span class="dv">1</span>)<span class="op">==</span>math.factorial(<span class="dv">1</span>))</span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="cf">assert</span>(Factorial_r(<span class="dv">0</span>)<span class="op">==</span>math.factorial(<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./00_Copilot.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./05_Data_Structure_sol.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
