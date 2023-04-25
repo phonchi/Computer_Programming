@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Computer Programming",
     "section": "",
-    "text": "Preface\nThis is the companion book for the course computer programming open in the Department of Applied Mathematics, National Sun Yat-sen University. It aims for students who need a basic understanding of procedural programming and object-oriented programming concepts using Python 3. We will have hands-on exercises and quizzes to help you get familiar with each topic, and students will exercise logical thinking and programming skills for dealing with scientific problems.\nThe book is based on several well-known books and resources, including:\n\nAutomate the Boring Stuff with Python, 2nd Edition\nBeyond the Basic Stuff with Python\nScipy Lecture Notes"
+    "text": "Preface\nThis is the companion book for the course computer programming open in the Department of Applied Mathematics, National Sun Yat-sen University. It aims for students who need a basic understanding of procedural programming and object-oriented programming concepts using Python 3. We will have hands-on exercises and quizzes to help you get familiar with each topic, and students will exercise logical thinking and programming skills for dealing with scientific problems.\nThe book is based on several well-known books and resources, including:\n\nAutomate the Boring Stuff with Python, 2nd Edition\nBeyond the Basic Stuff with Python\nScipy Lecture Notes\nPython Data Science Handbook"
   },
   {
     "objectID": "01_Python.html#introduction",

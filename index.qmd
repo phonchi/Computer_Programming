@@ -8,3 +8,4 @@ The book is based on several well-known books and resources, including:
 - [Automate the Boring Stuff with Python, 2nd Edition](https://automatetheboringstuff.com/#toc)
 - [Beyond the Basic Stuff with Python](https://inventwithpython.com/beyond/)
 - [Scipy Lecture Notes](https://scipy-lectures.org/)
+- [Python Data Science Handbook](https://github.com/jakevdp/PythonDataScienceHandbook)
