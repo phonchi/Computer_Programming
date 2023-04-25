@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.306">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="phonchi">
+<meta name="dcterms.date" content="2028-05-12">
+
+<title>Computer Programming - 10&nbsp; Plotting with Matplotlib</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./00_Copilot.html" rel="next">
+<link href="./10_11_NumPy.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12_Matplotlib.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plotting with Matplotlib</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Computer Programming</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Flow_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Flow Control</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Lists_tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lists and Tuples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Dictionaries_sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Other collections - Dictionaries and Sets</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Manipulating_string.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulating Strings</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Files and Exceptions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_09_OOP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Object Oriented Programming and Classes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_11_NumPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_Matplotlib.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plotting with Matplotlib</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_Copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">10.1</span> Introduction</a></li>
+  <li><a href="#two-interfaces-for-the-price-of-one" id="toc-two-interfaces-for-the-price-of-one" class="nav-link" data-scroll-target="#two-interfaces-for-the-price-of-one"><span class="header-section-number">10.2</span> Two Interfaces for the Price of One</a>
+  <ul>
+  <li><a href="#matlab-style-interface" id="toc-matlab-style-interface" class="nav-link" data-scroll-target="#matlab-style-interface"><span class="header-section-number">10.2.1</span> MATLAB-style Interface</a></li>
+  <li><a href="#object-oriented-interface" id="toc-object-oriented-interface" class="nav-link" data-scroll-target="#object-oriented-interface"><span class="header-section-number">10.2.2</span> Object-oriented interface</a></li>
+  </ul></li>
+  <li><a href="#simple-plots" id="toc-simple-plots" class="nav-link" data-scroll-target="#simple-plots"><span class="header-section-number">10.3</span> Simple plots</a>
+  <ul>
+  <li><a href="#simple-line-plots" id="toc-simple-line-plots" class="nav-link" data-scroll-target="#simple-line-plots"><span class="header-section-number">10.3.1</span> Simple line plots</a>
+  <ul class="collapse">
+  <li><a href="#adjusting-the-plot-line-colors-styles-and-widths" id="toc-adjusting-the-plot-line-colors-styles-and-widths" class="nav-link" data-scroll-target="#adjusting-the-plot-line-colors-styles-and-widths"><span class="header-section-number">10.3.1.1</span> Adjusting the Plot: Line Colors, Styles and widths</a></li>
+  <li><a href="#adjusting-the-plot-axes-limits" id="toc-adjusting-the-plot-axes-limits" class="nav-link" data-scroll-target="#adjusting-the-plot-axes-limits"><span class="header-section-number">10.3.1.2</span> Adjusting the Plot: Axes Limits</a></li>
+  <li><a href="#labeling-plots" id="toc-labeling-plots" class="nav-link" data-scroll-target="#labeling-plots"><span class="header-section-number">10.3.1.3</span> Labeling Plots</a></li>
+  <li><a href="#matplotlib-gotchas" id="toc-matplotlib-gotchas" class="nav-link" data-scroll-target="#matplotlib-gotchas"><span class="header-section-number">10.3.1.4</span> <code>Matplotlib</code> Gotchas</a></li>
+  </ul></li>
+  <li><a href="#simple-scatter-plots" id="toc-simple-scatter-plots" class="nav-link" data-scroll-target="#simple-scatter-plots"><span class="header-section-number">10.3.2</span> Simple Scatter Plots</a>
+  <ul class="collapse">
+  <li><a href="#scatter-plots-with-plt.scatter" id="toc-scatter-plots-with-plt.scatter" class="nav-link" data-scroll-target="#scatter-plots-with-plt.scatter"><span class="header-section-number">10.3.2.1</span> Scatter Plots with <code>plt.scatter()</code></a></li>
+  </ul></li>
+  <li><a href="#density-and-contour-plots" id="toc-density-and-contour-plots" class="nav-link" data-scroll-target="#density-and-contour-plots"><span class="header-section-number">10.3.3</span> Density and Contour Plots</a>
+  <ul class="collapse">
+  <li><a href="#visualizing-a-three-dimensional-function" id="toc-visualizing-a-three-dimensional-function" class="nav-link" data-scroll-target="#visualizing-a-three-dimensional-function"><span class="header-section-number">10.3.3.1</span> Visualizing a Three-Dimensional Function</a></li>
+  <li><a href="#histograms-binnings-and-density" id="toc-histograms-binnings-and-density" class="nav-link" data-scroll-target="#histograms-binnings-and-density"><span class="header-section-number">10.3.3.2</span> Histograms, Binnings, and Density</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#advance-plot" id="toc-advance-plot" class="nav-link" data-scroll-target="#advance-plot"><span class="header-section-number">10.4</span> Advance plot</a>
+  <ul>
+  <li><a href="#filling-the-area-between-lines" id="toc-filling-the-area-between-lines" class="nav-link" data-scroll-target="#filling-the-area-between-lines"><span class="header-section-number">10.4.1</span> Filling the area between lines</a></li>
+  <li><a href="#plot-in-polar-coordinate" id="toc-plot-in-polar-coordinate" class="nav-link" data-scroll-target="#plot-in-polar-coordinate"><span class="header-section-number">10.4.2</span> Plot in polar coordinate</a></li>
+  </ul></li>
+  <li><a href="#customizing-plot" id="toc-customizing-plot" class="nav-link" data-scroll-target="#customizing-plot"><span class="header-section-number">10.5</span> Customizing Plot</a>
+  <ul>
+  <li><a href="#customizing-plot-legends" id="toc-customizing-plot-legends" class="nav-link" data-scroll-target="#customizing-plot-legends"><span class="header-section-number">10.5.1</span> Customizing Plot Legends</a>
+  <ul class="collapse">
+  <li><a href="#text-and-annotation" id="toc-text-and-annotation" class="nav-link" data-scroll-target="#text-and-annotation"><span class="header-section-number">10.5.1.1</span> Text and Annotation</a></li>
+  <li><a href="#customizing-ticks-and-splines" id="toc-customizing-ticks-and-splines" class="nav-link" data-scroll-target="#customizing-ticks-and-splines"><span class="header-section-number">10.5.1.2</span> Customizing Ticks and Splines</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#multiple-subplots" id="toc-multiple-subplots" class="nav-link" data-scroll-target="#multiple-subplots"><span class="header-section-number">10.6</span> Multiple Subplots</a>
+  <ul>
+  <li><a href="#plt.subplots-the-whole-grid-in-one-go" id="toc-plt.subplots-the-whole-grid-in-one-go" class="nav-link" data-scroll-target="#plt.subplots-the-whole-grid-in-one-go"><span class="header-section-number">10.6.1</span> <code>plt.subplots()</code>: The Whole Grid in One Go</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plotting with Matplotlib</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>phonchi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 12, 2028</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+
+<table align="left">
+<tbody><tr><td>
+<a href="https://colab.research.google.com/github/phonchi/nsysu-math106A/blob/master/static_files/presentations/12_Matplotlib.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
+</td>
+<td>
+<a target="_blank" href="https://kaggle.com/kernels/welcome?src=https://github.com/phonchi/nsysu-math106A/blob/master/static_files/presentations/12_Matplotlib.ipynb"><img src="https://kaggle.com/static/images/open-in-kaggle.svg"></a>
+</td>
+
+</tr></tbody></table>
+<p><br></p>
+<section id="introduction" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">10.1</span> Introduction</h2>
+<p><code>Matplotlib</code> is a multiplatform data visualization library built on <code>NumPy</code> arrays and designed to work with the broader <code>SciPy</code> stack. One of <code>Matplotli</code>b’s most important features is its ability to play well with many operating systems and graphics backends. <code>Matplotlib</code> supports dozens of backends and output types, which means you can count on it to work regardless of which operating system you are using or which output format you desire. This cross-platform, everything-to-everyone approach has been one of the great strengths of <code>Matplotlib</code>. It has led to a large user base, which in turn has led to an active developer base and <code>Matplotlib</code>’s powerful tools and ubiquity within the scientific <code>Python</code> world. It is often useful to dive into <code>Matplotlib</code>’s syntax to adjust the final plot output.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="op">%</span>pip install matplotlib <span class="op">--</span>upgrade <span class="op">-</span>qq</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="op">%</span>pip install ipympl <span class="op">--</span>upgrade <span class="op">-</span>qq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Note: you may need to restart the kernel to use updated packages.
+Note: you may need to restart the kernel to use updated packages.</code></pre>
+</div>
+</div>
+<p>Plotting interactively within a Jupyter notebook can be done with the <code>%matplotlib</code> command. You also have the option of embedding graphics directly in the notebook:</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#%matplotlib widget</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Just as we use the <code>np</code> shorthand for <code>NumPy</code>, we will use some standard shorthands for <code>Matplotlib</code> imports:</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-4"><a href="#cb4-4"></a>plt.style.use(<span class="st">'seaborn-whitegrid'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\adm\AppData\Local\Temp\ipykernel_39532\1473361050.py:4: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as 'seaborn-v0_8-&lt;style&gt;'. Alternatively, directly use the seaborn API instead.
+  plt.style.use('seaborn-whitegrid')</code></pre>
+</div>
+</div>
+</section>
+<section id="two-interfaces-for-the-price-of-one" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="two-interfaces-for-the-price-of-one"><span class="header-section-number">10.2</span> Two Interfaces for the Price of One</h2>
+<p>A potentially confusing feature of <code>Matplotlib</code> is its dual interfaces: a convenient MATLAB-style state-based interface, and a more powerful object-oriented interface. I’ll quickly highlight the differences between the two here.</p>
+<p>Firstly, we create the data we would like to plot, the simplest <code>plot()</code> accept two arrays (<code>x</code> and <code>y</code>) as inputs. It will plot <code>y</code> versus <code>x</code> as lines and/or markers.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span>np.pi, np.pi, <span class="dv">256</span>)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>C, S <span class="op">=</span> np.cos(x), np.sin(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>x</code> is now a array with 256 values ranging from <span class="math inline">\(-\pi\)</span> to <span class="math inline">\(+\pi\)</span> (included). <code>C</code> is the cosine (256 values) and <code>S</code> is the sine (256 values).</p>
+<section id="matlab-style-interface" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="matlab-style-interface"><span class="header-section-number">10.2.1</span> MATLAB-style Interface</h3>
+<p><code>Matplotlib</code> was originally conceived as a <code>Python</code> alternative for <code>MATLAB</code> users, and much of its syntax reflects that fact. The <code>MATLAB</code>-style tools are contained in the <code>pyplot</code> (plt) interface. For example, the following code will probably look quite familiar to MATLAB users:</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># 1. create a plot figure</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>plt.figure() </span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co"># 2. create the first of two panels and set current axis</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="co"># (rows, columns, panel number)</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>plt.plot(x, S)</span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co"># 3. create the second panel and set current axis</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb7-10"><a href="#cb7-10"></a>plt.plot(x, C)<span class="op">;</span> </span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co"># Note that the semicolon at the end of the last line is intentional: it suppresses the textual</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co"># representation of the plot from the output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>It is important to recognize that this interface is <strong><em>stateful</em></strong>: it keeps track of the “current” figure and axes, which are where all plt commands are applied. You can get a reference to these using the <code>plt.gcf()</code> (get current figure) and <code>plt.gca()</code> (get current axes) functions.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>plt.gca()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>&lt;Axes: &gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-7-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>While this stateful interface is fast and convenient for simple plots, it is easy to run into problems. For example, once the second panel is created, how can we go back and add something to the first? This is possible within the MATLAB-style interface, but a bit clunky. Fortunately, there is a better way.</p>
+</section>
+<section id="object-oriented-interface" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="object-oriented-interface"><span class="header-section-number">10.2.2</span> Object-oriented interface</h3>
+<p>The object-oriented interface is available for these more complicated situations, and for when you want more control over your figure. Rather than depending on some notion of an “active” figure or axes, in the object-oriented interface the plotting functions are methods of explicit <code>Figure</code> and <code>Axes</code> objects.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># 1. First create a grid of plots</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co"># ax will be an array of two Axes objects</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co"># 2. Call plot() method on the appropriate object</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>ax[<span class="dv">0</span>].plot(x, S)</span>
+<span id="cb10-7"><a href="#cb10-7"></a>ax[<span class="dv">1</span>].plot(x, C)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>For simpler plots, the choice of which style to use is largely a matter of preference, but the object-oriented approach can become a necessity as plots become more complicated.</p>
+</section>
+</section>
+<section id="simple-plots" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="simple-plots"><span class="header-section-number">10.3</span> Simple plots</h2>
+<section id="simple-line-plots" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="simple-line-plots"><span class="header-section-number">10.3.1</span> Simple line plots</h3>
+<p>Perhaps the simplest of all plots is the visualization of a single function <span class="math inline">\(y=f(x)\)</span>.Here we will take a first look at creating a simple plot of this type. We start by creating a figure and axes.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb11-2"><a href="#cb11-2"></a>ax <span class="op">=</span> plt.axes()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>In <code>Matplotlib</code>, the <code>figure</code> (an instance of the class <code>plt.Figure</code>) can be thought of as a single container that contains all the objects representing <code>axes</code>, <code>graphics</code>, <code>text</code>, and <code>labels</code>. The <code>axes</code> (an instance of the class <code>plt.Axes</code>) is what we see above: a bounding box with ticks, grids, and labels, which will eventually contain the plot elements that make up our visualization.</p>
+<p>Once we have created an axes, we can use the <code>ax.plot()</code> method to plot some data. Let’s start with a simple sinusoid</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>ax.plot(x, np.sin(x))</span>
+<span id="cb12-3"><a href="#cb12-3"></a>fig <span class="co"># Needed in VS Code</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># Alternatively, you can use plt.plot(x, np.sin(x)); and let the figure and axes be created for us in the background</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<p><img src="12_Matplotlib_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>If we want to create a single figure with multiple lines, we can simply call the <code>plot()</code> function multiple times:</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>plt.plot(x, np.sin(x))</span>
+<span id="cb13-2"><a href="#cb13-2"></a>plt.plot(x, np.cos(x))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="adjusting-the-plot-line-colors-styles-and-widths" class="level4" data-number="10.3.1.1">
+<h4 data-number="10.3.1.1" class="anchored" data-anchor-id="adjusting-the-plot-line-colors-styles-and-widths"><span class="header-section-number">10.3.1.1</span> Adjusting the Plot: Line Colors, Styles and widths</h4>
+<p>The first adjustment you might wish to make to a plot is to control the line colors and styles. The <code>plt.plot()</code> function takes additional arguments that can be used to specify these. To adjust the color, you can use the <code>color</code> keyword, which accepts a string argument representing virtually any imaginable color.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>plt.plot(x, np.sin(x <span class="op">-</span> <span class="dv">0</span>), color<span class="op">=</span><span class="st">'blue'</span>) <span class="co"># specify color by name</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>plt.plot(x, np.sin(x <span class="op">-</span> <span class="dv">1</span>), color<span class="op">=</span><span class="st">'g'</span>) <span class="co"># short color code (rgbcmyk)</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>plt.plot(x, np.sin(x <span class="op">-</span> <span class="dv">2</span>), color<span class="op">=</span><span class="st">'0.75'</span>) <span class="co"># grayscale between 0 and 1</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>plt.plot(x, np.sin(x <span class="op">-</span> <span class="dv">4</span>), color<span class="op">=</span>(<span class="fl">1.0</span>,<span class="fl">0.2</span>,<span class="fl">0.3</span>)) <span class="co"># RGB tuple, values 0 to 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Similarly, the line style can be adjusted using the <code>linestyle</code> keyword:</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>plt.plot(x, x <span class="op">+</span> <span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">'-'</span>) <span class="co"># solid</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>plt.plot(x, x <span class="op">+</span> <span class="dv">1</span>, linestyle<span class="op">=</span><span class="st">'--'</span>) <span class="co"># dashed</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a>plt.plot(x, x <span class="op">+</span> <span class="dv">2</span>, linestyle<span class="op">=</span><span class="st">'-.'</span>) <span class="co"># dashdot</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a>plt.plot(x, x <span class="op">+</span> <span class="dv">3</span>, linestyle<span class="op">=</span><span class="st">':'</span>) <span class="co"># dotted</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a>plt.plot(x, x <span class="op">+</span> <span class="dv">4</span>, <span class="st">':k'</span>)<span class="op">;</span> <span class="co"># dotted black </span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co"># You can save some keystrokes by combining these linestyle and color codes into a single non-keyword argument</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Finally, you can also adjust the width using <code>linewidth</code> keyword:</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>plt.plot(x, np.sin(x <span class="op">-</span> <span class="dv">0</span>)) </span>
+<span id="cb16-2"><a href="#cb16-2"></a>plt.plot(x, np.sin(x <span class="op">-</span> <span class="dv">1</span>), linewidth<span class="op">=</span><span class="st">'5'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="adjusting-the-plot-axes-limits" class="level4" data-number="10.3.1.2">
+<h4 data-number="10.3.1.2" class="anchored" data-anchor-id="adjusting-the-plot-axes-limits"><span class="header-section-number">10.3.1.2</span> Adjusting the Plot: Axes Limits</h4>
+<p><code>Matplotlib</code> does a decent job of choosing default axes limits for your plot, but sometimes it’s nice to have finer control. The most basic way to adjust the limits is to use the <code>plt.xlim()</code> and <code>plt.ylim()</code> functions:</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>plt.plot(x, np.sin(x))</span>
+<span id="cb17-2"><a href="#cb17-2"></a></span>
+<span id="cb17-3"><a href="#cb17-3"></a>plt.xlim(<span class="op">-</span><span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb17-4"><a href="#cb17-4"></a>plt.ylim(<span class="op">-</span><span class="fl">1.5</span>, <span class="fl">1.5</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="labeling-plots" class="level4" data-number="10.3.1.3">
+<h4 data-number="10.3.1.3" class="anchored" data-anchor-id="labeling-plots"><span class="header-section-number">10.3.1.3</span> Labeling Plots</h4>
+<p>We’ll briefly look at the labeling of plots. Titles and axis labels are the simplest such labels — there are methods that can be used to quickly set them. In addition, Wwen multiple lines are being shown within a single axes, it can be useful to create a plot legend that labels each line type. Again, <code>Matplotlib</code> has a built-in way of quickly creating such a legend; it is done via the (you guessed it) <code>plt.legend()</code> method:</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>plt.plot(x, np.sin(x), <span class="st">'-g'</span>, label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>plt.plot(x, np.cos(x), <span class="st">':b'</span>, label<span class="op">=</span><span class="st">'cos(x)'</span>)</span>
+<span id="cb18-3"><a href="#cb18-3"></a></span>
+<span id="cb18-4"><a href="#cb18-4"></a>plt.title(<span class="st">"A Sine Curve"</span>, fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>plt.xlabel(<span class="st">"x"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb18-6"><a href="#cb18-6"></a>plt.ylabel(<span class="st">"sin(x)"</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb18-7"><a href="#cb18-7"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb18-8"><a href="#cb18-8"></a></span>
+<span id="cb18-9"><a href="#cb18-9"></a>plt.axis(<span class="st">'equal'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Note that we also use the function <code>plt.axis('equal')</code> to force the scaling to be equal on both axes. In addition, the <code>plt.legend()</code> function keeps track of the line style and color, and matches these with the correct label!</p>
+<p>For more labels, you can refer to the following figure:</p>
+<center>
+<img src="https://matplotlib.org/matplotblog/posts/pyplot-vs-object-oriented-interface/figure/anatomy-of-a-figure.png">
+</center>
+<div data-align="center">
+source: https://matplotlib.org/matplotblog/posts/pyplot-vs-object-oriented-interface/figure/anatomy-of-a-figure.png
+</div>
+</section>
+<section id="matplotlib-gotchas" class="level4" data-number="10.3.1.4">
+<h4 data-number="10.3.1.4" class="anchored" data-anchor-id="matplotlib-gotchas"><span class="header-section-number">10.3.1.4</span> <code>Matplotlib</code> Gotchas</h4>
+<p>While most <code>plt</code> functions translate directly to <code>ax</code> methods (<code>plt.plot()</code> → <code>ax.plot()</code>, <code>plt.legend()</code> → <code>ax.legend()</code>, etc.), this is not the case for all commands. In particular, functions to set limits, labels, and titles are slightly modified. For transitioning between MATLAB-style functions and object-oriented methods, make the following changes:</p>
+<div data-align="center">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Functional</th>
+<th style="text-align: center;">OOP</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">plt.xlabel()</td>
+<td style="text-align: center;">ax.set_xlabel()</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">plt.ylabel()</td>
+<td style="text-align: center;">ax.set_ylabel()</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">plt.xlim()</td>
+<td style="text-align: center;">ax.set_xlim()</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">plt.ylim()</td>
+<td style="text-align: center;">ax.set_ylim()</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">plt.title()</td>
+<td style="text-align: center;">ax.set_title()</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="simple-scatter-plots" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="simple-scatter-plots"><span class="header-section-number">10.3.2</span> Simple Scatter Plots</h3>
+<p>Another commonly used plot type is the simple scatter plot. Instead of points being joined by line segments, here the points are represented individually with a dot, circle, or other shape. It turns out that this same function can produce scatter plots as well:</p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">30</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a>y <span class="op">=</span> np.sin(x)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>plt.plot(x, y, <span class="st">'o'</span>, color<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The third argument in the function call is a character that represents the type of symbol used for the plotting. Just as you can specify options such as ‘-’ or ‘–’ to control the line style, the marker style has its own set of short string codes:</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="cf">for</span> marker <span class="kw">in</span> [<span class="st">'o'</span>, <span class="st">'.'</span>, <span class="st">','</span>, <span class="st">'x'</span>, <span class="st">'+'</span>, <span class="st">'v'</span>, <span class="st">'^'</span>, <span class="st">'&lt;'</span>, <span class="st">'&gt;'</span>, <span class="st">'s'</span>, <span class="st">'d'</span>]:</span>
+<span id="cb20-4"><a href="#cb20-4"></a>    plt.plot(rng.random(<span class="dv">1</span>), rng.random(<span class="dv">1</span>), marker, color<span class="op">=</span><span class="st">'black'</span>, label<span class="op">=</span><span class="ss">f'marker=</span><span class="sc">{</span>marker<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb20-5"><a href="#cb20-5"></a></span>
+<span id="cb20-6"><a href="#cb20-6"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">13</span>)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>plt.xlim(<span class="dv">0</span>, <span class="fl">1.8</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>For even more possibilities, these character codes can be used together with line and color codes to plot points along with a line connecting them. In addition, you can also set the size or color for the markers:</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>plt.plot(x, y, <span class="st">'-og'</span>, markersize<span class="op">=</span><span class="dv">15</span>, linewidth<span class="op">=</span><span class="dv">4</span>, markerfacecolor<span class="op">=</span><span class="st">'blue'</span>, markeredgewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a>plt.ylim(<span class="op">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="scatter-plots-with-plt.scatter" class="level4" data-number="10.3.2.1">
+<h4 data-number="10.3.2.1" class="anchored" data-anchor-id="scatter-plots-with-plt.scatter"><span class="header-section-number">10.3.2.1</span> Scatter Plots with <code>plt.scatter()</code></h4>
+<p>A second, more powerful method of creating scatter plots is the <code>plt.scatter()</code> function. The primary difference of <code>plt.scatter()</code> from <code>plt.plot()</code> is that it can be used to create scatter plots where the properties of each individual point (size, face color, edge color, etc.) can be individually controlled or mapped to data.</p>
+<p>Let’s show this by creating a random scatter plot with points of many colors and sizes. In order to better see the overlapping results, we’ll also use the <code>alpha</code> keyword to adjust the transparency level:</p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">0</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a>x <span class="op">=</span> rng.normal(size<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb22-4"><a href="#cb22-4"></a>y <span class="op">=</span> rng.normal(size<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb22-5"><a href="#cb22-5"></a>colors <span class="op">=</span> rng.random(<span class="dv">100</span>)</span>
+<span id="cb22-6"><a href="#cb22-6"></a>sizes <span class="op">=</span> <span class="dv">1000</span> <span class="op">*</span> rng.random(<span class="dv">100</span>)</span>
+<span id="cb22-7"><a href="#cb22-7"></a></span>
+<span id="cb22-8"><a href="#cb22-8"></a>plt.scatter(x, y, c<span class="op">=</span>colors, s<span class="op">=</span>sizes, alpha<span class="op">=</span><span class="fl">0.3</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb22-9"><a href="#cb22-9"></a>plt.colorbar()<span class="op">;</span> <span class="co"># show color scale</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Notice that the <code>color</code> argument is automatically mapped to a color scale (shown here by the <code>colorbar()</code> command). In addition, we can select a color map using the keyword <code>cmap</code>. For all <code>Matplotlib</code> color maps, see the <a href="https://matplotlib.org/3.1.0/tutorials/colors/colormaps.html">list of colormaps</a>.</p>
+</section>
+</section>
+<section id="density-and-contour-plots" class="level3" data-number="10.3.3">
+<h3 data-number="10.3.3" class="anchored" data-anchor-id="density-and-contour-plots"><span class="header-section-number">10.3.3</span> Density and Contour Plots</h3>
+<p>Sometimes it is useful to display three-dimensional data in two dimensions using contours or color-coded regions. There are three <code>Matplotlib</code> functions that can be helpful for this task: <code>plt.contour()</code> for contour plots, <code>plt.contourf()</code> for filled contour plots, and <code>plt.imshow()</code> for showing images.</p>
+<section id="visualizing-a-three-dimensional-function" class="level4" data-number="10.3.3.1">
+<h4 data-number="10.3.3.1" class="anchored" data-anchor-id="visualizing-a-three-dimensional-function"><span class="header-section-number">10.3.3.1</span> Visualizing a Three-Dimensional Function</h4>
+<p>Our first example demonstrates a contour plot using a function <span class="math inline">\(z = f(x, y)\)</span>, using the following particular choice for <span class="math inline">\(f\)</span>:</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> f(x, y):</span>
+<span id="cb23-2"><a href="#cb23-2"></a>    <span class="cf">return</span> np.sin(x) <span class="op">**</span> <span class="dv">10</span> <span class="op">+</span> np.cos(<span class="dv">10</span> <span class="op">+</span> y <span class="op">*</span> x) <span class="op">*</span> np.cos(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A contour plot can be created with the <code>plt.contour()</code> function. It takes three arguments: a grid of x values, a grid of y values, and a grid of z values. The x and y values represent positions on the plot, and the z values will be represented by the contour levels. Perhaps the most straightforward way to prepare such data is to use the <code>np.meshgrid()</code> function, which builds two-dimensional grids from one-dimensional arrays:</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">50</span>)</span>
+<span id="cb24-2"><a href="#cb24-2"></a>y <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">40</span>)</span>
+<span id="cb24-3"><a href="#cb24-3"></a>X, Y <span class="op">=</span> np.meshgrid(x, y)</span>
+<span id="cb24-4"><a href="#cb24-4"></a>X, Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>(array([[0.        , 0.10204082, 0.20408163, ..., 4.79591837, 4.89795918,
+         5.        ],
+        [0.        , 0.10204082, 0.20408163, ..., 4.79591837, 4.89795918,
+         5.        ],
+        [0.        , 0.10204082, 0.20408163, ..., 4.79591837, 4.89795918,
+         5.        ],
+        ...,
+        [0.        , 0.10204082, 0.20408163, ..., 4.79591837, 4.89795918,
+         5.        ],
+        [0.        , 0.10204082, 0.20408163, ..., 4.79591837, 4.89795918,
+         5.        ],
+        [0.        , 0.10204082, 0.20408163, ..., 4.79591837, 4.89795918,
+         5.        ]]),
+ array([[0.        , 0.        , 0.        , ..., 0.        , 0.        ,
+         0.        ],
+        [0.12820513, 0.12820513, 0.12820513, ..., 0.12820513, 0.12820513,
+         0.12820513],
+        [0.25641026, 0.25641026, 0.25641026, ..., 0.25641026, 0.25641026,
+         0.25641026],
+        ...,
+        [4.74358974, 4.74358974, 4.74358974, ..., 4.74358974, 4.74358974,
+         4.74358974],
+        [4.87179487, 4.87179487, 4.87179487, ..., 4.87179487, 4.87179487,
+         4.87179487],
+        [5.        , 5.        , 5.        , ..., 5.        , 5.        ,
+         5.        ]]))</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>Z <span class="op">=</span> f(X, Y)</span>
+<span id="cb26-2"><a href="#cb26-2"></a>plt.contour(X, Y, Z, colors<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb26-3"><a href="#cb26-3"></a>plt.colorbar()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Notice that when a single color is used, negative values are represented by dashed lines and positive values by solid lines. Our plot is looking nicer, but the spaces between the lines may be a bit distracting. We can change this by switching to a filled contour plot using the <code>plt.contourf()</code> function, which uses largely the same syntax as <code>plt.contour()</code>:</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>plt.contourf(X, Y, Z, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a>plt.colorbar()<span class="op">;</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="co"># The colorbar makes it clear that the which regions are “peaks” or “valleys.”</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>One potential issue with this plot is that it is a bit splotchy: the color steps are discrete rather than continuous, which is not always what is desired. A way to generate a smooth representation is to use the <code>plt.imshow()</code> function, which offers the <code>interpolation</code> argument to generate a smooth two-dimensional representation of the data:</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>plt.imshow(Z, extent<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>], origin<span class="op">=</span><span class="st">'lower'</span>, cmap<span class="op">=</span><span class="st">'viridis'</span>, interpolation<span class="op">=</span><span class="st">'gaussian'</span>, aspect<span class="op">=</span><span class="st">'equal'</span>)</span>
+<span id="cb28-2"><a href="#cb28-2"></a>plt.grid(<span class="va">False</span>)</span>
+<span id="cb28-3"><a href="#cb28-3"></a>plt.colorbar()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>There are a few potential gotchas with <code>plt.imshow()</code>:</p>
+<ul>
+<li>It doesn’t accept an x and y grid, so you must manually specify the extent <code>[xmin, xmax, ymin, ymax]</code> of the image on the plot.</li>
+<li>By default it follows the standard image array definition where the origin is in the upper left, not in the lower left as in most contour plots. This must be changed when showing gridded data.</li>
+<li>It will automatically adjust the axis aspect ratio to match the input data; this can be changed with the <code>aspect</code> argument.</li>
+<li>We turn off the grid explicitly with <code>plt.grid(False)</code>.</li>
+</ul>
+</section>
+<section id="histograms-binnings-and-density" class="level4" data-number="10.3.3.2">
+<h4 data-number="10.3.3.2" class="anchored" data-anchor-id="histograms-binnings-and-density"><span class="header-section-number">10.3.3.2</span> Histograms, Binnings, and Density</h4>
+<p>A simple histogram can be a great first step in understanding a dataset, we can use plt.hist() to compute and draw a histogram of sample data:</p>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1701</span>)</span>
+<span id="cb29-2"><a href="#cb29-2"></a>data <span class="op">=</span> rng.normal(size<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb29-3"><a href="#cb29-3"></a>plt.hist(data)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The <code>hist()</code> function has many options to tune both the calculation and the display; here’s an example of a more customized histogram:</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>plt.hist(data, bins<span class="op">=</span><span class="dv">30</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'steelblue'</span>, edgecolor<span class="op">=</span><span class="st">'none'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The <code>density=True</code> keyword argument normalizes the histogram and plots it on same axes as the data. The <code>bins</code> keyword argument specifies the number of bins to use for the histogram.</p>
+</section>
+</section>
+</section>
+<section id="advance-plot" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="advance-plot"><span class="header-section-number">10.4</span> Advance plot</h2>
+<section id="filling-the-area-between-lines" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="filling-the-area-between-lines"><span class="header-section-number">10.4.1</span> Filling the area between lines</h3>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">1000</span>)</span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a>plt.plot(x, np.sin(x), <span class="st">'r'</span>)</span>
+<span id="cb31-4"><a href="#cb31-4"></a>plt.plot(x, np.cos(x), <span class="st">'g'</span>)</span>
+<span id="cb31-5"><a href="#cb31-5"></a>plt.fill_between(x, np.cos(x), np.sin(x), color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>&lt;matplotlib.collections.PolyCollection at 0x28e5bbd63a0&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="plot-in-polar-coordinate" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="plot-in-polar-coordinate"><span class="header-section-number">10.4.2</span> Plot in polar coordinate</h3>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">64</span>)</span>
+<span id="cb33-2"><a href="#cb33-2"></a></span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="co"># plot in polar coordinates</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>plt.axes(projection<span class="op">=</span><span class="st">'polar'</span>)</span>
+<span id="cb33-5"><a href="#cb33-5"></a>plt.plot(t, np.sin(t), <span class="st">'-'</span>)<span class="op">;</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a></span>
+<span id="cb33-7"><a href="#cb33-7"></a><span class="co"># Set ticks for polar coordinate</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>], [<span class="st">'0'</span>, <span class="st">'$\pi/2$'</span>, <span class="st">'$\pi$'</span>, <span class="st">'$3\pi/2$'</span>])</span>
+<span id="cb33-9"><a href="#cb33-9"></a>plt.yticks([<span class="op">-</span><span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">1</span>])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="customizing-plot" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="customizing-plot"><span class="header-section-number">10.5</span> Customizing Plot</h2>
+<section id="customizing-plot-legends" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="customizing-plot-legends"><span class="header-section-number">10.5.1</span> Customizing Plot Legends</h3>
+<p>Plot legends give meaning to a visualization, assigning meaning to the various plot elements. For example, we can specify the location and turn on the frame:</p>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
+<span id="cb34-2"><a href="#cb34-2"></a>plt.plot(x, np.sin(x), <span class="st">'-g'</span>, label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
+<span id="cb34-3"><a href="#cb34-3"></a>plt.plot(x, np.cos(x), <span class="st">':b'</span>, label<span class="op">=</span><span class="st">'cos(x)'</span>)</span>
+<span id="cb34-4"><a href="#cb34-4"></a>plt.axis(<span class="st">'equal'</span>)</span>
+<span id="cb34-5"><a href="#cb34-5"></a></span>
+<span id="cb34-6"><a href="#cb34-6"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, frameon<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<section id="text-and-annotation" class="level4" data-number="10.5.1.1">
+<h4 data-number="10.5.1.1" class="anchored" data-anchor-id="text-and-annotation"><span class="header-section-number">10.5.1.1</span> Text and Annotation</h4>
+<p>Creating a good visualization involves guiding the reader so that the figure tells a story. In some cases, this story can be told in an entirely visual manner, without the need for added text, but in others, small textual cues and labels are necessary. Perhaps the most basic types of annotations you will use are axes labels and titles, but the options go beyond this.</p>
+<p>When we’re visualizing data like this, it is often useful to annotate certain features of the plot to draw the reader’s attention. This can be done manually with the <code>plt.text()</code> functions, which will place text at a particular x/y value. In addition, we can use the <code>plt.annotate()</code> function, which creates some text and an arrow and allows the arrows to be very flexibly specified.</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">1000</span>)</span>
+<span id="cb35-2"><a href="#cb35-2"></a>plt.plot(x, np.cos(x))</span>
+<span id="cb35-3"><a href="#cb35-3"></a>plt.axis(<span class="st">'equal'</span>)</span>
+<span id="cb35-4"><a href="#cb35-4"></a></span>
+<span id="cb35-5"><a href="#cb35-5"></a>plt.annotate(<span class="st">'local maximum'</span>, xy<span class="op">=</span>(<span class="fl">6.28</span>, <span class="dv">1</span>), xytext<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>), arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'black'</span>, shrink<span class="op">=</span><span class="fl">0.05</span>), fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb35-6"><a href="#cb35-6"></a>plt.annotate(<span class="st">'local minimum'</span>, xy<span class="op">=</span>(<span class="dv">5</span> <span class="op">*</span> np.pi, <span class="op">-</span><span class="dv">1</span>), xytext<span class="op">=</span>(<span class="dv">2</span>, <span class="op">-</span><span class="dv">6</span>), arrowprops<span class="op">=</span><span class="bu">dict</span>(arrowstyle<span class="op">=</span><span class="st">"-&gt;"</span>), fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb35-7"><a href="#cb35-7"></a>plt.text(<span class="fl">3.14</span>, <span class="op">-</span><span class="dv">1</span>, <span class="st">'local minimum'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)<span class="op">;</span> <span class="co"># (x, y, text)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The arrow style is controlled through the <code>arrowprops</code> dictionary, which has numerous options available.</p>
+</section>
+<section id="customizing-ticks-and-splines" class="level4" data-number="10.5.1.2">
+<h4 data-number="10.5.1.2" class="anchored" data-anchor-id="customizing-ticks-and-splines"><span class="header-section-number">10.5.1.2</span> Customizing Ticks and Splines</h4>
+<p><code>Matplotlib</code>’s default tick locators and formatters are designed to be generally sufficient in many common situations, but are in no way optimal for every plot. Within each axes, there is the concept of a major tickmark, and a minor tickmark. As the names imply, major ticks are usually bigger or more pronounced, while minor ticks are usually smaller. You can change the ticks using <code>xticks()</code> and <code>yticks()</code> functions. The first argument is a list of tick locations, and the second argument is a list of tick labels:</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">20</span>, <span class="dv">1000</span>)</span>
+<span id="cb36-2"><a href="#cb36-2"></a>plt.plot(x, np.cos(x))</span>
+<span id="cb36-3"><a href="#cb36-3"></a>plt.plot(x, np.sin(x))</span>
+<span id="cb36-4"><a href="#cb36-4"></a>plt.axis(<span class="st">'equal'</span>)</span>
+<span id="cb36-5"><a href="#cb36-5"></a></span>
+<span id="cb36-6"><a href="#cb36-6"></a><span class="co"># Set the ticks and tick labels</span></span>
+<span id="cb36-7"><a href="#cb36-7"></a>plt.xticks([<span class="dv">0</span>, np.pi, <span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">3</span> <span class="op">*</span> np.pi, <span class="dv">4</span> <span class="op">*</span> np.pi],</span>
+<span id="cb36-8"><a href="#cb36-8"></a>              [<span class="vs">r'$0$'</span>, <span class="vs">r'$\pi$'</span>, <span class="vs">r'$2\pi$'</span>, <span class="vs">r'$3\pi$'</span>, <span class="vs">r'$4\pi$'</span>], fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb36-9"><a href="#cb36-9"></a>plt.yticks([<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="op">+</span><span class="dv">1</span>],  [<span class="vs">r'$-1$'</span>, <span class="vs">r'$0$'</span>, <span class="vs">r'$+1$'</span>], fontsize<span class="op">=</span><span class="dv">14</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><em>Spines</em> are the lines connecting the axis tick marks and noting the boundaries of the data area. They can be placed at arbitrary positions and until now, they were on the border of the axis. We’ll change that since we want to have them in the middle. Since there are four of them (top/bottom/left/right), we’ll discard the top and right and we move the bottom and left ones to the center:</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">5</span>), dpi<span class="op">=</span><span class="dv">80</span>)</span>
+<span id="cb37-2"><a href="#cb37-2"></a>X <span class="op">=</span> np.linspace(<span class="op">-</span>np.pi, np.pi, <span class="dv">256</span>, endpoint<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb37-3"><a href="#cb37-3"></a>C <span class="op">=</span> np.cos(X)</span>
+<span id="cb37-4"><a href="#cb37-4"></a>S <span class="op">=</span> np.sin(X)</span>
+<span id="cb37-5"><a href="#cb37-5"></a></span>
+<span id="cb37-6"><a href="#cb37-6"></a>plt.plot(X, C, color<span class="op">=</span><span class="st">"blue"</span>, linewidth<span class="op">=</span><span class="fl">2.5</span>, linestyle<span class="op">=</span><span class="st">"-"</span>)</span>
+<span id="cb37-7"><a href="#cb37-7"></a>plt.plot(X, S, color<span class="op">=</span><span class="st">"red"</span>, linewidth<span class="op">=</span><span class="fl">2.5</span>, linestyle<span class="op">=</span><span class="st">"-"</span>)</span>
+<span id="cb37-8"><a href="#cb37-8"></a></span>
+<span id="cb37-9"><a href="#cb37-9"></a>ax <span class="op">=</span> plt.gca()</span>
+<span id="cb37-10"><a href="#cb37-10"></a>ax.spines[[<span class="st">'top'</span>, <span class="st">'right'</span>]].set_visible(<span class="va">False</span>)</span>
+<span id="cb37-11"><a href="#cb37-11"></a>ax.spines[<span class="st">'bottom'</span>].set_position((<span class="st">'data'</span>,<span class="dv">0</span>))</span>
+<span id="cb37-12"><a href="#cb37-12"></a>ax.spines[<span class="st">'left'</span>].set_position((<span class="st">'data'</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Note that here we also use <code>plt.figure(figsize=(8,5), dpi=80)</code> to set the figure size and resolution.</p>
+</section>
+</section>
+</section>
+<section id="multiple-subplots" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="multiple-subplots"><span class="header-section-number">10.6</span> Multiple Subplots</h2>
+<p>Sometimes it is helpful to compare different views of data side by side. To this end, <code>Matplotlib</code> has the concept of subplots: groups of smaller axes that can exist together within a single figure. These subplots might be insets, grids of plots, or other more complicated layouts.</p>
+<section id="plt.subplots-the-whole-grid-in-one-go" class="level3" data-number="10.6.1">
+<h3 data-number="10.6.1" class="anchored" data-anchor-id="plt.subplots-the-whole-grid-in-one-go"><span class="header-section-number">10.6.1</span> <code>plt.subplots()</code>: The Whole Grid in One Go</h3>
+<p>Aligned columns or rows of subplots are a common enough need that <code>Matplotlib</code> has several convenience routines that make them easy to create. <code>plt.subplots()</code> is the easier tool to use (note the s at the end of subplots). Rather than creating a single subplot, <strong>this function creates a full grid of subplots in a single line, returning them in a <code>NumPy</code> array</strong>. The arguments are the number of rows and number of columns, along with optional keywords <code>sharex</code> and <code>sharey</code>, which allow you to specify the relationships between different axes.</p>
+<p>Let’s create a <span class="math inline">\(2 \times 3\)</span> grid of subplots, and adjust the spacing between them:</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb38-2"><a href="#cb38-2"></a>fig.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.4</span>, wspace<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb38-3"><a href="#cb38-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>):</span>
+<span id="cb38-4"><a href="#cb38-4"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb38-5"><a href="#cb38-5"></a>        ax[i, j].text(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="bu">str</span>((i, j)), fontsize<span class="op">=</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The command <code>plt.subplots_adjust()</code> can be used to adjust the spacing between these plots (in this case, the space is 40% of the subplot width and height).</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb39-2"><a href="#cb39-2"></a>fig.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.4</span>, wspace<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb39-3"><a href="#cb39-3"></a></span>
+<span id="cb39-4"><a href="#cb39-4"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
+<span id="cb39-5"><a href="#cb39-5"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].plot(x, np.sin(x))</span>
+<span id="cb39-6"><a href="#cb39-6"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(x, np.cos(x))</span>
+<span id="cb39-7"><a href="#cb39-7"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].plot(x, x<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb39-8"><a href="#cb39-8"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_xscale(<span class="st">'log'</span>)</span>
+<span id="cb39-9"><a href="#cb39-9"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_yscale(<span class="st">'log'</span>)</span>
+<span id="cb39-10"><a href="#cb39-10"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(x, x<span class="op">**</span><span class="dv">2</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="12_Matplotlib_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><a href="https://scipy-lectures.org/intro/matplotlib/index.html">https://scipy-lectures.org/intro/matplotlib/index.html</a>.</p>
+<p><a href="https://realpython.com/python-matplotlib-guide/">https://realpython.com/python-matplotlib-guide/</a></p>
+<p><a href="https://matplotlib.org/cheatsheets/">https://matplotlib.org/cheatsheets/</a></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./10_11_NumPy.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./00_Copilot.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

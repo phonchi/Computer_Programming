@@ -18,6 +18,7 @@ book:
     - 07_Files.ipynb
     - 08_09_OOP.ipynb
     - 10_11_NumPy.ipynb
+    - 12_Matplotlib.ipynb
   appendices:
     - 00_Copilot.ipynb
     - 04_Algorithms_sol.ipynb
