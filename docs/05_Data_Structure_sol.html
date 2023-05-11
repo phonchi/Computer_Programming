@@ -9,7 +9,7 @@
 <meta name="author" content="phonchi">
 <meta name="dcterms.date" content="2023-04-12">
 
-<title>Computer Programming - Appendix C — Data Structure</title>
+<title>Computer Programming - Appendix D — Data Structure</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./05_Data_Structure_sol.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./05_Data_Structure_sol.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data Structure</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,7 +199,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12_Matplotlib.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plotting with Matplotlib</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization with <code>Matplotlib</code></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_SymPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Symbolic Mathematics in Python with <code>SymPy</code></span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -219,20 +225,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./00_SciPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">High-level scientific computing with <code>SciPy</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
   </div>
 </li>
       </ul>
@@ -247,49 +259,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#a-taste-of-data-structure" id="toc-a-taste-of-data-structure" class="nav-link active" data-scroll-target="#a-taste-of-data-structure"><span class="header-section-number">C.1</span> A taste of data structure</a></li>
-  <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects"><span class="header-section-number">C.2</span> Objects</a>
+  <li><a href="#a-taste-of-data-structure" id="toc-a-taste-of-data-structure" class="nav-link active" data-scroll-target="#a-taste-of-data-structure"><span class="header-section-number">D.1</span> A taste of data structure</a></li>
+  <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects"><span class="header-section-number">D.2</span> Objects</a>
   <ul>
-  <li><a href="#object-lifecycle" id="toc-object-lifecycle" class="nav-link" data-scroll-target="#object-lifecycle"><span class="header-section-number">C.2.1</span> Object lifecycle</a></li>
+  <li><a href="#object-lifecycle" id="toc-object-lifecycle" class="nav-link" data-scroll-target="#object-lifecycle"><span class="header-section-number">D.2.1</span> Object lifecycle</a></li>
   </ul></li>
-  <li><a href="#array" id="toc-array" class="nav-link" data-scroll-target="#array"><span class="header-section-number">C.3</span> Array</a>
+  <li><a href="#array" id="toc-array" class="nav-link" data-scroll-target="#array"><span class="header-section-number">D.3</span> Array</a>
   <ul>
-  <li><a href="#array-in-python" id="toc-array-in-python" class="nav-link" data-scroll-target="#array-in-python"><span class="header-section-number">C.3.1</span> Array in Python</a></li>
-  <li><a href="#multidimensional-arrays" id="toc-multidimensional-arrays" class="nav-link" data-scroll-target="#multidimensional-arrays"><span class="header-section-number">C.3.2</span> Multidimensional arrays</a></li>
-  <li><a href="#memory-layout" id="toc-memory-layout" class="nav-link" data-scroll-target="#memory-layout"><span class="header-section-number">C.3.3</span> Memory layout</a></li>
-  <li><a href="#operations-on-array" id="toc-operations-on-array" class="nav-link" data-scroll-target="#operations-on-array"><span class="header-section-number">C.3.4</span> Operations on array</a>
+  <li><a href="#array-in-python" id="toc-array-in-python" class="nav-link" data-scroll-target="#array-in-python"><span class="header-section-number">D.3.1</span> Array in Python</a></li>
+  <li><a href="#multidimensional-arrays" id="toc-multidimensional-arrays" class="nav-link" data-scroll-target="#multidimensional-arrays"><span class="header-section-number">D.3.2</span> Multidimensional arrays</a></li>
+  <li><a href="#memory-layout" id="toc-memory-layout" class="nav-link" data-scroll-target="#memory-layout"><span class="header-section-number">D.3.3</span> Memory layout</a></li>
+  <li><a href="#operations-on-array" id="toc-operations-on-array" class="nav-link" data-scroll-target="#operations-on-array"><span class="header-section-number">D.3.4</span> Operations on array</a>
   <ul class="collapse">
-  <li><a href="#searching-for-elements" id="toc-searching-for-elements" class="nav-link" data-scroll-target="#searching-for-elements"><span class="header-section-number">C.3.4.1</span> Searching for elements</a></li>
-  <li><a href="#insertion-at-the-end" id="toc-insertion-at-the-end" class="nav-link" data-scroll-target="#insertion-at-the-end"><span class="header-section-number">C.3.4.2</span> Insertion at the end</a></li>
-  <li><a href="#insertion-at-the-beginning-or-middle" id="toc-insertion-at-the-beginning-or-middle" class="nav-link" data-scroll-target="#insertion-at-the-beginning-or-middle"><span class="header-section-number">C.3.4.3</span> Insertion at the beginning or middle</a></li>
+  <li><a href="#searching-for-elements" id="toc-searching-for-elements" class="nav-link" data-scroll-target="#searching-for-elements"><span class="header-section-number">D.3.4.1</span> Searching for elements</a></li>
+  <li><a href="#insertion-at-the-end" id="toc-insertion-at-the-end" class="nav-link" data-scroll-target="#insertion-at-the-end"><span class="header-section-number">D.3.4.2</span> Insertion at the end</a></li>
+  <li><a href="#insertion-at-the-beginning-or-middle" id="toc-insertion-at-the-beginning-or-middle" class="nav-link" data-scroll-target="#insertion-at-the-beginning-or-middle"><span class="header-section-number">D.3.4.3</span> Insertion at the beginning or middle</a></li>
   </ul></li>
-  <li><a href="#delete-element" id="toc-delete-element" class="nav-link" data-scroll-target="#delete-element"><span class="header-section-number">C.3.5</span> Delete element</a>
+  <li><a href="#delete-element" id="toc-delete-element" class="nav-link" data-scroll-target="#delete-element"><span class="header-section-number">D.3.5</span> Delete element</a>
   <ul class="collapse">
-  <li><a href="#accessing-array" id="toc-accessing-array" class="nav-link" data-scroll-target="#accessing-array"><span class="header-section-number">C.3.5.2</span> Accessing array</a></li>
+  <li><a href="#accessing-array" id="toc-accessing-array" class="nav-link" data-scroll-target="#accessing-array"><span class="header-section-number">D.3.5.2</span> Accessing array</a></li>
   </ul></li>
-  <li><a href="#traversing-array" id="toc-traversing-array" class="nav-link" data-scroll-target="#traversing-array"><span class="header-section-number">C.3.6</span> Traversing array</a></li>
+  <li><a href="#traversing-array" id="toc-traversing-array" class="nav-link" data-scroll-target="#traversing-array"><span class="header-section-number">D.3.6</span> Traversing array</a></li>
   </ul></li>
-  <li><a href="#records" id="toc-records" class="nav-link" data-scroll-target="#records"><span class="header-section-number">C.4</span> Records</a>
+  <li><a href="#records" id="toc-records" class="nav-link" data-scroll-target="#records"><span class="header-section-number">D.4</span> Records</a>
   <ul>
-  <li><a href="#records-in-python" id="toc-records-in-python" class="nav-link" data-scroll-target="#records-in-python"><span class="header-section-number">C.4.1</span> Records in Python</a></li>
-  <li><a href="#record-name-versus-field-name" id="toc-record-name-versus-field-name" class="nav-link" data-scroll-target="#record-name-versus-field-name"><span class="header-section-number">C.4.2</span> Record name versus field name</a></li>
-  <li><a href="#comparison-of-records-and-arrays" id="toc-comparison-of-records-and-arrays" class="nav-link" data-scroll-target="#comparison-of-records-and-arrays"><span class="header-section-number">C.4.3</span> Comparison of records and arrays</a></li>
-  <li><a href="#array-of-records" id="toc-array-of-records" class="nav-link" data-scroll-target="#array-of-records"><span class="header-section-number">C.4.4</span> Array of records</a></li>
-  <li><a href="#arrays-versus-array-of-records" id="toc-arrays-versus-array-of-records" class="nav-link" data-scroll-target="#arrays-versus-array-of-records"><span class="header-section-number">C.4.5</span> Arrays versus array of records</a></li>
+  <li><a href="#records-in-python" id="toc-records-in-python" class="nav-link" data-scroll-target="#records-in-python"><span class="header-section-number">D.4.1</span> Records in Python</a></li>
+  <li><a href="#record-name-versus-field-name" id="toc-record-name-versus-field-name" class="nav-link" data-scroll-target="#record-name-versus-field-name"><span class="header-section-number">D.4.2</span> Record name versus field name</a></li>
+  <li><a href="#comparison-of-records-and-arrays" id="toc-comparison-of-records-and-arrays" class="nav-link" data-scroll-target="#comparison-of-records-and-arrays"><span class="header-section-number">D.4.3</span> Comparison of records and arrays</a></li>
+  <li><a href="#array-of-records" id="toc-array-of-records" class="nav-link" data-scroll-target="#array-of-records"><span class="header-section-number">D.4.4</span> Array of records</a></li>
+  <li><a href="#arrays-versus-array-of-records" id="toc-arrays-versus-array-of-records" class="nav-link" data-scroll-target="#arrays-versus-array-of-records"><span class="header-section-number">D.4.5</span> Arrays versus array of records</a></li>
   </ul></li>
-  <li><a href="#linked-lists" id="toc-linked-lists" class="nav-link" data-scroll-target="#linked-lists"><span class="header-section-number">C.5</span> Linked Lists</a>
+  <li><a href="#linked-lists" id="toc-linked-lists" class="nav-link" data-scroll-target="#linked-lists"><span class="header-section-number">D.5</span> Linked Lists</a>
   <ul>
-  <li><a href="#arrays-versus-linked-lists" id="toc-arrays-versus-linked-lists" class="nav-link" data-scroll-target="#arrays-versus-linked-lists"><span class="header-section-number">C.5.1</span> Arrays versus linked lists</a></li>
-  <li><a href="#linked-list-in-python" id="toc-linked-list-in-python" class="nav-link" data-scroll-target="#linked-list-in-python"><span class="header-section-number">C.5.2</span> Linked-list in Python</a></li>
-  <li><a href="#operations-on-linked-lists" id="toc-operations-on-linked-lists" class="nav-link" data-scroll-target="#operations-on-linked-lists"><span class="header-section-number">C.5.3</span> Operations on linked lists</a>
+  <li><a href="#arrays-versus-linked-lists" id="toc-arrays-versus-linked-lists" class="nav-link" data-scroll-target="#arrays-versus-linked-lists"><span class="header-section-number">D.5.1</span> Arrays versus linked lists</a></li>
+  <li><a href="#linked-list-in-python" id="toc-linked-list-in-python" class="nav-link" data-scroll-target="#linked-list-in-python"><span class="header-section-number">D.5.2</span> Linked-list in Python</a></li>
+  <li><a href="#operations-on-linked-lists" id="toc-operations-on-linked-lists" class="nav-link" data-scroll-target="#operations-on-linked-lists"><span class="header-section-number">D.5.3</span> Operations on linked lists</a>
   <ul class="collapse">
-  <li><a href="#searching-a-linked-list" id="toc-searching-a-linked-list" class="nav-link" data-scroll-target="#searching-a-linked-list"><span class="header-section-number">C.5.3.1</span> Searching a linked list</a></li>
-  <li><a href="#inserting-a-node" id="toc-inserting-a-node" class="nav-link" data-scroll-target="#inserting-a-node"><span class="header-section-number">C.5.3.3</span> Inserting a node</a></li>
-  <li><a href="#deleting-a-node" id="toc-deleting-a-node" class="nav-link" data-scroll-target="#deleting-a-node"><span class="header-section-number">C.5.3.5</span> Deleting a node</a></li>
-  <li><a href="#retrieving-a-node" id="toc-retrieving-a-node" class="nav-link" data-scroll-target="#retrieving-a-node"><span class="header-section-number">C.5.3.7</span> Retrieving a node</a></li>
-  <li><a href="#traversing-a-linked-list" id="toc-traversing-a-linked-list" class="nav-link" data-scroll-target="#traversing-a-linked-list"><span class="header-section-number">C.5.3.9</span> Traversing a linked list</a></li>
+  <li><a href="#searching-a-linked-list" id="toc-searching-a-linked-list" class="nav-link" data-scroll-target="#searching-a-linked-list"><span class="header-section-number">D.5.3.1</span> Searching a linked list</a></li>
+  <li><a href="#inserting-a-node" id="toc-inserting-a-node" class="nav-link" data-scroll-target="#inserting-a-node"><span class="header-section-number">D.5.3.3</span> Inserting a node</a></li>
+  <li><a href="#deleting-a-node" id="toc-deleting-a-node" class="nav-link" data-scroll-target="#deleting-a-node"><span class="header-section-number">D.5.3.5</span> Deleting a node</a></li>
+  <li><a href="#retrieving-a-node" id="toc-retrieving-a-node" class="nav-link" data-scroll-target="#retrieving-a-node"><span class="header-section-number">D.5.3.7</span> Retrieving a node</a></li>
+  <li><a href="#traversing-a-linked-list" id="toc-traversing-a-linked-list" class="nav-link" data-scroll-target="#traversing-a-linked-list"><span class="header-section-number">D.5.3.9</span> Traversing a linked list</a></li>
   </ul></li>
-  <li><a href="#applications-of-linked-lists" id="toc-applications-of-linked-lists" class="nav-link" data-scroll-target="#applications-of-linked-lists"><span class="header-section-number">C.5.4</span> Applications of linked lists</a></li>
+  <li><a href="#applications-of-linked-lists" id="toc-applications-of-linked-lists" class="nav-link" data-scroll-target="#applications-of-linked-lists"><span class="header-section-number">D.5.4</span> Applications of linked lists</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -299,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Appendix C — Data Structure</h1>
+<h1 class="title">Appendix D — Data Structure</h1>
 </div>
 
 
@@ -337,15 +349,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </tr></tbody></table>
 <p><br></p>
-<section id="a-taste-of-data-structure" class="level2" data-number="C.1">
-<h2 data-number="C.1" class="anchored" data-anchor-id="a-taste-of-data-structure"><span class="header-section-number">C.1</span> A taste of data structure</h2>
+<section id="a-taste-of-data-structure" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="a-taste-of-data-structure"><span class="header-section-number">D.1</span> A taste of data structure</h2>
 <blockquote class="blockquote">
 <p>A data structure uses a collection of related variables that can be accessed individually or as a whole.</p>
 </blockquote>
 <p>In other words, a data structure represents a set of data items that share a specific relationship.</p>
 </section>
-<section id="objects" class="level2" data-number="C.2">
-<h2 data-number="C.2" class="anchored" data-anchor-id="objects"><span class="header-section-number">C.2</span> Objects</h2>
+<section id="objects" class="level2" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="objects"><span class="header-section-number">D.2</span> Objects</h2>
 <p>As it turns out, we have been using objects. Python provides us with many built-in objects. Here is some simple code where the first few lines should feel very simple and natural to you.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:823,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669199057895,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="ab727831-0ab9-4128-8e0b-b3031985fb4e">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>stuff <span class="op">=</span> <span class="bu">list</span>()</span>
@@ -443,8 +455,8 @@ So far 3</code></pre>
 <p>When the party method is called, the first parameter (which we call by convention <code>self</code>) points to the particular instance of the <code>PartyAnimal</code> object that party is called from. Within the party method, we see the line:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="va">self</span>.x <span class="op">=</span> <span class="va">self</span>.x <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This syntax using the dot operator is saying ‘the x within self.’ Each time <code>party()</code> is called, the internal x value is incremented by 1 and the value is printed out.</p>
-<section id="object-lifecycle" class="level3" data-number="C.2.1">
-<h3 data-number="C.2.1" class="anchored" data-anchor-id="object-lifecycle"><span class="header-section-number">C.2.1</span> Object lifecycle</h3>
+<section id="object-lifecycle" class="level3" data-number="D.2.1">
+<h3 data-number="D.2.1" class="anchored" data-anchor-id="object-lifecycle"><span class="header-section-number">D.2.1</span> Object lifecycle</h3>
 <p>In the previous examples, we define a <code>class</code> (template), use that class to create an instance of that class (object), and then use the instance. When the program finishes, all of the variables are discarded. Usually, we don’t think much about the creation and destruction of variables, but often as our objects become more complex, we need to take some action within the object to set things up as the object is constructed and possibly clean things up as the object is discarded.</p>
 <p>If we want our object to be aware of these moments of construction and destruction, we add specially named methods to our object:</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669200682402,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="1aaa6fef-b833-48f0-e8d9-70aa8f4493fd">
@@ -480,15 +492,15 @@ an contains 42</code></pre>
 <p>It actually “throws our object away” so it can reuse the an variable to store the value 42. Just at the moment when our an object is being “destroyed” our destructor code (<code>__del__</code>) is called. We cannot stop our variable from being destroyed, but we can do any necessary cleanup right before our object no longer exists.</p>
 </section>
 </section>
-<section id="array" class="level2" data-number="C.3">
-<h2 data-number="C.3" class="anchored" data-anchor-id="array"><span class="header-section-number">C.3</span> Array</h2>
+<section id="array" class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="array"><span class="header-section-number">D.3</span> Array</h2>
 <p>To process large amounts of data, we need a data structure such as an <strong>array</strong>. An array is a sequenced collection of elements, of the <em>same data type</em>. We can refer to the elements in the array as the first element, the second element, and so forth until we get to the last element.</p>
 <p>If we were to put our 100 scores into an array, we could designate the elements as scores[0], scores[1], and so on. The index indicates the ordinal number of the element, counting from the beginning of the array. The array as a whole has a name, scores, but each score can be accessed individually using its subscript as follows:</p>
 <center>
 <img src="https://drive.google.com/uc?id=1iZxZH9jQPj3PVFJ2nbviq58NIFKCcAlU">
 </center>
-<section id="array-in-python" class="level3" data-number="C.3.1">
-<h3 data-number="C.3.1" class="anchored" data-anchor-id="array-in-python"><span class="header-section-number">C.3.1</span> Array in Python</h3>
+<section id="array-in-python" class="level3" data-number="D.3.1">
+<h3 data-number="D.3.1" class="anchored" data-anchor-id="array-in-python"><span class="header-section-number">D.3.1</span> Array in Python</h3>
 <p>Because arrays store information in adjoining blocks of memory, they’re considered <strong>contiguous data structures</strong>. In Python, we can use <code>list</code> or <code>array</code> from numpy library to implement array. See <a href="https://realpython.com/python-data-structures/#array-data-structures">here</a> for more information.</p>
 <p><strong>Python</strong> list: - Python lists are very general. They can contain any kind of object and are dynamically typed - However, they do not support mathematical functions such as matrix and dot multiplications. Implementing such functions for Python lists would not be very efficient because of the dynamic typing</p>
 <p><strong>NumPy</strong> array: - Extension package to Python for multi-dimensional arrays - Numpy arrays are <strong>statically typed</strong> and <strong>homogeneous</strong>. The type of the elements is determined when the array is created - Because of the static typing, fast implementation of mathematical functions such as multiplication and addition of <code>numpy</code> arrays can be implemented in a compiled language (C and Fortran is used). Moreover, Numpy arrays are memory efficient</p>
@@ -527,7 +539,7 @@ Source: https://en.wikipedia.org/wiki/SIMD
 </div>
 </div>
 <blockquote class="blockquote">
-<h4 id="example-1-try-to-compare-the-speed-of-increment-an-array-of-integers-containing-0-to-9999-by-1-using-python-list-and-numpy-array." data-number="C.3.1.1" class="anchored"><span class="header-section-number">C.3.1.1</span> Example 1: Try to compare the speed of increment an array of integers containing 0 to 9999 by 1 using python list and numpy array.</h4>
+<h4 id="example-1-try-to-compare-the-speed-of-increment-an-array-of-integers-containing-0-to-9999-by-1-using-python-list-and-numpy-array." data-number="D.3.1.1" class="anchored"><span class="header-section-number">D.3.1.1</span> Example 1: Try to compare the speed of increment an array of integers containing 0 to 9999 by 1 using python list and numpy array.</h4>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>a <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10000</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -562,8 +574,8 @@ Source: https://en.wikipedia.org/wiki/SIMD
 </div>
 </div>
 </section>
-<section id="multidimensional-arrays" class="level3" data-number="C.3.2">
-<h3 data-number="C.3.2" class="anchored" data-anchor-id="multidimensional-arrays"><span class="header-section-number">C.3.2</span> Multidimensional arrays</h3>
+<section id="multidimensional-arrays" class="level3" data-number="D.3.2">
+<h3 data-number="D.3.2" class="anchored" data-anchor-id="multidimensional-arrays"><span class="header-section-number">D.3.2</span> Multidimensional arrays</h3>
 <p>The arrays discussed so far are known as one-dimensional arrays because the data is organized linearly in only one direction. Many applications require that data be stored in more than one dimension. One common example is a table, which is an array that consists of rows and columns. The following figure shows a table, which is commonly called a two-dimensional array (Matrix).</p>
 <p>The array shown below holds the scores of students in a class. There are five students in the class and each student has four different scores for four subjects. The variable scores[2][3] show the score of the second student in the third quiz. Arranging the scores in a two-dimensional array can help us to find the average of scores for each student (the average over the row values) and find the average for each subject (the average over the column values), as well as the average of all subjects (the average of the whole table). Note that <strong>multidimensional arrays</strong> — arrays with more than two dimensions — are also possible.</p>
 <center>
@@ -607,8 +619,8 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </div>
 </section>
-<section id="memory-layout" class="level3" data-number="C.3.3">
-<h3 data-number="C.3.3" class="anchored" data-anchor-id="memory-layout"><span class="header-section-number">C.3.3</span> Memory layout</h3>
+<section id="memory-layout" class="level3" data-number="D.3.3">
+<h3 data-number="D.3.3" class="anchored" data-anchor-id="memory-layout"><span class="header-section-number">D.3.3</span> Memory layout</h3>
 <p>The indexes in a one-dimensional array directly define the relative positions of the element in actual memory. A two-dimensional array, however, represents rows and columns. How each element is stored in memory depends on the computer. Most computers use <strong>row-major</strong> storage, in which an entire row of an array is stored in memory before the next row. However, a computer may store the array using <strong>column-major</strong> storage, in which the entire column is stored before the next column. The following figure shows a two-dimensional array and how it is stored in memory using row-major or column-major storage. Row-major storage is more common.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1igRXLphZe8ehL2-_Brm1OtvvtavqT1w9" width="70%" height="70%">
@@ -641,7 +653,7 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </div>
 <blockquote class="blockquote">
-<h4 id="exercise-1-we-have-stored-the-two-dimensional-array-students-in-the-memory.-the-array-is-100-4-100-rows-and-4-columns.-show-the-address-of-the-element-students53-assuming-that-the-element-student00-is-stored-in-the-memory-location-with-address-0-and-each-element-occupies-only-one-memory-location.-the-computer-uses-row-major-storage." data-number="C.3.3.1" class="anchored"><span class="header-section-number">C.3.3.1</span> Exercise 1: We have stored the two-dimensional array students in the memory. The array is 100 × 4 (100 rows and 4 columns). Show the address of the element <code>students[5][3]</code> assuming that the element <code>student[0][0]</code> is stored in the memory location with address 0 and each element occupies only one memory location. The computer uses row-major storage.</h4>
+<h4 id="exercise-1-we-have-stored-the-two-dimensional-array-students-in-the-memory.-the-array-is-100-4-100-rows-and-4-columns.-show-the-address-of-the-element-students53-assuming-that-the-element-student00-is-stored-in-the-memory-location-with-address-0-and-each-element-occupies-only-one-memory-location.-the-computer-uses-row-major-storage." data-number="D.3.3.1" class="anchored"><span class="header-section-number">D.3.3.1</span> Exercise 1: We have stored the two-dimensional array students in the memory. The array is 100 × 4 (100 rows and 4 columns). Show the address of the element <code>students[5][3]</code> assuming that the element <code>student[0][0]</code> is stored in the memory location with address 0 and each element occupies only one memory location. The computer uses row-major storage.</h4>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>student <span class="op">=</span> np.random.randint(<span class="dv">0</span>,<span class="dv">100</span>,size<span class="op">=</span>(<span class="dv">100</span>,<span class="dv">4</span>)) <span class="co">#2D array</span></span>
@@ -655,18 +667,18 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a><span class="cf">assert</span> student[<span class="dv">5</span>][<span class="dv">3</span>] <span class="op">==</span> s[<span class="dv">23</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="operations-on-array" class="level3" data-number="C.3.4">
-<h3 data-number="C.3.4" class="anchored" data-anchor-id="operations-on-array"><span class="header-section-number">C.3.4</span> Operations on array</h3>
+<section id="operations-on-array" class="level3" data-number="D.3.4">
+<h3 data-number="D.3.4" class="anchored" data-anchor-id="operations-on-array"><span class="header-section-number">D.3.4</span> Operations on array</h3>
 <p>Traditionally, computer languages require that the size of an array (the number of elements in the array) be defined at the time the program is written and prevent it from being changed during the execution of the program. Recently, some languages have allowed variable-size arrays. Even when the language allows variable-sized arrays, insertion of an element into an array needs careful attention! See <a href="https://github.com/numpy/numpy/issues/17090">here</a> for more information.</p>
 <blockquote class="blockquote">
 <p>Both <code>list</code> and <code>array</code> can be considered as dynamic array</p>
 </blockquote>
-<section id="searching-for-elements" class="level4" data-number="C.3.4.1">
-<h4 data-number="C.3.4.1" class="anchored" data-anchor-id="searching-for-elements"><span class="header-section-number">C.3.4.1</span> Searching for elements</h4>
+<section id="searching-for-elements" class="level4" data-number="D.3.4.1">
+<h4 data-number="D.3.4.1" class="anchored" data-anchor-id="searching-for-elements"><span class="header-section-number">D.3.4.1</span> Searching for elements</h4>
 <p>We often need to find the index of an element when we know the value. This type of search was discussed in Chapter 8. We can use sequential search for unsorted arrays or binary search on sorted arrays</p>
 </section>
-<section id="insertion-at-the-end" class="level4" data-number="C.3.4.2">
-<h4 data-number="C.3.4.2" class="anchored" data-anchor-id="insertion-at-the-end"><span class="header-section-number">C.3.4.2</span> Insertion at the end</h4>
+<section id="insertion-at-the-end" class="level4" data-number="D.3.4.2">
+<h4 data-number="D.3.4.2" class="anchored" data-anchor-id="insertion-at-the-end"><span class="header-section-number">D.3.4.2</span> Insertion at the end</h4>
 <p>If the insertion is at the end of an array this can be done easily. For example, if an array has 30 elements, we increase the size of the array to 31 and insert the new item as the 31st item.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:419,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669171632890,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="4696ccee-83be-4305-96d0-bc9225608682">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>student <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">31</span>))</span>
@@ -686,11 +698,11 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </div>
 </section>
-<section id="insertion-at-the-beginning-or-middle" class="level4" data-number="C.3.4.3">
-<h4 data-number="C.3.4.3" class="anchored" data-anchor-id="insertion-at-the-beginning-or-middle"><span class="header-section-number">C.3.4.3</span> Insertion at the beginning or middle</h4>
+<section id="insertion-at-the-beginning-or-middle" class="level4" data-number="D.3.4.3">
+<h4 data-number="D.3.4.3" class="anchored" data-anchor-id="insertion-at-the-beginning-or-middle"><span class="header-section-number">D.3.4.3</span> Insertion at the beginning or middle</h4>
 <p>If the insertion is to be at the beginning or in the middle of an array, the process is lengthy and time consuming. For example, if we want to insert an element as the 9th element in an array of 30 elements, elements 9 to 30 should be shifted one element towards the end of the array to open an empty element at position 9 for insertion. The following shows</p>
 <blockquote class="blockquote">
-<h4 id="example-2-try-to-insertion-an-element-31-as-the-9th-element-in-an-array-of-30-elements." data-number="C.3.4.4" class="anchored"><span class="header-section-number">C.3.4.4</span> Example 2: Try to insertion an element 31 as the 9th element in an array of 30 elements.</h4>
+<h4 id="example-2-try-to-insertion-an-element-31-as-the-9th-element-in-an-array-of-30-elements." data-number="D.3.4.4" class="anchored"><span class="header-section-number">D.3.4.4</span> Example 2: Try to insertion an element 31 as the 9th element in an array of 30 elements.</h4>
 </blockquote>
 <p>Elements 9 to 30 should be shifted one element towards the end of the array to open an empty element at position 9 for insertion. The following shows how to do it:</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669171448277,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="e1b9e288-4f60-4c70-8f09-ffbc59fd5847">
@@ -717,11 +729,11 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <p>Note that the shifting needs to take place from the end of the array to prevent losing the values of the elements. The code first copies the value of the 30th element into the 31st element, then copies the value of the 29th element into the 30th element, and so on. When the code comes out of the loop, the 9th element is already copied to the 10th element. The last line copies the value of the new item into the 9th element.</p>
 </section>
 </section>
-<section id="delete-element" class="level3" data-number="C.3.5">
-<h3 data-number="C.3.5" class="anchored" data-anchor-id="delete-element"><span class="header-section-number">C.3.5</span> Delete element</h3>
+<section id="delete-element" class="level3" data-number="D.3.5">
+<h3 data-number="D.3.5" class="anchored" data-anchor-id="delete-element"><span class="header-section-number">D.3.5</span> Delete element</h3>
 <p>Deletion of an element in an array is as lengthy and involved as insertion. For example, if the ninth element should be deleted, we need to shift elements 10 to 30 one position towards the start of the array.</p>
 <blockquote class="blockquote">
-<h4 id="exercise-2-try-to-delete-an-the-element-in-the-9th-position-of-an-array-of-30-elements." data-number="C.3.5.1" class="anchored"><span class="header-section-number">C.3.5.1</span> Exercise 2: Try to delete an the element in the 9th position of an array of 30 elements.</h4>
+<h4 id="exercise-2-try-to-delete-an-the-element-in-the-9th-position-of-an-array-of-30-elements." data-number="D.3.5.1" class="anchored"><span class="header-section-number">D.3.5.1</span> Exercise 2: Try to delete an the element in the 9th position of an array of 30 elements.</h4>
 </blockquote>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:275,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669171868168,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="b84e9b79-d18f-43a8-b3ff-b5a2c5887ea3">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>student <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">31</span>)</span>
@@ -743,21 +755,21 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
  26 27 28 29 30 30]</code></pre>
 </div>
 </div>
-<section id="accessing-array" class="level4" data-number="C.3.5.2">
-<h4 data-number="C.3.5.2" class="anchored" data-anchor-id="accessing-array"><span class="header-section-number">C.3.5.2</span> Accessing array</h4>
+<section id="accessing-array" class="level4" data-number="D.3.5.2">
+<h4 data-number="D.3.5.2" class="anchored" data-anchor-id="accessing-array"><span class="header-section-number">D.3.5.2</span> Accessing array</h4>
 <p>an array is a random-access structure, which means that each element of an array <strong>can be accessed randomly without the need to access the elements before or after it</strong>.</p>
 </section>
 </section>
-<section id="traversing-array" class="level3" data-number="C.3.6">
-<h3 data-number="C.3.6" class="anchored" data-anchor-id="traversing-array"><span class="header-section-number">C.3.6</span> Traversing array</h3>
+<section id="traversing-array" class="level3" data-number="D.3.6">
+<h3 data-number="D.3.6" class="anchored" data-anchor-id="traversing-array"><span class="header-section-number">D.3.6</span> Traversing array</h3>
 <p>Array traversal refers to an operation that is applied to all elements of the array, such as reading, writing, applying mathematical operation, and so on. You can use loop like list but vectorization usually works better as we have seen earlier.</p>
 <blockquote class="blockquote">
 <p>An array is a suitable structure when a small number of insertions and deletions are required, but a lot of searching and retrieval is needed.</p>
 </blockquote>
 </section>
 </section>
-<section id="records" class="level2" data-number="C.4">
-<h2 data-number="C.4" class="anchored" data-anchor-id="records"><span class="header-section-number">C.4</span> Records</h2>
+<section id="records" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="records"><span class="header-section-number">D.4</span> Records</h2>
 <p>A record is a collection of related elements, possibly of different types, having a single name. Each element in a record is called a <strong>field</strong>. A field differs from a variable primarily in that it is part of a record. The following figure contains two examples of records. The first example, <em>fraction</em>, has two fields, both of which are integers. The second example, <em>student</em>, has three fields made up of three different types.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1iw0yYAhptTV763xoUIvz7-M8wTOzkN8p" width="70%" height="70%">
@@ -765,16 +777,16 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <blockquote class="blockquote">
 <p>The elements in a record can be of the same or different types, but all elements in the record must be related.</p>
 </blockquote>
-<section id="records-in-python" class="level3" data-number="C.4.1">
-<h3 data-number="C.4.1" class="anchored" data-anchor-id="records-in-python"><span class="header-section-number">C.4.1</span> Records in Python</h3>
+<section id="records-in-python" class="level3" data-number="D.4.1">
+<h3 data-number="D.4.1" class="anchored" data-anchor-id="records-in-python"><span class="header-section-number">D.4.1</span> Records in Python</h3>
 <p>Using dictionaries as a record data type or data object in Python is possible. Dictionaries are easy to create in Python as they have their own syntactic sugar built into the language.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>fraction <span class="op">=</span> {<span class="st">"numerator"</span>:<span class="dv">13</span>, <span class="st">"denominator"</span>:<span class="dv">17</span>}</span>
 <span id="cb52-2"><a href="#cb52-2"></a>student <span class="op">=</span> {<span class="st">"id"</span>:<span class="dv">2005</span>, <span class="st">"name"</span>:<span class="st">"George Boole"</span>, <span class="st">"grade"</span>:<span class="st">'A'</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="record-name-versus-field-name" class="level3" data-number="C.4.2">
-<h3 data-number="C.4.2" class="anchored" data-anchor-id="record-name-versus-field-name"><span class="header-section-number">C.4.2</span> Record name versus field name</h3>
+<section id="record-name-versus-field-name" class="level3" data-number="D.4.2">
+<h3 data-number="D.4.2" class="anchored" data-anchor-id="record-name-versus-field-name"><span class="header-section-number">D.4.2</span> Record name versus field name</h3>
 <p>The name of the record is the name of the whole structure, while the name of each field allows us to refer to that field. For example, in the <code>student</code> record of previous Figure, the name of the record is <code>student</code>, the name of the fields are <code>student["id"]</code>, <code>student["name"]</code>, and <code>student["grade"]</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>student[<span class="st">"id"</span>] <span class="op">=</span> <span class="dv">2006</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -793,12 +805,12 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>student.<span class="bu">id</span> <span class="op">=</span> <span class="dv">2006</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="comparison-of-records-and-arrays" class="level3" data-number="C.4.3">
-<h3 data-number="C.4.3" class="anchored" data-anchor-id="comparison-of-records-and-arrays"><span class="header-section-number">C.4.3</span> Comparison of records and arrays</h3>
+<section id="comparison-of-records-and-arrays" class="level3" data-number="D.4.3">
+<h3 data-number="D.4.3" class="anchored" data-anchor-id="comparison-of-records-and-arrays"><span class="header-section-number">D.4.3</span> Comparison of records and arrays</h3>
 <p>We can conceptually compare an array with a record. This helps us to understand when we should use an array and when a record. An array defines a combination of elements, while a record defines the identifiable parts of an element. For example, an array can define a class of students (40 students), but a record defines different attributes of a student, such as id, name, or grade.</p>
 </section>
-<section id="array-of-records" class="level3" data-number="C.4.4">
-<h3 data-number="C.4.4" class="anchored" data-anchor-id="array-of-records"><span class="header-section-number">C.4.4</span> Array of records</h3>
+<section id="array-of-records" class="level3" data-number="D.4.4">
+<h3 data-number="D.4.4" class="anchored" data-anchor-id="array-of-records"><span class="header-section-number">D.4.4</span> Array of records</h3>
 <p>If we need to define a combination of element and at the same time some attributes of each element, we can use an array of records. For example, in a class of 30 students, we can have an array of 30 records, each record representing a student. The following figure shows an array of 30 student records called students.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1iw8u0od_ul50_jNXURujaHW5Yhz3y3RL" width="70%" height="70%">
@@ -855,13 +867,13 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </div>
 </section>
-<section id="arrays-versus-array-of-records" class="level3" data-number="C.4.5">
-<h3 data-number="C.4.5" class="anchored" data-anchor-id="arrays-versus-array-of-records"><span class="header-section-number">C.4.5</span> Arrays versus array of records</h3>
+<section id="arrays-versus-array-of-records" class="level3" data-number="D.4.5">
+<h3 data-number="D.4.5" class="anchored" data-anchor-id="arrays-versus-array-of-records"><span class="header-section-number">D.4.5</span> Arrays versus array of records</h3>
 <p>Both an array and an array of record represents a list of items. An array can be thought of as a special case of an array of records in which each element is a record with only a single field!</p>
 </section>
 </section>
-<section id="linked-lists" class="level2" data-number="C.5">
-<h2 data-number="C.5" class="anchored" data-anchor-id="linked-lists"><span class="header-section-number">C.5</span> Linked Lists</h2>
+<section id="linked-lists" class="level2" data-number="D.5">
+<h2 data-number="D.5" class="anchored" data-anchor-id="linked-lists"><span class="header-section-number">D.5</span> Linked Lists</h2>
 <p>A linked list is a collection of data in which each element contains the location of the next element — that is, each element contains two parts: data and link. The data part holds the value information: the data to be processed. The link is used to chain the data together, and contains a pointer (an address) that identifies the next element in the list. In addition, a pointer variable identifies the first element in the list. The name of the list is the same as the name of the first pointer variable.</p>
 <p>The following figure shows a linked list called scores that contains four elements. The link in each element, except the last, points to its successor. The link in the last element contains a null pointer, indicating the end of the list. We define an empty linked list to be only a null pointer:</p>
 <center>
@@ -872,16 +884,16 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <center>
 <img src="https://drive.google.com/uc?id=1j0THoiKkaVLEMDPggZLSQLs96vjjfVOw" width="70%" height="70%">
 </center>
-<section id="arrays-versus-linked-lists" class="level3" data-number="C.5.1">
-<h3 data-number="C.5.1" class="anchored" data-anchor-id="arrays-versus-linked-lists"><span class="header-section-number">C.5.1</span> Arrays versus linked lists</h3>
+<section id="arrays-versus-linked-lists" class="level3" data-number="D.5.1">
+<h3 data-number="D.5.1" class="anchored" data-anchor-id="arrays-versus-linked-lists"><span class="header-section-number">D.5.1</span> Arrays versus linked lists</h3>
 <p>Both an array and a linked list are representations of a list of items in memory. The only difference is the way in which the items are linked together. In an array of records, the linking tool is the index. The element scores[3] is linked to the element scores[4] because the integer 4 comes after the integer 3. In a linked list, the linking tool is the link that points to the next element — the pointer or the address of the next element.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1j3Lo7eBCyhwvjuYPEpJzmJaZ1TLTSeY6" width="70%" height="70%">
 </center>
 <p>The list is contiguous. The nodes of a linked list can be stored with gaps between them: the link part of the node ‘glues’ the items together. In other words, <strong>the computer has the option to store them contiguously or spread the nodes through the whole memory.</strong> This has an advantage: <em>insertion and deletion</em> in a linked list is much easier. The only thing that needs to be changed is the pointer to the address of the next element. However, this comes with an overhead: each node of a linked list has an extra field, <strong>the address of&nbsp;the next node in memory.</strong></p>
 </section>
-<section id="linked-list-in-python" class="level3" data-number="C.5.2">
-<h3 data-number="C.5.2" class="anchored" data-anchor-id="linked-list-in-python"><span class="header-section-number">C.5.2</span> Linked-list in Python</h3>
+<section id="linked-list-in-python" class="level3" data-number="D.5.2">
+<h3 data-number="D.5.2" class="anchored" data-anchor-id="linked-list-in-python"><span class="header-section-number">D.5.2</span> Linked-list in Python</h3>
 <p>In Python, there’s a specific object in the collections module that you can use for linked lists called deque (pronounced “deck”), which stands for double-ended queue.</p>
 <p>https://realpython.com/linked-lists-python/</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:574,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669366384709,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="303433c1-47a1-414b-eb2d-0a46268a55c0">
@@ -962,11 +974,11 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </div>
 </section>
-<section id="operations-on-linked-lists" class="level3" data-number="C.5.3">
-<h3 data-number="C.5.3" class="anchored" data-anchor-id="operations-on-linked-lists"><span class="header-section-number">C.5.3</span> Operations on linked lists</h3>
+<section id="operations-on-linked-lists" class="level3" data-number="D.5.3">
+<h3 data-number="D.5.3" class="anchored" data-anchor-id="operations-on-linked-lists"><span class="header-section-number">D.5.3</span> Operations on linked lists</h3>
 <p>The same operations we defined for an array can be applied to a linked list.</p>
-<section id="searching-a-linked-list" class="level4" data-number="C.5.3.1">
-<h4 data-number="C.5.3.1" class="anchored" data-anchor-id="searching-a-linked-list"><span class="header-section-number">C.5.3.1</span> Searching a linked list</h4>
+<section id="searching-a-linked-list" class="level4" data-number="D.5.3.1">
+<h4 data-number="D.5.3.1" class="anchored" data-anchor-id="searching-a-linked-list"><span class="header-section-number">D.5.3.1</span> Searching a linked list</h4>
 <p>The search algorithm for a linked list can only be sequential (see Chapter 8) because the nodes in a linked list have no specific names (unlike the elements in an array) that can be found using a binary search. Since nodes in a linked list have no names, we use two pointers, <code>pre</code> (for previous) and <code>cur</code> (for current).</p>
 <p>At the beginning of the search, the <code>pre</code> pointer is null and the <code>cur</code> pointer points to the first node. The search algorithm moves the two pointers together towards the end of the list. The following figure shows the movement of these two pointers through the list in an extreme case scenario: when the target value is larger than any value in the list. For example, in the five-node list, assume that our target value is 220, which is larger than any value in the list.</p>
 <center>
@@ -978,7 +990,7 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <img src="https://drive.google.com/uc?id=1jHUrBraEuhm4Ma4Yq1gV3LVXUBKewmKw" width="70%" height="70%">
 </center>
 <blockquote class="blockquote">
-<h4 id="example-3-the-following-shows-a-simplified-algorithm-for-the-search.-note-how" data-number="C.5.3.2" class="anchored"><span class="header-section-number">C.5.3.2</span> Example 3: The following shows a simplified algorithm for the search. Note how</h4>
+<h4 id="example-3-the-following-shows-a-simplified-algorithm-for-the-search.-note-how" data-number="D.5.3.2" class="anchored"><span class="header-section-number">D.5.3.2</span> Example 3: The following shows a simplified algorithm for the search. Note how</h4>
 <p>we move the two pointers forward together. This guarantees that the two pointers move together. The search algorithm is used both by the insertion algorithm (if the target is not found) and by the delete algorithm (if the target is found).</p>
 </blockquote>
 <center>
@@ -1046,11 +1058,11 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </div>
 </section>
-<section id="inserting-a-node" class="level4" data-number="C.5.3.3">
-<h4 data-number="C.5.3.3" class="anchored" data-anchor-id="inserting-a-node"><span class="header-section-number">C.5.3.3</span> Inserting a node</h4>
+<section id="inserting-a-node" class="level4" data-number="D.5.3.3">
+<h4 data-number="D.5.3.3" class="anchored" data-anchor-id="inserting-a-node"><span class="header-section-number">D.5.3.3</span> Inserting a node</h4>
 <p>Before insertion into a linked list, we first apply the searching algorithm. If the flag returned from the searching algorithm is false, we will allow insertion, otherwise we abort the insertion algorithm, <strong>because we do not allow data with duplicate values</strong>. Four cases can arise:</p>
-<section id="insertion-into-an-empty-list" class="level5" data-number="C.5.3.3.1">
-<h5 data-number="C.5.3.3.1" class="anchored" data-anchor-id="insertion-into-an-empty-list"><span class="header-section-number">C.5.3.3.1</span> Insertion into an empty list</h5>
+<section id="insertion-into-an-empty-list" class="level5" data-number="D.5.3.3.1">
+<h5 data-number="D.5.3.3.1" class="anchored" data-anchor-id="insertion-into-an-empty-list"><span class="header-section-number">D.5.3.3.1</span> Insertion into an empty list</h5>
 <p>If the list is empty (<code>ilist = None</code>), the new item is inserted as the first element. One statement can do the job:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a>ilist <span class="op">=</span> LinkedList()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1063,8 +1075,8 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </div>
 </section>
-<section id="insertion-at-the-beginning" class="level5" data-number="C.5.3.3.2">
-<h5 data-number="C.5.3.3.2" class="anchored" data-anchor-id="insertion-at-the-beginning"><span class="header-section-number">C.5.3.3.2</span> Insertion at the beginning</h5>
+<section id="insertion-at-the-beginning" class="level5" data-number="D.5.3.3.2">
+<h5 data-number="D.5.3.3.2" class="anchored" data-anchor-id="insertion-at-the-beginning"><span class="header-section-number">D.5.3.3.2</span> Insertion at the beginning</h5>
 <p>If the searching algorithm returns a flag with value of <code>false</code> and the value of the pre pointer is null, the data needs to be inserted at the beginning of the list. Two statements are needed to do the job:</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669368588490,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="b62e0399-9508-4df7-de1c-8846646cc6b7">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1"></a>ilist <span class="op">=</span> LinkedList([<span class="dv">102</span>,<span class="dv">132</span>,<span class="dv">178</span>,<span class="dv">201</span>])</span>
@@ -1088,8 +1100,8 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <img src="https://drive.google.com/uc?id=1jKzWYiTR7yprkoIDz-_xBUC5S7b4A6Xi" width="70%" height="70%">
 </center>
 </section>
-<section id="insertion-at-the-end-1" class="level5" data-number="C.5.3.3.3">
-<h5 data-number="C.5.3.3.3" class="anchored" data-anchor-id="insertion-at-the-end-1"><span class="header-section-number">C.5.3.3.3</span> Insertion at the end</h5>
+<section id="insertion-at-the-end-1" class="level5" data-number="D.5.3.3.3">
+<h5 data-number="D.5.3.3.3" class="anchored" data-anchor-id="insertion-at-the-end-1"><span class="header-section-number">D.5.3.3.3</span> Insertion at the end</h5>
 <p>If the searching algorithm returns a flag with value of <code>false</code> and the value of the <code>cur</code> pointer is null, the data needs to be inserted at the end of the list. Two statements are needed to do the job:</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669368592279,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="d53755c3-6f58-40bd-dc8b-8302279d4ebe">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a>ilist <span class="op">=</span> LinkedList([<span class="dv">102</span>,<span class="dv">132</span>,<span class="dv">178</span>,<span class="dv">201</span>])</span>
@@ -1113,8 +1125,8 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <img src="https://drive.google.com/uc?id=1jZ7GTqmkQYXESUt2hZPWBW5h3EXDPvY0" width="70%" height="70%">
 </center>
 </section>
-<section id="insertion-in-the-middle" class="level5" data-number="C.5.3.3.4">
-<h5 data-number="C.5.3.3.4" class="anchored"><span class="header-section-number">C.5.3.3.4</span> Insertion in the middle</h5>
+<section id="insertion-in-the-middle" class="level5" data-number="D.5.3.3.4">
+<h5 data-number="D.5.3.3.4" class="anchored"><span class="header-section-number">D.5.3.3.4</span> Insertion in the middle</h5>
 <p>If the searching algorithm returns a flag with a value of <code>false</code> and none of the returned pointers are null, the new data needs to be inserted at the middle of the list. Two statements are needed to do the job:</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669368592727,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="3fa9af9e-4d3b-4fe5-d891-7b4ec155a60d">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a>ilist <span class="op">=</span> LinkedList([<span class="dv">102</span>,<span class="dv">132</span>,<span class="dv">178</span>,<span class="dv">201</span>])</span>
@@ -1138,7 +1150,7 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <img src="https://drive.google.com/uc?id=1jcirJTmj_1YkC_aYqdwrLZcqU2ObfiEq" width="70%" height="70%">
 </center>
 <blockquote class="blockquote">
-<h4 id="exercise-3-the-following-shows-the-pseudocode-for-inserting-a-new-node-in-a-linked-list.-the-first-section-just-adds-a-node-to-an-empty-list." data-number="C.5.3.4" class="anchored" data-anchor-id="insertion-in-the-middle"><span class="header-section-number">C.5.3.4</span> Exercise 3: The following shows the pseudocode for inserting a new node in a linked list. The first section just adds a node to an empty list.</h4>
+<h4 id="exercise-3-the-following-shows-the-pseudocode-for-inserting-a-new-node-in-a-linked-list.-the-first-section-just-adds-a-node-to-an-empty-list." data-number="D.5.3.4" class="anchored" data-anchor-id="insertion-in-the-middle"><span class="header-section-number">D.5.3.4</span> Exercise 3: The following shows the pseudocode for inserting a new node in a linked list. The first section just adds a node to an empty list.</h4>
 </blockquote>
 <center>
 <img src="https://drive.google.com/uc?id=1jd6EfVqW95ejCEG8cMSvxhDsUq1QkhGe" width="70%" height="70%">
@@ -1219,11 +1231,11 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </section>
 </section>
-<section id="deleting-a-node" class="level4" data-number="C.5.3.5">
-<h4 data-number="C.5.3.5" class="anchored" data-anchor-id="deleting-a-node"><span class="header-section-number">C.5.3.5</span> Deleting a node</h4>
+<section id="deleting-a-node" class="level4" data-number="D.5.3.5">
+<h4 data-number="D.5.3.5" class="anchored" data-anchor-id="deleting-a-node"><span class="header-section-number">D.5.3.5</span> Deleting a node</h4>
 <p>Before deleting a node in a linked list, we apply the search algorithm. If the flag returned from the search algorithm is <code>true</code> (the node is found), we can delete the node from the linked list. However, deletion is simpler than insertion: we have only two cases — deleting the first node and deleting any other node. <strong>In other words, the deletion of the last and the middle nodes can be done by the same process.</strong></p>
-<section id="deleting-the-first-node" class="level5" data-number="C.5.3.5.1">
-<h5 data-number="C.5.3.5.1" class="anchored" data-anchor-id="deleting-the-first-node"><span class="header-section-number">C.5.3.5.1</span> Deleting the first node</h5>
+<section id="deleting-the-first-node" class="level5" data-number="D.5.3.5.1">
+<h5 data-number="D.5.3.5.1" class="anchored" data-anchor-id="deleting-the-first-node"><span class="header-section-number">D.5.3.5.1</span> Deleting the first node</h5>
 <p>If the <code>pre</code> pointer is null, the first node is to be deleted. The <code>cur</code> pointer points to the first node and deleting can be done by one statement:</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669368601729,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="c2be8dc0-a010-46cd-d21a-71f49c5416fd">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1"></a>ilist <span class="op">=</span> LinkedList([<span class="dv">102</span>,<span class="dv">132</span>,<span class="dv">178</span>,<span class="dv">201</span>])</span>
@@ -1245,8 +1257,8 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <img src="https://drive.google.com/uc?id=1jlL50fYQBcyHoLw9hVimxJH40MFycWF3" width="70%" height="70%">
 </center>
 </section>
-<section id="deleting-the-middle-or-the-last-node" class="level5" data-number="C.5.3.5.2">
-<h5 data-number="C.5.3.5.2" class="anchored"><span class="header-section-number">C.5.3.5.2</span> Deleting the middle or the last node</h5>
+<section id="deleting-the-middle-or-the-last-node" class="level5" data-number="D.5.3.5.2">
+<h5 data-number="D.5.3.5.2" class="anchored"><span class="header-section-number">D.5.3.5.2</span> Deleting the middle or the last node</h5>
 <p>If neither of the pointers is null, the node to be deleted is either a middle node or the last node. The <code>cur</code> pointer points to the corresponding node and deleting can be done by one statement:</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1669368765022,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="71a39fe9-04a0-4e26-8042-a6738017c43e">
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1"></a>ilist <span class="op">=</span> LinkedList([<span class="dv">102</span>,<span class="dv">132</span>,<span class="dv">178</span>,<span class="dv">201</span>])</span>
@@ -1283,7 +1295,7 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 <img src="https://drive.google.com/uc?id=1jpz2H7v8JCj-Z5k0iC4u6KNntUog5daQ" width="70%" height="70%">
 </center>
 <blockquote class="blockquote">
-<h4 id="exercise-4-the-following-algorithm-shows-the-pseudocode-for-deleting-a-node.-the-algorithm-is-much-simpler-than-the-one-for-inserting.-we-have-only-two-cases-and-each-case-needs-only-one-statement." data-number="C.5.3.6" class="anchored" data-anchor-id="deleting-the-middle-or-the-last-node"><span class="header-section-number">C.5.3.6</span> Exercise 4: The following algorithm shows the pseudocode for deleting a node. The algorithm is much simpler than the one for inserting. We have only two cases and each case needs only one statement.</h4>
+<h4 id="exercise-4-the-following-algorithm-shows-the-pseudocode-for-deleting-a-node.-the-algorithm-is-much-simpler-than-the-one-for-inserting.-we-have-only-two-cases-and-each-case-needs-only-one-statement." data-number="D.5.3.6" class="anchored" data-anchor-id="deleting-the-middle-or-the-last-node"><span class="header-section-number">D.5.3.6</span> Exercise 4: The following algorithm shows the pseudocode for deleting a node. The algorithm is much simpler than the one for inserting. We have only two cases and each case needs only one statement.</h4>
 </blockquote>
 <center>
 <img src="https://drive.google.com/uc?id=1jqBrKlPluuu_2SHGzN2An5RX4aQsE87I" width="70%" height="70%">
@@ -1335,11 +1347,11 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </section>
 </section>
-<section id="retrieving-a-node" class="level4" data-number="C.5.3.7">
-<h4 data-number="C.5.3.7" class="anchored" data-anchor-id="retrieving-a-node"><span class="header-section-number">C.5.3.7</span> Retrieving a node</h4>
+<section id="retrieving-a-node" class="level4" data-number="D.5.3.7">
+<h4 data-number="D.5.3.7" class="anchored" data-anchor-id="retrieving-a-node"><span class="header-section-number">D.5.3.7</span> Retrieving a node</h4>
 <p>Retrieving means randomly accessing a node for the purpose of inspecting or copying the data contained in the node. Before retrieving, the linked list needs to be searched. If the data item is found, it is retrieved, otherwise the process is aborted. Retrieving uses only the cur pointer, which points to the node found by the search algorithm.</p>
 <blockquote class="blockquote">
-<h4 id="example-4" data-number="C.5.3.8" class="anchored"><span class="header-section-number">C.5.3.8</span> Example 4:</h4>
+<h4 id="example-4" data-number="D.5.3.8" class="anchored"><span class="header-section-number">D.5.3.8</span> Example 4:</h4>
 <center>
 <img src="https://drive.google.com/uc?id=1jqL9Pb6HHOZq4NRrFXUHqxg4VnGFb-iY" width="70%" height="70%">
 </center>
@@ -1373,11 +1385,11 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </div>
 </section>
-<section id="traversing-a-linked-list" class="level4" data-number="C.5.3.9">
-<h4 data-number="C.5.3.9" class="anchored" data-anchor-id="traversing-a-linked-list"><span class="header-section-number">C.5.3.9</span> Traversing a linked list</h4>
+<section id="traversing-a-linked-list" class="level4" data-number="D.5.3.9">
+<h4 data-number="D.5.3.9" class="anchored" data-anchor-id="traversing-a-linked-list"><span class="header-section-number">D.5.3.9</span> Traversing a linked list</h4>
 <p>To traverse the list, we need a ‘walking’ pointer, which is a pointer that moves from node to node as each element is processed. We start traversing by setting the walking pointer to the first node in the list. Then, using a loop, we continue until all of the data has been processed. Each iteration of the loop processes the current node, then advances the walking pointer to the next node. When the last node has been processed, the walking pointer becomes null and the loop terminates.</p>
 <blockquote class="blockquote">
-<h4 id="example-5" data-number="C.5.3.10" class="anchored"><span class="header-section-number">C.5.3.10</span> Example 5:</h4>
+<h4 id="example-5" data-number="D.5.3.10" class="anchored"><span class="header-section-number">D.5.3.10</span> Example 5:</h4>
 <center>
 <img src="https://drive.google.com/uc?id=1jzSRHA0iEmPrX2ksXJGpENTIq7KvcUzF" width="70%" height="70%">
 </center>
@@ -1414,8 +1426,8 @@ source: https://scipy-lectures.org/intro/numpy/operations.html
 </div>
 </section>
 </section>
-<section id="applications-of-linked-lists" class="level3" data-number="C.5.4">
-<h3 data-number="C.5.4" class="anchored" data-anchor-id="applications-of-linked-lists"><span class="header-section-number">C.5.4</span> Applications of linked lists</h3>
+<section id="applications-of-linked-lists" class="level3" data-number="D.5.4">
+<h3 data-number="D.5.4" class="anchored" data-anchor-id="applications-of-linked-lists"><span class="header-section-number">D.5.4</span> Applications of linked lists</h3>
 <p>A linked list is a very efficient data structure for storing data that <strong>will go through many insertions and deletions</strong>. A linked list is a dynamic data structure in which the list can start with no nodes and then grow as new nodes are needed. A node can be easily deleted without moving other nodes, as would be the case with an array. For example, a linked list could be used to hold the records of students in a school. Each quarter or semester, new students enroll in the school and some students leave or graduate.</p>
 <p>A linked list can grow infinitely and can shrink to an empty list. The overhead is <strong>to hold an extra field for each node</strong>. A linked list, however, is not a good candidate for data that <strong>must be searched often</strong>. This appears to be a dilemma, because each deletion or insertion needs a search. We will see that some abstract data types, discussed in the next chapter, have the advantages of an array for searching and the advantages of a link list for insertion and deletion.</p>
 <blockquote class="blockquote">
@@ -1714,12 +1726,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./04_Algorithms_sol.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Algorithms</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./06_Abstract_data_types_sol.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

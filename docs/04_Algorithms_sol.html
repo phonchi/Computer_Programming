@@ -9,7 +9,7 @@
 <meta name="author" content="phonchi">
 <meta name="dcterms.date" content="2023-04-12">
 
-<title>Computer Programming - Appendix B — Algorithms</title>
+<title>Computer Programming - Appendix C — Algorithms</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./05_Data_Structure_sol.html" rel="next">
-<link href="./00_Copilot.html" rel="prev">
+<link href="./00_SciPy.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -111,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./04_Algorithms_sol.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./04_Algorithms_sol.html"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Algorithms</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,7 +199,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12_Matplotlib.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plotting with Matplotlib</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization with <code>Matplotlib</code></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_SymPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Symbolic Mathematics in Python with <code>SymPy</code></span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -219,20 +225,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./00_SciPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">High-level scientific computing with <code>SciPy</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
   </div>
 </li>
       </ul>
@@ -247,37 +259,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#a-taste-of-algorithm" id="toc-a-taste-of-algorithm" class="nav-link active" data-scroll-target="#a-taste-of-algorithm"><span class="header-section-number">B.1</span> A taste of algorithm</a></li>
-  <li><a href="#algorithm-representations" id="toc-algorithm-representations" class="nav-link" data-scroll-target="#algorithm-representations"><span class="header-section-number">B.2</span> Algorithm representations</a>
+  <li><a href="#a-taste-of-algorithm" id="toc-a-taste-of-algorithm" class="nav-link active" data-scroll-target="#a-taste-of-algorithm"><span class="header-section-number">C.1</span> A taste of algorithm</a></li>
+  <li><a href="#algorithm-representations" id="toc-algorithm-representations" class="nav-link" data-scroll-target="#algorithm-representations"><span class="header-section-number">C.2</span> Algorithm representations</a>
   <ul>
-  <li><a href="#example-1-write-an-algorithm-that-finds-the-sum-of-two-integers." id="toc-example-1-write-an-algorithm-that-finds-the-sum-of-two-integers." class="nav-link" data-scroll-target="#example-1-write-an-algorithm-that-finds-the-sum-of-two-integers."><span class="header-section-number">B.2.1</span> Example 1: Write an algorithm that finds the sum of two integers.</a></li>
-  <li><a href="#example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade." id="toc-example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade." class="nav-link" data-scroll-target="#example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade."><span class="header-section-number">B.2.2</span> Example 2: Write an algorithm to change a numeric grade to a pass/no pass grade.</a></li>
-  <li><a href="#example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers." id="toc-example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers." class="nav-link" data-scroll-target="#example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers."><span class="header-section-number">B.2.3</span> Example 3: Write an algorithm to find the largest of a set of integers. We do not know the number of integers.</a></li>
+  <li><a href="#example-1-write-an-algorithm-that-finds-the-sum-of-two-integers." id="toc-example-1-write-an-algorithm-that-finds-the-sum-of-two-integers." class="nav-link" data-scroll-target="#example-1-write-an-algorithm-that-finds-the-sum-of-two-integers."><span class="header-section-number">C.2.1</span> Example 1: Write an algorithm that finds the sum of two integers.</a></li>
+  <li><a href="#example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade." id="toc-example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade." class="nav-link" data-scroll-target="#example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade."><span class="header-section-number">C.2.2</span> Example 2: Write an algorithm to change a numeric grade to a pass/no pass grade.</a></li>
+  <li><a href="#example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers." id="toc-example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers." class="nav-link" data-scroll-target="#example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers."><span class="header-section-number">C.2.3</span> Example 3: Write an algorithm to find the largest of a set of integers. We do not know the number of integers.</a></li>
   </ul></li>
-  <li><a href="#a-more-formal-definition" id="toc-a-more-formal-definition" class="nav-link" data-scroll-target="#a-more-formal-definition"><span class="header-section-number">B.3</span> A more formal definition</a></li>
-  <li><a href="#basic-algorithms" id="toc-basic-algorithms" class="nav-link" data-scroll-target="#basic-algorithms"><span class="header-section-number">B.4</span> Basic algorithms</a>
+  <li><a href="#a-more-formal-definition" id="toc-a-more-formal-definition" class="nav-link" data-scroll-target="#a-more-formal-definition"><span class="header-section-number">C.3</span> A more formal definition</a></li>
+  <li><a href="#basic-algorithms" id="toc-basic-algorithms" class="nav-link" data-scroll-target="#basic-algorithms"><span class="header-section-number">C.4</span> Basic algorithms</a>
   <ul>
-  <li><a href="#summation" id="toc-summation" class="nav-link" data-scroll-target="#summation"><span class="header-section-number">B.4.0.1</span> Summation</a></li>
-  <li><a href="#product" id="toc-product" class="nav-link" data-scroll-target="#product"><span class="header-section-number">B.4.0.2</span> Product</a></li>
-  <li><a href="#smallest-and-largest" id="toc-smallest-and-largest" class="nav-link" data-scroll-target="#smallest-and-largest"><span class="header-section-number">B.4.0.3</span> Smallest and largest</a></li>
+  <li><a href="#summation" id="toc-summation" class="nav-link" data-scroll-target="#summation"><span class="header-section-number">C.4.0.1</span> Summation</a></li>
+  <li><a href="#product" id="toc-product" class="nav-link" data-scroll-target="#product"><span class="header-section-number">C.4.0.2</span> Product</a></li>
+  <li><a href="#smallest-and-largest" id="toc-smallest-and-largest" class="nav-link" data-scroll-target="#smallest-and-largest"><span class="header-section-number">C.4.0.3</span> Smallest and largest</a></li>
   </ul></li>
-  <li><a href="#sorting" id="toc-sorting" class="nav-link" data-scroll-target="#sorting"><span class="header-section-number">B.5</span> Sorting</a>
+  <li><a href="#sorting" id="toc-sorting" class="nav-link" data-scroll-target="#sorting"><span class="header-section-number">C.5</span> Sorting</a>
   <ul>
-  <li><a href="#selection-sorts" id="toc-selection-sorts" class="nav-link" data-scroll-target="#selection-sorts"><span class="header-section-number">B.5.1</span> Selection sorts</a></li>
-  <li><a href="#bubble-sort" id="toc-bubble-sort" class="nav-link" data-scroll-target="#bubble-sort"><span class="header-section-number">B.5.3</span> Bubble sort</a></li>
-  <li><a href="#insertion-sort" id="toc-insertion-sort" class="nav-link" data-scroll-target="#insertion-sort"><span class="header-section-number">B.5.5</span> Insertion sort</a></li>
+  <li><a href="#selection-sorts" id="toc-selection-sorts" class="nav-link" data-scroll-target="#selection-sorts"><span class="header-section-number">C.5.1</span> Selection sorts</a></li>
+  <li><a href="#bubble-sort" id="toc-bubble-sort" class="nav-link" data-scroll-target="#bubble-sort"><span class="header-section-number">C.5.3</span> Bubble sort</a></li>
+  <li><a href="#insertion-sort" id="toc-insertion-sort" class="nav-link" data-scroll-target="#insertion-sort"><span class="header-section-number">C.5.5</span> Insertion sort</a></li>
   </ul></li>
-  <li><a href="#searching" id="toc-searching" class="nav-link" data-scroll-target="#searching"><span class="header-section-number">B.6</span> Searching</a>
+  <li><a href="#searching" id="toc-searching" class="nav-link" data-scroll-target="#searching"><span class="header-section-number">C.6</span> Searching</a>
   <ul>
-  <li><a href="#sequential-search" id="toc-sequential-search" class="nav-link" data-scroll-target="#sequential-search"><span class="header-section-number">B.6.1</span> Sequential search</a></li>
-  <li><a href="#binary-search" id="toc-binary-search" class="nav-link" data-scroll-target="#binary-search"><span class="header-section-number">B.6.3</span> Binary search</a></li>
+  <li><a href="#sequential-search" id="toc-sequential-search" class="nav-link" data-scroll-target="#sequential-search"><span class="header-section-number">C.6.1</span> Sequential search</a></li>
+  <li><a href="#binary-search" id="toc-binary-search" class="nav-link" data-scroll-target="#binary-search"><span class="header-section-number">C.6.3</span> Binary search</a></li>
   </ul></li>
-  <li><a href="#recursion" id="toc-recursion" class="nav-link" data-scroll-target="#recursion"><span class="header-section-number">B.7</span> Recursion</a>
+  <li><a href="#recursion" id="toc-recursion" class="nav-link" data-scroll-target="#recursion"><span class="header-section-number">C.7</span> Recursion</a>
   <ul>
-  <li><a href="#iterative" id="toc-iterative" class="nav-link" data-scroll-target="#iterative"><span class="header-section-number">B.7.1</span> Iterative</a></li>
-  <li><a href="#recursive" id="toc-recursive" class="nav-link" data-scroll-target="#recursive"><span class="header-section-number">B.7.2</span> Recursive</a></li>
-  <li><a href="#example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively" id="toc-example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively" class="nav-link" data-scroll-target="#example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively"><span class="header-section-number">B.7.3</span> Example 4: Let us write an algorithm to solve the factorial problem iteratively!</a></li>
-  <li><a href="#exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion" id="toc-exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion" class="nav-link" data-scroll-target="#exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion"><span class="header-section-number">B.7.4</span> Exercise 7: Try to write an algorithm to solve the factorial problem using recursion!</a></li>
+  <li><a href="#iterative" id="toc-iterative" class="nav-link" data-scroll-target="#iterative"><span class="header-section-number">C.7.1</span> Iterative</a></li>
+  <li><a href="#recursive" id="toc-recursive" class="nav-link" data-scroll-target="#recursive"><span class="header-section-number">C.7.2</span> Recursive</a></li>
+  <li><a href="#example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively" id="toc-example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively" class="nav-link" data-scroll-target="#example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively"><span class="header-section-number">C.7.3</span> Example 4: Let us write an algorithm to solve the factorial problem iteratively!</a></li>
+  <li><a href="#exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion" id="toc-exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion" class="nav-link" data-scroll-target="#exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion"><span class="header-section-number">C.7.4</span> Exercise 7: Try to write an algorithm to solve the factorial problem using recursion!</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -287,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Appendix B — Algorithms</h1>
+<h1 class="title">Appendix C — Algorithms</h1>
 </div>
 
 
@@ -325,8 +337,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </tr></tbody></table>
 <p><br></p>
-<section id="a-taste-of-algorithm" class="level2" data-number="B.1">
-<h2 data-number="B.1" class="anchored" data-anchor-id="a-taste-of-algorithm"><span class="header-section-number">B.1</span> A taste of algorithm</h2>
+<section id="a-taste-of-algorithm" class="level2" data-number="C.1">
+<h2 data-number="C.1" class="anchored" data-anchor-id="a-taste-of-algorithm"><span class="header-section-number">C.1</span> A taste of algorithm</h2>
 <p>An informal definition of an algorithm is:</p>
 <blockquote class="blockquote">
 <p>Algorithm: a step-by-step method for solving a problem or doing a task.</p>
@@ -353,8 +365,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <img src="https://drive.google.com/uc?id=1Dl_idV-0frUzA05ftmmk3EDmACnfZLts" width="70%" height="70%">
 </center>
 </section>
-<section id="algorithm-representations" class="level2" data-number="B.2">
-<h2 data-number="B.2" class="anchored" data-anchor-id="algorithm-representations"><span class="header-section-number">B.2</span> Algorithm representations</h2>
+<section id="algorithm-representations" class="level2" data-number="C.2">
+<h2 data-number="C.2" class="anchored" data-anchor-id="algorithm-representations"><span class="header-section-number">C.2</span> Algorithm representations</h2>
 <p>Computer scientists have defined three constructs for a structured program or algorithm. The idea is that a program must be made of a combination of only these three constructs: <strong>sequence, decision, and repetition</strong>.</p>
 <blockquote class="blockquote">
 <p>It has been proven there is no need for any other constructs!</p>
@@ -390,8 +402,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 9</code></pre>
 </div>
 </div>
-<section id="example-1-write-an-algorithm-that-finds-the-sum-of-two-integers." class="level3" data-number="B.2.1">
-<h3 data-number="B.2.1" class="anchored" data-anchor-id="example-1-write-an-algorithm-that-finds-the-sum-of-two-integers."><span class="header-section-number">B.2.1</span> Example 1: Write an algorithm that finds the sum of two integers.</h3>
+<section id="example-1-write-an-algorithm-that-finds-the-sum-of-two-integers." class="level3" data-number="C.2.1">
+<h3 data-number="C.2.1" class="anchored" data-anchor-id="example-1-write-an-algorithm-that-finds-the-sum-of-two-integers."><span class="header-section-number">C.2.1</span> Example 1: Write an algorithm that finds the sum of two integers.</h3>
 <p>This is a simple problem that can be solved using only the sequence construct. Note also that we name the algorithm, define the input to the algorithm and, at the end, we use a return instruction to return the sum</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">def</span> SumOfTwo(first, second):</span>
@@ -416,8 +428,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-2"><a href="#cb6-2"></a><span class="cf">assert</span>(SumOfTwo(<span class="op">-</span><span class="dv">7</span>,<span class="op">-</span><span class="dv">3</span>)<span class="op">==-</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade." class="level3" data-number="B.2.2">
-<h3 data-number="B.2.2" class="anchored" data-anchor-id="example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade."><span class="header-section-number">B.2.2</span> Example 2: Write an algorithm to change a numeric grade to a pass/no pass grade.</h3>
+<section id="example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade." class="level3" data-number="C.2.2">
+<h3 data-number="C.2.2" class="anchored" data-anchor-id="example-2-write-an-algorithm-to-change-a-numeric-grade-to-a-passno-pass-grade."><span class="header-section-number">C.2.2</span> Example 2: Write an algorithm to change a numeric grade to a pass/no pass grade.</h3>
 <p>This problem cannot be solved with only the sequence construct. We also need the decision construct. The computer is given an integer between 0 and 100. It returns ‘pass’ if the integer is greater than or equal to 70, and returns ‘no pass’ if the integer is less than 60.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">def</span> Pass_NoPass(score):</span>
@@ -443,8 +455,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-2"><a href="#cb8-2"></a><span class="cf">assert</span>(Pass_NoPass(<span class="dv">55</span>)<span class="op">==</span><span class="st">"nopass"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers." class="level3" data-number="B.2.3">
-<h3 data-number="B.2.3" class="anchored" data-anchor-id="example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers."><span class="header-section-number">B.2.3</span> Example 3: Write an algorithm to find the largest of a set of integers. We do not know the number of integers.</h3>
+<section id="example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers." class="level3" data-number="C.2.3">
+<h3 data-number="C.2.3" class="anchored" data-anchor-id="example-3-write-an-algorithm-to-find-the-largest-of-a-set-of-integers.-we-do-not-know-the-number-of-integers."><span class="header-section-number">C.2.3</span> Example 3: Write an algorithm to find the largest of a set of integers. We do not know the number of integers.</h3>
 <p>We use the concept before to write an algorithm for this problem</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> math</span>
@@ -475,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-3"><a href="#cb10-3"></a><span class="cf">assert</span>(FindLargest([<span class="op">-</span><span class="dv">7</span>,<span class="op">-</span><span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">18</span>])<span class="op">==</span><span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <blockquote class="blockquote">
-<h3 id="exercise-1-write-an-algorithm-to-find-the-smallest-of-the-first-5-integers-in-a-set-of-integers." data-number="B.2.4" class="anchored"><span class="header-section-number">B.2.4</span> Exercise 1: Write an algorithm to find the smallest of the first 5 integers in a set of integers.</h3>
+<h3 id="exercise-1-write-an-algorithm-to-find-the-smallest-of-the-first-5-integers-in-a-set-of-integers." data-number="C.2.4" class="anchored"><span class="header-section-number">C.2.4</span> Exercise 1: Write an algorithm to find the smallest of the first 5 integers in a set of integers.</h3>
 </blockquote>
 <p>Here we need a counter to count the number of integers.</p>
 <div class="cell">
@@ -507,8 +519,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="a-more-formal-definition" class="level2" data-number="B.3">
-<h2 data-number="B.3" class="anchored" data-anchor-id="a-more-formal-definition"><span class="header-section-number">B.3</span> A more formal definition</h2>
+<section id="a-more-formal-definition" class="level2" data-number="C.3">
+<h2 data-number="C.3" class="anchored" data-anchor-id="a-more-formal-definition"><span class="header-section-number">C.3</span> A more formal definition</h2>
 <p>Now that we have discussed the concept of an algorithm and shown its representation, here is a more formal definition.</p>
 <blockquote class="blockquote">
 <p>Algorithm: An ordered set of unambiguous steps that produces a result and terminates in a finite time.</p>
@@ -520,11 +532,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Terminate in a finite time</strong>: An algorithm must terminate (halt). If it does not (that is, it has an infinite loop), we have not created an algorithm.</li>
 </ol>
 </section>
-<section id="basic-algorithms" class="level2" data-number="B.4">
-<h2 data-number="B.4" class="anchored" data-anchor-id="basic-algorithms"><span class="header-section-number">B.4</span> Basic algorithms</h2>
+<section id="basic-algorithms" class="level2" data-number="C.4">
+<h2 data-number="C.4" class="anchored" data-anchor-id="basic-algorithms"><span class="header-section-number">C.4</span> Basic algorithms</h2>
 <p>Several algorithms are used in computer science so prevalently that they are considered ‘basic’.</p>
-<section id="summation" class="level4" data-number="B.4.0.1">
-<h4 data-number="B.4.0.1" class="anchored" data-anchor-id="summation"><span class="header-section-number">B.4.0.1</span> Summation</h4>
+<section id="summation" class="level4" data-number="C.4.0.1">
+<h4 data-number="C.4.0.1" class="anchored" data-anchor-id="summation"><span class="header-section-number">C.4.0.1</span> Summation</h4>
 <p>One commonly used algorithm in computer science is summation. The solution is simple: we use the add operator in a loop</p>
 <center>
 <img src="https://drive.google.com/uc?id=1YYKm7EVT4a9SL5A_TYeJe789k4uPOGck" width="70%" height="70%">
@@ -562,8 +574,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-3"><a href="#cb14-3"></a><span class="cf">assert</span> summation([]) <span class="op">==</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="product" class="level4" data-number="B.4.0.2">
-<h4 data-number="B.4.0.2" class="anchored" data-anchor-id="product"><span class="header-section-number">B.4.0.2</span> Product</h4>
+<section id="product" class="level4" data-number="C.4.0.2">
+<h4 data-number="C.4.0.2" class="anchored" data-anchor-id="product"><span class="header-section-number">C.4.0.2</span> Product</h4>
 <p>Another common algorithm is finding the product of a list of integers.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1YWbuAl2GdBvwi6KGAqkh6SEtG5xOAtSp" width="70%" height="70%">
@@ -608,18 +620,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-5"><a href="#cb17-5"></a><span class="cf">assert</span> product([]) <span class="op">==</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="smallest-and-largest" class="level4" data-number="B.4.0.3">
-<h4 data-number="B.4.0.3" class="anchored" data-anchor-id="smallest-and-largest"><span class="header-section-number">B.4.0.3</span> Smallest and largest</h4>
+<section id="smallest-and-largest" class="level4" data-number="C.4.0.3">
+<h4 data-number="C.4.0.3" class="anchored" data-anchor-id="smallest-and-largest"><span class="header-section-number">C.4.0.3</span> Smallest and largest</h4>
 <center>
 <img src="https://drive.google.com/uc?id=1YaZHXYHQyCnhaWenLKSAbZItAyChF5FO" width="70%" height="70%">
 </center>
 </section>
 </section>
-<section id="sorting" class="level2" data-number="B.5">
-<h2 data-number="B.5" class="anchored" data-anchor-id="sorting"><span class="header-section-number">B.5</span> Sorting</h2>
+<section id="sorting" class="level2" data-number="C.5">
+<h2 data-number="C.5" class="anchored" data-anchor-id="sorting"><span class="header-section-number">C.5</span> Sorting</h2>
 <p>One of the most common applications in computer science is sorting, which is the process by which data is arranged according to its values. People are surrounded by data. If the data was not ordered, it would take hours and hours to find a single piece of information. Imagine the difficulty of finding someone’s telephone number in a telephone book that is not ordered!</p>
-<section id="selection-sorts" class="level3" data-number="B.5.1">
-<h3 data-number="B.5.1" class="anchored" data-anchor-id="selection-sorts"><span class="header-section-number">B.5.1</span> Selection sorts</h3>
+<section id="selection-sorts" class="level3" data-number="C.5.1">
+<h3 data-number="C.5.1" class="anchored" data-anchor-id="selection-sorts"><span class="header-section-number">C.5.1</span> Selection sorts</h3>
 <p>In a selection sort, the list to be sorted is divided into two sublists — sorted and unsorted— which are separated by an imaginary wall. We find the smallest element from the unsorted sublist and swap it with the element at the beginning of the unsorted sublist. After each selection and swap, the imaginary wall between the two sublists moves one element ahead, increasing the number of sorted elements and decreasing the number of unsorted ones. Each time we move one element from the unsorted sublist to the sorted sublist, we have completed a sort pass.</p>
 <p>A list of <code>n</code> elements requires <code>n  − 1</code> passes to completely rearrange the data.</p>
 <center>
@@ -642,7 +654,7 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 </center>
 <p>The algorithm uses two loops, one inside the other. The outer loop is iterated for each pass:&nbsp;the inner loop finds the smallest element in the unsorted list.</p>
 <blockquote class="blockquote">
-<h3 id="exercise-2-write-a-selection-sort-for-list-of-intergers-that-sorts-the-integer-from-smallest-to-largest" data-number="B.5.2" class="anchored"><span class="header-section-number">B.5.2</span> Exercise 2: Write a selection sort for list of intergers that sorts the integer from smallest to largest</h3>
+<h3 id="exercise-2-write-a-selection-sort-for-list-of-intergers-that-sorts-the-integer-from-smallest-to-largest" data-number="C.5.2" class="anchored"><span class="header-section-number">C.5.2</span> Exercise 2: Write a selection sort for list of intergers that sorts the integer from smallest to largest</h3>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">def</span> selection_sort(arr):</span>
@@ -676,8 +688,8 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 <span id="cb19-4"><a href="#cb19-4"></a><span class="cf">assert</span>(selection_sort([<span class="dv">5</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="bubble-sort" class="level3" data-number="B.5.3">
-<h3 data-number="B.5.3" class="anchored" data-anchor-id="bubble-sort"><span class="header-section-number">B.5.3</span> Bubble sort</h3>
+<section id="bubble-sort" class="level3" data-number="C.5.3">
+<h3 data-number="C.5.3" class="anchored" data-anchor-id="bubble-sort"><span class="header-section-number">C.5.3</span> Bubble sort</h3>
 <p>In the bubble sort method, the list to be sorted is also divided into two sublists—sorted and unsorted. The smallest element is bubbled up from the unsorted sublist and moved to the sorted sublist. After the smallest element has been moved to the sorted list, the wall moves one element ahead, increasing the number of sorted elements and decreasing the number of unsorted ones.</p>
 <p>Each time an element moves from the unsorted sublist to the sorted sublist, one sort pass is completed. Given a list of <code>n</code> elements, bubble sort requires up to <code>n − 1</code> passes to sort the data.</p>
 <center>
@@ -697,7 +709,7 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 <img src="https://drive.google.com/uc?id=1fV4l4EbEMmNR0WmA6-nMFPLBlRvTFX0k" width="70%" height="70%">
 </center>
 <blockquote class="blockquote">
-<h3 id="exercise-3-write-a-bubble-sort-for-list-of-intergers-that-sorts-the-integer-from-smallest-to-largest" data-number="B.5.4" class="anchored"><span class="header-section-number">B.5.4</span> Exercise 3: Write a bubble sort for list of intergers that sorts the integer from smallest to largest</h3>
+<h3 id="exercise-3-write-a-bubble-sort-for-list-of-intergers-that-sorts-the-integer-from-smallest-to-largest" data-number="C.5.4" class="anchored"><span class="header-section-number">C.5.4</span> Exercise 3: Write a bubble sort for list of intergers that sorts the integer from smallest to largest</h3>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="kw">def</span> bubble_sort(arr):</span>
@@ -729,8 +741,8 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 <span id="cb21-4"><a href="#cb21-4"></a><span class="cf">assert</span>(bubble_sort([<span class="dv">5</span>])<span class="op">==</span><span class="bu">sorted</span>([<span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="insertion-sort" class="level3" data-number="B.5.5">
-<h3 data-number="B.5.5" class="anchored" data-anchor-id="insertion-sort"><span class="header-section-number">B.5.5</span> Insertion sort</h3>
+<section id="insertion-sort" class="level3" data-number="C.5.5">
+<h3 data-number="C.5.5" class="anchored" data-anchor-id="insertion-sort"><span class="header-section-number">C.5.5</span> Insertion sort</h3>
 <p>The insertion sort algorithm is one of the most common sorting techniques, and it is often used by card players. Each card a player picks up is inserted into the proper place in their hand of cards to maintain a particular sequence. (Card sorting is an example of a sort that uses two criteria for sorting: suit and rank.)</p>
 <p>In an insertion sort, as in the other two sorting algorithms discussed above, the list is divided into two parts—sorted and unsorted. In each pass, the first element of the unsorted sublist is transferred to the sorted sublist and inserted at the appropriate place. Note that a list of <code>n</code> elements will take <code>n − 1</code> passes to sort the data.</p>
 <center>
@@ -751,7 +763,7 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 <img src="https://drive.google.com/uc?id=1f_YKy-zTCZPGbdoCZcvugIjSyWdoYPGF" width="70%" height="70%">
 </center>
 <blockquote class="blockquote">
-<h3 id="exercise-4-write-a-insertion-sort-for-list-of-intergers-that-sorts-the-integer-from-smallest-to-largest" data-number="B.5.6" class="anchored"><span class="header-section-number">B.5.6</span> Exercise 4: Write a insertion sort for list of intergers that sorts the integer from smallest to largest</h3>
+<h3 id="exercise-4-write-a-insertion-sort-for-list-of-intergers-that-sorts-the-integer-from-smallest-to-largest" data-number="C.5.6" class="anchored"><span class="header-section-number">C.5.6</span> Exercise 4: Write a insertion sort for list of intergers that sorts the integer from smallest to largest</h3>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">def</span> insertion_sort(arr):</span>
@@ -791,18 +803,18 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 <p>See https://www.sortvisualizer.com/ for more details</p>
 </section>
 </section>
-<section id="searching" class="level2" data-number="B.6">
-<h2 data-number="B.6" class="anchored" data-anchor-id="searching"><span class="header-section-number">B.6</span> Searching</h2>
+<section id="searching" class="level2" data-number="C.6">
+<h2 data-number="C.6" class="anchored" data-anchor-id="searching"><span class="header-section-number">C.6</span> Searching</h2>
 <p>Another common algorithm in computer science is searching, which is the process of finding the location of a target among a list of objects. In the case of a list, searching means that given a value, we want to find the location of the first element in the list that contains that value. There are two basic searches for lists: sequential search and binary search. Sequential search can be used to locate an item in any list, <strong>whereas binary search requires the list first to be sorted.</strong></p>
-<section id="sequential-search" class="level3" data-number="B.6.1">
-<h3 data-number="B.6.1" class="anchored" data-anchor-id="sequential-search"><span class="header-section-number">B.6.1</span> Sequential search</h3>
+<section id="sequential-search" class="level3" data-number="C.6.1">
+<h3 data-number="C.6.1" class="anchored" data-anchor-id="sequential-search"><span class="header-section-number">C.6.1</span> Sequential search</h3>
 <p>Sequential search is used if the list to be searched is not ordered. Generally, we use this technique only for small lists, or lists that are not searched often. In other cases, the best approach is to first sort the list and then search it using the binary search discussed later.</p>
 <p>In a sequential search, we start searching for the target from the beginning of the list. We continue until we either find the target or reach the end of the list. The following figure traces the steps to find the value 62. The search algorithm needs to be designed so that the search stops when we find the target or when we reach the end of the list.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1ZEcvYvzWqZe-rMhihGvYv2VYbXx-C5In" width="70%" height="70%">
 </center>
 <blockquote class="blockquote">
-<h3 id="exercise-5-write-a-sequential-search-for-a-list-of-intergers-that-return-the-index-of-the-target-value.-note-that-we-should-return-none-if-the-target-does-not-in-the-list" data-number="B.6.2" class="anchored"><span class="header-section-number">B.6.2</span> Exercise 5: Write a sequential search for a list of intergers that return the index of the target value. Note that we should return <code>None</code> if the target does not in the list!</h3>
+<h3 id="exercise-5-write-a-sequential-search-for-a-list-of-intergers-that-return-the-index-of-the-target-value.-note-that-we-should-return-none-if-the-target-does-not-in-the-list" data-number="C.6.2" class="anchored"><span class="header-section-number">C.6.2</span> Exercise 5: Write a sequential search for a list of intergers that return the index of the target value. Note that we should return <code>None</code> if the target does not in the list!</h3>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">def</span> sequential_search(arr, target):</span>
@@ -833,8 +845,8 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 <span id="cb25-4"><a href="#cb25-4"></a><span class="cf">assert</span>(sequential_search([<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">7</span>], <span class="dv">6</span>)<span class="op">==</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="binary-search" class="level3" data-number="B.6.3">
-<h3 data-number="B.6.3" class="anchored" data-anchor-id="binary-search"><span class="header-section-number">B.6.3</span> Binary search</h3>
+<section id="binary-search" class="level3" data-number="C.6.3">
+<h3 data-number="C.6.3" class="anchored" data-anchor-id="binary-search"><span class="header-section-number">C.6.3</span> Binary search</h3>
 <p>The sequential search algorithm is very slow. If we have a list of a million elements, we must do a million comparisons in the worst case. If the list is not sorted, this is the only solution. If the list is sorted, however, we can use a more efficient algorithm called binary search. Generally speaking, programmers use a binary search when a list is large.</p>
 <p>A binary search starts by testing the data in the element at the middle of the list. This determines whether the target is in the first half or the second half of the list. If it is in the first half, there is no need to further check the second half. If it is in the second half, there is no need to further check the first half. <strong>In other words, we eliminate half the list from further consideration.</strong></p>
 <p>We repeat this process until we either find the target or satisfy ourselves that it is not in the list. The following figure shows how to find the target, 22, in a list of 12 numbers using three references: <code>first</code>, <code>mid</code>, and <code>last</code>.</p>
@@ -848,7 +860,7 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 </center>
 <p>The algorithm for binary search needs to be designed to find the target or to stop if the target is not in the list. It can be shown that if the target is not found in the list, the value of last becomes smaller than the value of first, an abnormal condition that helps us to know when to come out of the loop.</p>
 <blockquote class="blockquote">
-<h3 id="exercise-6-write-a-binary-search-for-a-sorted-list-of-intergers-that-return-the-index-of-the-target-value.-note-that-we-should-return-none-if-the-target-does-not-in-the-list" data-number="B.6.4" class="anchored"><span class="header-section-number">B.6.4</span> Exercise 6: Write a binary search for a sorted list of intergers that return the index of the target value. Note that we should return <code>None</code> if the target does not in the list!</h3>
+<h3 id="exercise-6-write-a-binary-search-for-a-sorted-list-of-intergers-that-return-the-index-of-the-target-value.-note-that-we-should-return-none-if-the-target-does-not-in-the-list" data-number="C.6.4" class="anchored"><span class="header-section-number">C.6.4</span> Exercise 6: Write a binary search for a sorted list of intergers that return the index of the target value. Note that we should return <code>None</code> if the target does not in the list!</h3>
 </blockquote>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">def</span> binary_search(arr, target):</span>
@@ -884,18 +896,18 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 </div>
 </section>
 </section>
-<section id="recursion" class="level2" data-number="B.7">
-<h2 data-number="B.7" class="anchored" data-anchor-id="recursion"><span class="header-section-number">B.7</span> Recursion</h2>
+<section id="recursion" class="level2" data-number="C.7">
+<h2 data-number="C.7" class="anchored" data-anchor-id="recursion"><span class="header-section-number">C.7</span> Recursion</h2>
 <p>In general, there are two approaches to writing algorithms for solving a problem. One uses iteration, the other uses recursion. Recursion is a process in which an algorithm calls itself.</p>
-<section id="iterative" class="level3" data-number="B.7.1">
-<h3 data-number="B.7.1" class="anchored" data-anchor-id="iterative"><span class="header-section-number">B.7.1</span> Iterative</h3>
+<section id="iterative" class="level3" data-number="C.7.1">
+<h3 data-number="C.7.1" class="anchored" data-anchor-id="iterative"><span class="header-section-number">C.7.1</span> Iterative</h3>
 <p>To study a simple example, consider the calculation of a factorial. The factorial of a integer is the product of the integral values from 1 to the integer. The definition is iterative as shown below. An algorithm is iterative whenever the definition does not involve the algorithm itself.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1ZaVbKQZ4tTAnZFkFzxaXUY97B2lH76S4" width="70%" height="70%">
 </center>
 </section>
-<section id="recursive" class="level3" data-number="B.7.2">
-<h3 data-number="B.7.2" class="anchored" data-anchor-id="recursive"><span class="header-section-number">B.7.2</span> Recursive</h3>
+<section id="recursive" class="level3" data-number="C.7.2">
+<h3 data-number="C.7.2" class="anchored" data-anchor-id="recursive"><span class="header-section-number">C.7.2</span> Recursive</h3>
 <p>An algorithm is defined recursively whenever the algorithm appears within the definition itself. For example, the factorial function can be defined recursively as shown below.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1Zg-K2O6NpYMviLWVlQv7mr0mcGxDSBBK" width="70%" height="70%">
@@ -906,8 +918,8 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 <img src="https://drive.google.com/uc?id=1ZgZHfQggwZErmgo-MAYqmLdsEKsB_QLL" width="70%" height="70%">
 </center>
 </section>
-<section id="example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively" class="level3" data-number="B.7.3">
-<h3 data-number="B.7.3" class="anchored" data-anchor-id="example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively"><span class="header-section-number">B.7.3</span> Example 4: Let us write an algorithm to solve the factorial problem iteratively!</h3>
+<section id="example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively" class="level3" data-number="C.7.3">
+<h3 data-number="C.7.3" class="anchored" data-anchor-id="example-4-let-us-write-an-algorithm-to-solve-the-factorial-problem-iteratively"><span class="header-section-number">C.7.3</span> Example 4: Let us write an algorithm to solve the factorial problem iteratively!</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="kw">def</span> Factorial(n):</span>
 <span id="cb28-2"><a href="#cb28-2"></a>  <span class="co">"""</span></span>
@@ -932,8 +944,8 @@ source: https://github.com/hustcc/JS-Sorting-Algorithm
 <span id="cb29-4"><a href="#cb29-4"></a><span class="cf">assert</span>(Factorial(<span class="dv">0</span>)<span class="op">==</span>math.factorial(<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion" class="level3" data-number="B.7.4">
-<h3 data-number="B.7.4" class="anchored" data-anchor-id="exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion"><span class="header-section-number">B.7.4</span> Exercise 7: Try to write an algorithm to solve the factorial problem using recursion!</h3>
+<section id="exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion" class="level3" data-number="C.7.4">
+<h3 data-number="C.7.4" class="anchored" data-anchor-id="exercise-7-try-to-write-an-algorithm-to-solve-the-factorial-problem-using-recursion"><span class="header-section-number">C.7.4</span> Exercise 7: Try to write an algorithm to solve the factorial problem using recursion!</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">def</span> Factorial_r(n):</span>
 <span id="cb30-2"><a href="#cb30-2"></a>  <span class="co">"""</span></span>
@@ -1249,13 +1261,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./00_Copilot.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span>
+      <a href="./00_SciPy.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">High-level scientific computing with <code>SciPy</code></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./05_Data_Structure_sol.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data Structure</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

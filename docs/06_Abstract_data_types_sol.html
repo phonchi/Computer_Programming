@@ -9,7 +9,7 @@
 <meta name="author" content="phonchi">
 <meta name="dcterms.date" content="2023-04-12">
 
-<title>Computer Programming - Appendix D — Abstract Data Types</title>
+<title>Computer Programming - Appendix E — Abstract Data Types</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./06_Abstract_data_types_sol.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./06_Abstract_data_types_sol.html"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -196,7 +196,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./12_Matplotlib.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Plotting with Matplotlib</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization with <code>Matplotlib</code></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_SymPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Symbolic Mathematics in Python with <code>SymPy</code></span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -216,20 +222,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./00_SciPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">High-level scientific computing with <code>SciPy</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
   </div>
 </li>
       </ul>
@@ -244,57 +256,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><span class="header-section-number">D.1</span> Background</a>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><span class="header-section-number">E.1</span> Background</a>
   <ul>
-  <li><a href="#simple-adts" id="toc-simple-adts" class="nav-link" data-scroll-target="#simple-adts"><span class="header-section-number">D.1.1</span> Simple ADTs</a></li>
-  <li><a href="#complex-adts" id="toc-complex-adts" class="nav-link" data-scroll-target="#complex-adts"><span class="header-section-number">D.1.2</span> Complex ADTs</a></li>
-  <li><a href="#model-for-an-abstract-data-type" id="toc-model-for-an-abstract-data-type" class="nav-link" data-scroll-target="#model-for-an-abstract-data-type"><span class="header-section-number">D.1.3</span> Model for an abstract data type</a></li>
+  <li><a href="#simple-adts" id="toc-simple-adts" class="nav-link" data-scroll-target="#simple-adts"><span class="header-section-number">E.1.1</span> Simple ADTs</a></li>
+  <li><a href="#complex-adts" id="toc-complex-adts" class="nav-link" data-scroll-target="#complex-adts"><span class="header-section-number">E.1.2</span> Complex ADTs</a></li>
+  <li><a href="#model-for-an-abstract-data-type" id="toc-model-for-an-abstract-data-type" class="nav-link" data-scroll-target="#model-for-an-abstract-data-type"><span class="header-section-number">E.1.3</span> Model for an abstract data type</a></li>
   </ul></li>
-  <li><a href="#stacks" id="toc-stacks" class="nav-link" data-scroll-target="#stacks"><span class="header-section-number">D.2</span> Stacks</a>
+  <li><a href="#stacks" id="toc-stacks" class="nav-link" data-scroll-target="#stacks"><span class="header-section-number">E.2</span> Stacks</a>
   <ul>
-  <li><a href="#operations-on-stacks" id="toc-operations-on-stacks" class="nav-link" data-scroll-target="#operations-on-stacks"><span class="header-section-number">D.2.1</span> Operations on stacks</a>
+  <li><a href="#operations-on-stacks" id="toc-operations-on-stacks" class="nav-link" data-scroll-target="#operations-on-stacks"><span class="header-section-number">E.2.1</span> Operations on stacks</a>
   <ul class="collapse">
-  <li><a href="#the-stack-operation" id="toc-the-stack-operation" class="nav-link" data-scroll-target="#the-stack-operation"><span class="header-section-number">D.2.1.1</span> The stack operation</a></li>
-  <li><a href="#the-push-operation" id="toc-the-push-operation" class="nav-link" data-scroll-target="#the-push-operation"><span class="header-section-number">D.2.1.2</span> The push operation</a></li>
-  <li><a href="#the-pop-operation" id="toc-the-pop-operation" class="nav-link" data-scroll-target="#the-pop-operation"><span class="header-section-number">D.2.1.3</span> The pop operation</a></li>
-  <li><a href="#the-empty-operation" id="toc-the-empty-operation" class="nav-link" data-scroll-target="#the-empty-operation"><span class="header-section-number">D.2.1.4</span> The empty operation</a></li>
+  <li><a href="#the-stack-operation" id="toc-the-stack-operation" class="nav-link" data-scroll-target="#the-stack-operation"><span class="header-section-number">E.2.1.1</span> The stack operation</a></li>
+  <li><a href="#the-push-operation" id="toc-the-push-operation" class="nav-link" data-scroll-target="#the-push-operation"><span class="header-section-number">E.2.1.2</span> The push operation</a></li>
+  <li><a href="#the-pop-operation" id="toc-the-pop-operation" class="nav-link" data-scroll-target="#the-pop-operation"><span class="header-section-number">E.2.1.3</span> The pop operation</a></li>
+  <li><a href="#the-empty-operation" id="toc-the-empty-operation" class="nav-link" data-scroll-target="#the-empty-operation"><span class="header-section-number">E.2.1.4</span> The empty operation</a></li>
   </ul></li>
-  <li><a href="#stack-adt" id="toc-stack-adt" class="nav-link" data-scroll-target="#stack-adt"><span class="header-section-number">D.2.2</span> Stack ADT</a></li>
-  <li><a href="#stack-applications" id="toc-stack-applications" class="nav-link" data-scroll-target="#stack-applications"><span class="header-section-number">D.2.3</span> Stack applications</a>
+  <li><a href="#stack-adt" id="toc-stack-adt" class="nav-link" data-scroll-target="#stack-adt"><span class="header-section-number">E.2.2</span> Stack ADT</a></li>
+  <li><a href="#stack-applications" id="toc-stack-applications" class="nav-link" data-scroll-target="#stack-applications"><span class="header-section-number">E.2.3</span> Stack applications</a>
   <ul class="collapse">
-  <li><a href="#reversing-data-items" id="toc-reversing-data-items" class="nav-link" data-scroll-target="#reversing-data-items"><span class="header-section-number">D.2.3.1</span> Reversing data items</a></li>
-  <li><a href="#pairing-data-items" id="toc-pairing-data-items" class="nav-link" data-scroll-target="#pairing-data-items"><span class="header-section-number">D.2.3.3</span> Pairing data items</a></li>
+  <li><a href="#reversing-data-items" id="toc-reversing-data-items" class="nav-link" data-scroll-target="#reversing-data-items"><span class="header-section-number">E.2.3.1</span> Reversing data items</a></li>
+  <li><a href="#pairing-data-items" id="toc-pairing-data-items" class="nav-link" data-scroll-target="#pairing-data-items"><span class="header-section-number">E.2.3.3</span> Pairing data items</a></li>
   </ul></li>
-  <li><a href="#stack-implementation" id="toc-stack-implementation" class="nav-link" data-scroll-target="#stack-implementation"><span class="header-section-number">D.2.4</span> Stack implementation</a></li>
+  <li><a href="#stack-implementation" id="toc-stack-implementation" class="nav-link" data-scroll-target="#stack-implementation"><span class="header-section-number">E.2.4</span> Stack implementation</a></li>
   </ul></li>
-  <li><a href="#queues" id="toc-queues" class="nav-link" data-scroll-target="#queues"><span class="header-section-number">D.3</span> Queues</a>
+  <li><a href="#queues" id="toc-queues" class="nav-link" data-scroll-target="#queues"><span class="header-section-number">E.3</span> Queues</a>
   <ul>
-  <li><a href="#operations-on-queues" id="toc-operations-on-queues" class="nav-link" data-scroll-target="#operations-on-queues"><span class="header-section-number">D.3.1</span> Operations on queues</a>
+  <li><a href="#operations-on-queues" id="toc-operations-on-queues" class="nav-link" data-scroll-target="#operations-on-queues"><span class="header-section-number">E.3.1</span> Operations on queues</a>
   <ul class="collapse">
-  <li><a href="#the-queue-operation" id="toc-the-queue-operation" class="nav-link" data-scroll-target="#the-queue-operation"><span class="header-section-number">D.3.1.1</span> The queue operation</a></li>
-  <li><a href="#the-enqueue-operation" id="toc-the-enqueue-operation" class="nav-link" data-scroll-target="#the-enqueue-operation"><span class="header-section-number">D.3.1.2</span> The enqueue operation</a></li>
-  <li><a href="#the-dequeue-operation" id="toc-the-dequeue-operation" class="nav-link" data-scroll-target="#the-dequeue-operation"><span class="header-section-number">D.3.1.3</span> The dequeue operation</a></li>
-  <li><a href="#the-empty-operation-1" id="toc-the-empty-operation-1" class="nav-link" data-scroll-target="#the-empty-operation-1"><span class="header-section-number">D.3.1.4</span> The empty operation</a></li>
+  <li><a href="#the-queue-operation" id="toc-the-queue-operation" class="nav-link" data-scroll-target="#the-queue-operation"><span class="header-section-number">E.3.1.1</span> The queue operation</a></li>
+  <li><a href="#the-enqueue-operation" id="toc-the-enqueue-operation" class="nav-link" data-scroll-target="#the-enqueue-operation"><span class="header-section-number">E.3.1.2</span> The enqueue operation</a></li>
+  <li><a href="#the-dequeue-operation" id="toc-the-dequeue-operation" class="nav-link" data-scroll-target="#the-dequeue-operation"><span class="header-section-number">E.3.1.3</span> The dequeue operation</a></li>
+  <li><a href="#the-empty-operation-1" id="toc-the-empty-operation-1" class="nav-link" data-scroll-target="#the-empty-operation-1"><span class="header-section-number">E.3.1.4</span> The empty operation</a></li>
   </ul></li>
-  <li><a href="#queue-adt" id="toc-queue-adt" class="nav-link" data-scroll-target="#queue-adt"><span class="header-section-number">D.3.2</span> Queue ADT</a></li>
-  <li><a href="#queue-applications" id="toc-queue-applications" class="nav-link" data-scroll-target="#queue-applications"><span class="header-section-number">D.3.3</span> Queue applications</a></li>
-  <li><a href="#queue-implementation" id="toc-queue-implementation" class="nav-link" data-scroll-target="#queue-implementation"><span class="header-section-number">D.3.4</span> Queue implementation</a></li>
+  <li><a href="#queue-adt" id="toc-queue-adt" class="nav-link" data-scroll-target="#queue-adt"><span class="header-section-number">E.3.2</span> Queue ADT</a></li>
+  <li><a href="#queue-applications" id="toc-queue-applications" class="nav-link" data-scroll-target="#queue-applications"><span class="header-section-number">E.3.3</span> Queue applications</a></li>
+  <li><a href="#queue-implementation" id="toc-queue-implementation" class="nav-link" data-scroll-target="#queue-implementation"><span class="header-section-number">E.3.4</span> Queue implementation</a></li>
   </ul></li>
-  <li><a href="#general-linear-lists" id="toc-general-linear-lists" class="nav-link" data-scroll-target="#general-linear-lists"><span class="header-section-number">D.4</span> General linear lists</a></li>
-  <li><a href="#trees" id="toc-trees" class="nav-link" data-scroll-target="#trees"><span class="header-section-number">D.5</span> Trees</a>
+  <li><a href="#general-linear-lists" id="toc-general-linear-lists" class="nav-link" data-scroll-target="#general-linear-lists"><span class="header-section-number">E.4</span> General linear lists</a></li>
+  <li><a href="#trees" id="toc-trees" class="nav-link" data-scroll-target="#trees"><span class="header-section-number">E.5</span> Trees</a>
   <ul>
-  <li><a href="#binary-trees" id="toc-binary-trees" class="nav-link" data-scroll-target="#binary-trees"><span class="header-section-number">D.5.1</span> Binary trees</a>
+  <li><a href="#binary-trees" id="toc-binary-trees" class="nav-link" data-scroll-target="#binary-trees"><span class="header-section-number">E.5.1</span> Binary trees</a>
   <ul class="collapse">
-  <li><a href="#recursive-definition-of-binary-trees" id="toc-recursive-definition-of-binary-trees" class="nav-link" data-scroll-target="#recursive-definition-of-binary-trees"><span class="header-section-number">D.5.1.1</span> Recursive definition of binary trees</a></li>
+  <li><a href="#recursive-definition-of-binary-trees" id="toc-recursive-definition-of-binary-trees" class="nav-link" data-scroll-target="#recursive-definition-of-binary-trees"><span class="header-section-number">E.5.1.1</span> Recursive definition of binary trees</a></li>
   </ul></li>
-  <li><a href="#operations-on-binary-trees" id="toc-operations-on-binary-trees" class="nav-link" data-scroll-target="#operations-on-binary-trees"><span class="header-section-number">D.5.2</span> Operations on binary trees</a>
+  <li><a href="#operations-on-binary-trees" id="toc-operations-on-binary-trees" class="nav-link" data-scroll-target="#operations-on-binary-trees"><span class="header-section-number">E.5.2</span> Operations on binary trees</a>
   <ul class="collapse">
-  <li><a href="#binary-tree-traversals" id="toc-binary-tree-traversals" class="nav-link" data-scroll-target="#binary-tree-traversals"><span class="header-section-number">D.5.2.1</span> Binary tree traversals</a></li>
-  <li><a href="#binary-tree-applications" id="toc-binary-tree-applications" class="nav-link" data-scroll-target="#binary-tree-applications"><span class="header-section-number">D.5.2.4</span> Binary tree applications</a></li>
+  <li><a href="#binary-tree-traversals" id="toc-binary-tree-traversals" class="nav-link" data-scroll-target="#binary-tree-traversals"><span class="header-section-number">E.5.2.1</span> Binary tree traversals</a></li>
+  <li><a href="#binary-tree-applications" id="toc-binary-tree-applications" class="nav-link" data-scroll-target="#binary-tree-applications"><span class="header-section-number">E.5.2.4</span> Binary tree applications</a></li>
   </ul></li>
-  <li><a href="#binary-search-trees" id="toc-binary-search-trees" class="nav-link" data-scroll-target="#binary-search-trees"><span class="header-section-number">D.5.3</span> Binary search trees</a></li>
+  <li><a href="#binary-search-trees" id="toc-binary-search-trees" class="nav-link" data-scroll-target="#binary-search-trees"><span class="header-section-number">E.5.3</span> Binary search trees</a></li>
   </ul></li>
-  <li><a href="#graphs" id="toc-graphs" class="nav-link" data-scroll-target="#graphs"><span class="header-section-number">D.6</span> Graphs</a></li>
+  <li><a href="#graphs" id="toc-graphs" class="nav-link" data-scroll-target="#graphs"><span class="header-section-number">E.6</span> Graphs</a></li>
   </ul>
 </nav>
     </div>
@@ -303,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Appendix D — Abstract Data Types</h1>
+<h1 class="title">Appendix E — Abstract Data Types</h1>
 </div>
 
 
@@ -341,19 +353,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </tr></tbody></table>
 <p><br></p>
-<section id="background" class="level2" data-number="D.1">
-<h2 data-number="D.1" class="anchored" data-anchor-id="background"><span class="header-section-number">D.1</span> Background</h2>
+<section id="background" class="level2" data-number="E.1">
+<h2 data-number="E.1" class="anchored" data-anchor-id="background"><span class="header-section-number">E.1</span> Background</h2>
 <p>Problem solving with a computer means processing data. To process data, we need to define the data type and the operation to be performed on the data. For example, to find the sum of a list of numbers, we should select the type for the number (integer or real) and define the operation (addition). The definition of the data type and the definition of the operation to be applied to the data is part of the idea behind an <strong>abstract data type (ADT)</strong>—to hide how the operation is performed on the data.</p>
 <blockquote class="blockquote">
 <p>In other word, the user of an ADT needs only to know that a set of operations are available for the data type, but does not need to know how they are applied.</p>
 </blockquote>
-<section id="simple-adts" class="level3" data-number="D.1.1">
-<h3 data-number="D.1.1" class="anchored" data-anchor-id="simple-adts"><span class="header-section-number">D.1.1</span> Simple ADTs</h3>
+<section id="simple-adts" class="level3" data-number="E.1.1">
+<h3 data-number="E.1.1" class="anchored" data-anchor-id="simple-adts"><span class="header-section-number">E.1.1</span> Simple ADTs</h3>
 <p>Many programming languages already define some simple ADTs as integral parts of the language. For example, the Python language defines a simple ADT called an <a href="https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex">integer</a>. The type of this ADT is integer with predefined ranges. Python also defines several operations that can be applied on this data type (addition, subtraction, multiplication, division, and so on). Python&nbsp; explicitly defines these operations on integers and what we expect as the results. A&nbsp; programmer who writes a Python program to add two integers should know about the integer ADT and the operations that can be applied to it.</p>
 <p>The programmer, however, does not need to know how these operations are actually implemented. For example, the programmer uses the expression <code>z = x + y</code> and expects the value of <code>x</code> (an integer) to be added to the value of <code>y</code> (an integer) and the result to be named <code>z</code> (an integer). The programmer does not need to know how the addition is performed. We learned in previous chapters that the way this addition is done by a computer is to store the two integers in two memory locations in two’s complement format, to load them into the CPU register, to add them in binary, and to store the result back to another memory location. The programmer, however, does not need to know this. An integer in Python is a simple abstract data type with predefined operations. How the operations are performed is not a concern for the programmer.</p>
 </section>
-<section id="complex-adts" class="level3" data-number="D.1.2">
-<h3 data-number="D.1.2" class="anchored" data-anchor-id="complex-adts"><span class="header-section-number">D.1.2</span> Complex ADTs</h3>
+<section id="complex-adts" class="level3" data-number="E.1.2">
+<h3 data-number="E.1.2" class="anchored" data-anchor-id="complex-adts"><span class="header-section-number">E.1.2</span> Complex ADTs</h3>
 <p>Although several simple ADTs, such as integer, float, character and so on, have been implemented and are available for use in most languages, many useful complex ADTs are not. As we will see in this chapter, we need a stack ADT, a queue ADT, and so on. To be efficient, these ADTs should be created and stored in the library of the computer to be used. The user of a stack, for example, should only need to know what operations are available for the stack, not how these operations are performed.</p>
 <p>Therefore, with an ADT, users are not concerned with how the task is done, but rather with what it can do. In other words, the ADT consists of a set of definitions that allow programmers to use the operation while their implementation is hidden. <strong>This generalization of operations with unspecified implementations is known as abstraction.</strong> We abstract the essence of the process and leave the implementation details hidden.</p>
 <blockquote class="blockquote">
@@ -364,8 +376,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Abstract Data Type 1. Definition of data 2. Definition of operations 3. Encapsulation of data and operation</p>
 </blockquote>
 </section>
-<section id="model-for-an-abstract-data-type" class="level3" data-number="D.1.3">
-<h3 data-number="D.1.3" class="anchored" data-anchor-id="model-for-an-abstract-data-type"><span class="header-section-number">D.1.3</span> Model for an abstract data type</h3>
+<section id="model-for-an-abstract-data-type" class="level3" data-number="E.1.3">
+<h3 data-number="E.1.3" class="anchored" data-anchor-id="model-for-an-abstract-data-type"><span class="header-section-number">E.1.3</span> Model for an abstract data type</h3>
 <p>The ADT model is shown in the Figure below. The colored area with an irregular outline represents the ADT. Inside the ADT are two different parts of the model: data structure and operations (public and private). The application program can only access the public operations through the interface. An interface is a list of public operations and data to be passed to or returned from those operations. The private operations are for internal use by the ADT. The data structures, such as arrays and linked lists, are inside the ADT and are used by the public and private operations.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1k0fP0andX45WYqW2oQGH5Tc8OaNjQWX1" width="70%" height="70%">
@@ -373,24 +385,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Although the public operations and the interface should be independent of the implementation, the private operations are dependent on the data structures chosen during the implementation of the ADT. We will elaborate on this issue when we discuss some of the ADTs.</p>
 </section>
 </section>
-<section id="stacks" class="level2" data-number="D.2">
-<h2 data-number="D.2" class="anchored" data-anchor-id="stacks"><span class="header-section-number">D.2</span> Stacks</h2>
+<section id="stacks" class="level2" data-number="E.2">
+<h2 data-number="E.2" class="anchored" data-anchor-id="stacks"><span class="header-section-number">E.2</span> Stacks</h2>
 <p>A stack is a restricted linear list in which all additions and deletions are made at one end, the top. If we insert a series of data into a stack and then remove it, the order of the data is reversed. Data input as 5, 10, 15, 20, for example, would be removed as 20, 15, 10, and 5. This reversing attribute is why stacks are known as a <strong>last in, first out (LIFO)</strong> data structure.</p>
 <p>We use many different types of stacks in our daily lives. We often talk of a stack of coins or a stack of books. Any situation in which we can only add or remove an object at the top is a stack. If we want to remove an object other than the one at the top, we must first remove all objects above it. Figure below shows three representations of stacks.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1k6_Kw4DN0Vhj18VN4uji4gyXGCB8-SIh" width="70%" height="70%">
 </center>
-<section id="operations-on-stacks" class="level3" data-number="D.2.1">
-<h3 data-number="D.2.1" class="anchored" data-anchor-id="operations-on-stacks"><span class="header-section-number">D.2.1</span> Operations on stacks</h3>
-<section id="the-stack-operation" class="level4" data-number="D.2.1.1">
-<h4 data-number="D.2.1.1" class="anchored" data-anchor-id="the-stack-operation"><span class="header-section-number">D.2.1.1</span> The stack operation</h4>
+<section id="operations-on-stacks" class="level3" data-number="E.2.1">
+<h3 data-number="E.2.1" class="anchored" data-anchor-id="operations-on-stacks"><span class="header-section-number">E.2.1</span> Operations on stacks</h3>
+<section id="the-stack-operation" class="level4" data-number="E.2.1.1">
+<h4 data-number="E.2.1.1" class="anchored" data-anchor-id="the-stack-operation"><span class="header-section-number">E.2.1.1</span> The stack operation</h4>
 <p>The stack operation creates an empty stack. Python’s built-in list type <a href="https://docs.python.org/3/tutorial/datastructures.html#using-lists-as-stacks">makes a decent stack data structure</a> as it supports <code>push</code> and <code>pop</code> operations. Python’s lists are implemented as dynamic arrays internally, which means they occasionally need to resize the storage space for elements stored in them when elements are added or removed. The list over-allocates its backing storage so that not every push or pop requires resizing. <strong>For optimum performance, stacks based on Python lists should grow towards higher indexes and shrink towards lower ones.</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>stack <span class="op">=</span> []</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="the-push-operation" class="level4" data-number="D.2.1.2">
-<h4 data-number="D.2.1.2" class="anchored" data-anchor-id="the-push-operation"><span class="header-section-number">D.2.1.2</span> The push operation</h4>
+<section id="the-push-operation" class="level4" data-number="E.2.1.2">
+<h4 data-number="E.2.1.2" class="anchored" data-anchor-id="the-push-operation"><span class="header-section-number">E.2.1.2</span> The push operation</h4>
 <p>The push operation inserts an item at the top of the stack. This operation returns the new stack with dataItem inserted at the top. Figure below shows the pictorial representation of this operation.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1kEowYCXUITSFUem2gpvY9Gih_UFWOqpG" width="70%" height="70%">
@@ -406,8 +418,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="the-pop-operation" class="level4" data-number="D.2.1.3">
-<h4 data-number="D.2.1.3" class="anchored" data-anchor-id="the-pop-operation"><span class="header-section-number">D.2.1.3</span> The pop operation</h4>
+<section id="the-pop-operation" class="level4" data-number="E.2.1.3">
+<h4 data-number="E.2.1.3" class="anchored" data-anchor-id="the-pop-operation"><span class="header-section-number">E.2.1.3</span> The pop operation</h4>
 <p>The pop operation deletes the item at the top of the stack. The following shows the pictorial representation of this operation.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1kIIIetPbjwkwmTLcNDR2LKFfscWMKG3O" width="70%" height="70%">
@@ -421,8 +433,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The deleted item can be used by the application program or can be just discarded. After&nbsp;the pop operation, the item that was under the top element before the deletion becomes the top element.</p>
 </section>
-<section id="the-empty-operation" class="level4" data-number="D.2.1.4">
-<h4 data-number="D.2.1.4" class="anchored" data-anchor-id="the-empty-operation"><span class="header-section-number">D.2.1.4</span> The empty operation</h4>
+<section id="the-empty-operation" class="level4" data-number="E.2.1.4">
+<h4 data-number="E.2.1.4" class="anchored" data-anchor-id="the-empty-operation"><span class="header-section-number">E.2.1.4</span> The empty operation</h4>
 <p>The empty operation checks the status of the stack.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">def</span> empty(lis):</span>
@@ -447,20 +459,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="stack-adt" class="level3" data-number="D.2.2">
-<h3 data-number="D.2.2" class="anchored" data-anchor-id="stack-adt"><span class="header-section-number">D.2.2</span> Stack ADT</h3>
+<section id="stack-adt" class="level3" data-number="E.2.2">
+<h3 data-number="E.2.2" class="anchored" data-anchor-id="stack-adt"><span class="header-section-number">E.2.2</span> Stack ADT</h3>
 <p>We define a stack as an ADT as shown below:</p>
 <center>
 <img src="https://drive.google.com/uc?id=1kMJPb_uvqefjWEejGn_xnUFehPR3wrIU" width="70%" height="70%">
 </center>
 </section>
-<section id="stack-applications" class="level3" data-number="D.2.3">
-<h3 data-number="D.2.3" class="anchored" data-anchor-id="stack-applications"><span class="header-section-number">D.2.3</span> Stack applications</h3>
-<section id="reversing-data-items" class="level4" data-number="D.2.3.1">
-<h4 data-number="D.2.3.1" class="anchored" data-anchor-id="reversing-data-items"><span class="header-section-number">D.2.3.1</span> Reversing data items</h4>
+<section id="stack-applications" class="level3" data-number="E.2.3">
+<h3 data-number="E.2.3" class="anchored" data-anchor-id="stack-applications"><span class="header-section-number">E.2.3</span> Stack applications</h3>
+<section id="reversing-data-items" class="level4" data-number="E.2.3.1">
+<h4 data-number="E.2.3.1" class="anchored" data-anchor-id="reversing-data-items"><span class="header-section-number">E.2.3.1</span> Reversing data items</h4>
 <p>Reversing data items requires that a given set of data items be reordered so that the first and last items are exchanged, with all of the positions between the first and last being relatively exchanged also. For example, the list <code>(2, 4, 7, 1, 6, 8)</code> becomes <code>(8, 6, 1, 7, 4, 2)</code>.</p>
 <blockquote class="blockquote">
-<h4 id="example-1-in-chapter-2-we-gave-a-simple-uml-diagram-to-convert-an-integer-from-decimal-to-any-base.-although-the-algorithm-is-very-simple-if-we-print-the-digits-of-the-converted-integer-as-they-are-created-we-will-get-the-digits-in-reverse-order.-the-print-instruction-in-any-computer-language-prints-characters-from-left-to-right-but-the-algorithm-creates-the-digits-from-right-to-left.-we-can-use-the-reversing-characteristic-of-a-stack-lifo-structure-to-solve-the-problem." data-number="D.2.3.2" class="anchored"><span class="header-section-number">D.2.3.2</span> Example 1: In Chapter 2 we gave a simple UML diagram to convert an integer from decimal to any base. Although the algorithm is very simple, if we print the digits of the converted integer as they are created, we will get the digits in reverse order. The print instruction in any computer language prints characters from left to right, but the algorithm creates the digits from right to left. We can use the reversing characteristic of a stack (LIFO structure) to solve the problem.</h4>
+<h4 id="example-1-in-chapter-2-we-gave-a-simple-uml-diagram-to-convert-an-integer-from-decimal-to-any-base.-although-the-algorithm-is-very-simple-if-we-print-the-digits-of-the-converted-integer-as-they-are-created-we-will-get-the-digits-in-reverse-order.-the-print-instruction-in-any-computer-language-prints-characters-from-left-to-right-but-the-algorithm-creates-the-digits-from-right-to-left.-we-can-use-the-reversing-characteristic-of-a-stack-lifo-structure-to-solve-the-problem." data-number="E.2.3.2" class="anchored"><span class="header-section-number">E.2.3.2</span> Example 1: In Chapter 2 we gave a simple UML diagram to convert an integer from decimal to any base. Although the algorithm is very simple, if we print the digits of the converted integer as they are created, we will get the digits in reverse order. The print instruction in any computer language prints characters from left to right, but the algorithm creates the digits from right to left. We can use the reversing characteristic of a stack (LIFO structure) to solve the problem.</h4>
 </blockquote>
 <center>
 <img src="https://drive.google.com/uc?id=1sjz87GJMOQ_cxnsWIDTrZVPyr1r_BZaq" width="70%" height="70%">
@@ -510,13 +522,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We create an empty stack first. Then we use a while loop to create the bits, but instead of printing them, we push them into the stack. When all bits are created, we exit the loop. Now we use another loop to pop the bits from the stack and print them. Note that the bits are printed in the reverse order to that in which they have been created.</p>
 </section>
-<section id="pairing-data-items" class="level4" data-number="D.2.3.3">
-<h4 data-number="D.2.3.3" class="anchored" data-anchor-id="pairing-data-items"><span class="header-section-number">D.2.3.3</span> Pairing data items</h4>
+<section id="pairing-data-items" class="level4" data-number="E.2.3.3">
+<h4 data-number="E.2.3.3" class="anchored" data-anchor-id="pairing-data-items"><span class="header-section-number">E.2.3.3</span> Pairing data items</h4>
 <p>We often need to pair some characters in an expression. For example, when we write a mathematical expression in a computer language, we often need to use parentheses to change the precedence of operators.</p>
 <p><code>3*((3+2)-5)</code></p>
 <p>When we type an expression with a lot of parentheses, we often forget to pair the parentheses. One of the duties of a compiler is to do the checking for us. The compiler uses a stack to check that all opening parentheses are paired with a closing parentheses.</p>
 <blockquote class="blockquote">
-<h4 id="exercise-1-algorithm-12.2-shows-how-we-can-check-if-every-opening-parenthesis-is-paired-with-a-closing-parenthesis." data-number="D.2.3.4" class="anchored"><span class="header-section-number">D.2.3.4</span> Exercise 1: Algorithm 12.2 shows how we can check if every opening parenthesis is paired with a closing parenthesis.</h4>
+<h4 id="exercise-1-algorithm-12.2-shows-how-we-can-check-if-every-opening-parenthesis-is-paired-with-a-closing-parenthesis." data-number="E.2.3.4" class="anchored"><span class="header-section-number">E.2.3.4</span> Exercise 1: Algorithm 12.2 shows how we can check if every opening parenthesis is paired with a closing parenthesis.</h4>
 </blockquote>
 <center>
 <img src="https://drive.google.com/uc?id=1kbnDiDU2sxdXaNv8rAF_KBencqo4puEA" width="70%" height="70%">
@@ -567,15 +579,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="stack-implementation" class="level3" data-number="D.2.4">
-<h3 data-number="D.2.4" class="anchored" data-anchor-id="stack-implementation"><span class="header-section-number">D.2.4</span> Stack implementation</h3>
+<section id="stack-implementation" class="level3" data-number="E.2.4">
+<h3 data-number="E.2.4" class="anchored" data-anchor-id="stack-implementation"><span class="header-section-number">E.2.4</span> Stack implementation</h3>
 <p>In this section we describe the general ideas behind the implementation of a stack ADT. At the ADT level, we use the stack and its four operations (<code>stack</code>, <code>push</code>, <code>pop</code>, and <code>empty</code>): at the implementation level, we need to choose a data structure to implement it. Stack ADT can be implemented using either an array or a linked list.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1krBsUVOzzIs87nZDUqYhB993nBtnkzj9" width="70%" height="70%">
 </center>
 <p>We can write four algorithms in pseudocode for the four operations we defined for stack in each implementation. We showed algorithms to handle arrays and linked lists in Chapter 11: these algorithms can be modified to create the four algorithms we need for stacks: <code>stack</code>, <code>push</code>, <code>pop</code>, and <code>empty</code>. <strong>These algorithms are even easier than those presented in Chapter 11, because the insertion and deletion is done only at the top of stack. </strong></p>
 <blockquote class="blockquote">
-<h4 id="example-2-the-linked-list-implementation-is-as-above-we-have-an-extra-record-that-has-the-name-of-the-stack.-this-record-also-has-two-fields-a-counter-which-at-each-moment-shows-the-number-of-data-items-in-the-stack.-another-field-is-a-pointer-that-points-to-the-top-element." data-number="D.2.4.1" class="anchored"><span class="header-section-number">D.2.4.1</span> Example 2: The linked list implementation is as above, we have an extra record that has the name of the stack. This record also has two fields: a counter, which at each moment shows the number of data items in the stack. Another field is a pointer that points to the top element.</h4>
+<h4 id="example-2-the-linked-list-implementation-is-as-above-we-have-an-extra-record-that-has-the-name-of-the-stack.-this-record-also-has-two-fields-a-counter-which-at-each-moment-shows-the-number-of-data-items-in-the-stack.-another-field-is-a-pointer-that-points-to-the-top-element." data-number="E.2.4.1" class="anchored"><span class="header-section-number">E.2.4.1</span> Example 2: The linked list implementation is as above, we have an extra record that has the name of the stack. This record also has two fields: a counter, which at each moment shows the number of data items in the stack. Another field is a pointer that points to the top element.</h4>
 </blockquote>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235645398,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="151">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">class</span> Node:</span>
@@ -699,7 +711,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <blockquote class="blockquote">
-<h4 id="example-3-in-the-array-implementation-we-have-a-record-that-has-two-fields.-the-first-field-can-be-used-to-store-information-about-the-array-we-have-used-it-as-the-count-field-which-at-each-moment-shows-the-number-of-data-items-in-the-stack.-the-second-field-is-an-integer-that-holds-the-index-of-the-top-element.-note-that-the-array-is-shown-upside-down-to-match-the-linked-list-implementation." data-number="D.2.4.2" class="anchored"><span class="header-section-number">D.2.4.2</span> Example 3: In the array implementation, we have a record that has two fields. The first field can be used to store information about the array: we have used it as the count field, which at each moment shows the number of data items in the stack. The second field is an integer that holds the index of the top element. Note that the array is shown upside down to match the linked list implementation.</h4>
+<h4 id="example-3-in-the-array-implementation-we-have-a-record-that-has-two-fields.-the-first-field-can-be-used-to-store-information-about-the-array-we-have-used-it-as-the-count-field-which-at-each-moment-shows-the-number-of-data-items-in-the-stack.-the-second-field-is-an-integer-that-holds-the-index-of-the-top-element.-note-that-the-array-is-shown-upside-down-to-match-the-linked-list-implementation." data-number="E.2.4.2" class="anchored"><span class="header-section-number">E.2.4.2</span> Example 3: In the array implementation, we have a record that has two fields. The first field can be used to store information about the array: we have used it as the count field, which at each moment shows the number of data items in the stack. The second field is an integer that holds the index of the top element. Note that the array is shown upside down to match the linked list implementation.</h4>
 </blockquote>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:276,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235670373,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="158">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -793,18 +805,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="queues" class="level2" data-number="D.3">
-<h2 data-number="D.3" class="anchored" data-anchor-id="queues"><span class="header-section-number">D.3</span> Queues</h2>
+<section id="queues" class="level2" data-number="E.3">
+<h2 data-number="E.3" class="anchored" data-anchor-id="queues"><span class="header-section-number">E.3</span> Queues</h2>
 <p>A queue is a linear list in which data can only be inserted at one end, called the rear, and deleted from the other end, called the front. These restrictions ensure that the data are processed through the queue in the order in which it is received. In other words, a queue is a <strong>first in, first out (FIFO)</strong> structure.</p>
 <p>Queues are familiar from everyday life. A line of people waiting for the bus at a bus station is a queue, a list of calls put on hold to be answered by a telephone operator is a queue, and a list of waiting jobs to be processed by a computer is a queue.</p>
 <p>Figure 12.8 shows two representations of queues, one a queue of people and the other a computer queue. Both people and data enter the queue at the rear and progress through the queue until they arrive at the front. Once they are at the front of the queue, they leave the queue and are served.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1l6cPE0ZhlpKQccKCGy9LoGiKZ_6czm7_" width="70%" height="70%">
 </center>
-<section id="operations-on-queues" class="level3" data-number="D.3.1">
-<h3 data-number="D.3.1" class="anchored" data-anchor-id="operations-on-queues"><span class="header-section-number">D.3.1</span> Operations on queues</h3>
-<section id="the-queue-operation" class="level4" data-number="D.3.1.1">
-<h4 data-number="D.3.1.1" class="anchored" data-anchor-id="the-queue-operation"><span class="header-section-number">D.3.1.1</span> The queue operation</h4>
+<section id="operations-on-queues" class="level3" data-number="E.3.1">
+<h3 data-number="E.3.1" class="anchored" data-anchor-id="operations-on-queues"><span class="header-section-number">E.3.1</span> Operations on queues</h3>
+<section id="the-queue-operation" class="level4" data-number="E.3.1.1">
+<h4 data-number="E.3.1.1" class="anchored" data-anchor-id="the-queue-operation"><span class="header-section-number">E.3.1.1</span> The queue operation</h4>
 <p>The queue operation creates an empty queue. A queue is a collection of objects that supports fast FIFO semantics for inserts and deletes. The insert and delete operations are sometimes called <code>enqueue</code> and <code>dequeue</code>. Unlike lists or arrays, queues typically don’t allow for random access to the objects they contain. It’s possible to use a regular <code>list</code> as a queue, but this is not ideal from a performance perspective. Lists are quite slow for this purpose because inserting or deleting an element at the beginning requires shifting all the other elements by one!</p>
 <p>The <code>collections.deque</code> implementation is a great default choice if you’re looking for a queue data structure in Python’s standard library.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670228464721,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="1">
@@ -813,8 +825,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb43-3"><a href="#cb43-3"></a>queue <span class="op">=</span> deque()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="the-enqueue-operation" class="level4" data-number="D.3.1.2">
-<h4 data-number="D.3.1.2" class="anchored" data-anchor-id="the-enqueue-operation"><span class="header-section-number">D.3.1.2</span> The enqueue operation</h4>
+<section id="the-enqueue-operation" class="level4" data-number="E.3.1.2">
+<h4 data-number="E.3.1.2" class="anchored" data-anchor-id="the-enqueue-operation"><span class="header-section-number">E.3.1.2</span> The enqueue operation</h4>
 <p>The enqueue operation inserts an item at the rear of the queue. After the enqueue operation, the new item becomes the last item in the queue. This operation returns the new queue with new data inserted at the rear. Figure below shows the pictorial representation of this operation.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1lF2kpIwyYNZc6iz2SzthlaFdU6kJ-MMq" width="70%" height="70%">
@@ -830,8 +842,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="the-dequeue-operation" class="level4" data-number="D.3.1.3">
-<h4 data-number="D.3.1.3" class="anchored" data-anchor-id="the-dequeue-operation"><span class="header-section-number">D.3.1.3</span> The dequeue operation</h4>
+<section id="the-dequeue-operation" class="level4" data-number="E.3.1.3">
+<h4 data-number="E.3.1.3" class="anchored" data-anchor-id="the-dequeue-operation"><span class="header-section-number">E.3.1.3</span> The dequeue operation</h4>
 <p>The dequeue operation deletes the item at the front of the queue. The deleted item can be used by the application program or can be just discarded. After the dequeue operation, the item that followed the front element becomes the front element. This operation returns the new queue with one less element. Figure below shows the pictorial representation of this operation.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1lL-Hm_ux2vJBCwI170pxWWx4h10wE_XL" width="70%" height="70%">
@@ -845,8 +857,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>In python, you can use the <code>popleft</code> operation for dequeue.</p>
 </section>
-<section id="the-empty-operation-1" class="level4" data-number="D.3.1.4">
-<h4 data-number="D.3.1.4" class="anchored" data-anchor-id="the-empty-operation-1"><span class="header-section-number">D.3.1.4</span> The empty operation</h4>
+<section id="the-empty-operation-1" class="level4" data-number="E.3.1.4">
+<h4 data-number="E.3.1.4" class="anchored" data-anchor-id="the-empty-operation-1"><span class="header-section-number">E.3.1.4</span> The empty operation</h4>
 <p>The empty operation checks the status of the queue.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a><span class="kw">def</span> empty(q):</span>
@@ -871,18 +883,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="queue-adt" class="level3" data-number="D.3.2">
-<h3 data-number="D.3.2" class="anchored" data-anchor-id="queue-adt"><span class="header-section-number">D.3.2</span> Queue ADT</h3>
+<section id="queue-adt" class="level3" data-number="E.3.2">
+<h3 data-number="E.3.2" class="anchored" data-anchor-id="queue-adt"><span class="header-section-number">E.3.2</span> Queue ADT</h3>
 <p>We define a stack as an ADT as shown below:</p>
 <center>
 <img src="https://drive.google.com/uc?id=1lNZLMzCv7tbEWUbgda1nATyITwGvWLka" width="70%" height="70%">
 </center>
 </section>
-<section id="queue-applications" class="level3" data-number="D.3.3">
-<h3 data-number="D.3.3" class="anchored" data-anchor-id="queue-applications"><span class="header-section-number">D.3.3</span> Queue applications</h3>
+<section id="queue-applications" class="level3" data-number="E.3.3">
+<h3 data-number="E.3.3" class="anchored" data-anchor-id="queue-applications"><span class="header-section-number">E.3.3</span> Queue applications</h3>
 <p>Queues are one of the most common of all data processing structures. They are found in virtually every operating system and network and in countless other areas. For example, queues are used in online business applications such as processing customer requests, jobs, and orders. In a computer system, a queue is needed to process jobs and for system services such as print spools.</p>
 <blockquote class="blockquote">
-<h4 id="example-4-queues-can-be-used-to-organize-databases-by-some-characteristic-of-the-data.-for-example-imagine-we-have-a-list-of-sorted-data-stored-in-the-computer-belonging-to-two-categories-less-than-1000-and-greater-than-1000.-we-can-use-two-queues-to-separate-the-categories-and-at-the-same-time-maintain-the-order-of-data-in-their-own-category.-algorithm-12.3-shows-the-pseudocode-for-this-operation." data-number="D.3.3.1" class="anchored"><span class="header-section-number">D.3.3.1</span> Example 4: Queues can be used to organize databases by some characteristic of the data. For example, imagine we have a list of sorted data stored in the computer belonging to two categories: less than 1000, and greater than 1000. We can use two queues to separate the categories and at the same time maintain the order of data in their own category. Algorithm 12.3 shows the pseudocode for this operation.</h4>
+<h4 id="example-4-queues-can-be-used-to-organize-databases-by-some-characteristic-of-the-data.-for-example-imagine-we-have-a-list-of-sorted-data-stored-in-the-computer-belonging-to-two-categories-less-than-1000-and-greater-than-1000.-we-can-use-two-queues-to-separate-the-categories-and-at-the-same-time-maintain-the-order-of-data-in-their-own-category.-algorithm-12.3-shows-the-pseudocode-for-this-operation." data-number="E.3.3.1" class="anchored"><span class="header-section-number">E.3.3.1</span> Example 4: Queues can be used to organize databases by some characteristic of the data. For example, imagine we have a list of sorted data stored in the computer belonging to two categories: less than 1000, and greater than 1000. We can use two queues to separate the categories and at the same time maintain the order of data in their own category. Algorithm 12.3 shows the pseudocode for this operation.</h4>
 </blockquote>
 <center>
 <img src="https://drive.google.com/uc?id=1lP-HJou4TVWbQlcDNvr1wtnp9Lzn4vIr" width="70%" height="70%">
@@ -940,15 +952,15 @@ Q2:
 </div>
 <p>Another common application of a queue is to adjust and create a balance between a fast producer of data and a slow consumer of data. For example, assume that a CPU is connected to a printer. The speed of a printer is not comparable with the speed of a CPU. If the CPU waits for the printer to print some data created by the CPU, the CPU would be idle for a long time. The solution is a queue. The CPU creates as many chunks of data as the queue can hold and sends them to the queue. The CPU is now free to do other jobs. The chunks are dequeued slowly and printed by the printer. The queue used for this purpose is normally referred to as a <em>spool queue</em>.</p>
 </section>
-<section id="queue-implementation" class="level3" data-number="D.3.4">
-<h3 data-number="D.3.4" class="anchored" data-anchor-id="queue-implementation"><span class="header-section-number">D.3.4</span> Queue implementation</h3>
+<section id="queue-implementation" class="level3" data-number="E.3.4">
+<h3 data-number="E.3.4" class="anchored" data-anchor-id="queue-implementation"><span class="header-section-number">E.3.4</span> Queue implementation</h3>
 <p>At the ADT level, we use the queue and its four operations (<code>queue</code>, <code>enqueue</code>, <code>dequeue</code>, and <code>empty</code>): at the implementation level, we need to choose a data structure to implement it. A queue ADT can be implemented using either an array or a linked list.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1lYiULtrPBcmWgPHIPKAUiscy9UovYXAr" width="70%" height="70%">
 </center>
 <p>We can write four algorithms in pseudocode for the four operations we defined for queues in each implementation. We described algorithms to handle arrays and linked lists in Chapter 11: we can modify those algorithms to create the four algorithms we need for queues: queue, enqueue, dequeue, and empty. These algorithms are easier than those presented in Chapter 11, <strong>because insertion is done only at the end of the queue and deletion is done only at the front of the queue.</strong></p>
 <blockquote class="blockquote">
-<h4 id="exercise-2-in-the-array-implementation-we-have-a-record-with-three-fields.-the-first-field-can-be-used-to-store-information-about-the-queue-we-have-used-this-as-a-count-field-that-shows-the-current-number-of-data-items-in-the-queue.-the-second-field-is-an-integer-that-holds-the-index-of-the-front-element.-the-third-field-is-also-an-integer-which-holds-the-index-of-the-rear-element." data-number="D.3.4.1" class="anchored"><span class="header-section-number">D.3.4.1</span> Exercise 2: In the array implementation we have a record with three fields. The first field can be used to store information about the queue: we have used this as a count field that shows the current number of data items in the queue. The second field is an integer that holds the index of the front element. The third field is also an integer, which holds the index of the rear element.</h4>
+<h4 id="exercise-2-in-the-array-implementation-we-have-a-record-with-three-fields.-the-first-field-can-be-used-to-store-information-about-the-queue-we-have-used-this-as-a-count-field-that-shows-the-current-number-of-data-items-in-the-queue.-the-second-field-is-an-integer-that-holds-the-index-of-the-front-element.-the-third-field-is-also-an-integer-which-holds-the-index-of-the-rear-element." data-number="E.3.4.1" class="anchored"><span class="header-section-number">E.3.4.1</span> Exercise 2: In the array implementation we have a record with three fields. The first field can be used to store information about the queue: we have used this as a count field that shows the current number of data items in the queue. The second field is an integer that holds the index of the front element. The third field is also an integer, which holds the index of the rear element.</h4>
 </blockquote>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:264,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235705343,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="164">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1043,7 +1055,7 @@ Q2:
 </div>
 </div>
 <blockquote class="blockquote">
-<h4 id="exercise-3-the-linked-list-implementation-is-similar-we-have-an-extra-record-that-has-the-name-of-the-queue.-this-node-also-has-three-fields-a-count-a-pointer-that-points-to-the-front-element-and-a-pointer-that-points-to-the-rear-element." data-number="D.3.4.2" class="anchored"><span class="header-section-number">D.3.4.2</span> Exercise 3: The linked list implementation is similar: we have an extra record that has the name of the queue. This node also has three fields: a count, a pointer that points to the front element, and a pointer that points to the rear element.</h4>
+<h4 id="exercise-3-the-linked-list-implementation-is-similar-we-have-an-extra-record-that-has-the-name-of-the-queue.-this-node-also-has-three-fields-a-count-a-pointer-that-points-to-the-front-element-and-a-pointer-that-points-to-the-rear-element." data-number="E.3.4.2" class="anchored"><span class="header-section-number">E.3.4.2</span> Exercise 3: The linked list implementation is similar: we have an extra record that has the name of the queue. This node also has three fields: a count, a pointer that points to the front element, and a pointer that points to the rear element.</h4>
 </blockquote>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:903,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670235873312,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="177">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a><span class="kw">class</span> Node:</span>
@@ -1172,12 +1184,12 @@ Q2:
 </div>
 </section>
 </section>
-<section id="general-linear-lists" class="level2" data-number="D.4">
-<h2 data-number="D.4" class="anchored" data-anchor-id="general-linear-lists"><span class="header-section-number">D.4</span> General linear lists</h2>
+<section id="general-linear-lists" class="level2" data-number="E.4">
+<h2 data-number="E.4" class="anchored" data-anchor-id="general-linear-lists"><span class="header-section-number">E.4</span> General linear lists</h2>
 <p>This topic is beyond our scope.</p>
 </section>
-<section id="trees" class="level2" data-number="D.5">
-<h2 data-number="D.5" class="anchored" data-anchor-id="trees"><span class="header-section-number">D.5</span> Trees</h2>
+<section id="trees" class="level2" data-number="E.5">
+<h2 data-number="E.5" class="anchored" data-anchor-id="trees"><span class="header-section-number">E.5</span> Trees</h2>
 <p>A tree consists of a finite set of elements, called <strong>nodes (or vertices)</strong>, and a finite set of directed lines, called <strong>arcs</strong>, that connect pairs of the nodes. If the tree is not empty, one of the nodes, called the <strong>root</strong>, has no incoming arcs. The other nodes in a tree can be reached from the root by following a unique <strong>path</strong>, which is a sequence of consecutive arcs. Tree structures are normally drawn upside down with the root at the top as shown below:</p>
 <center>
 <img src="https://drive.google.com/uc?id=1m81Lvvo6-b2MaObajcJ0v2E4c8sUvq3I" width="70%" height="70%">
@@ -1217,14 +1229,14 @@ Q2:
 <img src="https://drive.google.com/uc?id=1mOxbQzaGCWHPrp3RKFzIShe33OjLovn4" width="70%" height="70%">
 </center>
 <p>Although trees have many applications in computer science, such as index files, their study is beyond the scope of this book. We introduce trees as a prelude to discussing one special type of tree, <em>binary trees</em>.</p>
-<section id="binary-trees" class="level3" data-number="D.5.1">
-<h3 data-number="D.5.1" class="anchored" data-anchor-id="binary-trees"><span class="header-section-number">D.5.1</span> Binary trees</h3>
+<section id="binary-trees" class="level3" data-number="E.5.1">
+<h3 data-number="E.5.1" class="anchored" data-anchor-id="binary-trees"><span class="header-section-number">E.5.1</span> Binary trees</h3>
 <p>A binary tree is a tree in which no node can have more than two subtrees. In other words, a node can have zero, one, or two subtrees. These subtrees are designated as the left subtree and the right subtree. Figure below shows a binary tree with its two subtrees. Note that each subtree is itself a binary tree.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1mXbHZpnzAtrGDnFki0MA_vmArHAmy0bW" width="70%" height="70%">
 </center>
-<section id="recursive-definition-of-binary-trees" class="level4" data-number="D.5.1.1">
-<h4 data-number="D.5.1.1" class="anchored" data-anchor-id="recursive-definition-of-binary-trees"><span class="header-section-number">D.5.1.1</span> Recursive definition of binary trees</h4>
+<section id="recursive-definition-of-binary-trees" class="level4" data-number="E.5.1.1">
+<h4 data-number="E.5.1.1" class="anchored" data-anchor-id="recursive-definition-of-binary-trees"><span class="header-section-number">E.5.1.1</span> Recursive definition of binary trees</h4>
 <p>In Chapter 8 we introduced the recursive definition of an algorithm. We can also define a structure or an ADT recursively. The following gives the recursive definition of a binary tree. Note that, based on this definition, a binary tree can have a root, but each subtree can also have a root.</p>
 <blockquote class="blockquote">
 <p>A binary tree is either empty or consists of a node, root, with two subtrees, in which each subtree is also a binary tree.</p>
@@ -1235,14 +1247,14 @@ Q2:
 </center>
 </section>
 </section>
-<section id="operations-on-binary-trees" class="level3" data-number="D.5.2">
-<h3 data-number="D.5.2" class="anchored" data-anchor-id="operations-on-binary-trees"><span class="header-section-number">D.5.2</span> Operations on binary trees</h3>
+<section id="operations-on-binary-trees" class="level3" data-number="E.5.2">
+<h3 data-number="E.5.2" class="anchored" data-anchor-id="operations-on-binary-trees"><span class="header-section-number">E.5.2</span> Operations on binary trees</h3>
 <p>The six most common operations defined for a binary tree are <code>tree</code> (creates an empty tree) <code>insert</code>, <code>delete</code>, <code>retrieve</code>, <code>empty</code> and <code>traversal</code>. The first five are complex and beyond the scope of this book. We discuss <strong>binary tree traversal in this section</strong>.</p>
-<section id="binary-tree-traversals" class="level4" data-number="D.5.2.1">
-<h4 data-number="D.5.2.1" class="anchored" data-anchor-id="binary-tree-traversals"><span class="header-section-number">D.5.2.1</span> Binary tree traversals</h4>
+<section id="binary-tree-traversals" class="level4" data-number="E.5.2.1">
+<h4 data-number="E.5.2.1" class="anchored" data-anchor-id="binary-tree-traversals"><span class="header-section-number">E.5.2.1</span> Binary tree traversals</h4>
 <p>A binary tree traversal requires that each node of the tree be processed once and only once in a predetermined sequence. The two general approaches to the traversal sequence are <em>depth-first</em> and <em>breadth-first</em> traversal.</p>
-<section id="depth-first-traversals" class="level5" data-number="D.5.2.1.1">
-<h5 data-number="D.5.2.1.1" class="anchored"><span class="header-section-number">D.5.2.1.1</span> Depth-first traversals</h5>
+<section id="depth-first-traversals" class="level5" data-number="E.5.2.1.1">
+<h5 data-number="E.5.2.1.1" class="anchored"><span class="header-section-number">E.5.2.1.1</span> Depth-first traversals</h5>
 <p>Given that a binary tree consists of a root, a left subtree, and a right subtree, we can define six different <strong>depth-first traversal</strong> sequences. Computer scientists have assigned standard names to three of these sequences in the literature: the other three are unnamed but are easily derived. The standard traversals are shown in Figure below.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1mbavvEhALquLqui5LgqS_PsTCd1PdDs2" width="70%" height="70%">
@@ -1253,27 +1265,27 @@ Q2:
 <li><p><strong>Postorder traversal</strong>. In postorder traversal the root node is processed after the left and right subtrees have been processed. The prefix <em>post</em> indicates that the root is processed <em>after</em> the subtrees.</p></li>
 </ul>
 <blockquote class="blockquote">
-<h4 id="example-5-figure-below-shows-how-we-visit-each-node-in-a-tree-using-preorder-traversal.-the-figure-also-shows-the-walking-order.-in-preorder-traversal-we-visit-a-node-when-we-pass-from-its-left-side.-the-nodes-are-visited-in-this-order-a-b-c-d-e-f." data-number="D.5.2.2" class="anchored" data-anchor-id="depth-first-traversals"><span class="header-section-number">D.5.2.2</span> Example 5: Figure below shows how we visit each node in a tree using preorder traversal. The figure also shows the <strong>walking order</strong>. In preorder traversal we visit a node when we pass from its left side. The nodes are visited in this order: A, B, C, D, E, F.</h4>
+<h4 id="example-5-figure-below-shows-how-we-visit-each-node-in-a-tree-using-preorder-traversal.-the-figure-also-shows-the-walking-order.-in-preorder-traversal-we-visit-a-node-when-we-pass-from-its-left-side.-the-nodes-are-visited-in-this-order-a-b-c-d-e-f." data-number="E.5.2.2" class="anchored" data-anchor-id="depth-first-traversals"><span class="header-section-number">E.5.2.2</span> Example 5: Figure below shows how we visit each node in a tree using preorder traversal. The figure also shows the <strong>walking order</strong>. In preorder traversal we visit a node when we pass from its left side. The nodes are visited in this order: A, B, C, D, E, F.</h4>
 </blockquote>
 <center>
 <img src="https://drive.google.com/uc?id=1mbmEtMGp8Wv6V9ghe8SJeQqS6ocQZA0g" width="70%" height="70%">
 </center>
 </section>
-<section id="breadth-first-traversals" class="level5" data-number="D.5.2.2.1">
-<h5 data-number="D.5.2.2.1" class="anchored"><span class="header-section-number">D.5.2.2.1</span> Breadth-first traversals</h5>
+<section id="breadth-first-traversals" class="level5" data-number="E.5.2.2.1">
+<h5 data-number="E.5.2.2.1" class="anchored"><span class="header-section-number">E.5.2.2.1</span> Breadth-first traversals</h5>
 <p>In <strong>breadth-first traversal</strong> of a binary tree we process all the children of a node before proceeding with the next generation. As with depth-first traversals, we can trace the traversal with a walk.</p>
 <blockquote class="blockquote">
-<h4 id="example-6-figure-below-shows-how-we-visit-each-node-in-a-tree-using-breadth-first-traversal.-the-figure-also-shows-the-walking-order.-the-traversal-order-is-a-b-e-c-d-f." data-number="D.5.2.3" class="anchored" data-anchor-id="breadth-first-traversals"><span class="header-section-number">D.5.2.3</span> Example 6: Figure below shows how we visit each node in a tree using breadth-first traversal. The figure also shows the walking order. The traversal order is A, B, E, C, D, F.</h4>
+<h4 id="example-6-figure-below-shows-how-we-visit-each-node-in-a-tree-using-breadth-first-traversal.-the-figure-also-shows-the-walking-order.-the-traversal-order-is-a-b-e-c-d-f." data-number="E.5.2.3" class="anchored" data-anchor-id="breadth-first-traversals"><span class="header-section-number">E.5.2.3</span> Example 6: Figure below shows how we visit each node in a tree using breadth-first traversal. The figure also shows the walking order. The traversal order is A, B, E, C, D, F.</h4>
 </blockquote>
 <center>
 <img src="https://drive.google.com/uc?id=1mdey7G3HZKXfI55Ee4hoAWjWI4yn0Zia" width="70%" height="70%">
 </center>
 </section>
 </section>
-<section id="binary-tree-applications" class="level4" data-number="D.5.2.4">
-<h4 data-number="D.5.2.4" class="anchored" data-anchor-id="binary-tree-applications"><span class="header-section-number">D.5.2.4</span> Binary tree applications</h4>
-<section id="expression-trees" class="level5" data-number="D.5.2.4.1">
-<h5 data-number="D.5.2.4.1" class="anchored" data-anchor-id="expression-trees"><span class="header-section-number">D.5.2.4.1</span> Expression trees</h5>
+<section id="binary-tree-applications" class="level4" data-number="E.5.2.4">
+<h4 data-number="E.5.2.4" class="anchored" data-anchor-id="binary-tree-applications"><span class="header-section-number">E.5.2.4</span> Binary tree applications</h4>
+<section id="expression-trees" class="level5" data-number="E.5.2.4.1">
+<h5 data-number="E.5.2.4.1" class="anchored" data-anchor-id="expression-trees"><span class="header-section-number">E.5.2.4.1</span> Expression trees</h5>
 <p>An arithmetic expression can be represented in three different formats: <strong>infix</strong>, <strong>postfix</strong>, and <strong>prefix</strong>. In an infix notation, the operator comes between the two operands. In postfix notation, the operator comes after its two operands, and in prefix notation it comes before the two operands. These formats are shown below for the addition of two operands A and B.</p>
 <ul>
 <li>Prefix: <code>+ A B</code></li>
@@ -1287,20 +1299,20 @@ Q2:
 </section>
 </section>
 </section>
-<section id="binary-search-trees" class="level3" data-number="D.5.3">
-<h3 data-number="D.5.3" class="anchored" data-anchor-id="binary-search-trees"><span class="header-section-number">D.5.3</span> Binary search trees</h3>
+<section id="binary-search-trees" class="level3" data-number="E.5.3">
+<h3 data-number="E.5.3" class="anchored" data-anchor-id="binary-search-trees"><span class="header-section-number">E.5.3</span> Binary search trees</h3>
 <p>A binary search tree (BST) is a binary tree with one extra property: the key value of each node is greater than the key values of all nodes in each left subtree and smaller than the value of all nodes in each right subtree. Figure below shows the idea.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1muxZk-gFUhu2gHP_j6ypzaINQX9Yhv7P">
 </center>
 <blockquote class="blockquote">
-<h4 id="example-7-figure-below-shows-some-binary-trees-that-are-bsts-and-some-that-are-not.-note-that-a-tree-is-a-bst-if-all-its-subtrees-are-bsts-and-the-whole-tree-is-also-a-bst." data-number="D.5.3.1" class="anchored"><span class="header-section-number">D.5.3.1</span> Example 7: Figure below shows some binary trees that are BSTs and some that are not. Note that a tree is a BST if all its subtrees are BSTs and the whole tree is also a BST.</h4>
+<h4 id="example-7-figure-below-shows-some-binary-trees-that-are-bsts-and-some-that-are-not.-note-that-a-tree-is-a-bst-if-all-its-subtrees-are-bsts-and-the-whole-tree-is-also-a-bst." data-number="E.5.3.1" class="anchored"><span class="header-section-number">E.5.3.1</span> Example 7: Figure below shows some binary trees that are BSTs and some that are not. Note that a tree is a BST if all its subtrees are BSTs and the whole tree is also a BST.</h4>
 </blockquote>
 <center>
 <img src="https://drive.google.com/uc?id=1n1uOGoilQLvho18gqgWBbS76q7w2rHRs" width="70%" height="70%">
 </center>
-<section id="bst-implementation" class="level5" data-number="D.5.3.1.1">
-<h5 data-number="D.5.3.1.1" class="anchored"><span class="header-section-number">D.5.3.1.1</span> BST implementation</h5>
+<section id="bst-implementation" class="level5" data-number="E.5.3.1.1">
+<h5 data-number="E.5.3.1.1" class="anchored"><span class="header-section-number">E.5.3.1.1</span> BST implementation</h5>
 <p>BSTs can be implemented using either arrays or linked lists. However, linked list structures are more common and more efficient. A linear implementation uses nodes with two pointers, left and right. The left pointer points to the left subtree and the right pointer points to the right subtree. If the left subtree is empty, the left pointer is null: if the right subtree is empty, the right pointer is null. Figure below shows a BST in which the data field of each node is a record.</p>
 <center>
 <img src="https://drive.google.com/uc?id=1nOlUITuPxS3Dk7sstME5bfsE0ggKxW4S" width="70%" height="70%">
@@ -1411,7 +1423,7 @@ Q2:
 <p>An inorder traversal of a BST creates a list that is sorted in ascending order.</p>
 </blockquote>
 <blockquote class="blockquote">
-<h4 id="example-8-the-code-below-is-the-inorder-traversal-of-a-binary-search-tree." data-number="D.5.3.2" class="anchored" data-anchor-id="bst-implementation"><span class="header-section-number">D.5.3.2</span> Example 8: The code below is the inorder traversal of a binary search tree.</h4>
+<h4 id="example-8-the-code-below-is-the-inorder-traversal-of-a-binary-search-tree." data-number="E.5.3.2" class="anchored" data-anchor-id="bst-implementation"><span class="header-section-number">E.5.3.2</span> Example 8: The code below is the inorder traversal of a binary search tree.</h4>
 </blockquote>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:536,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243513023,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-outputid="295d5d2b-0247-472c-ab24-29bc8876968a" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a><span class="bu">print</span>(<span class="st">'======================================================='</span>)</span>
@@ -1425,7 +1437,7 @@ Inorder：
 </div>
 </div>
 <blockquote class="blockquote">
-<h4 id="exercise-4-try-to-write-the-postorder-and-preorder-traversal-of-the-above-tree." data-number="D.5.3.3" class="anchored"><span class="header-section-number">D.5.3.3</span> Exercise 4: Try to write the postorder and preorder traversal of the above tree.</h4>
+<h4 id="exercise-4-try-to-write-the-postorder-and-preorder-traversal-of-the-above-tree." data-number="E.5.3.3" class="anchored"><span class="header-section-number">E.5.3.3</span> Exercise 4: Try to write the postorder and preorder traversal of the above tree.</h4>
 </blockquote>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:456,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243517600,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a><span class="kw">def</span> postorder(ptr):  <span class="co"># Postorder</span></span>
@@ -1459,8 +1471,8 @@ Preorder：
 </div>
 </div>
 </section>
-<section id="binary-search-tree-adts" class="level5" data-number="D.5.3.3.1">
-<h5 data-number="D.5.3.3.1" class="anchored"><span class="header-section-number">D.5.3.3.1</span> Binary search tree ADTs</h5>
+<section id="binary-search-tree-adts" class="level5" data-number="E.5.3.3.1">
+<h5 data-number="E.5.3.3.1" class="anchored"><span class="header-section-number">E.5.3.3.1</span> Binary search tree ADTs</h5>
 <p>https://visualgo.net/en/bst</p>
 <p>The ADT for a binary search tree is similar to the one we defined for a general linear list with the same operation. As a matter of fact, we see more BST lists than general linear lists today. The reason is that searching a BST is more efficient that searching a linear list: a general linear list uses sequential searching, but BSTs use a version of binary search.</p>
 <p>Another feature that makes a BST interesting is that we can use a version of the binary search we used in Chapter 8 for a binary search tree. Figure below shows the UML for a BST search.</p>
@@ -1468,7 +1480,7 @@ Preorder：
 <img src="https://drive.google.com/uc?id=1nObw6EaZcGCDsgYyCAnsaT8K-maDw0yo" width="70%" height="70%">
 </center>
 <blockquote class="blockquote">
-<h4 id="exercise-5-search-the-above-tree." data-number="D.5.3.4" class="anchored" data-anchor-id="binary-search-tree-adts"><span class="header-section-number">D.5.3.4</span> Exercise 5: Search the above tree.</h4>
+<h4 id="exercise-5-search-the-above-tree." data-number="E.5.3.4" class="anchored" data-anchor-id="binary-search-tree-adts"><span class="header-section-number">E.5.3.4</span> Exercise 5: Search the above tree.</h4>
 </blockquote>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:397,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1670243555819,&quot;user&quot;:{&quot;displayName&quot;:&quot;phonchi chung&quot;,&quot;userId&quot;:&quot;13517391734500420886&quot;},&quot;user_tz&quot;:-480}" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1"></a><span class="kw">def</span> search(ptr,val):    </span>
@@ -1503,8 +1515,8 @@ Preorder：
 </section>
 </section>
 </section>
-<section id="graphs" class="level2" data-number="D.6">
-<h2 data-number="D.6" class="anchored" data-anchor-id="graphs"><span class="header-section-number">D.6</span> Graphs</h2>
+<section id="graphs" class="level2" data-number="E.6">
+<h2 data-number="E.6" class="anchored" data-anchor-id="graphs"><span class="header-section-number">E.6</span> Graphs</h2>
 <p>A graph is an ADT made of a set of nodes, called <strong>vertices</strong>, and set of lines connecting the vertices, called <strong>edges</strong> or <strong>arcs</strong>. Whereas a tree defines a hierarchical structure in which a node can have only one single parent, each node in a graph can have one or more parents. Graphs may be either <em>directed</em> or <em>undirected</em>. In a <strong>directed graph</strong>, or digraph, each edge, which connects two vertices, has a direction (shown in the figure by an arrowhead) from one vertex to the other. In an <strong>undirected graph</strong>, there is no direction. Figure below shows an example of both a directed graph (a) and an undirected graph (b).</p>
 <center>
 <img src="https://drive.google.com/uc?id=1nPcHjaXOvLw0ENnLkrgmarO6z3-QzUAq" width="70%" height="70%">
@@ -1803,7 +1815,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./05_Data_Structure_sol.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Data Structure</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data Structure</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

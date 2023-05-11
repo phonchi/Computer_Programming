@@ -49,5 +49,11 @@
   },
   "12_Matplotlib.ipynb": {
     "12_Matplotlib.html": "5115951c"
+  },
+  "13_SymPy.ipynb": {
+    "13_SymPy.html": "ae139db8"
+  },
+  "00_SciPy.ipynb": {
+    "00_SciPy.html": "c0f12065"
   }
 }
