@@ -26,6 +26,17 @@ book:
     - 04_Algorithms_sol.ipynb
     - 05_Data_Structure_sol.ipynb
     - 06_Abstract_data_types_sol.ipynb
+    - Assignment 1_sol.ipynb
+    - Assignment 2_sol.ipynb
+    - Assignment 3_sol.ipynb
+    - Assignment 4_sol.ipynb
+    - Assignment 5_sol.ipynb
+    - Assignment 6_sol.ipynb
+    - Assignment 7_sol.ipynb
+    - Assignment 8_sol.ipynb
+    - Assignment 9_sol.ipynb
+    - Quiz1_sol.ipynb
+    - Quiz2_sol.ipynb
   search:
     location: sidebar
 format:

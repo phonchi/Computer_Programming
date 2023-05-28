@@ -1,0 +1,2245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.306">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="phonchi">
+<meta name="dcterms.date" content="2023-05-28">
+
+<title>Computer Programming - Appendix O — Quiz 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Quiz2_sol.html" rel="next">
+<link href="./Assignment 9_sol.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Quiz1_sol.html"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Quiz 1</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Computer Programming</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Flow_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Flow Control</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Lists_tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lists and Tuples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Dictionaries_sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Other collections - Dictionaries and Sets</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Manipulating_string.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulating Strings</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Files and Exceptions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_09_OOP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Object Oriented Programming and Classes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_11_NumPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_Matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization with <code>Matplotlib</code></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_SymPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Symbolic Mathematics in Python with <code>SymPy</code></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_Copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_SciPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">High-level scientific computing with <code>SciPy</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 1_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 2_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Assignment 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 3_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Assignment 3</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 4_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Assignment 4</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 5_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Assignment 5</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 6_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Assignment 6</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 7_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Assignment 7</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 8_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Assignment 8</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 9_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Assignment 9</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Quiz1_sol.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Quiz 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Quiz2_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">P</span>&nbsp; <span class="chapter-title">Quiz 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a.-single-choice-questions-3-45" id="toc-a.-single-choice-questions-3-45" class="nav-link active" data-scroll-target="#a.-single-choice-questions-3-45"><span class="header-section-number">O.1</span> A. Single Choice Questions (3%, 45%)</a>
+  <ul class="collapse">
+  <li><a href="#which-of-the-following-statements-is-false" id="toc-which-of-the-following-statements-is-false" class="nav-link" data-scroll-target="#which-of-the-following-statements-is-false"><span class="header-section-number">O.1.1</span> (1) Which of the following statements is False?</a></li>
+  <li><a href="#which-of-the-following-statement-will-have-a-different-boolean-value-than-the-others" id="toc-which-of-the-following-statement-will-have-a-different-boolean-value-than-the-others" class="nav-link" data-scroll-target="#which-of-the-following-statement-will-have-a-different-boolean-value-than-the-others"><span class="header-section-number">O.1.2</span> (2) Which of the following statement will have a different Boolean value than the others?</a></li>
+  <li><a href="#which-of-the-following-statement-is-true" id="toc-which-of-the-following-statement-is-true" class="nav-link" data-scroll-target="#which-of-the-following-statement-is-true"><span class="header-section-number">O.1.3</span> (3) Which of the following statement is True?</a></li>
+  <li><a href="#which-of-the-following-statements-is-true" id="toc-which-of-the-following-statements-is-true" class="nav-link" data-scroll-target="#which-of-the-following-statements-is-true"><span class="header-section-number">O.1.4</span> (4) Which of the following statements is True?</a></li>
+  <li><a href="#which-of-the-following-statement-is-false" id="toc-which-of-the-following-statement-is-false" class="nav-link" data-scroll-target="#which-of-the-following-statement-is-false"><span class="header-section-number">O.1.5</span> (5) Which of the following statement is False?</a></li>
+  <li><a href="#which-of-the-following-will-not-be-printed-out-when-calling-the-help-function-on-a-custom-or-built-in-function" id="toc-which-of-the-following-will-not-be-printed-out-when-calling-the-help-function-on-a-custom-or-built-in-function" class="nav-link" data-scroll-target="#which-of-the-following-will-not-be-printed-out-when-calling-the-help-function-on-a-custom-or-built-in-function"><span class="header-section-number">O.1.6</span> (6) Which of the following will NOT be printed out when calling the <code>help()</code> function on a custom or built-in function?</a></li>
+  <li><a href="#which-of-the-following-statement-is-true-1" id="toc-which-of-the-following-statement-is-true-1" class="nav-link" data-scroll-target="#which-of-the-following-statement-is-true-1"><span class="header-section-number">O.1.7</span> (7) Which of the following statement is True?</a></li>
+  <li><a href="#what-does-the-following-line-of-code-display" id="toc-what-does-the-following-line-of-code-display" class="nav-link" data-scroll-target="#what-does-the-following-line-of-code-display"><span class="header-section-number">O.1.8</span> (8) What does the following line of code display?</a></li>
+  <li><a href="#which-of-the-following-is-not-a-valid-collection-container-inside-python" id="toc-which-of-the-following-is-not-a-valid-collection-container-inside-python" class="nav-link" data-scroll-target="#which-of-the-following-is-not-a-valid-collection-container-inside-python"><span class="header-section-number">O.1.9</span> (9) Which of the following is NOT a valid collection (container) inside Python?</a></li>
+  <li><a href="#which-of-the-following-statements-is-false-1" id="toc-which-of-the-following-statements-is-false-1" class="nav-link" data-scroll-target="#which-of-the-following-statements-is-false-1"><span class="header-section-number">O.1.10</span> (10) Which of the following statements is False?</a></li>
+  <li><a href="#which-of-the-following-is-not-a-correct-way-to-create-a-string-in-python" id="toc-which-of-the-following-is-not-a-correct-way-to-create-a-string-in-python" class="nav-link" data-scroll-target="#which-of-the-following-is-not-a-correct-way-to-create-a-string-in-python"><span class="header-section-number">O.1.11</span> (11) Which of the following is not a correct way to create a string in <code>Python</code>?</a></li>
+  <li><a href="#which-of-the-following-statements-is-false-2" id="toc-which-of-the-following-statements-is-false-2" class="nav-link" data-scroll-target="#which-of-the-following-statements-is-false-2"><span class="header-section-number">O.1.12</span> (12) Which of the following statements is False?</a></li>
+  <li><a href="#which-of-the-following-function-can-be-used-to-find-all-the-methods-available-for-an-object-in-python" id="toc-which-of-the-following-function-can-be-used-to-find-all-the-methods-available-for-an-object-in-python" class="nav-link" data-scroll-target="#which-of-the-following-function-can-be-used-to-find-all-the-methods-available-for-an-object-in-python"><span class="header-section-number">O.1.13</span> (13) Which of the following function can be used to find all the methods available for an object in Python?</a></li>
+  <li><a href="#which-of-the-following-statements-is-false-3" id="toc-which-of-the-following-statements-is-false-3" class="nav-link" data-scroll-target="#which-of-the-following-statements-is-false-3"><span class="header-section-number">O.1.14</span> (14) Which of the following statements is False?</a></li>
+  <li><a href="#assume-that-we-execute-the-following-assignment-statement-and-user-inputs-an-integer" id="toc-assume-that-we-execute-the-following-assignment-statement-and-user-inputs-an-integer" class="nav-link" data-scroll-target="#assume-that-we-execute-the-following-assignment-statement-and-user-inputs-an-integer"><span class="header-section-number">O.1.15</span> (15) Assume that we execute the following assignment statement and user inputs an integer:</a></li>
+  </ul></li>
+  <li><a href="#b.-short-answer-and-coding-questions" id="toc-b.-short-answer-and-coding-questions" class="nav-link" data-scroll-target="#b.-short-answer-and-coding-questions"><span class="header-section-number">O.2</span> B. Short-answer and coding questions</a>
+  <ul class="collapse">
+  <li><a href="#write-programs-that-displays-the-following-triangle-patterns.-be-sure-to-use-for-loops-to-generate-the-patterns.-8" id="toc-write-programs-that-displays-the-following-triangle-patterns.-be-sure-to-use-for-loops-to-generate-the-patterns.-8" class="nav-link" data-scroll-target="#write-programs-that-displays-the-following-triangle-patterns.-be-sure-to-use-for-loops-to-generate-the-patterns.-8"><span class="header-section-number">O.2.1</span> (16) Write programs that displays the following triangle patterns. Be sure to use <code>for</code> loops to generate the patterns. (8%)</a></li>
+  <li><a href="#here-we-will-simulate-the-process-of-a-simple-card-game.-the-game-is-played-with-a-standard-deck-of-52-cards-and-we-will-randomly-select-30-cards-and-divide-them-evenly-between-two-players.-each-player-gets-a-hand-of-15-cards.-the-goal-of-the-game-is-to-determine-whether-the-player-got-a-straight-i.e.-five-cards-of-consecutive-face-values-or-not-in-his-15-cards.-if-the-players-got-a-straight-please-return-true.-otherwise-return-false.-please-complete-the-following-game-design-by-filling-in-the-missing-part-in-the-function.-8." id="toc-here-we-will-simulate-the-process-of-a-simple-card-game.-the-game-is-played-with-a-standard-deck-of-52-cards-and-we-will-randomly-select-30-cards-and-divide-them-evenly-between-two-players.-each-player-gets-a-hand-of-15-cards.-the-goal-of-the-game-is-to-determine-whether-the-player-got-a-straight-i.e.-five-cards-of-consecutive-face-values-or-not-in-his-15-cards.-if-the-players-got-a-straight-please-return-true.-otherwise-return-false.-please-complete-the-following-game-design-by-filling-in-the-missing-part-in-the-function.-8." class="nav-link" data-scroll-target="#here-we-will-simulate-the-process-of-a-simple-card-game.-the-game-is-played-with-a-standard-deck-of-52-cards-and-we-will-randomly-select-30-cards-and-divide-them-evenly-between-two-players.-each-player-gets-a-hand-of-15-cards.-the-goal-of-the-game-is-to-determine-whether-the-player-got-a-straight-i.e.-five-cards-of-consecutive-face-values-or-not-in-his-15-cards.-if-the-players-got-a-straight-please-return-true.-otherwise-return-false.-please-complete-the-following-game-design-by-filling-in-the-missing-part-in-the-function.-8."><span class="header-section-number">O.2.2</span> (17) Here, we will simulate the process of a simple card game. The game is played with a standard deck of 52 cards, and we will randomly select 30 cards and divide them evenly between two players. Each player gets a hand of 15 cards. The goal of the game is to determine whether the player got a straight (i.e., five cards of consecutive face values) or not in his 15 cards. If the players got a straight, please return <code>True</code>. Otherwise, return <code>False</code>. Please complete the following game design by filling in the missing part in the function. (8%).</a></li>
+  <li><a href="#in-cryptoanalysis-frequency-analysis-is-often-used-to-decipher-a-message-when-the-key-is-unknown.-it-calculates-the-frequency-of-each-character-in-the-encrypted-text.-write-a-program-that-uses-a-dictionary-to-summarize-the-frequency-of-each-letter-in-a-given-text.-treat-uppercase-and-lowercase-letters-the-same-ignore-spaces-and-assume-that-the-user-does-not-enter-any-punctuation.-display-the-letters-and-their-frequency-in-descending-order-by-completing-the-following-code-snippet.-8" id="toc-in-cryptoanalysis-frequency-analysis-is-often-used-to-decipher-a-message-when-the-key-is-unknown.-it-calculates-the-frequency-of-each-character-in-the-encrypted-text.-write-a-program-that-uses-a-dictionary-to-summarize-the-frequency-of-each-letter-in-a-given-text.-treat-uppercase-and-lowercase-letters-the-same-ignore-spaces-and-assume-that-the-user-does-not-enter-any-punctuation.-display-the-letters-and-their-frequency-in-descending-order-by-completing-the-following-code-snippet.-8" class="nav-link" data-scroll-target="#in-cryptoanalysis-frequency-analysis-is-often-used-to-decipher-a-message-when-the-key-is-unknown.-it-calculates-the-frequency-of-each-character-in-the-encrypted-text.-write-a-program-that-uses-a-dictionary-to-summarize-the-frequency-of-each-letter-in-a-given-text.-treat-uppercase-and-lowercase-letters-the-same-ignore-spaces-and-assume-that-the-user-does-not-enter-any-punctuation.-display-the-letters-and-their-frequency-in-descending-order-by-completing-the-following-code-snippet.-8"><span class="header-section-number">O.2.3</span> (18) In cryptoanalysis, frequency analysis is often used to decipher a message when the key is unknown. It calculates the frequency of each character in the encrypted text. Write a program that uses a <code>dictionary</code> to summarize the frequency of each letter in a given text. Treat uppercase and lowercase letters the same, ignore spaces and assume that the user does not enter any punctuation. Display the letters and their frequency in descending order by completing the following code snippet. (8%)</a></li>
+  <li><a href="#write-a-function-that-receives-a-list-of-email-addresses-and-returns-a-list-that-only-contains-the-unique-addresses.-treat-uppercase-and-lowercase-letters-the-same.-the-function-should-use-a-set-to-get-the-unique-email-addresses-from-the-list.-6" id="toc-write-a-function-that-receives-a-list-of-email-addresses-and-returns-a-list-that-only-contains-the-unique-addresses.-treat-uppercase-and-lowercase-letters-the-same.-the-function-should-use-a-set-to-get-the-unique-email-addresses-from-the-list.-6" class="nav-link" data-scroll-target="#write-a-function-that-receives-a-list-of-email-addresses-and-returns-a-list-that-only-contains-the-unique-addresses.-treat-uppercase-and-lowercase-letters-the-same.-the-function-should-use-a-set-to-get-the-unique-email-addresses-from-the-list.-6"><span class="header-section-number">O.2.4</span> (19) Write a function that receives a list of email addresses and returns a list that only contains the unique addresses. Treat uppercase and lowercase letters the same. The function should use a <code>set</code> to get the unique email addresses from the list. (6%)</a></li>
+  <li><a href="#assume-that-we-have-a-plain-text-file-that-stores-the-grade-for-each-student.-each-row-corresponds-to-each-student-starting-with-the-name-of-the-student-followed-by-the-three-scores-heshe-got-in-each-subject-separated-by-white-space-as-follows-6" id="toc-assume-that-we-have-a-plain-text-file-that-stores-the-grade-for-each-student.-each-row-corresponds-to-each-student-starting-with-the-name-of-the-student-followed-by-the-three-scores-heshe-got-in-each-subject-separated-by-white-space-as-follows-6" class="nav-link" data-scroll-target="#assume-that-we-have-a-plain-text-file-that-stores-the-grade-for-each-student.-each-row-corresponds-to-each-student-starting-with-the-name-of-the-student-followed-by-the-three-scores-heshe-got-in-each-subject-separated-by-white-space-as-follows-6"><span class="header-section-number">O.2.5</span> (20) Assume that we have a plain text file that stores the grade for each student. Each row corresponds to each student, starting with the name of the student, followed by the three scores he/she got in each subject, separated by white space as follows: (6%)</a></li>
+  <li><a href="#write-a-program-that-inputs-a-number-of-seconds-from-the-user.-calculate-the-number-of-hours-minutes-and-remaining-seconds.-you-can-assume-that-the-user-always-enters-a-number-of-seconds-higher-than-3600.-print-them-separated-by---.-for-example-if-the-user-types-3850-seconds-as-input-the-program-should-print-5" id="toc-write-a-program-that-inputs-a-number-of-seconds-from-the-user.-calculate-the-number-of-hours-minutes-and-remaining-seconds.-you-can-assume-that-the-user-always-enters-a-number-of-seconds-higher-than-3600.-print-them-separated-by---.-for-example-if-the-user-types-3850-seconds-as-input-the-program-should-print-5" class="nav-link" data-scroll-target="#write-a-program-that-inputs-a-number-of-seconds-from-the-user.-calculate-the-number-of-hours-minutes-and-remaining-seconds.-you-can-assume-that-the-user-always-enters-a-number-of-seconds-higher-than-3600.-print-them-separated-by---.-for-example-if-the-user-types-3850-seconds-as-input-the-program-should-print-5"><span class="header-section-number">O.2.6</span> (21) Write a program that inputs a number of seconds from the user. Calculate the number of hours, minutes, and remaining seconds. You can assume that the user always enters a number of seconds higher than 3600. Print them separated by “ - ”. For example, if the user types 3850 seconds as input, the program should print: (5%)</a></li>
+  <li><a href="#write-a-program-that-computes-the-value-of-pi-from-the-following-infinite-series-4-times-1-frac13frac15-frac17...-frac-1n2n-1.-try-to-calculate-how-many-terms-you-would-need-to-get-an-error-smaller-than-10-3.-6" id="toc-write-a-program-that-computes-the-value-of-pi-from-the-following-infinite-series-4-times-1-frac13frac15-frac17...-frac-1n2n-1.-try-to-calculate-how-many-terms-you-would-need-to-get-an-error-smaller-than-10-3.-6" class="nav-link" data-scroll-target="#write-a-program-that-computes-the-value-of-pi-from-the-following-infinite-series-4-times-1-frac13frac15-frac17...-frac-1n2n-1.-try-to-calculate-how-many-terms-you-would-need-to-get-an-error-smaller-than-10-3.-6"><span class="header-section-number">O.2.7</span> (22) Write a program that computes the value of <span class="math inline">\(\pi\)</span> from the following infinite series <span class="math inline">\(4 \times (1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}...-\frac{(-1)^n}{2n-1})\)</span>. Try to calculate how many terms you would need to get an error smaller than <span class="math inline">\(10^{-3}\)</span>. (6%)</a></li>
+  <li><a href="#considering-the-following-code-snippet-8" id="toc-considering-the-following-code-snippet-8" class="nav-link" data-scroll-target="#considering-the-following-code-snippet-8"><span class="header-section-number">O.2.8</span> (23) Considering the following code snippet: (8%)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Appendix O — Quiz 1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>phonchi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 28, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="a.-single-choice-questions-3-45" class="level2" data-number="O.1">
+<h2 data-number="O.1" class="anchored" data-anchor-id="a.-single-choice-questions-3-45"><span class="header-section-number">O.1</span> A. Single Choice Questions (3%, 45%)</h2>
+<section id="which-of-the-following-statements-is-false" class="level3" data-number="O.1.1">
+<h3 data-number="O.1.1" class="anchored" data-anchor-id="which-of-the-following-statements-is-false"><span class="header-section-number">O.1.1</span> (1) Which of the following statements is False?</h3>
+<ol type="A">
+<li><p>Python’s built-in function <code>type()</code> can be used to determine an object’s data type.</p></li>
+<li><p>A function performs its task when you call it by writing its name, followed by square brackets, <code>[]</code>.</p></li>
+<li><p>The parentheses after a function name in a function call contain the function’s argument — the data that the function needs to perform its task.</p></li>
+<li><p>Python is case sensitive, so number and Number are different identifiers.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (B) a function performs its task when you call it by writing its name, followed by parentheses, <code>()</code>.</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-statement-will-have-a-different-boolean-value-than-the-others" class="level3" data-number="O.1.2">
+<h3 data-number="O.1.2" class="anchored" data-anchor-id="which-of-the-following-statement-will-have-a-different-boolean-value-than-the-others"><span class="header-section-number">O.1.2</span> (2) Which of the following statement will have a different Boolean value than the others?</h3>
+<ol type="A">
+<li><p><code>""</code></p></li>
+<li><p><code>None</code></p></li>
+<li><p><code>"No"</code></p></li>
+<li><p><code>3 &lt; 5 and 4 &lt; 3</code></p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (C)</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-statement-is-true" class="level3" data-number="O.1.3">
+<h3 data-number="O.1.3" class="anchored" data-anchor-id="which-of-the-following-statement-is-true"><span class="header-section-number">O.1.3</span> (3) Which of the following statement is True?</h3>
+<ol type="A">
+<li><p>Python uses the <code>^</code> symbol to raise one value to the power of another (e.g., <code>2 ^ 10</code>).</p></li>
+<li><p>The value of the following expression is 2: <code>7.5 % 3.5</code>.</p></li>
+<li><p>The data type of <code>2 + j</code> in Python is always a complex number.</p></li>
+<li><p>A statement in Python can span more than one line.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (D). (A) Python uses <code>**</code>. (B) Should be 0.5. (C) Should be <code>2 + 1j</code>.</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-statements-is-true" class="level3" data-number="O.1.4">
+<h3 data-number="O.1.4" class="anchored" data-anchor-id="which-of-the-following-statements-is-true"><span class="header-section-number">O.1.4</span> (4) Which of the following statements is True?</h3>
+<ol type="A">
+<li><p><code>Sets</code> are iterable, so they are sequences and support indexing and slicing with square brackets, <code>[]</code>.</p></li>
+<li><p><code>Sets</code> are not iterable, so you cannot process each element in a <code>set</code> with a <code>for</code> loop.</p></li>
+<li><p>You can create an empty <code>set</code> with <code>{}</code>.</p></li>
+<li><p>A <code>dictionary</code>’s keys must be immutable and unique, but multiple keys can have the same value.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (D). (A) They are not sequence. (B) Sets are iterable! (C) This is dictionary, you should use <code>set()</code>.</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-statement-is-false" class="level3" data-number="O.1.5">
+<h3 data-number="O.1.5" class="anchored" data-anchor-id="which-of-the-following-statement-is-false"><span class="header-section-number">O.1.5</span> (5) Which of the following statement is False?</h3>
+<ol type="A">
+<li><p>If you have more than one statement in the body of <code>if</code> clause, those statements need to have the same indentation.</p></li>
+<li><p>If you assign value to a new variable in the <code>if</code> clause. Assume that you enter the <code>if</code> clause during the execution; the variable will not be accessible after the <code>if</code> clause.</p></li>
+<li><p><code>continue</code> and <code>break</code> statements can be used in both <code>for</code> and <code>while</code> loops.</p></li>
+<li><p>You can cause the program to terminate or exit before the last instruction by calling the <code>sys.exit()</code> function.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (B) The varible will still be accessible.</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-will-not-be-printed-out-when-calling-the-help-function-on-a-custom-or-built-in-function" class="level3" data-number="O.1.6">
+<h3 data-number="O.1.6" class="anchored" data-anchor-id="which-of-the-following-will-not-be-printed-out-when-calling-the-help-function-on-a-custom-or-built-in-function"><span class="header-section-number">O.1.6</span> (6) Which of the following will NOT be printed out when calling the <code>help()</code> function on a custom or built-in function?</h3>
+<ol type="A">
+<li><p>Name of the function</p></li>
+<li><p>docstring</p></li>
+<li><p>Body of the function</p></li>
+<li><p>Parameter list of the function</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (C)</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-statement-is-true-1" class="level3" data-number="O.1.7">
+<h3 data-number="O.1.7" class="anchored" data-anchor-id="which-of-the-following-statement-is-true-1"><span class="header-section-number">O.1.7</span> (7) Which of the following statement is True?</h3>
+<ol type="A">
+<li><p>The <code>random.randint(1,5)</code> statement will randomly generate integers from 1 to 4.</p></li>
+<li><p>The parameter with default value should always be put on the leftmost part of the parameter list of a function.</p></li>
+<li><p>When there’s no <code>return</code> statement in a function, it implicitly returns the value <code>None</code> after executing the last statement in the function’s block.</p></li>
+<li><p>If we would like to pass an arbitrary number of positional arguments to the function, we can use a special parameter like <code>**kwargs</code>.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (C). (A) generates integers from 1 to 5. (B) The parameter with default value should be put on the righthand side of normal parameter. (D) We should use something like <code>*args</code>.</p>
+</blockquote>
+</section>
+<section id="what-does-the-following-line-of-code-display" class="level3" data-number="O.1.8">
+<h3 data-number="O.1.8" class="anchored" data-anchor-id="what-does-the-following-line-of-code-display"><span class="header-section-number">O.1.8</span> (8) What does the following line of code display?</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="bu">print</span>(<span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, sep<span class="op">=</span><span class="st">', '</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="A">
+<li><p>203040</p></li>
+<li><p>20,30,40</p></li>
+<li><p>20, 30, 40</p></li>
+<li><p>Syntax error</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (C)</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-is-not-a-valid-collection-container-inside-python" class="level3" data-number="O.1.9">
+<h3 data-number="O.1.9" class="anchored" data-anchor-id="which-of-the-following-is-not-a-valid-collection-container-inside-python"><span class="header-section-number">O.1.9</span> (9) Which of the following is NOT a valid collection (container) inside Python?</h3>
+<ol type="A">
+<li><p><code>[3, 'spam', 2, (1,5)]</code></p></li>
+<li><p><code>('egg', 4, 7, [10, 3 ,5])</code></p></li>
+<li><p><code>{'spam', 1, 7, [10, 3 ,5]}</code></p></li>
+<li><p><code>{(2,3):'first tuple', (3,5): 'second tuple', 'a': 3}</code></p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (C) This is important because when you add an object to a set, its hash value is computed and used to determine its position in the set. If the object is mutable, and its contents change, then its hash value changes, and it can no longer be found in the set.</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-statements-is-false-1" class="level3" data-number="O.1.10">
+<h3 data-number="O.1.10" class="anchored" data-anchor-id="which-of-the-following-statements-is-false-1"><span class="header-section-number">O.1.10</span> (10) Which of the following statements is False?</h3>
+<ol type="A">
+<li><p>If you modify the sublist, which is sliced from a <code>list</code>, the original <code>list</code> is not modified.</p></li>
+<li><p>When you pass a <code>list</code> to a function and modify the <code>list</code> inside the function, the original <code>list</code> is not modified.</p></li>
+<li><p>Assume that <code>spam</code> is a <code>string</code> object. Considering the statement <code>spam = spam + "world"</code>. The id (memory location) of <code>spam</code> before and after the execution will be different.</p></li>
+<li><p>Assume that <code>spam</code> is a <code>list</code> object. Considering the statement <code>spam = spam.append("world")</code>. The id (memory location) of <code>spam</code> before and after the execution will be the same.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (B) the original list will also be modified. (D) is also True.</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-is-not-a-correct-way-to-create-a-string-in-python" class="level3" data-number="O.1.11">
+<h3 data-number="O.1.11" class="anchored" data-anchor-id="which-of-the-following-is-not-a-correct-way-to-create-a-string-in-python"><span class="header-section-number">O.1.11</span> (11) Which of the following is not a correct way to create a string in <code>Python</code>?</h3>
+<ol type="A">
+<li><p><code>"nsysu"</code></p></li>
+<li><p><code>'nsysu'</code></p></li>
+<li><p><code>""" nsysu """</code></p></li>
+<li><p><code>str(nsysu)</code></p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (D)</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-statements-is-false-2" class="level3" data-number="O.1.12">
+<h3 data-number="O.1.12" class="anchored" data-anchor-id="which-of-the-following-statements-is-false-2"><span class="header-section-number">O.1.12</span> (12) Which of the following statements is False?</h3>
+<ol type="A">
+<li><p>String methods <code>lower()</code> and <code>upper()</code> can convert strings to all lowercase or all uppercase letters, respectively.</p></li>
+<li><p>Python has separate data types for string and character.</p></li>
+<li><p>Raw strings — preceded by the character <code>r</code> — treat each backslash as a regular character rather than the beginning of an escape sequence.</p></li>
+<li><p>Backslash characters in strings introduce escape sequences — like <code>\n</code> for new-line and <code>\t</code> for tab.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (B) Python represents both string and characters using the same data type <code>str</code></p>
+</blockquote>
+</section>
+<section id="which-of-the-following-function-can-be-used-to-find-all-the-methods-available-for-an-object-in-python" class="level3" data-number="O.1.13">
+<h3 data-number="O.1.13" class="anchored" data-anchor-id="which-of-the-following-function-can-be-used-to-find-all-the-methods-available-for-an-object-in-python"><span class="header-section-number">O.1.13</span> (13) Which of the following function can be used to find all the methods available for an object in Python?</h3>
+<ol type="A">
+<li><p><code>dir()</code></p></li>
+<li><p><code>help()</code></p></li>
+<li><p><code>len()</code></p></li>
+<li><p><code>type()</code></p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (A)</p>
+</blockquote>
+</section>
+<section id="which-of-the-following-statements-is-false-3" class="level3" data-number="O.1.14">
+<h3 data-number="O.1.14" class="anchored" data-anchor-id="which-of-the-following-statements-is-false-3"><span class="header-section-number">O.1.14</span> (14) Which of the following statements is False?</h3>
+<ol type="A">
+<li><p>Attempting to divide by 0 results in a <code>ZeroDivisionError</code>.</p></li>
+<li><p>Trying to access a local variable outside its function’s block causes a <code>NameError</code>, indicating that the variable is not defined.</p></li>
+<li><p>After the last <code>except</code> clause, an optional <code>else</code> clause specifies code that should execute only if the code in the <code>try</code> suite raised an exception.</p></li>
+<li><p>The <code>finally</code> clause is guaranteed to execute, regardless of whether its <code>try</code> clause executes successfully or an exception occurs.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (C). After the last except clause, an optional <code>else</code> clause specifies code that should execute only if the code in the <code>try</code> clause did not raise exceptions.</p>
+</blockquote>
+</section>
+<section id="assume-that-we-execute-the-following-assignment-statement-and-user-inputs-an-integer" class="level3" data-number="O.1.15">
+<h3 data-number="O.1.15" class="anchored" data-anchor-id="assume-that-we-execute-the-following-assignment-statement-and-user-inputs-an-integer"><span class="header-section-number">O.1.15</span> (15) Assume that we execute the following assignment statement and user inputs an integer:</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>spam1 <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb2-2"><a href="#cb2-2"></a>spam2 <span class="op">=</span> <span class="bu">int</span>(spam1)<span class="op">/</span><span class="dv">5</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>spam3 <span class="op">=</span> spam2 <span class="op">+</span> <span class="dv">18</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Which variable has a different data type than others?</p>
+<ol type="A">
+<li><code>spam1</code><br>
+</li>
+<li><code>spam2</code><br>
+</li>
+<li><code>spam3</code><br>
+</li>
+<li>All of them have different data types</li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: (A) is <code>str</code> while the other two will have float datatype.</p>
+</blockquote>
+</section>
+</section>
+<section id="b.-short-answer-and-coding-questions" class="level2" data-number="O.2">
+<h2 data-number="O.2" class="anchored" data-anchor-id="b.-short-answer-and-coding-questions"><span class="header-section-number">O.2</span> B. Short-answer and coding questions</h2>
+<section id="write-programs-that-displays-the-following-triangle-patterns.-be-sure-to-use-for-loops-to-generate-the-patterns.-8" class="level3" data-number="O.2.1">
+<h3 data-number="O.2.1" class="anchored" data-anchor-id="write-programs-that-displays-the-following-triangle-patterns.-be-sure-to-use-for-loops-to-generate-the-patterns.-8"><span class="header-section-number">O.2.1</span> (16) Write programs that displays the following triangle patterns. Be sure to use <code>for</code> loops to generate the patterns. (8%)</h3>
+<p>Hint: You can display all asterisks (<code>#</code>) using the following statement:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">print</span>(<span class="st">'#'</span>, end<span class="op">=</span><span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="a">
+<li></li>
+</ol>
+<pre><code>##########
+ #########
+  ########
+   #######
+    ######
+     #####
+      ####
+       ###
+        ##
+         #</code></pre>
+<ol start="2" type="a">
+<li></li>
+</ol>
+<pre><code>         #
+        ##
+       ###
+      ####
+     #####
+    ######
+   #######
+  ########
+ #########
+##########</code></pre>
+<div class="cell" data-outputid="e5a8548a-d3ac-40b4-ff76-d7da9125601d">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="cf">for</span> row <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="cf">for</span> space <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>, row, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb6-3"><a href="#cb6-3"></a>        <span class="bu">print</span>(<span class="st">' '</span>, end<span class="op">=</span><span class="st">''</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="cf">for</span> column <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, row <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb6-5"><a href="#cb6-5"></a>        <span class="bu">print</span>(<span class="st">'#'</span>, end<span class="op">=</span><span class="st">''</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    <span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>##########
+ #########
+  ########
+   #######
+    ######
+     #####
+      ####
+       ###
+        ##
+         #</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="b93f7417-019d-49de-8991-463851d300d0">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">for</span> row <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="cf">for</span> space <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, row):</span>
+<span id="cb8-3"><a href="#cb8-3"></a>        <span class="bu">print</span>(<span class="st">' '</span>, end<span class="op">=</span><span class="st">''</span>)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="cf">for</span> column <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>, row <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb8-5"><a href="#cb8-5"></a>        <span class="bu">print</span>(<span class="st">'#'</span>, end<span class="op">=</span><span class="st">''</span>)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         #
+        ##
+       ###
+      ####
+     #####
+    ######
+   #######
+  ########
+ #########
+##########</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Ans: <em>double click here to answer the question.</em></p>
+</blockquote>
+</section>
+<section id="here-we-will-simulate-the-process-of-a-simple-card-game.-the-game-is-played-with-a-standard-deck-of-52-cards-and-we-will-randomly-select-30-cards-and-divide-them-evenly-between-two-players.-each-player-gets-a-hand-of-15-cards.-the-goal-of-the-game-is-to-determine-whether-the-player-got-a-straight-i.e.-five-cards-of-consecutive-face-values-or-not-in-his-15-cards.-if-the-players-got-a-straight-please-return-true.-otherwise-return-false.-please-complete-the-following-game-design-by-filling-in-the-missing-part-in-the-function.-8." class="level3" data-number="O.2.2">
+<h3 data-number="O.2.2" class="anchored" data-anchor-id="here-we-will-simulate-the-process-of-a-simple-card-game.-the-game-is-played-with-a-standard-deck-of-52-cards-and-we-will-randomly-select-30-cards-and-divide-them-evenly-between-two-players.-each-player-gets-a-hand-of-15-cards.-the-goal-of-the-game-is-to-determine-whether-the-player-got-a-straight-i.e.-five-cards-of-consecutive-face-values-or-not-in-his-15-cards.-if-the-players-got-a-straight-please-return-true.-otherwise-return-false.-please-complete-the-following-game-design-by-filling-in-the-missing-part-in-the-function.-8."><span class="header-section-number">O.2.2</span> (17) Here, we will simulate the process of a simple card game. The game is played with a standard deck of 52 cards, and we will randomly select 30 cards and divide them evenly between two players. Each player gets a hand of 15 cards. The goal of the game is to determine whether the player got a straight (i.e., five cards of consecutive face values) or not in his 15 cards. If the players got a straight, please return <code>True</code>. Otherwise, return <code>False</code>. Please complete the following game design by filling in the missing part in the function. (8%).</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">import</span> random</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a>RANKS <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>, <span class="st">"5"</span>, <span class="st">"6"</span>, <span class="st">"7"</span>, <span class="st">"8"</span>, <span class="st">"9"</span>, <span class="st">"10"</span>, <span class="st">"J"</span>, <span class="st">"Q"</span>, <span class="st">"K"</span>]</span>
+<span id="cb10-4"><a href="#cb10-4"></a></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="kw">def</span> create_deck():</span>
+<span id="cb10-6"><a href="#cb10-6"></a>    suits <span class="op">=</span> [<span class="st">'♣'</span>, <span class="st">'♦'</span>, <span class="st">'♥'</span>, <span class="st">'♠'</span>]</span>
+<span id="cb10-7"><a href="#cb10-7"></a>    deck <span class="op">=</span> [(rank, suit) <span class="cf">for</span> rank <span class="kw">in</span> RANKS <span class="cf">for</span> suit <span class="kw">in</span> suits] <span class="co"># Use list comprehension to create the deck.</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>    <span class="cf">return</span> deck</span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="co"># A function that takes the deck as a parameter and returns two lists, each containing 26 randomly-selected </span></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="co"># cards from the deck. Use list slicing and the random module to implement this function.</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a><span class="kw">def</span> deal_cards(deck):</span>
+<span id="cb10-13"><a href="#cb10-13"></a>    random.shuffle(deck)</span>
+<span id="cb10-14"><a href="#cb10-14"></a>    deck <span class="op">=</span> deck[:<span class="dv">30</span>]</span>
+<span id="cb10-15"><a href="#cb10-15"></a>    hand1 <span class="op">=</span> deck[:<span class="dv">15</span>]  <span class="co"># Split it into 15 cards in each using slice</span></span>
+<span id="cb10-16"><a href="#cb10-16"></a>    hand2 <span class="op">=</span> deck[<span class="dv">15</span>:]</span>
+<span id="cb10-17"><a href="#cb10-17"></a>    <span class="cf">return</span> hand1, hand2</span>
+<span id="cb10-18"><a href="#cb10-18"></a></span>
+<span id="cb10-19"><a href="#cb10-19"></a><span class="kw">def</span> get_ranks(hand):</span>
+<span id="cb10-20"><a href="#cb10-20"></a>    <span class="co">"""Return just the ranks in hand."""</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a>    <span class="cf">return</span> [rank <span class="cf">for</span> rank, suit <span class="kw">in</span> hand]</span>
+<span id="cb10-22"><a href="#cb10-22"></a></span>
+<span id="cb10-23"><a href="#cb10-23"></a><span class="kw">def</span> rank_key(card):</span>
+<span id="cb10-24"><a href="#cb10-24"></a>    <span class="cf">return</span> RANKS.index(card)</span>
+<span id="cb10-25"><a href="#cb10-25"></a></span>
+<span id="cb10-26"><a href="#cb10-26"></a><span class="kw">def</span> sort_hand(hand):</span>
+<span id="cb10-27"><a href="#cb10-27"></a>    <span class="co">"""Order hand by index of each face in RANKS."""</span></span>
+<span id="cb10-28"><a href="#cb10-28"></a>    <span class="cf">return</span> <span class="bu">sorted</span>(hand, key<span class="op">=</span>rank_key)</span>
+<span id="cb10-29"><a href="#cb10-29"></a></span>
+<span id="cb10-30"><a href="#cb10-30"></a><span class="kw">def</span> is_straight(hand):</span>
+<span id="cb10-31"><a href="#cb10-31"></a>    <span class="co">"""Returns a Boolean indicating whether hand contains a straight."""</span></span>
+<span id="cb10-32"><a href="#cb10-32"></a>    <span class="co"># check for any 5 consecutive faces</span></span>
+<span id="cb10-33"><a href="#cb10-33"></a>    <span class="co"># Your code here  </span></span>
+<span id="cb10-34"><a href="#cb10-34"></a>    <span class="co"># 1. Return just the ranks in hand</span></span>
+<span id="cb10-35"><a href="#cb10-35"></a>    ranks <span class="op">=</span> get_ranks(hand)</span>
+<span id="cb10-36"><a href="#cb10-36"></a>    <span class="co"># 2. Get unique rank from the ranks</span></span>
+<span id="cb10-37"><a href="#cb10-37"></a>    ranks <span class="op">=</span> <span class="bu">set</span>(ranks)</span>
+<span id="cb10-38"><a href="#cb10-38"></a>    <span class="co"># 3. Sort the rank using the above function</span></span>
+<span id="cb10-39"><a href="#cb10-39"></a>    ranks <span class="op">=</span> sort_hand(ranks)</span>
+<span id="cb10-40"><a href="#cb10-40"></a>    <span class="co"># 4. Using for loops to test whether we get a straight or not</span></span>
+<span id="cb10-41"><a href="#cb10-41"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ranks) <span class="op">-</span> <span class="dv">5</span>):</span>
+<span id="cb10-42"><a href="#cb10-42"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>):</span>
+<span id="cb10-43"><a href="#cb10-43"></a>            <span class="cf">if</span> ranks[i:i<span class="op">+</span><span class="dv">5</span>] <span class="op">==</span> RANKS[j:j<span class="op">+</span><span class="dv">5</span>]:</span>
+<span id="cb10-44"><a href="#cb10-44"></a>                <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb10-45"><a href="#cb10-45"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb10-46"><a href="#cb10-46"></a></span>
+<span id="cb10-47"><a href="#cb10-47"></a></span>
+<span id="cb10-48"><a href="#cb10-48"></a><span class="co"># Test data 1</span></span>
+<span id="cb10-49"><a href="#cb10-49"></a></span>
+<span id="cb10-50"><a href="#cb10-50"></a>random.seed(<span class="dv">2023</span>)</span>
+<span id="cb10-51"><a href="#cb10-51"></a>deck <span class="op">=</span> create_deck()</span>
+<span id="cb10-52"><a href="#cb10-52"></a>hand1, hand2 <span class="op">=</span> deal_cards(deck)</span>
+<span id="cb10-53"><a href="#cb10-53"></a></span>
+<span id="cb10-54"><a href="#cb10-54"></a>s1 <span class="op">=</span> is_straight(hand1)</span>
+<span id="cb10-55"><a href="#cb10-55"></a>s2 <span class="op">=</span> is_straight(hand2)</span>
+<span id="cb10-56"><a href="#cb10-56"></a></span>
+<span id="cb10-57"><a href="#cb10-57"></a></span>
+<span id="cb10-58"><a href="#cb10-58"></a><span class="co"># Test data 2</span></span>
+<span id="cb10-59"><a href="#cb10-59"></a>random.seed(<span class="dv">20</span>)</span>
+<span id="cb10-60"><a href="#cb10-60"></a>deck <span class="op">=</span> create_deck()</span>
+<span id="cb10-61"><a href="#cb10-61"></a>hand1, hand2 <span class="op">=</span> deal_cards(deck)</span>
+<span id="cb10-62"><a href="#cb10-62"></a></span>
+<span id="cb10-63"><a href="#cb10-63"></a>s3 <span class="op">=</span> is_straight(hand1)</span>
+<span id="cb10-64"><a href="#cb10-64"></a>s4 <span class="op">=</span> is_straight(hand2)</span>
+<span id="cb10-65"><a href="#cb10-65"></a></span>
+<span id="cb10-66"><a href="#cb10-66"></a><span class="cf">assert</span> (s1,s2) <span class="op">==</span> (<span class="va">True</span>, <span class="va">True</span>)</span>
+<span id="cb10-67"><a href="#cb10-67"></a><span class="cf">assert</span> (s3,s4) <span class="op">==</span> (<span class="va">True</span>, <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="in-cryptoanalysis-frequency-analysis-is-often-used-to-decipher-a-message-when-the-key-is-unknown.-it-calculates-the-frequency-of-each-character-in-the-encrypted-text.-write-a-program-that-uses-a-dictionary-to-summarize-the-frequency-of-each-letter-in-a-given-text.-treat-uppercase-and-lowercase-letters-the-same-ignore-spaces-and-assume-that-the-user-does-not-enter-any-punctuation.-display-the-letters-and-their-frequency-in-descending-order-by-completing-the-following-code-snippet.-8" class="level3" data-number="O.2.3">
+<h3 data-number="O.2.3" class="anchored" data-anchor-id="in-cryptoanalysis-frequency-analysis-is-often-used-to-decipher-a-message-when-the-key-is-unknown.-it-calculates-the-frequency-of-each-character-in-the-encrypted-text.-write-a-program-that-uses-a-dictionary-to-summarize-the-frequency-of-each-letter-in-a-given-text.-treat-uppercase-and-lowercase-letters-the-same-ignore-spaces-and-assume-that-the-user-does-not-enter-any-punctuation.-display-the-letters-and-their-frequency-in-descending-order-by-completing-the-following-code-snippet.-8"><span class="header-section-number">O.2.3</span> (18) In cryptoanalysis, frequency analysis is often used to decipher a message when the key is unknown. It calculates the frequency of each character in the encrypted text. Write a program that uses a <code>dictionary</code> to summarize the frequency of each letter in a given text. Treat uppercase and lowercase letters the same, ignore spaces and assume that the user does not enter any punctuation. Display the letters and their frequency in descending order by completing the following code snippet. (8%)</h3>
+<p>Hint: Refer to our slides to know how to count the number of occurrences of each letter in a <code>string</code> and how to sort the dictionaries according to the value.</p>
+<div class="cell" data-outputid="b0b2d615-f60a-4ba7-c67f-82e380738f55">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>text <span class="op">=</span> <span class="st">'This is some encrypted text with different words and this is some more text with a hidden message'</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a>character_counts <span class="op">=</span> {}</span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a>total <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co"># 1. Count occurrences of each letter, be sure to ignore the case and the space here</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="cf">for</span> character <span class="kw">in</span> <span class="st">""</span>.join(text.lower().split()):</span>
+<span id="cb11-8"><a href="#cb11-8"></a>    character_counts.setdefault(character, <span class="dv">0</span>)</span>
+<span id="cb11-9"><a href="#cb11-9"></a>    character_counts[character] <span class="op">=</span> character_counts[character] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>    total <span class="op">=</span> total <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="co"># 2. Sort the dictionaries using the values</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="kw">def</span> value_key(x):</span>
+<span id="cb11-14"><a href="#cb11-14"></a>    <span class="cf">return</span> x[<span class="dv">1</span>]</span>
+<span id="cb11-15"><a href="#cb11-15"></a></span>
+<span id="cb11-16"><a href="#cb11-16"></a><span class="co"># 3. Print out the character and the associated count</span></span>
+<span id="cb11-17"><a href="#cb11-17"></a><span class="cf">for</span> character, count <span class="kw">in</span> <span class="bu">sorted</span>(character_counts.items(), key<span class="op">=</span>value_key, reverse<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb11-18"><a href="#cb11-18"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>character<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>e: 12
+t: 10
+s: 9
+i: 8
+d: 6
+h: 5
+o: 4
+m: 4
+n: 4
+r: 4
+w: 3
+a: 3
+x: 2
+f: 2
+c: 1
+y: 1
+p: 1
+g: 1</code></pre>
+</div>
+</div>
+</section>
+<section id="write-a-function-that-receives-a-list-of-email-addresses-and-returns-a-list-that-only-contains-the-unique-addresses.-treat-uppercase-and-lowercase-letters-the-same.-the-function-should-use-a-set-to-get-the-unique-email-addresses-from-the-list.-6" class="level3" data-number="O.2.4">
+<h3 data-number="O.2.4" class="anchored" data-anchor-id="write-a-function-that-receives-a-list-of-email-addresses-and-returns-a-list-that-only-contains-the-unique-addresses.-treat-uppercase-and-lowercase-letters-the-same.-the-function-should-use-a-set-to-get-the-unique-email-addresses-from-the-list.-6"><span class="header-section-number">O.2.4</span> (19) Write a function that receives a list of email addresses and returns a list that only contains the unique addresses. Treat uppercase and lowercase letters the same. The function should use a <code>set</code> to get the unique email addresses from the list. (6%)</h3>
+<div class="cell" data-outputid="e3cd9269-c4e7-4c63-f06d-bacbc368cb1d">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">def</span> unique_address(mail):</span>
+<span id="cb13-2"><a href="#cb13-2"></a>    <span class="co">"""</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="co">    Parameters</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co">    ----------</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co">    mail: list</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co">        The input list that contains duplicated entries</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="co">    Returns</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="co">    -------</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="co">    uniques : list</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="co">        The list that contains unique entries</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a><span class="co">    """</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>    <span class="co"># Your code here</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a>    uniques <span class="op">=</span> <span class="bu">list</span>(<span class="bu">set</span>([m.lower() <span class="cf">for</span> m <span class="kw">in</span> mail]))</span>
+<span id="cb13-14"><a href="#cb13-14"></a>    <span class="cf">return</span> uniques</span>
+<span id="cb13-15"><a href="#cb13-15"></a></span>
+<span id="cb13-16"><a href="#cb13-16"></a><span class="co"># Test data</span></span>
+<span id="cb13-17"><a href="#cb13-17"></a>text <span class="op">=</span> [<span class="st">'John.doe@hotmail.com'</span>, <span class="st">'michael.smith@gmail.com'</span>, <span class="st">'ann.williams@msn.com'</span>, <span class="st">'james.MILLER@gmail.com'</span>,</span>
+<span id="cb13-18"><a href="#cb13-18"></a>        <span class="st">'james.miller@gmail.com'</span>, <span class="st">'MICHAEL.smith@gmail.com'</span>, <span class="st">'john.doe@hotmail.com'</span>,<span class="st">'michael.smith@gmail.com'</span>]</span>
+<span id="cb13-19"><a href="#cb13-19"></a></span>
+<span id="cb13-20"><a href="#cb13-20"></a>uniques <span class="op">=</span> unique_address(text)</span>
+<span id="cb13-21"><a href="#cb13-21"></a><span class="bu">print</span>(uniques)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['ann.williams@msn.com', 'michael.smith@gmail.com', 'john.doe@hotmail.com', 'james.miller@gmail.com']</code></pre>
+</div>
+</div>
+</section>
+<section id="assume-that-we-have-a-plain-text-file-that-stores-the-grade-for-each-student.-each-row-corresponds-to-each-student-starting-with-the-name-of-the-student-followed-by-the-three-scores-heshe-got-in-each-subject-separated-by-white-space-as-follows-6" class="level3" data-number="O.2.5">
+<h3 data-number="O.2.5" class="anchored" data-anchor-id="assume-that-we-have-a-plain-text-file-that-stores-the-grade-for-each-student.-each-row-corresponds-to-each-student-starting-with-the-name-of-the-student-followed-by-the-three-scores-heshe-got-in-each-subject-separated-by-white-space-as-follows-6"><span class="header-section-number">O.2.5</span> (20) Assume that we have a plain text file that stores the grade for each student. Each row corresponds to each student, starting with the name of the student, followed by the three scores he/she got in each subject, separated by white space as follows: (6%)</h3>
+<pre><code>Bob  96 80 100 
+Adam 73 90 95
+Michael 87 75 85
+Harry 85 80 75</code></pre>
+<p>Write program that reads the grades from the <code>grades.txt</code> and displays the average score for each student line by lien.</p>
+<div class="cell" data-outputid="b6a67589-44e7-42a1-caf5-254131af3471">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Read the file</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'grades.txt'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    <span class="co"># Your code here</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a>    <span class="co"># Iterate over each line in the file</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>    <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span>:</span>
+<span id="cb16-6"><a href="#cb16-6"></a>        <span class="co"># Split the line into a list of strings using whitespace as a delimiter</span></span>
+<span id="cb16-7"><a href="#cb16-7"></a>        cline <span class="op">=</span> line.strip().split()</span>
+<span id="cb16-8"><a href="#cb16-8"></a></span>
+<span id="cb16-9"><a href="#cb16-9"></a>        <span class="co"># Extract the student's name and grades</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a>        name <span class="op">=</span> cline[<span class="dv">0</span>]</span>
+<span id="cb16-11"><a href="#cb16-11"></a>        grades <span class="op">=</span> [<span class="bu">int</span>(grade) <span class="cf">for</span> grade <span class="kw">in</span> cline[<span class="dv">1</span>:]]</span>
+<span id="cb16-12"><a href="#cb16-12"></a></span>
+<span id="cb16-13"><a href="#cb16-13"></a>        <span class="co"># Calculate the average grade</span></span>
+<span id="cb16-14"><a href="#cb16-14"></a>        avg_grade <span class="op">=</span> <span class="bu">sum</span>(grades)<span class="op">/</span><span class="bu">len</span>(grades)</span>
+<span id="cb16-15"><a href="#cb16-15"></a></span>
+<span id="cb16-16"><a href="#cb16-16"></a>        <span class="co"># Display the average grade for the student</span></span>
+<span id="cb16-17"><a href="#cb16-17"></a>        <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>avg_grade<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Bob: 92.0
+Adam: 86.0
+Michael: 82.33333333333333
+Harry: 80.0</code></pre>
+</div>
+</div>
+</section>
+<section id="write-a-program-that-inputs-a-number-of-seconds-from-the-user.-calculate-the-number-of-hours-minutes-and-remaining-seconds.-you-can-assume-that-the-user-always-enters-a-number-of-seconds-higher-than-3600.-print-them-separated-by---.-for-example-if-the-user-types-3850-seconds-as-input-the-program-should-print-5" class="level3" data-number="O.2.6">
+<h3 data-number="O.2.6" class="anchored" data-anchor-id="write-a-program-that-inputs-a-number-of-seconds-from-the-user.-calculate-the-number-of-hours-minutes-and-remaining-seconds.-you-can-assume-that-the-user-always-enters-a-number-of-seconds-higher-than-3600.-print-them-separated-by---.-for-example-if-the-user-types-3850-seconds-as-input-the-program-should-print-5"><span class="header-section-number">O.2.6</span> (21) Write a program that inputs a number of seconds from the user. Calculate the number of hours, minutes, and remaining seconds. You can assume that the user always enters a number of seconds higher than 3600. Print them separated by “ - ”. For example, if the user types 3850 seconds as input, the program should print: (5%)</h3>
+<pre><code>1 h - 4 m - 10 s</code></pre>
+<p>Hint: Use the floor division and the remainder operation to calculate the number of hours, minutes, and seconds.</p>
+<div class="cell" data-outputid="16d550e6-9058-4d6a-8581-2d2586bca5cd">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Your code here</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>seconds <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>(<span class="st">'Enter a number of seconds: '</span>))</span>
+<span id="cb19-3"><a href="#cb19-3"></a></span>
+<span id="cb19-4"><a href="#cb19-4"></a>hours <span class="op">=</span> seconds <span class="op">//</span> <span class="dv">3600</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a>seconds <span class="op">=</span> seconds <span class="op">%</span> <span class="dv">3600</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a></span>
+<span id="cb19-7"><a href="#cb19-7"></a>minutes <span class="op">=</span>  seconds <span class="op">//</span> <span class="dv">60</span></span>
+<span id="cb19-8"><a href="#cb19-8"></a>seconds <span class="op">=</span> seconds <span class="op">%</span> <span class="dv">60</span></span>
+<span id="cb19-9"><a href="#cb19-9"></a></span>
+<span id="cb19-10"><a href="#cb19-10"></a><span class="bu">print</span>(hours, <span class="st">'h -'</span> , minutes , <span class="st">'m -'</span>, seconds, <span class="st">'s'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1 h - 4 m - 10 s</code></pre>
+</div>
+</div>
+</section>
+<section id="write-a-program-that-computes-the-value-of-pi-from-the-following-infinite-series-4-times-1-frac13frac15-frac17...-frac-1n2n-1.-try-to-calculate-how-many-terms-you-would-need-to-get-an-error-smaller-than-10-3.-6" class="level3" data-number="O.2.7">
+<h3 data-number="O.2.7" class="anchored" data-anchor-id="write-a-program-that-computes-the-value-of-pi-from-the-following-infinite-series-4-times-1-frac13frac15-frac17...-frac-1n2n-1.-try-to-calculate-how-many-terms-you-would-need-to-get-an-error-smaller-than-10-3.-6"><span class="header-section-number">O.2.7</span> (22) Write a program that computes the value of <span class="math inline">\(\pi\)</span> from the following infinite series <span class="math inline">\(4 \times (1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}...-\frac{(-1)^n}{2n-1})\)</span>. Try to calculate how many terms you would need to get an error smaller than <span class="math inline">\(10^{-3}\)</span>. (6%)</h3>
+<p>Hint: Use the constant <code>math.pi</code> from the <code>math</code> module as the ground truth value for <span class="math inline">\(\pi\)</span> and use <code>abs()</code> to calculate the error.</p>
+<div class="cell" data-outputid="dc6fd11d-1918-497a-cb52-3f9c56b99921">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">import</span> math</span>
+<span id="cb21-2"><a href="#cb21-2"></a></span>
+<span id="cb21-3"><a href="#cb21-3"></a>approx_pi <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="bu">print</span>(<span class="ss">f"Value of pi is: </span><span class="sc">{</span>math<span class="sc">.</span>pi<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="bu">print</span>(<span class="ss">f"Initial error is: </span><span class="sc">{</span><span class="bu">abs</span>(approx_pi<span class="op">-</span>math.pi)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-6"><a href="#cb21-6"></a></span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="co"># Your code here</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a>n <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb21-9"><a href="#cb21-9"></a>error <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb21-10"><a href="#cb21-10"></a></span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="bu">print</span>(<span class="st">"Term</span><span class="ch">\t</span><span class="st">approximation</span><span class="ch">\t\t</span><span class="st">error"</span>)</span>
+<span id="cb21-12"><a href="#cb21-12"></a></span>
+<span id="cb21-13"><a href="#cb21-13"></a><span class="cf">while</span> error <span class="op">&gt;</span> <span class="fl">1e-3</span>:</span>
+<span id="cb21-14"><a href="#cb21-14"></a>    n <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb21-15"><a href="#cb21-15"></a>    term <span class="op">=</span> (<span class="op">-</span><span class="dv">1</span>)<span class="op">**</span>(n<span class="op">-</span><span class="dv">1</span>) <span class="op">/</span> (<span class="dv">2</span><span class="op">*</span>n <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb21-16"><a href="#cb21-16"></a>    approx_pi <span class="op">+=</span> <span class="dv">4</span> <span class="op">*</span> term</span>
+<span id="cb21-17"><a href="#cb21-17"></a>    error <span class="op">=</span> <span class="bu">abs</span>(approx_pi <span class="op">-</span> math.pi)</span>
+<span id="cb21-18"><a href="#cb21-18"></a>    <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>n<span class="sc">}</span><span class="ch">\t</span><span class="sc">{</span>approx_pi<span class="sc">:.10f}</span><span class="ch">\t</span><span class="sc">{</span>error<span class="sc">:.10f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Value of pi is: 3.141592653589793
+Initial error is: 3.141592653589793
+Term    approximation       error
+1   4.0000000000    0.8584073464
+2   2.6666666667    0.4749259869
+3   3.4666666667    0.3250740131
+4   2.8952380952    0.2463545584
+5   3.3396825397    0.1980898861
+6   2.9760461760    0.1655464775
+7   3.2837384837    0.1421458301
+8   3.0170718171    0.1245208365
+9   3.2523659347    0.1107732811
+10  3.0418396189    0.0997530347
+11  3.2323158094    0.0907231558
+12  3.0584027659    0.0831898877
+13  3.2184027659    0.0768101123
+14  3.0702546178    0.0713380358
+15  3.2081856523    0.0665929987
+16  3.0791533942    0.0624392594
+17  3.2003655154    0.0587728618
+18  3.0860798011    0.0555128525
+19  3.1941879092    0.0525952556
+20  3.0916238067    0.0499688469
+21  3.1891847823    0.0475921287
+22  3.0961615265    0.0454311271
+23  3.1850504154    0.0434577618
+24  3.0999440324    0.0416486212
+25  3.1815766854    0.0399840318
+26  3.1031453129    0.0384473407
+27  3.1786170110    0.0370243574
+28  3.1058897383    0.0357029153
+29  3.1760651769    0.0344725233
+30  3.1082685667    0.0333240869
+31  3.1738423372    0.0322496836
+32  3.1103502737    0.0312423799
+33  3.1718887352    0.0302960816
+34  3.1121872427    0.0294054109
+35  3.1701582572    0.0285656036
+36  3.1138202290    0.0277724246
+37  3.1686147496    0.0270220960
+38  3.1152814162    0.0263112374
+39  3.1672294682    0.0256368146
+40  3.1165965568    0.0249960968
+41  3.1659792728    0.0243866193
+42  3.1177865018    0.0238061518
+43  3.1648453253    0.0232526717
+44  3.1188683138    0.0227243398
+45  3.1638121340    0.0222194804
+46  3.1198560901    0.0217365635
+47  3.1628668428    0.0212741892
+48  3.1207615796    0.0208310740
+49  3.1619986930    0.0204060394
+50  3.1215946526    0.0199980010
+51  3.1611986130    0.0196059594
+52  3.1223636615    0.0192289921
+53  3.1604588996    0.0188662460
+54  3.1230757221    0.0185169315
+55  3.1597729698    0.0181803162
+56  3.1237369337    0.0178557199
+57  3.1591351638    0.0175425102
+58  3.1243525551    0.0172400985
+59  3.1585405893    0.0169479357
+60  3.1249271439    0.0166655097
+61  3.1579849952    0.0163923416
+62  3.1254646700    0.0161279836
+63  3.1574646700    0.0158720164
+64  3.1259686070    0.0156240466
+65  3.1569763589    0.0153837053
+66  3.1264420078    0.0151506458
+67  3.1565171957    0.0149245421
+68  3.1268875661    0.0147050875
+69  3.1560846464    0.0144919928
+70  3.1273076680    0.0142849856
+71  3.1556764623    0.0140838087
+72  3.1277044343    0.0138882193
+73  3.1552906412    0.0136979876
+74  3.1280797569    0.0135128967
+75  3.1549253945    0.0133327409
+76  3.1284353282    0.0131573254
+77  3.1545791191    0.0129864655
+78  3.1287726675    0.0128199861
+79  3.1542503745    0.0126577209
+80  3.1290931418    0.0124995118
+81  3.1539378623    0.0123452087
+82  3.1293979850    0.0121946686
+83  3.1536404092    0.0120477556
+84  3.1296883134    0.0119043402
+85  3.1533569525    0.0117642989
+86  3.1299651396    0.0116275140
+87  3.1530865269    0.0114938733
+88  3.1302293840    0.0113632696
+89  3.1528282541    0.0112356005
+90  3.1304818854    0.0111107682
+91  3.1525813329    0.0109886793
+92  3.1307234094    0.0108692442
+93  3.1523450310    0.0107523774
+94  3.1309546567    0.0106379969
+95  3.1521186778    0.0105260242
+96  3.1311762695    0.0104163841
+97  3.1519016581    0.0103090045
+98  3.1313888375    0.0102038160
+99  3.1516934061    0.0101007525
+100 3.1315929036    0.0099997500
+101 3.1514934011    0.0099007475
+102 3.1317889676    0.0098036860
+103 3.1513011627    0.0097085091
+104 3.1319774912    0.0096151624
+105 3.1511162472    0.0095235936
+106 3.1321589012    0.0094337524
+107 3.1509382439    0.0093455903
+108 3.1323335928    0.0092590608
+109 3.1507667725    0.0091741189
+110 3.1325019323    0.0090907213
+111 3.1506014798    0.0090088262
+112 3.1326642601    0.0089283935
+113 3.1504420379    0.0088493843
+114 3.1328208925    0.0087717611
+115 3.1502881414    0.0086954878
+116 3.1329721241    0.0086205295
+117 3.1501395061    0.0085468525
+118 3.1331182295    0.0084744241
+119 3.1499958666    0.0084032130
+120 3.1332594649    0.0083331887
+121 3.1498569753    0.0082643217
+122 3.1333960699    0.0081965836
+123 3.1497226006    0.0081299470
+124 3.1335282686    0.0080643850
+125 3.1495925256    0.0079998720
+126 3.1336562706    0.0079363830
+127 3.1494665473    0.0078738937
+128 3.1337802728    0.0078123808
+129 3.1493444751    0.0077518215
+130 3.1339004597    0.0076921939
+131 3.1492261302    0.0076334766
+132 3.1340170047    0.0075756489
+133 3.1491113443    0.0075186907
+134 3.1341300709    0.0074625827
+135 3.1489999594    0.0074073058
+136 3.1342398118    0.0073528418
+137 3.1488918264    0.0072991729
+138 3.1343463719    0.0072462817
+139 3.1487868051    0.0071941515
+140 3.1344498875    0.0071427660
+141 3.1486847630    0.0070921094
+142 3.1345504874    0.0070421662
+143 3.1485855751    0.0069929215
+144 3.1346482929    0.0069443607
+145 3.1484891233    0.0068964697
+146 3.1347434188    0.0068492347
+147 3.1483952960    0.0068026424
+148 3.1348359739    0.0067566796
+149 3.1483039874    0.0067113338
+150 3.1349260610    0.0066665926
+151 3.1482150975    0.0066224439
+152 3.1350137774    0.0065788762
+153 3.1481285315    0.0065358779
+154 3.1350992155    0.0064934380
+155 3.1480441994    0.0064515458
+156 3.1351824630    0.0064101906
+157 3.1479620157    0.0063693622
+158 3.1352636030    0.0063290505
+159 3.1478818996    0.0062892460
+160 3.1353427146    0.0062499390
+161 3.1478037738    0.0062111202
+162 3.1354198729    0.0061727807
+163 3.1477275652    0.0061349116
+164 3.1354951493    0.0060975043
+165 3.1476532040    0.0060605504
+166 3.1355686119    0.0060240417
+167 3.1475806239    0.0059879703
+168 3.1356403254    0.0059523282
+169 3.1475097616    0.0059171080
+170 3.1357103515    0.0058823021
+171 3.1474405568    0.0058479032
+172 3.1357787492    0.0058139044
+173 3.1473729521    0.0057802985
+174 3.1358455746    0.0057470790
+175 3.1473068927    0.0057142391
+176 3.1359108813    0.0056817723
+177 3.1472423260    0.0056496724
+178 3.1359747204    0.0056179332
+179 3.1471792022    0.0055865486
+180 3.1360371409    0.0055555127
+181 3.1471174733    0.0055248197
+182 3.1360981896    0.0054944640
+183 3.1470570937    0.0054644401
+184 3.1361579111    0.0054347425
+185 3.1469980195    0.0054053659
+186 3.1362163484    0.0053763052
+187 3.1469402089    0.0053475554
+188 3.1362735423    0.0053191113
+189 3.1468836219    0.0052909683
+190 3.1363295321    0.0052631214
+191 3.1468282198    0.0052355662
+192 3.1363843556    0.0052082980
+193 3.1467739660    0.0051813124
+194 3.1364380487    0.0051546049
+195 3.1467208250    0.0051281714
+196 3.1364906460    0.0051020076
+197 3.1466687630    0.0050761094
+198 3.1365421807    0.0050504728
+199 3.1466177475    0.0050250939
+200 3.1365926848    0.0049999688
+201 3.1465677472    0.0049750936
+202 3.1366421889    0.0049504647
+203 3.1465187321    0.0049260785
+204 3.1366907223    0.0049019313
+205 3.1464706734    0.0048780198
+206 3.1367383133    0.0048543403
+207 3.1464235433    0.0048308897
+208 3.1367849891    0.0048076645
+209 3.1463773152    0.0047846616
+210 3.1368307758    0.0047618778
+211 3.1463319635    0.0047393099
+212 3.1368756987    0.0047169549
+213 3.1462874634    0.0046948098
+214 3.1369197819    0.0046728717
+215 3.1462437912    0.0046511376
+216 3.1369630488    0.0046296048
+217 3.1462009241    0.0046082705
+218 3.1370055218    0.0045871318
+219 3.1461588398    0.0045661862
+220 3.1370472225    0.0045454311
+221 3.1461175173    0.0045248637
+222 3.1370881719    0.0045044817
+223 3.1460769360    0.0044842824
+224 3.1371283901    0.0044642635
+225 3.1460370761    0.0044444225
+226 3.1371678965    0.0044247571
+227 3.1459979186    0.0044052650
+228 3.1372067098    0.0043859438
+229 3.1459594450    0.0043667914
+230 3.1372448480    0.0043478055
+231 3.1459216376    0.0043289840
+232 3.1372823288    0.0043103248
+233 3.1458844793    0.0042918257
+234 3.1373191688    0.0042734848
+235 3.1458479535    0.0042552999
+236 3.1373553845    0.0042372691
+237 3.1458120441    0.0042193905
+238 3.1373909915    0.0042016621
+239 3.1457767357    0.0041840821
+240 3.1374260050    0.0041666486
+241 3.1457420133    0.0041493597
+242 3.1374604398    0.0041322138
+243 3.1457078625    0.0041152089
+244 3.1374943101    0.0040983434
+245 3.1456742692    0.0040816157
+246 3.1375276297    0.0040650239
+247 3.1456412200    0.0040485664
+248 3.1375604119    0.0040322417
+249 3.1456087017    0.0040160481
+250 3.1375926696    0.0039999840
+251 3.1455767015    0.0039840479
+252 3.1376244152    0.0039682383
+253 3.1455452073    0.0039525537
+254 3.1376556610    0.0039369926
+255 3.1455142071    0.0039215536
+256 3.1376864185    0.0039062351
+257 3.1454836894    0.0038910359
+258 3.1377166992    0.0038759544
+259 3.1454536431    0.0038609895
+260 3.1377465140    0.0038461396
+261 3.1454240572    0.0038314036
+262 3.1377758736    0.0038167800
+263 3.1453949212    0.0038022676
+264 3.1378047884    0.0037878652
+265 3.1453662251    0.0037735715
+266 3.1378332684    0.0037593852
+267 3.1453379588    0.0037453052
+268 3.1378613233    0.0037313303
+269 3.1453101129    0.0037174593
+270 3.1378889626    0.0037036910
+271 3.1452826779    0.0036900243
+272 3.1379161954    0.0036764582
+273 3.1452556450    0.0036629914
+274 3.1379430307    0.0036496229
+275 3.1452290052    0.0036363516
+276 3.1379694771    0.0036231765
+277 3.1452027501    0.0036100965
+278 3.1379955429    0.0035971107
+279 3.1451768715    0.0035842179
+280 3.1380212364    0.0035714172
+281 3.1451513612    0.0035587076
+282 3.1380465654    0.0035460881
+283 3.1451262115    0.0035335579
+284 3.1380715377    0.0035211158
+285 3.1451014147    0.0035087611
+286 3.1380961608    0.0034964928
+287 3.1450769636    0.0034843100
+288 3.1381204418    0.0034722118
+289 3.1450528508    0.0034601973
+290 3.1381443880    0.0034482656
+291 3.1450290696    0.0034364160
+292 3.1381680061    0.0034246475
+293 3.1450056129    0.0034129593
+294 3.1381913029    0.0034013507
+295 3.1449824744    0.0033898208
+296 3.1382142849    0.0033783687
+297 3.1449596474    0.0033669938
+298 3.1382369583    0.0033556953
+299 3.1449371258    0.0033444723
+300 3.1382593295    0.0033333241
+301 3.1449149036    0.0033222500
+302 3.1382814044    0.0033112492
+303 3.1448929746    0.0033003210
+304 3.1383031888    0.0032894648
+305 3.1448713333    0.0032786797
+306 3.1383246885    0.0032679651
+307 3.1448499739    0.0032573204
+308 3.1383459089    0.0032467447
+309 3.1448288911    0.0032362375
+310 3.1383668555    0.0032257981
+311 3.1448080794    0.0032154258
+312 3.1383875336    0.0032051200
+313 3.1447875336    0.0031948800
+314 3.1384079483    0.0031847053
+315 3.1447672488    0.0031745952
+316 3.1384281046    0.0031645490
+317 3.1447472199    0.0031545663
+318 3.1384480073    0.0031446463
+319 3.1447274421    0.0031347885
+320 3.1384676612    0.0031249924
+321 3.1447079108    0.0031152572
+322 3.1384870710    0.0031055826
+323 3.1446886214    0.0030959678
+324 3.1385062412    0.0030864124
+325 3.1446695694    0.0030769158
+326 3.1385251761    0.0030674774
+327 3.1446507504    0.0030580968
+328 3.1385438802    0.0030487734
+329 3.1446321602    0.0030395067
+330 3.1385623575    0.0030302961
+331 3.1446137947    0.0030211411
+332 3.1385806122    0.0030120414
+333 3.1445956498    0.0030029962
+334 3.1385986483    0.0029940053
+335 3.1445777216    0.0029850680
+336 3.1386164697    0.0029761839
+337 3.1445600061    0.0029673525
+338 3.1386340802    0.0029585734
+339 3.1445424997    0.0029498461
+340 3.1386514835    0.0029411701
+341 3.1445251986    0.0029325450
+342 3.1386686832    0.0029239704
+343 3.1445080993    0.0029154457
+344 3.1386856830    0.0029069706
+345 3.1444911982    0.0028985446
+346 3.1387024862    0.0028901674
+347 3.1444744920    0.0028818384
+348 3.1387190963    0.0028735573
+349 3.1444579772    0.0028653236
+350 3.1387355166    0.0028571370
+351 3.1444416507    0.0028489971
+352 3.1387517502    0.0028409034
+353 3.1444255091    0.0028328555
+354 3.1387678005    0.0028248531
+355 3.1444095494    0.0028168958
+356 3.1387836704    0.0028089832
+357 3.1443937685    0.0028011150
+358 3.1387993629    0.0027932906
+359 3.1443781635    0.0027855099
+360 3.1388148812    0.0027777724
+361 3.1443627314    0.0027700778
+362 3.1388302279    0.0027624257
+363 3.1443474693    0.0027548157
+364 3.1388454060    0.0027472476
+365 3.1443323745    0.0027397209
+366 3.1388604183    0.0027322353
+367 3.1443174442    0.0027247906
+368 3.1388752673    0.0027173863
+369 3.1443026757    0.0027100221
+370 3.1388899558    0.0027026978
+371 3.1442880665    0.0026954129
+372 3.1389044864    0.0026881672
+373 3.1442736139    0.0026809603
+374 3.1389188616    0.0026737920
+375 3.1442593155    0.0026666619
+376 3.1389330838    0.0026595698
+377 3.1442451688    0.0026525152
+378 3.1389471556    0.0026454980
+379 3.1442311714    0.0026385178
+380 3.1389610792    0.0026315744
+381 3.1442173210    0.0026246674
+382 3.1389748570    0.0026177966
+383 3.1442036152    0.0026109616
+384 3.1389884913    0.0026041623
+385 3.1441900518    0.0025973982
+386 3.1390019844    0.0025906692
+387 3.1441766286    0.0025839750
+388 3.1390153383    0.0025773153
+389 3.1441633434    0.0025706898
+390 3.1390285552    0.0025640983
+391 3.1441501942    0.0025575406
+392 3.1390416373    0.0025510163
+393 3.1441371787    0.0025445251
+394 3.1390545866    0.0025380670
+395 3.1441242951    0.0025316415
+396 3.1390674051    0.0025252485
+397 3.1441115413    0.0025188877
+398 3.1390800947    0.0025125588
+399 3.1440989153    0.0025062617
+400 3.1390926575    0.0024999961
+401 3.1440864153    0.0024937617
+402 3.1391050952    0.0024875583
+403 3.1440740393    0.0024813858
+404 3.1391174099    0.0024752437
+405 3.1440617856    0.0024691320
+406 3.1391296031    0.0024630505
+407 3.1440496523    0.0024569987
+408 3.1391416769    0.0024509767
+409 3.1440376377    0.0024449841
+410 3.1391536328    0.0024390208
+411 3.1440257400    0.0024330864
+412 3.1391654727    0.0024271809
+413 3.1440139575    0.0024213040
+414 3.1391771982    0.0024154554
+415 3.1440022886    0.0024096351
+416 3.1391888109    0.0024038427
+417 3.1439907317    0.0023980781
+418 3.1392003125    0.0023923411
+419 3.1439792850    0.0023866314
+420 3.1392117046    0.0023809490
+421 3.1439679472    0.0023752936
+422 3.1392229887    0.0023696649
+423 3.1439567165    0.0023640629
+424 3.1392341663    0.0023584873
+425 3.1439455915    0.0023529379
+426 3.1392452390    0.0023474146
+427 3.1439345708    0.0023419172
+428 3.1392562082    0.0023364454
+429 3.1439236528    0.0023309992
+430 3.1392670753    0.0023255783
+431 3.1439128361    0.0023201825
+432 3.1392778419    0.0023148117
+433 3.1439021193    0.0023094657
+434 3.1392885092    0.0023041444
+435 3.1438915011    0.0022988475
+436 3.1392990786    0.0022935750
+437 3.1438809801    0.0022883265
+438 3.1393095515    0.0022831020
+439 3.1438705550    0.0022779014
+440 3.1393199293    0.0022727243
+441 3.1438602244    0.0022675708
+442 3.1393302130    0.0022624405
+443 3.1438499871    0.0022573335
+444 3.1393404042    0.0022522494
+445 3.1438398418    0.0022471882
+446 3.1393505039    0.0022421496
+447 3.1438297873    0.0022371337
+448 3.1393605135    0.0022321401
+449 3.1438198223    0.0022271687
+450 3.1393704341    0.0022222195
+451 3.1438099458    0.0022172922
+452 3.1393802669    0.0022123867
+453 3.1438001564    0.0022075028
+454 3.1393900131    0.0022026405
+455 3.1437904531    0.0021977995
+456 3.1393996738    0.0021929798
+457 3.1437808348    0.0021881812
+458 3.1394092501    0.0021834035
+459 3.1437713002    0.0021786467
+460 3.1394187431    0.0021739105
+461 3.1437618484    0.0021691948
+462 3.1394281540    0.0021644996
+463 3.1437524783    0.0021598247
+464 3.1394374837    0.0021551699
+465 3.1437431887    0.0021505351
+466 3.1394467333    0.0021459203
+467 3.1437339788    0.0021413252
+468 3.1394559039    0.0021367497
+469 3.1437248473    0.0021321937
+470 3.1394649964    0.0021276572
+471 3.1437157934    0.0021231399
+472 3.1394740119    0.0021186417
+473 3.1437068161    0.0021141625
+474 3.1394829513    0.0021097023
+475 3.1436979144    0.0021052608
+476 3.1394918156    0.0021008380
+477 3.1436890873    0.0020964338
+478 3.1395006057    0.0020920479
+479 3.1436803340    0.0020876804
+480 3.1395093225    0.0020833311
+481 3.1436716534    0.0020789998
+482 3.1395179670    0.0020746866
+483 3.1436630447    0.0020703912
+484 3.1395265401    0.0020661135
+485 3.1436545071    0.0020618535
+486 3.1395350426    0.0020576110
+487 3.1436460395    0.0020533859
+488 3.1395434754    0.0020491782
+489 3.1436376412    0.0020449876
+490 3.1395518394    0.0020408142
+491 3.1436293114    0.0020366578
+492 3.1395601354    0.0020325182
+493 3.1436210491    0.0020283955
+494 3.1395683642    0.0020242894
+495 3.1436128535    0.0020202000
+496 3.1395765266    0.0020161270
+497 3.1436047240    0.0020120704
+498 3.1395846235    0.0020080301
+499 3.1435966596    0.0020040060
+500 3.1395926556    0.0019999980
+501 3.1435886596    0.0019960060
+502 3.1396006237    0.0019920299
+503 3.1435807232    0.0019880696
+504 3.1396085286    0.0019841250
+505 3.1435728497    0.0019801961
+506 3.1396163709    0.0019762827
+507 3.1435650383    0.0019723847
+508 3.1396241516    0.0019685020
+509 3.1435572882    0.0019646346
+510 3.1396318712    0.0019607824
+511 3.1435495989    0.0019569453
+512 3.1396395305    0.0019531231
+513 3.1435419695    0.0019493159
+514 3.1396471301    0.0019455235
+515 3.1435343993    0.0019417457
+516 3.1396546709    0.0019379827
+517 3.1435268878    0.0019342342
+518 3.1396621535    0.0019305001
+519 3.1435194341    0.0019267805
+520 3.1396695784    0.0019230751
+521 3.1435120376    0.0019193840
+522 3.1396769465    0.0019157071
+523 3.1435046977    0.0019120441
+524 3.1396842584    0.0019083952
+525 3.1434974138    0.0019047602
+526 3.1396915146    0.0019011390
+527 3.1434901851    0.0018975315
+528 3.1396987159    0.0018939377
+529 3.1434830111    0.0018903575
+530 3.1397058628    0.0018867908
+531 3.1434758911    0.0018832375
+532 3.1397129560    0.0018796976
+533 3.1434688245    0.0018761710
+534 3.1397199961    0.0018726575
+535 3.1434618108    0.0018691572
+536 3.1397269836    0.0018656700
+537 3.1434548494    0.0018621958
+538 3.1397339191    0.0018587345
+539 3.1434479396    0.0018552860
+540 3.1397408033    0.0018518503
+541 3.1434410808    0.0018484273
+542 3.1397476367    0.0018450169
+543 3.1434342727    0.0018416191
+544 3.1397544198    0.0018382337
+545 3.1434275144    0.0018348608
+546 3.1397611533    0.0018315003
+547 3.1434208056    0.0018281520
+548 3.1397678376    0.0018248160
+549 3.1434141457    0.0018214921
+550 3.1397744733    0.0018181803
+551 3.1434075341    0.0018148805
+552 3.1397810609    0.0018115927
+553 3.1434009704    0.0018083168
+554 3.1397876009    0.0018050527
+555 3.1433944539    0.0018018003
+556 3.1397940939    0.0017985597
+557 3.1433879843    0.0017953307
+558 3.1398005403    0.0017921133
+559 3.1433815609    0.0017889073
+560 3.1398069407    0.0017857129
+561 3.1433751834    0.0017825298
+562 3.1398132956    0.0017793580
+563 3.1433688511    0.0017761975
+564 3.1398196053    0.0017730483
+565 3.1433625637    0.0017699101
+566 3.1398258705    0.0017667831
+567 3.1433563206    0.0017636671
+568 3.1398320916    0.0017605620
+569 3.1433501215    0.0017574679
+570 3.1398382690    0.0017543846
+571 3.1433439657    0.0017513121
+572 3.1398444032    0.0017482504
+573 3.1433378530    0.0017451994
+574 3.1398504946    0.0017421590
+575 3.1433317827    0.0017391291
+576 3.1398565438    0.0017361098
+577 3.1433257545    0.0017331010
+578 3.1398625511    0.0017301025
+579 3.1433197680    0.0017271144
+580 3.1398685169    0.0017241366
+581 3.1433138227    0.0017211691
+582 3.1398744418    0.0017182118
+583 3.1433079182    0.0017152646
+584 3.1398803261    0.0017123275
+585 3.1433020541    0.0017094005
+586 3.1398861702    0.0017064834
+587 3.1432962299    0.0017035763
+588 3.1398919745    0.0017006790
+589 3.1432904452    0.0016977916
+590 3.1398977396    0.0016949140
+591 3.1432846998    0.0016920462
+592 3.1399034656    0.0016891880
+593 3.1432789930    0.0016863394
+594 3.1399091531    0.0016835005
+595 3.1432733247    0.0016806711
+596 3.1399148024    0.0016778512
+597 3.1432676943    0.0016750407
+598 3.1399204140    0.0016722396
+599 3.1432621015    0.0016694479
+600 3.1399259881    0.0016666655
+601 3.1432565459    0.0016638924
+602 3.1399315252    0.0016611284
+603 3.1432510272    0.0016583737
+604 3.1399370256    0.0016556280
+605 3.1432455450    0.0016528914
+606 3.1399424897    0.0016501639
+607 3.1432400989    0.0016474453
+608 3.1399479179    0.0016447357
+609 3.1432346886    0.0016420350
+610 3.1399533104    0.0016393432
+611 3.1432293137    0.0016366601
+612 3.1399586678    0.0016339858
+613 3.1432239739    0.0016313203
+614 3.1399639902    0.0016286634
+615 3.1432186688    0.0016260152
+616 3.1399692780    0.0016233756
+617 3.1432133981    0.0016207445
+618 3.1399745317    0.0016181219
+619 3.1432081614    0.0016155078
+620 3.1399797514    0.0016129022
+621 3.1432029585    0.0016103049
+622 3.1399849376    0.0016077160
+623 3.1431977890    0.0016051354
+624 3.1399900905    0.0016025631
+625 3.1431926526    0.0015999990
+626 3.1399952105    0.0015974431
+627 3.1431875489    0.0015948953
+628 3.1400002979    0.0015923557
+629 3.1431824777    0.0015898241
+630 3.1400053530    0.0015873006
+631 3.1431774386    0.0015847851
+632 3.1400103761    0.0015822775
+633 3.1431724314    0.0015797778
+634 3.1400153675    0.0015772861
+635 3.1431674558    0.0015748022
+636 3.1400203275    0.0015723261
+637 3.1431625113    0.0015698577
+638 3.1400252564    0.0015673972
+639 3.1431575979    0.0015649443
+640 3.1400301545    0.0015624990
+641 3.1431527150    0.0015600615
+642 3.1400350221    0.0015576315
+643 3.1431478626    0.0015552090
+644 3.1400398595    0.0015527941
+645 3.1431430403    0.0015503867
+646 3.1400446669    0.0015479867
+647 3.1431382477    0.0015455941
+648 3.1400494446    0.0015432090
+649 3.1431334847    0.0015408311
+650 3.1400541930    0.0015384606
+651 3.1431287510    0.0015360974
+652 3.1400589122    0.0015337414
+653 3.1431240463    0.0015313927
+654 3.1400636025    0.0015290511
+655 3.1431193703    0.0015267167
+656 3.1400682642    0.0015243894
+657 3.1431147227    0.0015220691
+658 3.1400728976    0.0015197560
+659 3.1431101034    0.0015174498
+660 3.1400775029    0.0015151506
+661 3.1431055120    0.0015128584
+662 3.1400820804    0.0015105732
+663 3.1431009484    0.0015082948
+664 3.1400866303    0.0015060232
+665 3.1430964121    0.0015037585
+666 3.1400911529    0.0015015007
+667 3.1430919031    0.0014992495
+668 3.1400956484    0.0014970051
+669 3.1430874211    0.0014947675
+670 3.1401001171    0.0014925365
+671 3.1430829657    0.0014903121
+672 3.1401045592    0.0014880944
+673 3.1430785369    0.0014858833
+674 3.1401089749    0.0014836787
+675 3.1430741343    0.0014814807
+676 3.1401133645    0.0014792891
+677 3.1430697577    0.0014771041
+678 3.1401177281    0.0014749255
+679 3.1430654068    0.0014727533
+680 3.1401220661    0.0014705874
+681 3.1430610816    0.0014684280
+682 3.1401263787    0.0014662749
+683 3.1430567816    0.0014641281
+684 3.1401306661    0.0014619875
+685 3.1430525068    0.0014598532
+686 3.1401349284    0.0014577252
+687 3.1430482569    0.0014556033
+688 3.1401391660    0.0014534876
+689 3.1430440316    0.0014513780
+690 3.1401433790    0.0014492746
+691 3.1430398308    0.0014471772
+692 3.1401475676    0.0014450860
+693 3.1430356543    0.0014430007
+694 3.1401517321    0.0014409214
+695 3.1430315018    0.0014388482
+696 3.1401558727    0.0014367809
+697 3.1430273731    0.0014347195
+698 3.1401599896    0.0014326640
+699 3.1430232680    0.0014306144
+700 3.1401640829    0.0014285707
+701 3.1430191864    0.0014265328
+702 3.1401681529    0.0014245007
+703 3.1430151280    0.0014224744
+704 3.1401721998    0.0014204538
+705 3.1430110926    0.0014184390
+706 3.1401762237    0.0014164299
+707 3.1430070800    0.0014144264
+708 3.1401802249    0.0014124287
+709 3.1430030901    0.0014104365
+710 3.1401842036    0.0014084500
+711 3.1429991227    0.0014064691
+712 3.1401881599    0.0014044937
+713 3.1429951774    0.0014025239
+714 3.1401920941    0.0014005595
+715 3.1429912543    0.0013986007
+716 3.1401960062    0.0013966474
+717 3.1429873531    0.0013946995
+718 3.1401998966    0.0013927570
+719 3.1429834735    0.0013908199
+720 3.1402037654    0.0013888882
+721 3.1429796155    0.0013869619
+722 3.1402076127    0.0013850409
+723 3.1429757788    0.0013831252
+724 3.1402114388    0.0013812148
+725 3.1429719633    0.0013793097
+726 3.1402152438    0.0013774098
+727 3.1429681688    0.0013755152
+728 3.1402190279    0.0013736257
+729 3.1429643951    0.0013717415
+730 3.1402227912    0.0013698624
+731 3.1429606420    0.0013679884
+732 3.1402265340    0.0013661196
+733 3.1429569094    0.0013642558
+734 3.1402302564    0.0013623972
+735 3.1429531972    0.0013605436
+736 3.1402339586    0.0013586950
+737 3.1429495051    0.0013568515
+738 3.1402376407    0.0013550129
+739 3.1429458329    0.0013531794
+740 3.1402413029    0.0013513507
+741 3.1429421806    0.0013495271
+742 3.1402449453    0.0013477083
+743 3.1429385480    0.0013458944
+744 3.1402485682    0.0013440854
+745 3.1429349349    0.0013422813
+746 3.1402521716    0.0013404820
+747 3.1429313411    0.0013386875
+748 3.1402557558    0.0013368978
+749 3.1429277665    0.0013351129
+750 3.1402593208    0.0013333327
+751 3.1429242109    0.0013315573
+752 3.1402628669    0.0013297866
+753 3.1429206743    0.0013280207
+754 3.1402663942    0.0013262594
+755 3.1429171563    0.0013245027
+756 3.1402699028    0.0013227507
+757 3.1429136570    0.0013210034
+758 3.1402733930    0.0013192606
+759 3.1429101761    0.0013175225
+760 3.1402768647    0.0013157889
+761 3.1429067135    0.0013140599
+762 3.1402803182    0.0013123354
+763 3.1429032690    0.0013106154
+764 3.1402837536    0.0013089000
+765 3.1428998426    0.0013071890
+766 3.1402871711    0.0013054825
+767 3.1428964340    0.0013037804
+768 3.1402905708    0.0013020828
+769 3.1428930432    0.0013003896
+770 3.1402939528    0.0012987008
+771 3.1428896699    0.0012970163
+772 3.1402973173    0.0012953362
+773 3.1428863141    0.0012936605
+774 3.1403006645    0.0012919891
+775 3.1428829756    0.0012903220
+776 3.1403039943    0.0012886593
+777 3.1428796543    0.0012870008
+778 3.1403073071    0.0012853465
+779 3.1428763501    0.0012836965
+780 3.1403106028    0.0012820508
+781 3.1428730628    0.0012804092
+782 3.1403138817    0.0012787719
+783 3.1428697923    0.0012771387
+784 3.1403171439    0.0012755097
+785 3.1428665384    0.0012738848
+786 3.1403203895    0.0012722641
+787 3.1428633011    0.0012706475
+788 3.1403236186    0.0012690350
+789 3.1428600802    0.0012674266
+790 3.1403268313    0.0012658223
+791 3.1428568756    0.0012642220
+792 3.1403300278    0.0012626258
+793 3.1428536871    0.0012610335
+794 3.1403332082    0.0012594453
+795 3.1428505147    0.0012578611
+796 3.1403363727    0.0012562809
+797 3.1428473582    0.0012547047
+798 3.1403395212    0.0012531323
+799 3.1428442176    0.0012515640
+800 3.1403426541    0.0012499995
+801 3.1428410926    0.0012484390
+802 3.1403457713    0.0012468823
+803 3.1428379831    0.0012453295
+804 3.1403488730    0.0012437806
+805 3.1428348891    0.0012422355
+806 3.1403519593    0.0012406943
+807 3.1428318105    0.0012391569
+808 3.1403550303    0.0012376233
+809 3.1428287471    0.0012360935
+810 3.1403580862    0.0012345674
+811 3.1428256987    0.0012330452
+812 3.1403611270    0.0012315266
+813 3.1428226654    0.0012300118
+814 3.1403641528    0.0012285008
+815 3.1428196470    0.0012269934
+816 3.1403671639    0.0012254897
+817 3.1428166433    0.0012239897
+818 3.1403701602    0.0012224934
+819 3.1428136544    0.0012210008
+820 3.1403731418    0.0012195117
+821 3.1428106799    0.0012180263
+822 3.1403761090    0.0012165446
+823 3.1428077200    0.0012150664
+824 3.1403790618    0.0012135918
+825 3.1428047744    0.0012121208
+826 3.1403820003    0.0012106533
+827 3.1428018430    0.0012091894
+828 3.1403849246    0.0012077290
+829 3.1427989258    0.0012062722
+830 3.1403878347    0.0012048188
+831 3.1427960226    0.0012033690
+832 3.1403907309    0.0012019226
+833 3.1427931333    0.0012004798
+834 3.1403936133    0.0011990403
+835 3.1427902580    0.0011976044
+836 3.1403964818    0.0011961718
+837 3.1427873963    0.0011947427
+838 3.1403993366    0.0011933170
+839 3.1427845483    0.0011918947
+840 3.1404021778    0.0011904758
+841 3.1427817138    0.0011890602
+842 3.1404050056    0.0011876480
+843 3.1427788928    0.0011862392
+844 3.1404078199    0.0011848337
+845 3.1427760851    0.0011834315
+846 3.1404106209    0.0011820327
+847 3.1427732907    0.0011806371
+848 3.1404134087    0.0011792449
+849 3.1427705095    0.0011778559
+850 3.1404161834    0.0011764702
+851 3.1427677413    0.0011750877
+852 3.1404189451    0.0011737085
+853 3.1427649861    0.0011723325
+854 3.1404216938    0.0011709598
+855 3.1427622438    0.0011695902
+856 3.1404244297    0.0011682239
+857 3.1427595143    0.0011668607
+858 3.1404271528    0.0011655008
+859 3.1427567975    0.0011641440
+860 3.1404298633    0.0011627903
+861 3.1427540934    0.0011614398
+862 3.1404325612    0.0011600924
+863 3.1427514018    0.0011587482
+864 3.1404352466    0.0011574070
+865 3.1427487226    0.0011560690
+866 3.1404379196    0.0011547340
+867 3.1427460557    0.0011534022
+868 3.1404405802    0.0011520734
+869 3.1427434012    0.0011507476
+870 3.1404432287    0.0011494249
+871 3.1427407588    0.0011481052
+872 3.1404458650    0.0011467886
+873 3.1427381286    0.0011454750
+874 3.1404484892    0.0011441644
+875 3.1427355104    0.0011428568
+876 3.1404511015    0.0011415521
+877 3.1427329041    0.0011402505
+878 3.1404537018    0.0011389518
+879 3.1427303096    0.0011376561
+880 3.1404562903    0.0011363633
+881 3.1427277270    0.0011350734
+882 3.1404588671    0.0011337865
+883 3.1427251561    0.0011325025
+884 3.1404614322    0.0011312214
+885 3.1427225967    0.0011299431
+886 3.1404639858    0.0011286678
+887 3.1427200489    0.0011273954
+888 3.1404665278    0.0011261258
+889 3.1427175126    0.0011248590
+890 3.1404690584    0.0011235952
+891 3.1427149877    0.0011223341
+892 3.1404715777    0.0011210759
+893 3.1427124741    0.0011198205
+894 3.1404740857    0.0011185679
+895 3.1427099717    0.0011173181
+896 3.1404765825    0.0011160711
+897 3.1427074804    0.0011148269
+898 3.1404790682    0.0011135854
+899 3.1427050003    0.0011123467
+900 3.1404815428    0.0011111108
+901 3.1427025312    0.0011098776
+902 3.1404840065    0.0011086471
+903 3.1427000730    0.0011074194
+904 3.1404864592    0.0011061944
+905 3.1426976256    0.0011049720
+906 3.1404889012    0.0011037524
+907 3.1426951891    0.0011025355
+908 3.1404913323    0.0011013213
+909 3.1426927633    0.0011001097
+910 3.1404937528    0.0010989008
+911 3.1426903481    0.0010976945
+912 3.1404961627    0.0010964909
+913 3.1426879435    0.0010952899
+914 3.1404985620    0.0010940916
+915 3.1426855494    0.0010928958
+916 3.1405009509    0.0010917027
+917 3.1426831658    0.0010905122
+918 3.1405033293    0.0010893243
+919 3.1426807925    0.0010881390
+920 3.1405056974    0.0010869562
+921 3.1426784296    0.0010857760
+922 3.1405080552    0.0010845984
+923 3.1426760769    0.0010834233
+924 3.1405104028    0.0010822508
+925 3.1426737344    0.0010810808
+926 3.1405127403    0.0010799133
+927 3.1426714019    0.0010787483
+928 3.1405150677    0.0010775859
+929 3.1426690795    0.0010764260
+930 3.1405173851    0.0010752685
+931 3.1426667671    0.0010741135
+932 3.1405196925    0.0010729611
+933 3.1426644646    0.0010718111
+934 3.1405219901    0.0010706635
+935 3.1426621720    0.0010695184
+936 3.1405242778    0.0010683758
+937 3.1426598891    0.0010672356
+938 3.1405265558    0.0010660978
+939 3.1426576160    0.0010649624
+940 3.1405288241    0.0010638295
+941 3.1426553525    0.0010626990
+942 3.1405310828    0.0010615708
+943 3.1426530987    0.0010604451
+944 3.1405333319    0.0010593217
+945 3.1426508544    0.0010582008
+946 3.1405355714    0.0010570822
+947 3.1426486195    0.0010559659
+948 3.1405378016    0.0010548520
+949 3.1426463941    0.0010537405
+950 3.1405400223    0.0010526313
+951 3.1426441780    0.0010515244
+952 3.1405422337    0.0010504199
+953 3.1426419712    0.0010493177
+954 3.1405444358    0.0010482177
+955 3.1426397737    0.0010471201
+956 3.1405466288    0.0010460248
+957 3.1426375854    0.0010449318
+958 3.1405488125    0.0010438411
+959 3.1426354062    0.0010427526
+960 3.1405509872    0.0010416664
+961 3.1426332360    0.0010405824
+962 3.1405531528    0.0010395008
+963 3.1426310749    0.0010384213
+964 3.1405553095    0.0010373441
+965 3.1426289227    0.0010362692
+966 3.1405574572    0.0010351964
+967 3.1426267795    0.0010341259
+968 3.1405595960    0.0010330576
+969 3.1426246451    0.0010319915
+970 3.1405617260    0.0010309276
+971 3.1426225194    0.0010298658
+972 3.1405638473    0.0010288063
+973 3.1426204025    0.0010277490
+974 3.1405659598    0.0010266938
+975 3.1426182943    0.0010256408
+976 3.1405680637    0.0010245899
+977 3.1426161948    0.0010235412
+978 3.1405701590    0.0010224946
+979 3.1426141038    0.0010214502
+980 3.1405722457    0.0010204079
+981 3.1426120213    0.0010193677
+982 3.1405743239    0.0010183297
+983 3.1426099473    0.0010172937
+984 3.1405763937    0.0010162599
+985 3.1426078818    0.0010152282
+986 3.1405784551    0.0010141985
+987 3.1426058246    0.0010131710
+988 3.1405805081    0.0010121455
+989 3.1426037757    0.0010111221
+990 3.1405825528    0.0010101008
+991 3.1426017351    0.0010090815
+992 3.1405845893    0.0010080643
+993 3.1425997027    0.0010070491
+994 3.1405866176    0.0010060360
+995 3.1425976785    0.0010050249
+996 3.1405886378    0.0010040158
+997 3.1425956624    0.0010030088
+998 3.1405906498    0.0010020038
+999 3.1425936543    0.0010010008
+1000    3.1405926538    0.0009999997</code></pre>
+</div>
+</div>
+<p>We need 1000 terms in order to get the error below <span class="math inline">\(10^{-3}\)</span></p>
+</section>
+<section id="considering-the-following-code-snippet-8" class="level3" data-number="O.2.8">
+<h3 data-number="O.2.8" class="anchored" data-anchor-id="considering-the-following-code-snippet-8"><span class="header-section-number">O.2.8</span> (23) Considering the following code snippet: (8%)</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> eggs(somelist):</span>
+<span id="cb23-2"><a href="#cb23-2"></a>    somelist[<span class="op">-</span><span class="dv">1</span>].append(<span class="st">'Bob'</span>)</span>
+<span id="cb23-3"><a href="#cb23-3"></a>    <span class="bu">print</span>(somelist)</span>
+<span id="cb23-4"><a href="#cb23-4"></a></span>
+<span id="cb23-5"><a href="#cb23-5"></a>spam <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,[<span class="st">'Hello'</span>, <span class="st">'Alice'</span>]]</span>
+<span id="cb23-6"><a href="#cb23-6"></a>spam2 <span class="op">=</span> spam  <span class="co"># Fix me here</span></span>
+<span id="cb23-7"><a href="#cb23-7"></a>eggs(spam2)</span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="bu">print</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="a">
+<li><p>What will be printed out when executing the code? Please also explain why you get such a result.</p></li>
+<li><p>From (a), you see that the global variable <code>spam</code> has been modified. Fix the above code annotated with “Fix me here” if you do not want it to be changed.</p></li>
+</ol>
+<div class="cell" data-outputid="b1549268-8bec-40ab-819e-81658c0ddb41">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw">def</span> eggs(somelist):</span>
+<span id="cb24-2"><a href="#cb24-2"></a>    somelist[<span class="op">-</span><span class="dv">1</span>].append(<span class="st">'Bob'</span>)</span>
+<span id="cb24-3"><a href="#cb24-3"></a>    <span class="bu">print</span>(somelist)</span>
+<span id="cb24-4"><a href="#cb24-4"></a></span>
+<span id="cb24-5"><a href="#cb24-5"></a>spam <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,[<span class="st">'Hello'</span>, <span class="st">'Alice'</span>]]</span>
+<span id="cb24-6"><a href="#cb24-6"></a>spam2 <span class="op">=</span> spam</span>
+<span id="cb24-7"><a href="#cb24-7"></a>eggs(spam2)</span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="bu">print</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[3, 5, 6, ['Hello', 'Alice', 'Bob']]
+[3, 5, 6, ['Hello', 'Alice', 'Bob']]</code></pre>
+</div>
+</div>
+<ol type="a">
+<li>The print out message is</li>
+</ol>
+<pre><code>[3, 5, 6, ['Hello', 'Alice', 'Bob']]
+[3, 5, 6, ['Hello', 'Alice', 'Bob']]</code></pre>
+<p>because list is mutable object, so it will be modified inside the <code>eggs()</code> function.</p>
+<ol start="2" type="a">
+<li>If you want to avoid the modification, you can use <code>deepcopy()</code> from the copy module as follows:</li>
+</ol>
+<div class="cell" data-outputid="d979794a-a513-47b4-8404-c3cd22652d5e">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">import</span> copy</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="kw">def</span> eggs(somelist):</span>
+<span id="cb27-3"><a href="#cb27-3"></a>    somelist[<span class="op">-</span><span class="dv">1</span>].append(<span class="st">'Bob'</span>)</span>
+<span id="cb27-4"><a href="#cb27-4"></a>    <span class="bu">print</span>(somelist)</span>
+<span id="cb27-5"><a href="#cb27-5"></a></span>
+<span id="cb27-6"><a href="#cb27-6"></a>spam <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">6</span>,[<span class="st">'Hello'</span>, <span class="st">'Alice'</span>]]</span>
+<span id="cb27-7"><a href="#cb27-7"></a>spam2 <span class="op">=</span> copy.deepcopy(spam)</span>
+<span id="cb27-8"><a href="#cb27-8"></a>eggs(spam2)</span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="bu">print</span>(spam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[3, 5, 6, ['Hello', 'Alice', 'Bob']]
+[3, 5, 6, ['Hello', 'Alice']]</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Assignment 9_sol.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Assignment 9</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Quiz2_sol.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">P</span>&nbsp; <span class="chapter-title">Quiz 2</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

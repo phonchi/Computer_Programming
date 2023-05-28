@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.306">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="phonchi">
+<meta name="dcterms.date" content="2023-05-28">
+
+<title>Computer Programming - Appendix M — Assignment 8</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Assignment 9_sol.html" rel="next">
+<link href="./Assignment 7_sol.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_Copilot.html">Appendices</a></li><li class="breadcrumb-item"><a href="./Assignment 8_sol.html"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Assignment 8</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Computer Programming</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_Python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_Flow_control.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Flow Control</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_Function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Lists_tuples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lists and Tuples</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Dictionaries_sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Other collections - Dictionaries and Sets</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Manipulating_string.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Manipulating Strings</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_Files.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Files and Exceptions</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_09_OOP.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Object Oriented Programming and Classes</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_11_NumPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Array-Oriented Programming with NumPy</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12_Matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualization with <code>Matplotlib</code></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_SymPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Symbolic Mathematics in Python with <code>SymPy</code></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_Copilot.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Increase productivity and learning with Github Copilot in Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_SciPy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">High-level scientific computing with <code>SciPy</code></span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_Algorithms_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Algorithms</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_Data_Structure_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Data Structure</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_Abstract_data_types_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Abstract Data Types</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 1_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Assignment 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 2_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Assignment 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 3_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Assignment 3</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 4_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Assignment 4</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 5_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Assignment 5</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 6_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Assignment 6</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 7_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Assignment 7</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 8_sol.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Assignment 8</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Assignment 9_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Assignment 9</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Quiz1_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Quiz 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Quiz2_sol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">P</span>&nbsp; <span class="chapter-title">Quiz 2</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#which-of-the-following-statement-is-false" id="toc-which-of-the-following-statement-is-false" class="nav-link active" data-scroll-target="#which-of-the-following-statement-is-false"><span class="header-section-number">M.1</span> (1) Which of the following statement is False?</a></li>
+  <li><a href="#in-the-command-plt.plotx-y---sk-what-does-the-format-string---sk-mean" id="toc-in-the-command-plt.plotx-y---sk-what-does-the-format-string---sk-mean" class="nav-link" data-scroll-target="#in-the-command-plt.plotx-y---sk-what-does-the-format-string---sk-mean"><span class="header-section-number">M.2</span> (2) In the command <code>plt.plot(x, y, '--sk')</code>, what does the format string <code>'--sk'</code> mean?</a></li>
+  <li><a href="#which-of-the-following-statement-is-false-1" id="toc-which-of-the-following-statement-is-false-1" class="nav-link" data-scroll-target="#which-of-the-following-statement-is-false-1"><span class="header-section-number">M.3</span> (3) Which of the following statement is False?</a></li>
+  <li><a href="#which-of-the-following-grid-will-be-returned-by-the-command-plt.subplots3-2" id="toc-which-of-the-following-grid-will-be-returned-by-the-command-plt.subplots3-2" class="nav-link" data-scroll-target="#which-of-the-following-grid-will-be-returned-by-the-command-plt.subplots3-2"><span class="header-section-number">M.4</span> (4) Which of the following grid will be returned by the command <code>plt.subplots(3, 2)</code>?</a></li>
+  <li><a href="#which-of-the-following-command-is-used-to-show-the-plots-directly-within-the-notebook-so-that-the-plots-can-be-embedded-as-static-images-in-the-notebook" id="toc-which-of-the-following-command-is-used-to-show-the-plots-directly-within-the-notebook-so-that-the-plots-can-be-embedded-as-static-images-in-the-notebook" class="nav-link" data-scroll-target="#which-of-the-following-command-is-used-to-show-the-plots-directly-within-the-notebook-so-that-the-plots-can-be-embedded-as-static-images-in-the-notebook"><span class="header-section-number">M.5</span> (5) Which of the following command is used to show the plots directly within the notebook so that the plots can be embedded as static images in the notebook?</a></li>
+  <li><a href="#try-to-plot-the-rose-curve-ratimes-sinntheta-with-a2-and-n2-which-means-the-curve-has-4-petals-as-follows" id="toc-try-to-plot-the-rose-curve-ratimes-sinntheta-with-a2-and-n2-which-means-the-curve-has-4-petals-as-follows" class="nav-link" data-scroll-target="#try-to-plot-the-rose-curve-ratimes-sinntheta-with-a2-and-n2-which-means-the-curve-has-4-petals-as-follows"><span class="header-section-number">M.6</span> (6) Try to plot the rose curve <span class="math inline">\(r=a\times \sin(n\theta)\)</span> with <span class="math inline">\(a=2\)</span> and <span class="math inline">\(n=2\)</span> which means the curve has 4 petals as follows:</a></li>
+  <li><a href="#try-to-plot-sinx-sin2x-sin3x-sin4x-in-different-subplots-in-the-same-figure-organized-as-follows" id="toc-try-to-plot-sinx-sin2x-sin3x-sin4x-in-different-subplots-in-the-same-figure-organized-as-follows" class="nav-link" data-scroll-target="#try-to-plot-sinx-sin2x-sin3x-sin4x-in-different-subplots-in-the-same-figure-organized-as-follows"><span class="header-section-number">M.7</span> (7) Try to plot <span class="math inline">\(\sin(x)\)</span>, <span class="math inline">\(\sin(2x)\)</span>, <span class="math inline">\(\sin(3x)\)</span>, <span class="math inline">\(\sin(4x)\)</span>, in different subplots in the same figure organized as follows:</a></li>
+  <li><a href="#try-to-plot-the-sin2x-function-in-the-range-x--pi-pi-and-fill-the-area-between-the-curve-and-the-x-axis-with-the-color-blue-and-alpha0.25-as-follows" id="toc-try-to-plot-the-sin2x-function-in-the-range-x--pi-pi-and-fill-the-area-between-the-curve-and-the-x-axis-with-the-color-blue-and-alpha0.25-as-follows" class="nav-link" data-scroll-target="#try-to-plot-the-sin2x-function-in-the-range-x--pi-pi-and-fill-the-area-between-the-curve-and-the-x-axis-with-the-color-blue-and-alpha0.25-as-follows"><span class="header-section-number">M.8</span> (8) Try to plot the <span class="math inline">\(\sin(2x)\)</span> function in the range <span class="math inline">\(x = [-\pi, \pi]\)</span> and fill the area between the curve and the x-axis with the color <code>blue</code> and <code>alpha=0.25</code> as follows:</a></li>
+  <li><a href="#use-np.random.rand-to-generate-10000-data-points-and-plot-the-histogram-of-the-data-points-with-50-bins-and-normalize-it-so-that-the-area-under-the-histogram-integrates-to-1.-check-out-the-documentation-of-np.random.rand-on-the-official-website.-does-the-plot-look-like-the-distribution-mentioned-on-the-official-website" id="toc-use-np.random.rand-to-generate-10000-data-points-and-plot-the-histogram-of-the-data-points-with-50-bins-and-normalize-it-so-that-the-area-under-the-histogram-integrates-to-1.-check-out-the-documentation-of-np.random.rand-on-the-official-website.-does-the-plot-look-like-the-distribution-mentioned-on-the-official-website" class="nav-link" data-scroll-target="#use-np.random.rand-to-generate-10000-data-points-and-plot-the-histogram-of-the-data-points-with-50-bins-and-normalize-it-so-that-the-area-under-the-histogram-integrates-to-1.-check-out-the-documentation-of-np.random.rand-on-the-official-website.-does-the-plot-look-like-the-distribution-mentioned-on-the-official-website"><span class="header-section-number">M.9</span> (9) Use <code>np.random.rand()</code> to generate <code>10000</code> data points and plot the histogram of the data points with <code>50</code> bins and normalize it so that the area under the histogram integrates to 1. Check out the documentation of <code>np.random.rand()</code> on the official website. Does the plot look like the distribution mentioned on the official website?</a></li>
+  <li><a href="#when-we-try-to-plot-tanx-using-plot-function-and-set-the-limit-of-x-between--2pi-2pi-we-will-get-the-following-figure" id="toc-when-we-try-to-plot-tanx-using-plot-function-and-set-the-limit-of-x-between--2pi-2pi-we-will-get-the-following-figure" class="nav-link" data-scroll-target="#when-we-try-to-plot-tanx-using-plot-function-and-set-the-limit-of-x-between--2pi-2pi-we-will-get-the-following-figure"><span class="header-section-number">M.10</span> (10) When we try to plot <span class="math inline">\(tan(x)\)</span> using <code>plot()</code> function and set the limit of x between <span class="math inline">\([-2\pi, 2\pi]\)</span>, we will get the following figure:</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Appendix M — Assignment 8</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>phonchi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 28, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="which-of-the-following-statement-is-false" class="level2" data-number="M.1">
+<h2 data-number="M.1" class="anchored" data-anchor-id="which-of-the-following-statement-is-false"><span class="header-section-number">M.1</span> (1) Which of the following statement is False?</h2>
+<ol type="A">
+<li><p>There are two different interfaces in <code>matplotlib</code>. One is MATLAB(functional)-style interface, and the other is object-oriented interface.</p></li>
+<li><p>The functional interface is stateless, while the object-oriented interface is stateful in <code>matplotlib</code>.</p></li>
+<li><p>To generate a scatter plot in <code>matplotlib</code>, we can use either <code>plot()</code> or <code>scatter()</code> function.</p></li>
+<li><p>To draw two figures in the same figure, we can call the <code>plot()</code> function twice.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: <em>Double click to answer the question</em></p>
+</blockquote>
+<ol start="2" type="A">
+<li>The functional interface is stateful.</li>
+</ol>
+</section>
+<section id="in-the-command-plt.plotx-y---sk-what-does-the-format-string---sk-mean" class="level2" data-number="M.2">
+<h2 data-number="M.2" class="anchored" data-anchor-id="in-the-command-plt.plotx-y---sk-what-does-the-format-string---sk-mean"><span class="header-section-number">M.2</span> (2) In the command <code>plt.plot(x, y, '--sk')</code>, what does the format string <code>'--sk'</code> mean?</h2>
+<ol type="A">
+<li><p>Draw a dash line with black color and square marker.</p></li>
+<li><p>Draw a solid line with black color and circle marker.</p></li>
+<li><p>Draw a dotted line with sky blue color and square marker.</p></li>
+<li><p>Draw a dash line with pink color and circle marker.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: <em>Double click to answer the question</em></p>
+</blockquote>
+<ol type="A">
+<li></li>
+</ol>
+</section>
+<section id="which-of-the-following-statement-is-false-1" class="level2" data-number="M.3">
+<h2 data-number="M.3" class="anchored" data-anchor-id="which-of-the-following-statement-is-false-1"><span class="header-section-number">M.3</span> (3) Which of the following statement is False?</h2>
+<ol type="A">
+<li><p>Each axis in <code>matplotlib</code> contains both major and minor tick marks. As implied by their names, major ticks are generally more noticeable or sizable, while minor ticks tend to be smaller.</p></li>
+<li><p>The keyword argument <code>density=True</code> in <code>hist()</code> function serves to normalize the histogram, enabling it to be shown on the same axes as the data.</p></li>
+<li><p>By default, spines are situated at the edges of the axis and act as lines that connect axis tick marks, delineating the data area’s boundaries.</p></li>
+<li><p>The primary benefit of using <code>plot()</code> instead of <code>scatter()</code> is the capability it offers to create scatter plots, allowing for individual customization of each point’s properties.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: <em>Double click to answer the question</em></p>
+</blockquote>
+<ol start="4" type="A">
+<li><code>scatter()</code> instead of <code>plot()</code> enjoy the benifit of being more customizable.</li>
+</ol>
+</section>
+<section id="which-of-the-following-grid-will-be-returned-by-the-command-plt.subplots3-2" class="level2" data-number="M.4">
+<h2 data-number="M.4" class="anchored" data-anchor-id="which-of-the-following-grid-will-be-returned-by-the-command-plt.subplots3-2"><span class="header-section-number">M.4</span> (4) Which of the following grid will be returned by the command <code>plt.subplots(3, 2)</code>?</h2>
+<ol type="A">
+<li><p>A grid with 3 columns and 2 rows and the first subplot is at the top left corner.</p></li>
+<li><p>A grid with 3 rows and 2 columns and the first subplot is at the bottom left corner.</p></li>
+<li><p>A grid with 3 rows and 2 columns and the first subplot is at the top left corner.</p></li>
+<li><p>A grid with 3 columns and 2 rows and the first subplot is at the bottom left corner.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: <em>Double click to answer the question</em></p>
+</blockquote>
+<ol start="3" type="A">
+<li></li>
+</ol>
+</section>
+<section id="which-of-the-following-command-is-used-to-show-the-plots-directly-within-the-notebook-so-that-the-plots-can-be-embedded-as-static-images-in-the-notebook" class="level2" data-number="M.5">
+<h2 data-number="M.5" class="anchored" data-anchor-id="which-of-the-following-command-is-used-to-show-the-plots-directly-within-the-notebook-so-that-the-plots-can-be-embedded-as-static-images-in-the-notebook"><span class="header-section-number">M.5</span> (5) Which of the following command is used to show the plots directly within the notebook so that the plots can be embedded as static images in the notebook?</h2>
+<ol type="A">
+<li><p><code>%matplotlib qt</code></p></li>
+<li><p><code>%matplotlib inline</code></p></li>
+<li><p><code>%matplotlib notebook</code></p></li>
+<li><p><code>%matplotlib ipympl</code></p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Ans: <em>Double click to answer the question</em></p>
+</blockquote>
+<ol start="2" type="A">
+<li></li>
+</ol>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4"></a>plt.style.use(<span class="st">'seaborn-whitegrid'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\adm\AppData\Local\Temp\ipykernel_32440\1473361050.py:4: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as 'seaborn-v0_8-&lt;style&gt;'. Alternatively, directly use the seaborn API instead.
+  plt.style.use('seaborn-whitegrid')</code></pre>
+</div>
+</div>
+</section>
+<section id="try-to-plot-the-rose-curve-ratimes-sinntheta-with-a2-and-n2-which-means-the-curve-has-4-petals-as-follows" class="level2" data-number="M.6">
+<h2 data-number="M.6" class="anchored" data-anchor-id="try-to-plot-the-rose-curve-ratimes-sinntheta-with-a2-and-n2-which-means-the-curve-has-4-petals-as-follows"><span class="header-section-number">M.6</span> (6) Try to plot the rose curve <span class="math inline">\(r=a\times \sin(n\theta)\)</span> with <span class="math inline">\(a=2\)</span> and <span class="math inline">\(n=2\)</span> which means the curve has 4 petals as follows:</h2>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># The rose curve:</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">1000</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>r <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>t)</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># plot in polar coordinates</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>plt.axes(projection<span class="op">=</span><span class="st">'polar'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>plt.plot(t<span class="op">+</span>(r<span class="op">&lt;</span><span class="dv">0</span>)<span class="op">*</span>np.pi, np.<span class="bu">abs</span>(r), <span class="st">'-'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co"># Set ticks for polar coordinate</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>plt.xticks([<span class="dv">0</span>, np.pi<span class="op">/</span><span class="dv">2</span>, np.pi, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>], [<span class="st">'0'</span>, <span class="st">'$\pi/2$'</span>, <span class="st">'$\pi$'</span>, <span class="st">'$3\pi/2$'</span>])<span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a>plt.yticks([<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Assignment 8_sol_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Note that you should change the ticks according to the above plot and you can use the trick mentioned in our slides to set the radius of 0 to the origin.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="try-to-plot-sinx-sin2x-sin3x-sin4x-in-different-subplots-in-the-same-figure-organized-as-follows" class="level2" data-number="M.7">
+<h2 data-number="M.7" class="anchored" data-anchor-id="try-to-plot-sinx-sin2x-sin3x-sin4x-in-different-subplots-in-the-same-figure-organized-as-follows"><span class="header-section-number">M.7</span> (7) Try to plot <span class="math inline">\(\sin(x)\)</span>, <span class="math inline">\(\sin(2x)\)</span>, <span class="math inline">\(\sin(3x)\)</span>, <span class="math inline">\(\sin(4x)\)</span>, in different subplots in the same figure organized as follows:</h2>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Sine Functions with Different Frequencies:</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">1000</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># Calculate the sine functions</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>y1 <span class="op">=</span> np.sin(x)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>y2 <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> x)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>y3 <span class="op">=</span> np.sin(<span class="dv">3</span> <span class="op">*</span> x)</span>
+<span id="cb5-8"><a href="#cb5-8"></a>y4 <span class="op">=</span> np.sin(<span class="dv">4</span> <span class="op">*</span> x)</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># Create the figure and subplots</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co"># Plot the sine functions in the subplots</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].plot(x, y1)</span>
+<span id="cb5-15"><a href="#cb5-15"></a>axs[<span class="dv">0</span>, <span class="dv">0</span>].set_title(<span class="st">'sin(x)'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16"></a></span>
+<span id="cb5-17"><a href="#cb5-17"></a>axs[<span class="dv">1</span>, <span class="dv">0</span>].plot(x, y2)</span>
+<span id="cb5-18"><a href="#cb5-18"></a>axs[<span class="dv">1</span>, <span class="dv">0</span>].set_title(<span class="st">'sin(2x)'</span>)</span>
+<span id="cb5-19"><a href="#cb5-19"></a></span>
+<span id="cb5-20"><a href="#cb5-20"></a>axs[<span class="dv">0</span>, <span class="dv">1</span>].plot(x, y3)</span>
+<span id="cb5-21"><a href="#cb5-21"></a>axs[<span class="dv">0</span>, <span class="dv">1</span>].set_title(<span class="st">'sin(3x)'</span>)</span>
+<span id="cb5-22"><a href="#cb5-22"></a></span>
+<span id="cb5-23"><a href="#cb5-23"></a>axs[<span class="dv">1</span>, <span class="dv">1</span>].plot(x, y4)</span>
+<span id="cb5-24"><a href="#cb5-24"></a>axs[<span class="dv">1</span>, <span class="dv">1</span>].set_title(<span class="st">'sin(4x)'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Assignment 8_sol_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Remember to add the title to your plot using <code>set_title()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="try-to-plot-the-sin2x-function-in-the-range-x--pi-pi-and-fill-the-area-between-the-curve-and-the-x-axis-with-the-color-blue-and-alpha0.25-as-follows" class="level2" data-number="M.8">
+<h2 data-number="M.8" class="anchored" data-anchor-id="try-to-plot-the-sin2x-function-in-the-range-x--pi-pi-and-fill-the-area-between-the-curve-and-the-x-axis-with-the-color-blue-and-alpha0.25-as-follows"><span class="header-section-number">M.8</span> (8) Try to plot the <span class="math inline">\(\sin(2x)\)</span> function in the range <span class="math inline">\(x = [-\pi, \pi]\)</span> and fill the area between the curve and the x-axis with the color <code>blue</code> and <code>alpha=0.25</code> as follows:</h2>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Example plot:</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>n <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>X <span class="op">=</span> np.linspace(<span class="op">-</span>np.pi, np.pi, n)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>Y <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> X)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#plt.axes([0.025, 0.025, 0.95, 0.95])</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a>plt.plot(X, Y, color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">1.00</span>)</span>
+<span id="cb7-8"><a href="#cb7-8"></a>plt.fill_between(X, <span class="dv">0</span>, Y, color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">.25</span>)</span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a>plt.xlim(<span class="op">-</span>np.pi, np.pi)</span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#plt.ylim(-2.5, 2.5)</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>radian_multiples <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>]</span>
+<span id="cb7-13"><a href="#cb7-13"></a>radians <span class="op">=</span> [n <span class="op">*</span> np.pi <span class="cf">for</span> n <span class="kw">in</span> radian_multiples]</span>
+<span id="cb7-14"><a href="#cb7-14"></a>radian_labels <span class="op">=</span> [<span class="st">'$\pi$'</span>, <span class="st">'$-\pi/2$'</span>, <span class="st">'0'</span>, <span class="st">'$\pi/2$'</span>, <span class="st">'$\pi$'</span>]</span>
+<span id="cb7-15"><a href="#cb7-15"></a>plt.xticks(radians, radian_labels)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Assignment 8_sol_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>You can use the following code to set the ticks:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>radian_multiples <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>]</span>
+<span id="cb8-2"><a href="#cb8-2"></a>radians <span class="op">=</span> [n <span class="op">*</span> np.pi <span class="cf">for</span> n <span class="kw">in</span> radian_multiples]</span>
+<span id="cb8-3"><a href="#cb8-3"></a>radian_labels <span class="op">=</span> [<span class="st">'$\pi$'</span>, <span class="st">'$-\pi/2$'</span>, <span class="st">'0'</span>, <span class="st">'$\pi/2$'</span>, <span class="st">'$\pi$'</span>]</span>
+<span id="cb8-4"><a href="#cb8-4"></a>plt.xticks(radians, radian_labels)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Your code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="use-np.random.rand-to-generate-10000-data-points-and-plot-the-histogram-of-the-data-points-with-50-bins-and-normalize-it-so-that-the-area-under-the-histogram-integrates-to-1.-check-out-the-documentation-of-np.random.rand-on-the-official-website.-does-the-plot-look-like-the-distribution-mentioned-on-the-official-website" class="level2" data-number="M.9">
+<h2 data-number="M.9" class="anchored" data-anchor-id="use-np.random.rand-to-generate-10000-data-points-and-plot-the-histogram-of-the-data-points-with-50-bins-and-normalize-it-so-that-the-area-under-the-histogram-integrates-to-1.-check-out-the-documentation-of-np.random.rand-on-the-official-website.-does-the-plot-look-like-the-distribution-mentioned-on-the-official-website"><span class="header-section-number">M.9</span> (9) Use <code>np.random.rand()</code> to generate <code>10000</code> data points and plot the histogram of the data points with <code>50</code> bins and normalize it so that the area under the histogram integrates to 1. Check out the documentation of <code>np.random.rand()</code> on the official website. Does the plot look like the distribution mentioned on the official website?</h2>
+<div class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>data <span class="op">=</span> np.random.rand(<span class="dv">10000</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>plt.hist(data, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Assignment 8_sol_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Yes, it looks like the data are random samples from a uniform distribution over <code>[0, 1)</code>.</p>
+</section>
+<section id="when-we-try-to-plot-tanx-using-plot-function-and-set-the-limit-of-x-between--2pi-2pi-we-will-get-the-following-figure" class="level2" data-number="M.10">
+<h2 data-number="M.10" class="anchored" data-anchor-id="when-we-try-to-plot-tanx-using-plot-function-and-set-the-limit-of-x-between--2pi-2pi-we-will-get-the-following-figure"><span class="header-section-number">M.10</span> (10) When we try to plot <span class="math inline">\(tan(x)\)</span> using <code>plot()</code> function and set the limit of x between <span class="math inline">\([-2\pi, 2\pi]\)</span>, we will get the following figure:</h2>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">1000</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>y <span class="op">=</span> np.tan(x)</span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a>plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5"></a>plt.ylabel(<span class="st">"$tan(x)$"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6"></a>plt.xlim(<span class="op">-</span><span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">2</span> <span class="op">*</span> np.pi)</span>
+<span id="cb11-7"><a href="#cb11-7"></a>plt.title(<span class="st">"$y = tan(x)$"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8"></a>plt.plot(x, y)</span>
+<span id="cb11-9"><a href="#cb11-9"></a>radian_multiples <span class="op">=</span> [<span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span>]</span>
+<span id="cb11-10"><a href="#cb11-10"></a>radians <span class="op">=</span> [n <span class="op">*</span> np.pi <span class="cf">for</span> n <span class="kw">in</span> radian_multiples]</span>
+<span id="cb11-11"><a href="#cb11-11"></a>radian_labels <span class="op">=</span> [<span class="st">'$-2\pi$'</span>, <span class="st">'$-3\pi/2$'</span>, <span class="st">'$\pi$'</span>, <span class="st">'$-\pi/2$'</span>, <span class="st">'0'</span>, <span class="st">'$\pi/2$'</span>, <span class="st">'$\pi$'</span>, <span class="st">'$3\pi/2$'</span>, <span class="st">'$2\pi$'</span>]</span>
+<span id="cb11-12"><a href="#cb11-12"></a></span>
+<span id="cb11-13"><a href="#cb11-13"></a>plt.xticks(radians, radian_labels)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Assignment 8_sol_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Try to explain why the plot is not as expected and solve the problem to obtain the following plot:</p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># The fix tan(x) plot</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">1000</span>)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>y <span class="op">=</span> np.tan(x)</span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co">#y[:-1][np.diff(y) &lt; 0] = np.nan</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>y[np.isclose(x, <span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, rtol<span class="op">=</span><span class="fl">1e-02</span>)] <span class="op">=</span> np.nan</span>
+<span id="cb12-6"><a href="#cb12-6"></a>y[np.isclose(x, np.pi<span class="op">/</span><span class="dv">2</span>, rtol<span class="op">=</span><span class="fl">1e-02</span>)] <span class="op">=</span> np.nan</span>
+<span id="cb12-7"><a href="#cb12-7"></a>y[np.isclose(x, <span class="op">-</span>np.pi<span class="op">/</span><span class="dv">2</span>, rtol<span class="op">=</span><span class="fl">1e-02</span>)] <span class="op">=</span> np.nan</span>
+<span id="cb12-8"><a href="#cb12-8"></a>y[np.isclose(x, <span class="op">-</span><span class="dv">3</span><span class="op">*</span>np.pi<span class="op">/</span><span class="dv">2</span>, rtol<span class="op">=</span><span class="fl">1e-02</span>)] <span class="op">=</span> np.nan</span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a>plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb12-11"><a href="#cb12-11"></a>plt.ylabel(<span class="st">"$tan(x)$"</span>)</span>
+<span id="cb12-12"><a href="#cb12-12"></a>plt.xlim(<span class="op">-</span><span class="dv">2</span> <span class="op">*</span> np.pi, <span class="dv">2</span> <span class="op">*</span> np.pi)</span>
+<span id="cb12-13"><a href="#cb12-13"></a>plt.ylim(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>)</span>
+<span id="cb12-14"><a href="#cb12-14"></a>plt.title(<span class="st">"$y = tan(x)$"</span>)</span>
+<span id="cb12-15"><a href="#cb12-15"></a>plt.plot(x, y)</span>
+<span id="cb12-16"><a href="#cb12-16"></a></span>
+<span id="cb12-17"><a href="#cb12-17"></a>radian_multiples <span class="op">=</span> [<span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span><span class="op">/</span><span class="dv">2</span>, <span class="dv">2</span>]</span>
+<span id="cb12-18"><a href="#cb12-18"></a>radians <span class="op">=</span> [n <span class="op">*</span> np.pi <span class="cf">for</span> n <span class="kw">in</span> radian_multiples]</span>
+<span id="cb12-19"><a href="#cb12-19"></a>radian_labels <span class="op">=</span> [<span class="st">'$-2\pi$'</span>, <span class="st">'$-3\pi/2$'</span>, <span class="st">'$\pi$'</span>, <span class="st">'$-\pi/2$'</span>, <span class="st">'0'</span>, <span class="st">'$\pi/2$'</span>, <span class="st">'$\pi$'</span>, <span class="st">'$3\pi/2$'</span>, <span class="st">'$2\pi$'</span>]</span>
+<span id="cb12-20"><a href="#cb12-20"></a></span>
+<span id="cb12-21"><a href="#cb12-21"></a>plt.xticks(radians, radian_labels)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Assignment 8_sol_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Hint: You can set the point at the discontinuity to <code>np.nan</code> so that the point won’t be plotted in the figure.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Assignment 7_sol.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Assignment 7</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Assignment 9_sol.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Assignment 9</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
